@@ -826,6 +826,8 @@ gulp
 
 #  前端资源教程
 
+[angularjs入门ppt](angularjs入门.ppt)
+
 http://cnodejs.org/topic/56ef3edd532839c33a99d00e
 
 慕课网视频教程:http://www.imooc.com/course/list?c=angularjs
