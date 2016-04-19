@@ -1,3 +1,12 @@
+# 前端综述
+
+
+# nodejs
+
+![](img/20141201195326478573.JPG)
+
+[Node.js](https://nodejs.org/en/) 是一个基于 [Chrome V8](https://developers.google.com/v8/) 引擎的 JavaScript 运行环境。Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。Node.js 的包管理器 [npm](https://www.npmjs.com/)，是全球最大的开源库生态系统
+
 # AngularJS
 
 ![](img/angularjs.jpg)
@@ -113,7 +122,7 @@ AngularJS 完全基于可测的根基设计出来的. 它提供了端到端的�
 
 ![](img/20140909081418577009.JPG)
 
-## 　JS MVC frameworks
+## JS MVC frameworks
 
 ![](img/20140909081418976785.PNG)
 
@@ -264,3 +273,6 @@ dojox/mvc模块的状态现在仍然是“Experimental” ，所以它仍然是�
 
 
 
+#  前端资源教程
+
+http://cnodejs.org/topic/56ef3edd532839c33a99d00e
