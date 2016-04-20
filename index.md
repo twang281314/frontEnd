@@ -824,6 +824,170 @@ gulp
 
 **server:后端模拟数据**
 
+## 跨域
+
+### 什么是跨域
+
+跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。
+
+所谓同源是指，域名，协议，端口相同。浏览器执行javascript脚本时，会检查这个脚本属于那个页面，如果不是同源页面，就不会被执行。
+
+同源策略的目的，是防止黑客做一些做奸犯科的勾当。比如说，如果一个银行的一个应用允许用户上传网页，如果没有同源策略，黑客可以编写一个登陆表单提交到自己的服务器上，得到一个看上去相当高大上的页面。黑客把这个页面通过邮件等发给用户，用户误认为这是某银行的主网页进行登陆，就会泄露自己的用户数据。而因为浏览器的同源策略，黑客无法收到表单数据。
+
+现在随着RESTFUL的流行，很多应用提供http/https接口的API，通过xml/json格式对外提供服务，实现开放架构。如，微博、微信、天气预报、openstack等网站和应用都提供restful接口。
+
+Web应用也在向单页面方向发展。
+
+越来越多的web应用现在是这样的架构：
+
+静态单个web页面
+
+ajax调用
+
+RESTFUL服务
+
+我们本可以利用各个网站提供的API，做出很多精彩的Web应用。但浏览器执行javascript时的跨域限制，就成为了这类开放架构的拦路虎。
+
+本文提出了一种简单有效的方式解决跨域问题。
+
+### 常用的跨域方法
+常用的跨域方法有这样一些：
+
+- 使用iFrame访问另一个域。 然后再从另一个页面读取iFrame的内容。jquery等有一些封装。
+据说Firefox等可能不支持读取另一个iFrame的内容。
+- jsonp。需要服务器支持。使用script src动态得到一段java代码。是回调页面上的js函数，参数是一个json对象。
+jquery也有封装。
+- 设置http头，Access-Control-Allow-Origin：*
+但据说IE有一些版本不识别这个http头。
+
+- 服务器代理。如，服务器写一个url的处理action。其参数是一个url。这个服务器会用参数拼凑一个url,用httpclient库去执行url，然后把读取的内容再输出到http客户端。
+
+### nginx反向代理实现跨域
+
+禁止跨域问题其实是浏览器的一种安全行为，而现在的大多数解决方案都是用标签可以跨域访问的这个漏洞或者是技巧去完成，但都少不了目标服务器做相应的改变，而我最近遇到了一个需求是，目标服务器不能给予我一个header，更不可以改变代码返回个script，所以前5种方案都被我否决掉。最后因为我的网站是我自己的主机，所以我决定搭建一个nginx并把相应代码部署在它的下面，由页面请求本域名的一个地址，转由nginx代理处理后返回结果给页面，而且这一切都是同步的。
+
+首先找到nginx.conf或者nginx.conf.default 或者是default里面的这部份
+
+![](img/EVBzq2i.png!web.jpg)
+
+其中server代表启动的一个服务，location 是一个定位规则。
+
+```
+location /｛   #所有以/开头的地址，实际上是所有请求
+
+root  html     ＃去请求../html文件夹里的文件,其中..的路径在nginx里面有定义，安装的时候会有默认路径，详见另一篇博客
+
+index  index.html index.htm  ＃首页响应地址
+
+｝
+```
+
+从上面可以看出location是nginx用来路由的入口，所以我们接下来要在location里面完成我们的反向代理。
+
+假如我们我们是www.a.com/html/msg.html 想请求www.b.com/api/?method=1&para=2；
+
+我们的ajax：
+
+```
+var url = 'http://www.b.com/api/msg?method=1¶=2'；
+
+$.ajax({
+type: "GET",
+url:url,
+success: function(res){..},
+....
+})
+```
+
+上面的请求必然会遇到跨域问题，这时我们需要修改一下我们的请求url，让请求发在nginx的一个url下。
+
+```
+var url = 'http://www.b.com/api/msg?method=1¶=2'； 
+var proxyurl ＝ 'msg?method=1¶=2'；
+//假如实际地址是 www.a.com/proxy/html/api/msg?method=1¶=2; www.a.com是nginx主机地址
+ $.ajax({ 
+type: "GET", 
+url:proxyurl, 
+success: function(res){..}, 
+.... 
+})　　
+```
+
+再在刚才的路径中匹配到这个请求，我们在location下面再添加一个location。
+
+```
+location ^~/proxy/html/{
+rewrite ^/proxy/html/(.*)$ /$1 break;
+proxy_pass http://www.b.com/;
+}
+```
+
+以下做一个解释：
+
+- '^~ /api/ '
+
+就像上面说的一样是一个匹配规则，用于拦截请求，匹配任何以 /api/ 开头的地址，匹配符合以后，停止往下搜索正则。
+- rewrite ^/proxy/html/(.*)$ /$1 break;
+代表重写拦截进来的请求，并且只能对域名后边的除去传递的参数外的字符串起作用，例如www.c.com/proxy/html/api/msg?method=1&para=2重写。只对/proxy/html/api/msg重写。
+
+rewrite后面的参数是一个简单的正则 ^/proxy/html/(.*)$ ,$1代表正则中的第一个(),$2代表第二个()的值,以此类推。
+
+break代表匹配一个之后停止匹配。
+
+- proxy_pass
+
+ 既是把请求代理到其他主机，其中 http://www.b.com/ 写法和  http://www.b.com写法的区别如下:
+
+不带/
+
+```
+location /html/
+{
+　　proxy_pass http://b.com:8300;  
+}
+```
+
+带/
+
+```
+location /html/  
+{  
+    proxy_pass http://b.com:8300/;  
+}
+```
+
+上面两种配置，区别只在于proxy_pass转发的路径后是否带 “/”。
+
+针对情况1，如果访问url = http://server/html/test.jsp，则被nginx代理后，请求路径会便问http://proxy_pass/html/test.jsp，将test/ 作为根路径，请求test/路径下的资源。
+
+针对情况2，如果访问url = http://server/html/test.jsp，则被nginx代理后，请求路径会变为 http://proxy_pass/test.jsp，直接访问server的根资源。
+
+修改配置后重启nginx代理就成功了
+
+### 总结
+
+本文介绍了利用nginx的反向代理的功能，实现跨域访问任意应用和网站的方法。
+
+nginx是一个高性能的web服务器，常用作反向代理服务器。nginx作为反向代理服务器，就是把http请求转发到另一个或者一些服务器上。
+
+通过把本地一个url前缀映射到要跨域访问的web服务器上，就可以实现跨域访问。
+
+对于浏览器来说，访问的就是同源服务器上的一个url。而nginx通过检测url前缀，把http请求转发到后面真实的物理服务器。并通过rewrite命令把前缀再去掉。这样真实的服务器就可以正确处理请求，并且并不知道这个请求是来自代理服务器的。
+
+简单说，nginx服务器欺骗了浏览器，让它认为这是同源调用，从而解决了浏览器的跨域问题。又通过重写url，欺骗了真实的服务器，让它以为这个http请求是直接来自与用户浏览器的。
+
+这样，为了解决跨域问题，只需要动一下nginx配置文件即可。简单、强大、高效!
+
+参考：
+
+用Nginx和Apache的反向代理解决Ajax的跨域问题
+
+http://www.cnblogs.com/android-html5/archive/2010/07/08/2533806.html
+
+最简单实现跨域的方法：使用nginx反向代理
+
+http://blog.jobbole.com/90975/
+
 #  前端资源教程
 
 [angularjs入门ppt](angularjs入门.ppt)
