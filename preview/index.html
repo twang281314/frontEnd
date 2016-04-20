@@ -787,7 +787,7 @@ success: function(res){..},
 </code></pre><p>上面的请求必然会遇到跨域问题，这时我们需要修改一下我们的请求url，让请求发在nginx的一个url下。</p>
 <pre><code>var url = &#39;http://www.b.com/api/msg?method=1¶=2&#39;； 
 var proxyurl ＝ &#39;msg?method=1¶=2&#39;；
-//假如实际地址是 www.c.com/proxy/html/api/msg?method=1¶=2; www.c.com是nginx主机地址
+//假如实际地址是 www.a.com/proxy/html/api/msg?method=1¶=2; www.a.com是nginx主机地址
  $.ajax({ 
 type: &quot;GET&quot;, 
 url:proxyurl, 
