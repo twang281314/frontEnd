@@ -1,0 +1,641 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>iscs_frontEnd_CSS使用</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="-">布局</h1>
+<p><img src="mdimg/0228.png" alt=""></p>
+<pre><code>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+  &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+  &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+  &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+  &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+  &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+  &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+  &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+  &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+  &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+  &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+  &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-8&quot;&gt;.col-md-8&lt;/div&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;.col-md-4&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;.col-md-4&lt;/div&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;.col-md-4&lt;/div&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;.col-md-4&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-6&quot;&gt;.col-md-6&lt;/div&gt;
+  &lt;div class=&quot;col-md-6&quot;&gt;.col-md-6&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><h1 id="-">字号大小</h1>
+<pre><code>.font-size-10 {
+    font-size: 10px !important;
+}
+.font-size-11 {
+    font-size: 11px !important;
+}
+.font-size-12 {
+    font-size: 12px !important;
+}
+.font-size-13 {
+    font-size: 13px !important;
+}
+.font-size-14 {
+    font-size: 14px !important;
+}
+.font-size-16 {
+    font-size: 16px !important;
+}
+.font-size-18 {
+    font-size: 18px !important;
+}
+.font-size-20 {
+    font-size: 20px !important;
+}
+.font-size-24 {
+    font-size: 24px !important;
+}
+.font-size-26 {
+    font-size: 26px !important;
+}
+.font-size-28 {
+    font-size: 28px !important;
+}
+.font-size-36 {
+    font-size: 36px !important;
+}
+.font-size-50 {
+    font-size: 50px !important;
+}
+</code></pre><h1 id="-">宽度</h1>
+<pre><code>.width-50 { 
+    width: 50px !important;
+}
+.width-80 { 
+    width: 80px !important;
+}
+.width-100 { 
+    width: 100px !important;
+}
+.width-120 { 
+    width: 120px !important;
+}
+.width-150 { 
+    width: 150px !important;
+}
+.width-160 { 
+    width: 160px !important;
+}
+.width-180 { 
+    width: 180px !important;
+}
+.width-200 { 
+    width: 200px !important;
+}
+.width-250 { 
+    width: 250px !important;
+}
+.width-300 { 
+    width: 300px !important;
+}
+</code></pre><h1 id="-">最小高度</h1>
+<pre><code>.min-height30 { 
+    min-height: 30px;
+}
+.min-height50 { 
+    min-height: 50px;
+}
+.min-height60 { 
+    min-height: 60px;
+}
+.min-height100 { 
+    min-height: 100px;
+}
+.min-height150 { 
+    min-height: 150px;
+}
+.min-height200 { 
+    min-height: 200px;
+}
+.min-height250 { 
+    min-height: 250px;
+}
+.min-height300 { 
+    min-height: 300px;
+}
+.min-height350 { 
+    min-height: 350px;
+}
+</code></pre><h1 id="-">行高</h1>
+<pre><code>.line-height16 { 
+    line-height: 16px;
+}
+.line-height18 { 
+    line-height: 18px;
+}
+.line-height22 { 
+    line-height: 22px;
+}
+.line-height26 { 
+    line-height: 26px;
+}
+.line-height28 { 
+    line-height: 28px;
+}
+.line-height30 { 
+    line-height: 30px;
+}
+</code></pre><h1 id="-">字颜色-背景色</h1>
+<p><img src="mdimg/45520.png" alt=""></p>
+<pre><code>.color-444 {
+    color: #444;
+}
+.color-666 {
+    color: #666;
+}
+.color-8c {
+    color: #8c8c8c;
+}  
+.color-999 {
+    color: #999;
+}  
+
+.color-orange {
+    color: #FF591F; 
+}
+.color-green {
+    color: #16b267;
+}
+
+.bg-red-danger {
+    background-color: #f00; 
+}
+.bg-orange {
+    background-color: #FF591F; 
+}
+</code></pre><h1 id="-">背景色</h1>
+<p><img src="mdimg/43713.png" alt=""></p>
+<pre><code>.bg-primary
+.bg-success
+.bg-info
+.bg-warning
+.bg-danger
+</code></pre><h1 id="-">对齐+加粗</h1>
+<pre><code>
+.text-center {
+    text-align: center !important;
+}
+.text-left {
+    text-align: left !important;
+}
+.text-right {
+    text-align: right !important;
+}
+.text-justify {
+    text-align: justify;
+}
+.font-bold {
+    font-weight: bold !important;
+}
+.font-normal {
+    font-weight: normal;
+}
+</code></pre><h1 id="-">块级元素-快速浮动-清除浮动</h1>
+<pre><code>.display-block {
+    display: block;
+}
+.display-teble {
+    display: table;
+    width: 100%;
+}
+.display-inlineblock {
+    display: inline-block;
+}
+.pull-left {
+    float: left;
+}
+.pull-right {
+    float: right;
+}
+.clear {
+    clear: both;
+}
+</code></pre><h1 id="-">字删除线</h1>
+<pre><code>.text-line-through  {
+    text-decoration: line-through ;
+}
+</code></pre><h1 id="-">鼠标形状-手</h1>
+<pre><code>.cursor {
+    cursor:pointer; 
+}
+</code></pre><h1 id="-">基本样式清除</h1>
+<pre><code>.list-style-none { 
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+}
+</code></pre><h1 id="-">上边线</h1>
+<pre><code>.border-top {
+    border-top: 1px solid #e6e6e6;
+}
+</code></pre><h1 id="-">图片形状</h1>
+<p><img src="mdimg/4344.png" alt=""></p>
+<pre><code>&lt;img src=&quot;...&quot; alt=&quot;...&quot; class=&quot;img-rounded&quot;&gt;
+&lt;img src=&quot;...&quot; alt=&quot;...&quot; class=&quot;img-circle&quot;&gt;
+&lt;img src=&quot;...&quot; alt=&quot;...&quot; class=&quot;img-thumbnail&quot;&gt;
+</code></pre><h1 id="-">截断文本-以省略号代替</h1>
+<pre><code>.text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+</code></pre><h1 id="-">显示隐藏</h1>
+<pre><code>.show {
+  display: block !important;
+}
+.hidden {
+  display: none !important;
+}
+</code></pre><h1 id="-">字体图标</h1>
+<p><img src="mdimg/44610.png" alt=""></p>
+<pre><code>&lt;i class=&quot;fa fa-university&quot; &gt;&lt;/i&gt;
+
+http://fontawesome.io/icons/
+</code></pre><h1 id="-">按钮样式</h1>
+<p><img src="mdimg/43256.png" alt=""></p>
+<pre><code>&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;（默认样式）Default&lt;/button&gt;
+
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;（首选项）Primary&lt;/button&gt;
+
+&lt;button type=&quot;button&quot; class=&quot;btn btn-success&quot;&gt;（成功）Success&lt;/button&gt;
+
+&lt;button type=&quot;button&quot; class=&quot;btn btn-info&quot;&gt;（一般信息）Info&lt;/button&gt;
+
+&lt;button type=&quot;button&quot; class=&quot;btn btn-warning&quot;&gt;（警告）Warning&lt;/button&gt;
+
+&lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot;&gt;（危险）Danger&lt;/button&gt;
+
+&lt;button type=&quot;button&quot; class=&quot;btn btn-link&quot;&gt;（链接）Link&lt;/button&gt;
+</code></pre><h1 id="-">内边距-外边距  定义</h1>
+<pre><code>.pad5A {
+    padding: 5px !important;
+}
+.pad5T {
+    padding-top: 5px !important;
+}
+.pad5R {
+    padding-right: 5px !important;
+}
+.pad5B {
+    padding-bottom: 5px !important;
+}
+.pad5L {
+    padding-left: 5px !important;
+}
+.pad10A {
+    padding: 10px !important;
+}
+.pad10T {
+    padding-top: 10px !important;
+}
+.pad10R {
+    padding-right: 10px !important;
+}
+.pad10B {
+    padding-bottom: 10px !important;
+}
+.pad10L {
+    padding-left: 10px !important;
+}
+.pad15A {
+    padding: 15px !important;
+}
+.pad15T {
+    padding-top: 15px !important;
+}
+.pad15R {
+    padding-right: 15px !important;
+}
+.pad15B {
+    padding-bottom: 15px !important;
+}
+.pad15L {
+    padding-left: 15px !important;
+}
+.pad20A {
+    padding: 20px !important;
+}
+.pad20T {
+    padding-top: 20px !important;
+}
+.pad20R {
+    padding-right: 20px !important;
+}
+.pad20B {
+    padding-bottom: 20px !important;
+}
+.pad20L {
+    padding-left: 20px !important;
+}
+.pad25A {
+    padding: 25px !important;
+}
+.pad25T {
+    padding-top: 25px !important;
+}
+.pad25R {
+    padding-right: 25px !important;
+}
+.pad25B {
+    padding-bottom: 25px !important;
+}
+.pad25L {
+    padding-left: 25px !important;
+}
+.pad30A {
+    padding: 30px !important;
+}
+.pad30T {
+    padding-top: 30px !important;
+}
+.pad30R {
+    padding-right: 30px !important;
+}
+.pad30B {
+    padding-bottom: 30px !important;
+}
+.pad30L {
+    padding-left: 30px !important;
+}
+.pad45A {
+    padding: 45px !important;
+}
+.pad45T {
+    padding-top: 45px !important;
+}
+.pad45R {
+    padding-right: 45px !important;
+}
+.pad45B {
+    padding-bottom: 45px !important;
+}
+.pad45L {
+    padding-left: 45px !important;
+}
+/* Remove paddings */
+
+.pad0A {
+    padding: 0 !important;
+}
+.pad0T {
+    padding-top: 0 !important;
+}
+.pad0R {
+    padding-right: 0 !important;
+}
+.pad0B {
+    padding-bottom: 0 !important;
+}
+.pad0L {
+    padding-left: 0 !important;
+}
+/* Margins */
+
+.mrg5A {
+    margin: 5px !important;
+}
+.mrg5T {
+    margin-top: 5px !important;
+}
+.mrg5R {
+    margin-right: 5px !important;
+}
+.mrg5B {
+    margin-bottom: 5px !important;
+}
+.mrg5L {
+    margin-left: 5px !important;
+}
+.mrg10A {
+    margin: 10px !important;
+}
+.mrg10T {
+    margin-top: 10px !important;
+}
+.mrg10R {
+    margin-right: 10px !important;
+}
+.mrg10B {
+    margin-bottom: 10px !important;
+}
+.mrg10L {
+    margin-left: 10px !important;
+}
+.mrg15A {
+    margin: 15px !important;
+}
+.mrg15T {
+    margin-top: 15px !important;
+}
+.mrg15R {
+    margin-right: 15px !important;
+}
+.mrg15B {
+    margin-bottom: 15px !important;
+}
+.mrg15L {
+    margin-left: 15px !important;
+}
+.mrg20A {
+    margin: 20px !important;
+}
+.mrg20T {
+    margin-top: 20px !important;
+}
+.mrg20R {
+    margin-right: 20px !important;
+}
+.mrg20B {
+    margin-bottom: 20px !important;
+}
+.mrg20L {
+    margin-left: 20px !important;
+}
+.mrg25A {
+    margin: 25px !important;
+}
+.mrg25T {
+    margin-top: 25px !important;
+}
+.mrg25R {
+    margin-right: 25px !important;
+}
+.mrg25B {
+    margin-bottom: 25px !important;
+}
+.mrg25L {
+    margin-left: 25px !important;
+}
+.mrg35A {
+    margin: 35px !important;
+}
+.mrg35T {
+    margin-top: 35px !important;
+}
+.mrg35R {
+    margin-right: 35px !important;
+}
+.mrg35B {
+    margin-bottom: 35px !important;
+}
+.mrg35L {
+    margin-left: 35px !important;
+}
+.mrg45A {
+    margin: 45px !important;
+}
+.mrg45T {
+    margin-top: 45px !important;
+}
+.mrg45R {
+    margin-right: 45px !important;
+}
+.mrg45B {
+    margin-bottom: 45px !important;
+}
+.mrg45L {
+    margin-left: 45px !important;
+}
+.mrg50T {
+    margin-top:50px !important;
+}
+.mrg50R {
+    margin-right: 50px !important;
+}
+.mrg50B {
+    margin-bottom: 50px !important;
+}
+.mrg50L {
+    margin-left: 50px !important;
+}
+
+.mrg100T {
+    margin-top:100px !important;
+}
+.mrg100R {
+    margin-right: 100px !important;
+}
+.mrg100B {
+    margin-bottom: 100px !important;
+}
+.mrg100L {
+    margin-left: 100px !important;
+}
+
+
+/* Remove margins */
+
+.mrg0A {
+    margin: 0 !important;
+}
+.mrg0T {
+    margin-top: 0 !important;
+}
+.mrg0R {
+    margin-right: 0 !important;
+}
+.mrg0B {
+    margin-bottom: 0 !important;
+}
+.mrg0L {
+    margin-left: 0 !important;
+}
+</code></pre>
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
