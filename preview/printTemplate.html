@@ -2,6 +2,7 @@
   <head>
 	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>iscs_frontEnd:打印模板</title>
+		
 		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
 		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
 		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
@@ -309,6 +310,24 @@
 <td>1--左靠齐 2--居中 3--右靠齐，缺省值是1</td>
 </tr>
 <tr>
+<td>itemAngle</td>
+<td>打印项旋转角度</td>
+<td>int</td>
+<td>逆时针旋转角度数，单位是度，0度表示不旋转，旋转时以对象的左上角为原点</td>
+</tr>
+<tr>
+<td>itemPenWidth</td>
+<td>线条宽度</td>
+<td>int</td>
+<td>单位是(打印)像素，缺省值是1，非实线的线条宽也是0</td>
+</tr>
+<tr>
+<td>itemPenStyle</td>
+<td>线条风格</td>
+<td>int</td>
+<td>0--实线  1--破折线 2--点线 3--点划线 4--双点划线 缺省值是0</td>
+</tr>
+<tr>
 <td>readOnly</td>
 <td>是否禁止修改</td>
 <td>bool</td>
@@ -362,11 +381,29 @@
 }
 </code></pre><h3 id="-">返回数据格式</h3>
 <pre><code>{
-    &quot;templateDetailUkid&quot;: 6365555
-    &quot;templateUkid&quot; : 3656996999999
-    &quot;itemType&quot; ：  1,
-    &quot;itemCustomType&quot; : 2,
-    ........
+    &quot;templateName&quot;:&quot;通用电子面单&quot;,
+    &quot;templateCode&quot;:&quot;dzmd_common&quot;,
+    &quot;templateType&quot;:&quot;电子面单&quot;,
+    &quot;pageWidth&quot;: 250,
+    &quot;pageHeight&quot;: 150,
+    &quot;pageTop&quot;:0,
+    &quot;pageLeft&quot;:0,
+     ........
+
+    &quot;item&quot; :[
+     {
+        &quot;templateDetailUkid&quot;: 2369585422
+        &quot;templateUkid&quot; : 100
+        &quot;itemType&quot; ：  1,
+        &quot;itemCustomType&quot; : 2,
+        ........
+    },{
+        &quot;templateDetailUkid&quot;: 2369585422
+        &quot;templateUkid&quot; : 100
+        &quot;itemType&quot; ：  1,
+        &quot;itemCustomType&quot; : 4,
+        ........
+    }]
 }
 </code></pre><h2 id="-">模板设计编辑接口(用于新增和编辑模板内容)</h2>
 <h3 id="-">请求数据格式</h3>
@@ -380,13 +417,20 @@
     &quot;pageLeft&quot;:0,
      ........
 
-    &quot;item&quot; :{
-    &quot;templateDetailUkid&quot;: 0
-    &quot;templateUkid&quot; : 0
-    &quot;itemType&quot; ：  1,
-    &quot;itemCustomType&quot; : 2,
-     ........
-    }
+    &quot;item&quot; :[
+     {
+        &quot;templateDetailUkid&quot;: 0
+        &quot;templateUkid&quot; : 0
+        &quot;itemType&quot; ：  1,
+        &quot;itemCustomType&quot; : 2,
+        ........
+    },{
+        &quot;templateDetailUkid&quot;: 0
+        &quot;templateUkid&quot; : 0
+        &quot;itemType&quot; ：  1,
+        &quot;itemCustomType&quot; : 4,
+        ........
+    }]
 }
 </code></pre><h3 id="-">返回数据格式</h3>
 <pre><code>返回是否修改成功  
