@@ -83,6 +83,12 @@
 <td>2016-04-25</td>
 <td>王涛</td>
 </tr>
+<tr>
+<td>v0.2</td>
+<td>添加和完善字段</td>
+<td>2016-04-28</td>
+<td>王涛</td>
+</tr>
 </tbody>
 </table>
 <h1 id="-">打印模板表结构设计</h1>
@@ -98,7 +104,7 @@
 </thead>
 <tbody>
 <tr>
-<td>templateUkid</td>
+<td>templateId</td>
 <td>模板主键</td>
 <td>double</td>
 <td>模板主键</td>
@@ -122,6 +128,24 @@
 <td>关联仓库</td>
 </tr>
 <tr>
+<td>transporterId</td>
+<td>运输商ID</td>
+<td>int</td>
+<td>运输商</td>
+</tr>
+<tr>
+<td>shopId</td>
+<td>店铺ID</td>
+<td>int</td>
+<td>店铺</td>
+</tr>
+<tr>
+<td>shopNames</td>
+<td>店铺名称</td>
+<td>string</td>
+<td>店铺名称</td>
+</tr>
+<tr>
 <td>templateType</td>
 <td>模板类型</td>
 <td>string</td>
@@ -131,49 +155,49 @@
 <td>pageWidth</td>
 <td>宽度</td>
 <td>int</td>
-<td></td>
+<td>宽度</td>
 </tr>
 <tr>
 <td>pageHeight</td>
 <td>高度</td>
 <td>int</td>
-<td></td>
+<td>高度</td>
 </tr>
 <tr>
 <td>pageTop</td>
 <td>上偏移量</td>
 <td>int</td>
-<td></td>
+<td>上偏移量</td>
 </tr>
 <tr>
 <td>pageLeft</td>
 <td>左偏移量</td>
 <td>int</td>
-<td></td>
+<td>左偏移量</td>
 </tr>
 <tr>
-<td>createTime</td>
+<td>createDate</td>
 <td>创建时间</td>
 <td>datetime</td>
 <td></td>
 </tr>
 <tr>
-<td>createId</td>
+<td>createUser</td>
 <td>创建人</td>
 <td>int</td>
 <td>创建人Id</td>
 </tr>
 <tr>
-<td>updateTime</td>
+<td>updateDate</td>
 <td>编辑时间</td>
 <td>datetime</td>
 <td></td>
 </tr>
 <tr>
-<td>updateId</td>
-<td>修改人ID</td>
+<td>updateUser</td>
+<td>修改人</td>
 <td>int</td>
-<td>修改人Id</td>
+<td>修改人</td>
 </tr>
 <tr>
 <td>isUse</td>
@@ -195,13 +219,13 @@
 </thead>
 <tbody>
 <tr>
-<td>templateDetailUkid</td>
+<td>templateDetailId</td>
 <td>模板从表主键</td>
 <td>double</td>
 <td>模板从表主键</td>
 </tr>
 <tr>
-<td>templateUkid</td>
+<td>templateId</td>
 <td>模板主表UKid</td>
 <td>double</td>
 <td>关联模板主表</td>
@@ -210,19 +234,19 @@
 <td>itemType</td>
 <td>打印项的基本属性</td>
 <td>int</td>
-<td>0--普通项 1--页眉页脚 2--页号项 3--页数项 4--多页项缺省（不调用本函数时）值0</td>
+<td>0 普通项<br>1 页眉页脚<br>2 页号项 <br>3 页数项<br> 4 多页项缺省<br>（不调用本函数时）值0</td>
 </tr>
 <tr>
 <td>itemCustomType</td>
 <td>打印项类型</td>
 <td>int</td>
-<td>打印项类型</td>
+<td>0:固定文本打印项<br> 1:数据打印项(转换模板时需要绑定数据源)<br> 2:明细表格</td>
 </tr>
 <tr>
 <td>itemClass</td>
 <td>打印项对象类型</td>
 <td>int</td>
-<td>2:普通文本  31:矩形  33:椭圆  4:Htm  8:图像  9:条码</td>
+<td>2:普通文本<br> 31:矩形<br>32:实心矩形<br>33:椭圆<br> 34: 实心椭圆<br> 4:Htm超文本<br>8:图像<br>9:条码<br></td>
 </tr>
 <tr>
 <td>itemName</td>
@@ -276,7 +300,7 @@
 <td>itemFontColor</td>
 <td>字体颜色</td>
 <td>string</td>
-<td>整数或字符型，整数时是颜色的十进制RGB值；字符时是超文本颜色值，可以是“#”加三色16进制值组合，也可以是英文颜色名；</td>
+<td>整数或字符型，整数时是颜色的十进制RGB值；字符时是超文本颜色值，<br/>可以是“#”加三色16进制值组合，<br/>也可以是英文颜色名；</td>
 </tr>
 <tr>
 <td>itemContent</td>
@@ -324,13 +348,19 @@
 <td>itemPenStyle</td>
 <td>线条风格</td>
 <td>int</td>
-<td>0--实线  1--破折线 2--点线 3--点划线 4--双点划线 缺省值是0</td>
+<td>0:实线  1:破折线 2:点线 3:点划线 4:双点划线 缺省值是0</td>
 </tr>
 <tr>
-<td>readOnly</td>
+<td>itemReadOnly</td>
 <td>是否禁止修改</td>
 <td>bool</td>
 <td>打印维护时,是否禁止修改</td>
+</tr>
+<tr>
+<td>itemPreviewOnly</td>
+<td>是否仅预览</td>
+<td>bool</td>
+<td>打印项是否仅预览</td>
 </tr>
 </tbody>
 </table>
@@ -416,20 +446,209 @@
     &quot;pageLeft&quot;:0,
      ........
 
-    &quot;item&quot; :[
-     {
-        &quot;templateDetailUkid&quot;: 0
-        &quot;templateUkid&quot; : 0
-        &quot;itemType&quot; ：  1,
-        &quot;itemCustomType&quot; : 2,
-        ........
-    },{
-        &quot;templateDetailUkid&quot;: 0
-        &quot;templateUkid&quot; : 0
-        &quot;itemType&quot; ：  1,
-        &quot;itemCustomType&quot; : 4,
-        ........
-    }]
+  &quot;item&quot; : [
+        {
+            &quot;templateDetailUkid&quot; : &quot;0&quot;,
+            &quot;itemName&quot; : &quot;orderNo&quot;,
+            &quot;itemContent&quot; : &quot;订单号&quot;,
+            &quot;itemCode&quot; : &quot;orderNo&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;96&quot;,
+            &quot;itemLeft&quot; : &quot;122&quot;,
+            &quot;itemWidth&quot; : &quot;60&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;printer&quot;,
+            &quot;itemContent&quot; : &quot;打单员&quot;,
+            &quot;itemCode&quot; : &quot;printer&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;407&quot;,
+            &quot;itemLeft&quot; : &quot;118&quot;,
+            &quot;itemWidth&quot; : &quot;75&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;printTime&quot;,
+            &quot;itemContent&quot; : &quot;打单时间&quot;,
+            &quot;itemCode&quot; : &quot;printTime&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;407&quot;,
+            &quot;itemLeft&quot; : &quot;274&quot;,
+            &quot;itemWidth&quot; : &quot;100&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;userNick&quot;,
+            &quot;itemContent&quot; : &quot;买家昵称&quot;,
+            &quot;itemCode&quot; : &quot;userNick&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;119&quot;,
+            &quot;itemLeft&quot; : &quot;122&quot;,
+            &quot;itemWidth&quot; : &quot;120&quot;,
+            &quot;itemHeight&quot; : &quot;19&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;mobile&quot;,
+            &quot;itemContent&quot; : &quot;手机号码&quot;,
+            &quot;itemCode&quot; : &quot;mobile&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;142&quot;,
+            &quot;itemLeft&quot; : &quot;122&quot;,
+            &quot;itemWidth&quot; : &quot;120&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;province&quot;,
+            &quot;itemContent&quot; : &quot;省份&quot;,
+            &quot;itemCode&quot; : &quot;province&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;165&quot;,
+            &quot;itemLeft&quot; : &quot;126&quot;,
+            &quot;itemWidth&quot; : &quot;40&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;ite
+            mBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;city&quot;,
+            &quot;itemContent&quot; : &quot;市(州)&quot;,
+            &quot;itemCode&quot; : &quot;city&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;165&quot;,
+            &quot;itemLeft&quot; : &quot;166&quot;,
+            &quot;itemWidth&quot; : &quot;80&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;district&quot;,
+            &quot;itemContent&quot; : &quot;区(县)&quot;,
+            &quot;itemCode&quot; : &quot;district&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;165&quot;,
+            &quot;itemLeft&quot; : &quot;246&quot;,
+            &quot;itemWidth&quot; : &quot;80&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;address&quot;,
+            &quot;itemContent&quot; : &quot;地址&quot;,
+            &quot;itemCode&quot; : &quot;address&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;165&quot;,
+            &quot;itemLeft&quot; : &quot;326&quot;,
+            &quot;itemWidth&quot; : &quot;215&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        }
+
+    ]
 }
 </code></pre><h3 id="-">返回数据格式</h3>
 <pre><code>返回是否修改成功  
