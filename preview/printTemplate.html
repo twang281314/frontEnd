@@ -89,6 +89,12 @@
 <td>2016-04-28</td>
 <td>王涛</td>
 </tr>
+<tr>
+<td>v0.3</td>
+<td>完善后端接口文档</td>
+<td>2016-04-29</td>
+<td>王涛</td>
+</tr>
 </tbody>
 </table>
 <h1 id="-">打印模板表结构设计</h1>
@@ -130,7 +136,7 @@
 <tr>
 <td>shopIds</td>
 <td>店铺ID</td>
-<td>string</td>
+<td>int</td>
 <td>店铺</td>
 </tr>
 <tr>
@@ -360,9 +366,11 @@
 </table>
 <h1 id="-">打印模板数据接口</h1>
 <h2 id="-">模板列表页(用于模板列表页获取数据)</h2>
-<h3 id="-">请求数据格式</h3>
+<h3 id="-">请求地址</h3>
+<pre><code> http://192.168.200.71:8080/wos/printerTemplate/list
+</code></pre><h3 id="-">请求数据格式</h3>
 <pre><code>{
-    &quot;currentPage&quot;: 2,
+    &quot;currentPage&quot;: 1,
     &quot;pageSize&quot;: 20,
     &quot;sort&quot;: &quot;stockId&amp;asc&quot;,
     &quot;filter&quot;: [
@@ -379,68 +387,191 @@
 }
 </code></pre><h3 id="-">返回数据格式</h3>
 <pre><code>{
-&quot;allNum&quot; : 50
-&quot;currentPage&quot; :2,
-&quot;pageSize&quot; :20,
-&quot;contentList&quot; : [
-    {
-    &quot;templateName&quot;:&quot;通用电子面单&quot;,
-    &quot;templateCode&quot;:&quot;dzmd_common&quot;,
-    &quot;templateType&quot;:&quot;电子面单&quot;,
-    &quot;pageWidth&quot;: 250,
-    &quot;pageHeight&quot;: 150,
-    &quot;pageTop&quot;:0,
-    &quot;pageLeft&quot;:0,
-     ........
-    }
-]
+  &quot;errorCode&quot;: 0,
+  &quot;errorMsg&quot;: &quot;&quot;,
+  &quot;data&quot;: {
+    &quot;currentPage&quot;: 1,
+    &quot;allNum&quot;: 3,
+    &quot;pageSize&quot;: 20,
+    &quot;contentList&quot;: [
+      {
+        &quot;templateId&quot;: 131579000000010002,
+        &quot;templateType&quot;: &quot;电子面单&quot;,
+        &quot;templateName&quot;: &quot;打印模版&quot;,
+        &quot;stockId&quot;: 23025,
+        &quot;transporterId&quot;: 236,
+        &quot;shopIds&quot;: &quot;2665&quot;,
+        &quot;shopNames&quot;: &quot;测试&quot;,
+        &quot;isUse&quot;: 0,
+        &quot;createUser&quot;: 0,
+        &quot;updateUser&quot;: &quot;&quot;,
+        &quot;createDate&quot;: &quot;2016-04-28 16:13:23&quot;,
+        &quot;updateDate&quot;: &quot;&quot;,
+        &quot;pageHeight&quot;: &quot;&quot;,
+        &quot;pageWidth&quot;: 210,
+        &quot;pageTop&quot;: 2,
+        &quot;pageLeft&quot;: &quot;&quot;,
+        &quot;dmPrinterDetailTemplate&quot;: []
+      },
+      {
+        &quot;templateId&quot;: 131579400000011000,
+        &quot;templateType&quot;: &quot;电子面单&quot;,
+        &quot;templateName&quot;: &quot;打印模版&quot;,
+        &quot;stockId&quot;: 23025,
+        &quot;transporterId&quot;: 236,
+        &quot;shopIds&quot;: &quot;2665&quot;,
+        &quot;shopNames&quot;: &quot;测试&quot;,
+        &quot;isUse&quot;: 0,
+        &quot;createUser&quot;: 0,
+        &quot;updateUser&quot;: &quot;&quot;,
+        &quot;createDate&quot;: &quot;2016-04-28 17:17:40&quot;,
+        &quot;updateDate&quot;: &quot;&quot;,
+        &quot;pageHeight&quot;: &quot;&quot;,
+        &quot;pageWidth&quot;: 210,
+        &quot;pageTop&quot;: 2,
+        &quot;pageLeft&quot;: &quot;&quot;,
+        &quot;dmPrinterDetailTemplate&quot;: []
+      },
+      {
+        &quot;templateId&quot;: 131579700000010000,
+        &quot;templateType&quot;: &quot;电子面单&quot;,
+        &quot;templateName&quot;: &quot;打印模版&quot;,
+        &quot;stockId&quot;: 23025,
+        &quot;transporterId&quot;: 236,
+        &quot;shopIds&quot;: &quot;2665&quot;,
+        &quot;shopNames&quot;: &quot;测试&quot;,
+        &quot;isUse&quot;: 0,
+        &quot;createUser&quot;: 0,
+        &quot;updateUser&quot;: &quot;&quot;,
+        &quot;createDate&quot;: &quot;2016-04-28 16:06:42&quot;,
+        &quot;updateDate&quot;: &quot;&quot;,
+        &quot;pageHeight&quot;: &quot;&quot;,
+        &quot;pageWidth&quot;: 210,
+        &quot;pageTop&quot;: 2,
+        &quot;pageLeft&quot;: &quot;&quot;,
+        &quot;dmPrinterDetailTemplate&quot;: []
+      }
+    ]
+  }
 }
 </code></pre><h2 id="-">模板详情接口(用于获取模板内容)</h2>
-<h3 id="-">请求数据格式</h3>
+<h3 id="-">请求地址</h3>
+<pre><code>http://192.168.200.71:8080/wos/printerTemplate/getDmPrinterTemplate
+</code></pre><h3 id="-">请求数据格式</h3>
 <pre><code>{
-    &quot;templateUkid&quot;:&quot;9698555555555&quot;
-    &quot;stockId&quot;: 23655,
-    .......
+    &quot;templateUkid&quot;:&quot;131579700000010000&quot;
 }
 </code></pre><h3 id="-">返回数据格式</h3>
 <pre><code>{
-    &quot;templateName&quot;:&quot;通用电子面单&quot;,
-    &quot;templateCode&quot;:&quot;dzmd_common&quot;,
-    &quot;templateType&quot;:&quot;电子面单&quot;,
-    &quot;pageWidth&quot;: 250,
-    &quot;pageHeight&quot;: 150,
-    &quot;pageTop&quot;:0,
-    &quot;pageLeft&quot;:0,
-     ........
+    &quot;templateId&quot;: 131579700000010000,
+    &quot;templateType&quot;: &quot;电子面单&quot;,
+    &quot;templateName&quot;: &quot;打印模版&quot;,
+    &quot;stockId&quot;: 23025,
+    &quot;transporterId&quot;: 236,
+    &quot;shopIds&quot;: &quot;2665&quot;,
+    &quot;shopNames&quot;: &quot;测试&quot;,
+    &quot;isUse&quot;: 0,
+    &quot;createUser&quot;: 0,
+    &quot;updateUser&quot;: &quot;&quot;,
+    &quot;createDate&quot;: &quot;2016-04-28 16:06:42&quot;,
+    &quot;updateDate&quot;: &quot;&quot;,
+    &quot;pageHeight&quot;: &quot;&quot;,
+    &quot;pageWidth&quot;: 210,
+    &quot;pageTop&quot;: 2,
+    &quot;pageLeft&quot;: &quot;&quot;,
 
-    &quot;item&quot; :[
+    &quot;dmPrinterDetailTemplate&quot; :[
      {
-        &quot;templateDetailUkid&quot;: 2369585422
-        &quot;templateUkid&quot; : 100
-        &quot;itemType&quot; ：  1,
-        &quot;itemCustomType&quot; : 2,
-        ........
+            &quot;templateDetailUkid&quot; : &quot;023666&quot;,
+            &quot;itemName&quot; : &quot;orderNo&quot;,
+            &quot;itemContent&quot; : &quot;订单号&quot;,
+            &quot;itemCode&quot; : &quot;orderNo&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;96&quot;,
+            &quot;itemLeft&quot; : &quot;122&quot;,
+            &quot;itemWidth&quot; : &quot;60&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
     },{
-        &quot;templateDetailUkid&quot;: 2369585422
-        &quot;templateUkid&quot; : 100
-        &quot;itemType&quot; ：  1,
-        &quot;itemCustomType&quot; : 4,
-        ........
+            &quot;templateDetailUkid&quot; : &quot;2365555&quot;,
+            &quot;itemName&quot; : &quot;orderNo&quot;,
+            &quot;itemContent&quot; : &quot;订单号&quot;,
+            &quot;itemCode&quot; : &quot;orderNo&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;96&quot;,
+            &quot;itemLeft&quot; : &quot;122&quot;,
+            &quot;itemWidth&quot; : &quot;60&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
     }]
 }
 </code></pre><h2 id="-">模板设计编辑接口(用于新增和编辑模板内容)</h2>
-<h3 id="-">请求数据格式</h3>
+<h3 id="-">请求地址</h3>
+<pre><code> http://192.168.200.71:8080/wos/printerTemplate/modifyDmPrinterTemplate
+</code></pre><h3 id="-">请求数据格式</h3>
+<h4 id="-">列表页编辑按钮</h4>
+<p>此时只修改模板主表数据</p>
+<pre><code>{
+
+    &quot;templateName&quot;:&quot;通用电子面单&quot;,
+    &quot;templateType&quot;: &quot;电子面单&quot;,
+    &quot;stockId&quot;: 23025,
+    &quot;transporterId&quot;: 236,
+    &quot;shopIds&quot;: &quot;2665&quot;,
+    &quot;shopNames&quot;: &quot;测试&quot;,
+    &quot;isUse&quot;: 0,
+    &quot;createUser&quot;: 0,
+    &quot;updateUser&quot;: &quot;&quot;,
+    &quot;createDate&quot;: &quot;2016-04-28 16:06:42&quot;,
+    &quot;updateDate&quot;: &quot;&quot;,
+    &quot;pageHeight&quot;: &quot;&quot;,
+    &quot;pageWidth&quot;: 210,
+    &quot;pageTop&quot;: 2,
+    &quot;pageLeft&quot;: &quot;&quot;,
+    &quot;dmPrinterDetailTemplate&quot; : []
+
+}
+</code></pre><h4 id="-">列表页设计按钮</h4>
+<p>此时请求数据会同时包括主表数据和从表数据</p>
 <pre><code>{
     &quot;templateName&quot;:&quot;通用电子面单&quot;,
-    &quot;templateCode&quot;:&quot;dzmd_common&quot;,
-    &quot;templateType&quot;:&quot;电子面单&quot;,
-    &quot;pageWidth&quot;: 250,
-    &quot;pageHeight&quot;: 150,
-    &quot;pageTop&quot;:0,
-    &quot;pageLeft&quot;:0,
-     ........
-
-  &quot;item&quot; : [
+    &quot;templateType&quot;: &quot;电子面单&quot;,
+    &quot;stockId&quot;: 23025,
+    &quot;transporterId&quot;: 236,
+    &quot;shopIds&quot;: &quot;2665&quot;,
+    &quot;shopNames&quot;: &quot;测试&quot;,
+    &quot;isUse&quot;: 0,
+    &quot;createUser&quot;: 0,
+    &quot;updateUser&quot;: &quot;&quot;,
+    &quot;createDate&quot;: &quot;2016-04-28 16:06:42&quot;,
+    &quot;updateDate&quot;: &quot;&quot;,
+    &quot;pageHeight&quot;: &quot;&quot;,
+    &quot;pageWidth&quot;: 210,
+    &quot;pageTop&quot;: 2,
+    &quot;pageLeft&quot;: &quot;&quot;,
+    &quot;dmPrinterDetailTemplate&quot; : [
         {
             &quot;templateDetailUkid&quot; : &quot;0&quot;,
             &quot;itemName&quot; : &quot;orderNo&quot;,
@@ -564,8 +695,7 @@
             &quot;itemFontName&quot; : &quot;宋体&quot;,
             &quot;itemFontSize&quot; : 9,
             &quot;itemColor&quot; : &quot;#000000&quot;,
-            &quot;ite
-            mBold&quot; : 0,
+            &quot;itemBold&quot; : 0,
             &quot;itemItalic&quot; : 0,
             &quot;itemUnderline&quot; : 0,
             &quot;itemAlignment&quot; : 0,
@@ -641,13 +771,19 @@
             &quot;itemOnlyRead&quot; : &quot;&quot;,
             &quot;itemPreviewOnly&quot; : &quot;0&quot;
         }
-
     ]
 }
 </code></pre><h3 id="-">返回数据格式</h3>
-<pre><code>返回是否修改成功  
+<pre><code>
+{
+    errorCode : 0, //错误代码：如果为0则表示成功，其他均为失败
+    errorMsg : ”error”, //错误信息。如果正确则为null
+    data :
+    {
+        templateId : ”21321”
+    } //成功时返回
 
-具体格式由后端定
+}
 </code></pre>
           	</article>
         </div>
