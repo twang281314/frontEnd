@@ -95,9 +95,20 @@
 <td>2016-04-29</td>
 <td>王涛</td>
 </tr>
+<tr>
+<td>v0.4</td>
+<td>主表新增viewWidth、viewHeight、orient三个字段</td>
+<td>2016-04-30</td>
+<td>王涛</td>
+</tr>
 </tbody>
 </table>
-<h1 id="-">打印模板表结构设计</h1>
+<h1 id="-">打印模板功能设计</h1>
+<p>原型地址：  </p>
+<pre><code>http://192.168.6.179
+</code></pre><p>功能设计地址：</p>
+<pre><code>http://192.168.6.146:8090/pages/viewpage.action?pageId=5833403
+</code></pre><h1 id="-">打印模板表结构设计</h1>
 <h2 id="-">打印模板主表</h2>
 <table>
 <thead>
@@ -204,6 +215,24 @@
 <td>是否使用</td>
 <td>bool</td>
 <td>模板是否在使用</td>
+</tr>
+<tr>
+<td>viewWidth</td>
+<td>可视编辑区域宽度</td>
+<td>int</td>
+<td>可视编辑区域宽度</td>
+</tr>
+<tr>
+<td>viewHeight</td>
+<td>可视编辑区域高度</td>
+<td>int</td>
+<td>可视编辑区域高度</td>
+</tr>
+<tr>
+<td>orient</td>
+<td>打印方向</td>
+<td>int</td>
+<td>1 纵(正)向打印，固定纸张<br> 2 横向打印，固定纸张 <br> 0(或其它) 打印方向由操作者自行选择或按打印机缺省设置</td>
 </tr>
 </tbody>
 </table>
