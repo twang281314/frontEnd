@@ -101,6 +101,12 @@
 <td>2016-04-30</td>
 <td>王涛</td>
 </tr>
+<tr>
+<td>v0.5</td>
+<td>修改itemCode、itemName、itemContent等字段的说明</td>
+<td>2016-05-06</td>
+<td>王涛</td>
+</tr>
 </tbody>
 </table>
 <h1 id="-">打印模板功能设计</h1>
@@ -279,15 +285,15 @@
 </tr>
 <tr>
 <td>itemName</td>
-<td>打印项中文名称</td>
+<td>打印项对象名称</td>
 <td>string</td>
-<td>中文名</td>
+<td>为保证能唯一识别打印项 该字段由前端按照规律动态生成一个唯一码</td>
 </tr>
 <tr>
 <td>itemCode</td>
-<td>打印项唯一编码</td>
+<td>打印项绑定的字段名称</td>
 <td>string</td>
-<td>即绑定的字段名称</td>
+<td>对于数据打印项，对应于数据源字段名称<br>明细表格为固定值 detailTable<br> 固定文本项和itemName一样</td>
 </tr>
 <tr>
 <td>itemTop</td>
@@ -335,7 +341,7 @@
 <td>itemContent</td>
 <td>打印项内容</td>
 <td>string</td>
-<td>纯文本内容，字符型，未限制长度</td>
+<td>纯文本内容，字符型，未限制长度<br>itemCustomType=0时是打印内容<br>itemCustomType=1时是打印项中文名称<br>itemCustomType=2时是明细表格html代码</td>
 </tr>
 <tr>
 <td>itemBold</td>
