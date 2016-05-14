@@ -1,7 +1,7 @@
 <html>
   <head>
 	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>iscs_FrontEnd:javascript-style-guide</title>
+    <title>iscs_frontEnd:javascript-style-guide</title>
 		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
 		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
 		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
@@ -65,17 +65,18 @@
 				</div>
         <div id='readme' style='width:70%;margin-left:20%;'>
           	<article class='markdown-body'>
-            	<h2 id="1-">1 前言</h2>
+            	<p><strong>JavaScript编码规范</strong></p>
+<h1 id="-">前言</h1>
 <p>JavaScript 在百度一直有着广泛的应用，特别是在浏览器端的行为管理。本文档的目标是使 JavaScript 代码风格保持一致，容易被理解和被维护。</p>
 <p>虽然本文档是针对 JavaScript 设计的，但是在使用各种 JavaScript 的预编译语言时(如 TypeScript 等)时，适用的部分也应尽量遵循本文档的约定。</p>
-<h2 id="2-">2 代码风格</h2>
-<h3 id="2-1-">2.1 文件</h3>
+<h1 id="-">代码风格</h1>
+<h2 id="-">文件</h2>
 <p>[建议] JavaScript 文件使用无 <code>BOM</code> 的 <code>UTF-8</code> 编码。</p>
 <p>解释：</p>
 <p>UTF-8 编码具有更广泛的适应性。BOM 在使用程序或工具处理文件时可能造成不必要的干扰。</p>
 <p>[建议] 在文件结尾处，保留一个空行。</p>
-<h3 id="2-2-">2.2 结构</h3>
-<h4 id="2-2-1-">2.2.1 缩进</h4>
+<h2 id="-">结构</h2>
+<h3 id="-">缩进</h3>
 <p>[强制] 使用 <code>4</code> 个空格做为一个缩进层级，不允许使用 <code>2</code> 个空格 或 <code>tab</code> 字符。</p>
 <p>[强制] <code>switch</code> 下的 <code>case</code> 和 <code>default</code> 必须增加一个缩进层级。</p>
 <p>示例：</p>
@@ -111,7 +112,7 @@ default:
 
 }
 </code></pre>
-<h4 id="2-2-2-">2.2.2 空格</h4>
+<h3 id="-">空格</h3>
 <p>[强制] 二元运算符两侧必须有一个空格，一元运算符与操作对象之间不允许有空格。</p>
 <p>示例：</p>
 <pre><code class="lang-javascript">var a = !arr.length;
@@ -260,7 +261,7 @@ var obj2 = { name: &#39;obj&#39; };
 var obj3 = {name: &#39;obj&#39;, age: 20, sex: 1};
 </code></pre>
 <p>[强制] 行尾不得有多余的空格。</p>
-<h4 id="2-2-3-">2.2.3 换行</h4>
+<h3 id="-">换行</h3>
 <p>[强制] 每个独立语句结束后必须换行。</p>
 <p>[强制] 每行不得超过 <code>120</code> 个字符。</p>
 <p>解释：</p>
@@ -436,7 +437,7 @@ catch (ex) {
     // some statements;
 }
 </code></pre>
-<h4 id="2-2-4-">2.2.4 语句</h4>
+<h3 id="-">语句</h3>
 <p>[强制] 不得省略语句结束的分号。</p>
 <p>[强制] 在 <code>if / else / for / do / while</code> 语句中，即使只有一行，也不得省略块 <code>{...}</code>。</p>
 <p>示例：</p>
@@ -488,7 +489,7 @@ var task = function () {
 var func = (function () {
 });
 </code></pre>
-<h3 id="2-3-">2.3 命名</h3>
+<h2 id="-">命名</h2>
 <p>[强制] <code>变量</code> 使用 <code>Camel命名法</code>。</p>
 <p>示例：</p>
 <pre><code class="lang-javascript">var loadingModules = {};
@@ -566,12 +567,12 @@ var hasMoreCommands = false;
 <pre><code class="lang-javascript">var loadingData = ajax.get(&#39;url&#39;);
 loadingData.then(callback);
 </code></pre>
-<h3 id="2-4-">2.4 注释</h3>
-<h4 id="2-4-1-">2.4.1 单行注释</h4>
+<h2 id="-">注释</h2>
+<h3 id="-">单行注释</h3>
 <p>[强制] 必须独占一行。<code>//</code> 后跟一个空格，缩进与下一行被注释说明的代码一致。</p>
-<h4 id="2-4-2-">2.4.2 多行注释</h4>
+<h3 id="-">多行注释</h3>
 <p>[建议] 避免使用 <code>/*...*/</code> 这样的多行注释。有多行注释内容时，使用多个单行注释。</p>
-<h4 id="2-4-3-">2.4.3 文档化注释</h4>
+<h3 id="-">文档化注释</h3>
 <p>[强制] 为了便于代码阅读和自文档化，以下内容必须包含以 <code>/**...*/</code> 形式的块注释中。</p>
 <p>解释：</p>
 <ol>
@@ -587,7 +588,7 @@ loadingData.then(callback);
 </ol>
 <p>[强制] 文档注释前必须空一行。</p>
 <p>[建议] 自文档化的文档说明 what，而不是 how。</p>
-<h4 id="2-4-4-">2.4.4 类型定义</h4>
+<h3 id="-">类型定义</h3>
 <p>[强制] 类型定义都是以 <code>{</code> 开始, 以 <code>}</code> 结束。</p>
 <p>解释：</p>
 <p>常用类型如：{string}, {number}, {boolean}, {Object}, {Function}, {RegExp}, {Array}, {Date}。</p>
@@ -704,7 +705,7 @@ loadingData.then(callback);
 </tr>
 </tbody>
 </table>
-<h4 id="2-4-5-">2.4.5 文件注释</h4>
+<h3 id="-">文件注释</h3>
 <p>[强制] 文件顶部必须包含文件注释，用 <code>@file</code> 标识文件说明。</p>
 <p>示例：</p>
 <pre><code class="lang-javascript">/**
@@ -725,7 +726,7 @@ loadingData.then(callback);
  *         author-name2(mail-name2@domain.com)
  */
 </code></pre>
-<h4 id="2-4-6-">2.4.6 命名空间注释</h4>
+<h3 id="-">命名空间注释</h3>
 <p>[建议] 命名空间使用 <code>@namespace</code> 标识。</p>
 <p>示例：</p>
 <pre><code class="lang-javascript">/**
@@ -733,7 +734,7 @@ loadingData.then(callback);
  */
 var util = {};
 </code></pre>
-<h4 id="2-4-7-">2.4.7 类注释</h4>
+<h3 id="-">类注释</h3>
 <p>[建议] 使用 <code>@class</code> 标记类或构造函数。</p>
 <p>解释：</p>
 <p>对于使用对象 <code>constructor</code> 属性来定义的构造函数，可以使用 <code>@constructor</code> 来标记。</p>
@@ -819,7 +820,7 @@ util.inherits(Fronteer, Developer);
 Fronteer.prototype.getLevel = function () {
 };
 </code></pre>
-<h4 id="2-4-8-">2.4.8 函数/方法注释</h4>
+<h3 id="-">函数/方法注释</h3>
 <p>[强制] 函数/方法注释必须包含函数说明，有参数和返回值时必须使用注释标识。</p>
 <p>解释：</p>
 <p>当 <code>return</code> 关键字仅作退出函数/方法使用时，无须对返回值作注释标识。</p>
@@ -860,7 +861,7 @@ function foo(option) {
 <p>[建议] 重写父类方法时， 应当添加 <code>@override</code> 标识。如果重写的形参个数、类型、顺序和返回值类型均未发生变化，可省略 <code>@param</code>、<code>@return</code>，仅用 <code>@override</code> 标识，否则仍应作完整注释。</p>
 <p>解释：</p>
 <p>简而言之，当子类重写的方法能直接套用父类的方法注释时可省略对参数与返回值的注释。</p>
-<h4 id="2-4-9-">2.4.9 事件注释</h4>
+<h3 id="-">事件注释</h3>
 <p>[强制] 必须使用 <code>@event</code> 标识事件，事件参数的标识与方法描述的参数标识相同。</p>
 <p>示例：</p>
 <pre><code class="lang-javascript">/**
@@ -907,7 +908,7 @@ Select.prototype.clickHandler = function () {
     );
 };
 </code></pre>
-<h4 id="2-4-10-">2.4.10 常量注释</h4>
+<h3 id="-">常量注释</h3>
 <p>[强制] 常量必须使用 <code>@const</code> 标记，并包含说明和类型信息。</p>
 <p>示例：</p>
 <pre><code class="lang-javascript">/**
@@ -918,7 +919,7 @@ Select.prototype.clickHandler = function () {
  */
 var REQUEST_URL = &#39;myurl.do&#39;;
 </code></pre>
-<h4 id="2-4-11-">2.4.11 复杂类型注释</h4>
+<h3 id="-">复杂类型注释</h3>
 <p>[建议] 对于类型未定义的复杂结构的注释，可以使用 <code>@typedef</code> 标识来定义。</p>
 <p>示例：</p>
 <pre><code class="lang-javascript">// `namespaceA~` 可以换成其它 namepaths 前缀，目的是为了生成文档中能显示 `@typedef` 定义的类型和链接。
@@ -946,7 +947,7 @@ var servers = [
     }
 ];
 </code></pre>
-<h4 id="2-4-12-amd-">2.4.12 AMD 模块注释</h4>
+<h3 id="amd-">AMD 模块注释</h3>
 <p>[强制] AMD 模块使用 <code>@module</code> 或 <code>@exports</code> 标识。</p>
 <p>解释：</p>
 <p>@exports 与 @module 都可以用来标识模块，区别在于 @module 可以省略模块名称。而只使用 @exports 时在 namepaths 中可以省略 module: 前缀。</p>
@@ -1125,9 +1126,9 @@ Bar.prototype.baz = function () {
     // TODO
 };
 </code></pre>
-<h4 id="2-4-13-">2.4.13 细节注释</h4>
+<h3 id="-">细节注释</h3>
 <p>对于内部实现、不容易理解的逻辑说明、摘要信息等，我们可能需要编写细节注释。</p>
-<h4 id="-">[建议] 细节注释遵循单行注释的格式。说明必须换行时，每行是一个单行注释的起始。</h4>
+<h2 id="-">[建议] 细节注释遵循单行注释的格式。说明必须换行时，每行是一个单行注释的起始。</h2>
 <p>示例：</p>
 <pre><code class="lang-javascript">function foo(p1, p2, opt_p3) {
     // 这里对具体内部逻辑进行说明
@@ -1145,8 +1146,8 @@ Bar.prototype.baz = function () {
 <li>HACK: 为修正某些问题而写的不太好或者使用了某些诡异手段的代码。此时需要对思路或诡异手段进行描述。</li>
 <li>XXX: 该处存在陷阱。此时需要对陷阱进行描述。</li>
 </ol>
-<h2 id="3-">3 语言特性</h2>
-<h3 id="3-1-">3.1 变量</h3>
+<h1 id="-">语言特性</h1>
+<h2 id="-">变量</h2>
 <p>[强制] 变量、函数在使用前必须先定义。</p>
 <p>解释：</p>
 <p>不通过 var 定义变量将导致变量污染全局环境。</p>
@@ -1218,7 +1219,7 @@ function kv2List(source) {
     return list;
 }
 </code></pre>
-<h3 id="3-2-">3.2 条件</h3>
+<h2 id="-">条件</h2>
 <p>[强制] 在 Equality Expression 中使用类型严格的 <code>===</code>。仅当判断 <code>null</code> 或 <code>undefined</code> 时，允许使用 <code>== null</code>。</p>
 <p>解释：</p>
 <p>使用 <code>===</code> 可以避免等于判断中隐式的类型转换。</p>
@@ -1346,7 +1347,7 @@ function getName() {
     }
 }
 </code></pre>
-<h3 id="3-3-">3.3 循环</h3>
+<h2 id="-">循环</h2>
 <p>[建议] 不要在循环体中包含函数表达式，事先将函数提取到循环体外。</p>
 <p>解释：</p>
 <p>循环体中的函数表达式，运行过程中会生成循环次数个函数对象。</p>
@@ -1405,8 +1406,8 @@ while (len--) {
     // ......
 }
 </code></pre>
-<h3 id="3-4-">3.4 类型</h3>
-<h4 id="3-4-1-">3.4.1 类型检测</h4>
+<h2 id="-">类型</h2>
+<h3 id="-">类型检测</h3>
 <p>[建议] 类型检测优先使用 <code>typeof</code>。对象类型检测使用 <code>instanceof</code>。<code>null</code> 或 <code>undefined</code> 的检测使用 <code>== null</code>。</p>
 <p>示例：</p>
 <pre><code class="lang-javascript">// string
@@ -1439,7 +1440,7 @@ variable == null
 // undefined
 typeof variable === &#39;undefined&#39;
 </code></pre>
-<h4 id="3-4-2-">3.4.2 类型转换</h4>
+<h3 id="-">类型转换</h3>
 <p>[建议] 转换成 <code>string</code> 时，使用 <code>+ &#39;&#39;</code>。</p>
 <p>示例：</p>
 <pre><code class="lang-javascript">// good
@@ -1486,7 +1487,7 @@ Math.ceil(num);
 var num = 3.14;
 parseInt(num, 10);
 </code></pre>
-<h3 id="3-5-">3.5 字符串</h3>
+<h3 id="-">字符串</h3>
 <p>[强制] 字符串开头和结束使用单引号 <code>&#39;</code>。</p>
 <p>解释：</p>
 <ol>
@@ -1553,7 +1554,7 @@ var str = &#39;&lt;button onclick=&quot;check(\&#39;&#39; + htmlEncode(strLitera
 <li>hogon: 体积小，在现代浏览器下性能高。</li>
 <li>nunjucks: 体积较大，性能一般，模板复用性高。</li>
 </ol>
-<h3 id="3-6-">3.6 对象</h3>
+<h2 id="-">对象</h2>
 <p>[强制] 使用对象字面量 <code>{}</code> 创建新 <code>Object</code>。</p>
 <p>示例：</p>
 <pre><code class="lang-javascript">// good
@@ -1610,7 +1611,7 @@ for (var key in info) {
     }
 }
 </code></pre>
-<h3 id="3-7-">3.7 数组</h3>
+<h2 id="-">数组</h2>
 <p>[强制] 使用数组字面量 <code>[]</code> 创建新数组，除非想要创建的是指定长度的数组。</p>
 <p>示例：</p>
 <pre><code class="lang-javascript">// good
@@ -1646,8 +1647,8 @@ for (var i in arr) {
 <li>数据特点鲜明，适合使用桶排。</li>
 </ol>
 <p>[建议] 清空数组使用 <code>.length = 0</code>。</p>
-<h3 id="3-8-">3.8 函数</h3>
-<h4 id="3-8-1-">3.8.1 函数长度</h4>
+<h2 id="-">函数</h2>
+<h3 id="-">函数长度</h3>
 <p>[建议] 一个函数的长度控制在 <code>50</code> 行以内。</p>
 <p>解释：</p>
 <p>将过多的逻辑单元混在一个大函数中，易导致难以维护。一个清晰易懂的函数应该完成单一的逻辑单元。复杂的操作应进一步抽取，通过函数的调用来体现流程。</p>
@@ -1696,7 +1697,7 @@ function checkAAvailability() {
     }
 }
 </code></pre>
-<h4 id="3-8-2-">3.8.2 参数设计</h4>
+<h3 id="-">参数设计</h3>
 <p>[建议] 一个函数的参数控制在 <code>6</code> 个以内。</p>
 <p>解释：</p>
 <p>除去不定长参数以外，函数具备不同逻辑意义的参数建议控制在 <code>6</code> 个以内，过多参数会导致维护难度增大。</p>
@@ -1741,7 +1742,7 @@ function removeElement(element, options) {
 <li>当配置项有增长时，无需无休止地增加参数个数，不会出现 <code>removeElement(element, true, false, false, 3)</code> 这样难以理解的调用代码。</li>
 <li>当部分配置参数可选时，多个参数的形式非常难处理重载逻辑，而使用一个 options 对象只需判断属性是否存在，实现得以简化。</li>
 </ul>
-<h4 id="3-8-3-">3.8.3 闭包</h4>
+<h3 id="-">闭包</h3>
 <p>[建议] 在适当的时候将闭包内大对象置为 <code>null</code>。</p>
 <p>解释：</p>
 <p>在 JavaScript 中，无需特别的关键词就可以使用闭包，一个函数可以任意访问在其定义的作用域外的变量。需要注意的是，函数的作用域是静态的，即在定义时决定，与调用的时机和方式没有任何关系。</p>
@@ -1807,7 +1808,7 @@ while (len--) {
     tasks[len]();
 }
 </code></pre>
-<h4 id="3-8-4-">3.8.4 空函数</h4>
+<h3 id="-">空函数</h3>
 <p>[建议] 空函数不使用 <code>new Function()</code> 的形式。</p>
 <p>示例：</p>
 <pre><code class="lang-javascript">var emptyFunction = function () {};
@@ -1823,7 +1824,7 @@ MyClass.prototype.abstractMethod = EMPTY_FUNCTION;
 MyClass.prototype.hooks.before = EMPTY_FUNCTION;
 MyClass.prototype.hooks.after = EMPTY_FUNCTION;
 </code></pre>
-<h3 id="3-9-">3.9 面向对象</h3>
+<h2 id="-">面向对象</h2>
 <p>[强制] 类的继承方案，实现时需要修正 <code>constructor</code>。</p>
 <p>解释：</p>
 <p>通常使用其他 library 的类继承方案都会进行 <code>constructor</code> 修正。如果是自己实现的类继承方案，需要进行 <code>constructor</code> 修正。</p>
@@ -1891,14 +1892,14 @@ TextNode.prototype.clone = function () {
 <li>事件监听函数中 <code>return false</code>。</li>
 <li>事件对象中包含禁止默认行为的方法，如 <code>preventDefault</code>。</li>
 </ol>
-<h3 id="3-10-">3.10 动态特性</h3>
-<h4 id="3-10-1-eval">3.10.1 eval</h4>
+<h2 id="-">动态特性</h2>
+<h3 id="eval">eval</h3>
 <p>[强制] 避免使用直接 <code>eval</code> 函数。</p>
 <p>解释：</p>
 <p>直接 <code>eval</code>，指的是以函数方式调用 <code>eval</code> 的调用方法。直接 <code>eval</code> 调用执行代码的作用域为本地作用域，应当避免。</p>
 <p>如果有特殊情况需要使用直接 <code>eval</code>，需在代码中用详细的注释说明为何必须使用直接 <code>eval</code>，不能使用其它动态执行代码的方式，同时需要其他资深工程师进行 Code Review。</p>
 <p>[建议] 尽量避免使用 <code>eval</code> 函数。</p>
-<h4 id="3-10-2-">3.10.2 动态执行代码</h4>
+<h3 id="-">动态执行代码</h3>
 <p>[建议] 使用 <code>new Function</code> 执行动态代码。</p>
 <p>解释：</p>
 <p>通过 <code>new Function</code> 生成的函数作用域是全局使用域，不会影响当当前的本地作用域。如果有动态代码执行的需求，建议使用 <code>new Function</code>。</p>
@@ -1906,11 +1907,11 @@ TextNode.prototype.clone = function () {
 <pre><code class="lang-javascript">var handler = new Function(&#39;x&#39;, &#39;y&#39;, &#39;return x + y;&#39;);
 var result = handler($(&#39;#x&#39;).val(), $(&#39;#y&#39;).val());
 </code></pre>
-<h4 id="3-10-3-with">3.10.3 with</h4>
+<h3 id="with">with</h3>
 <p>[建议] 尽量不要使用 <code>with</code>。</p>
 <p>解释：</p>
 <p>使用 <code>with</code> 可能会增加代码的复杂度，不利于阅读和管理；也会对性能有影响。大多数使用 <code>with</code> 的场景都能使用其他方式较好的替代。所以，尽量不要使用 <code>with</code>。</p>
-<h4 id="3-10-4-delete">3.10.4 delete</h4>
+<h3 id="delete">delete</h3>
 <p>[建议] 减少 <code>delete</code> 的使用。</p>
 <p>解释：</p>
 <p>如果没有特别的需求，减少或避免使用 <code>delete</code>。<code>delete</code> 的使用会破坏部分 JavaScript 引擎的性能优化。</p>
@@ -1926,7 +1927,7 @@ catch (deleteError) {
     o.x = null;
 }
 </code></pre>
-<h4 id="3-10-5-">3.10.5 对象属性</h4>
+<h3 id="-">对象属性</h3>
 <p>[建议] 避免修改外部传入的对象。</p>
 <p>解释：</p>
 <p>JavaScript 因其脚本语言的动态特性，当一个对象未被 seal 或 freeze 时，可以任意添加、删除、修改属性值。</p>
@@ -1970,9 +1971,9 @@ Tree.prototype.selectNode = function (id) {
 <li>如果一个属性被设计为 <code>boolean</code> 类型，则不要使用 <code>1</code> 或 <code>0</code> 作为其值。对于标识性的属性，如对代码体积有严格要求，可以从一开始就设计为 <code>number</code> 类型且将 <code>0</code> 作为否定值。</li>
 <li>从 DOM 中取出的值通常为 <code>string</code> 类型，如果有对象或函数的接收类型为 <code>number</code> 类型，提前作好转换，而不是期望对象、函数可以处理多类型的值。</li>
 </ul>
-<h2 id="4-">4 浏览器环境</h2>
-<h3 id="4-1-">4.1 模块化</h3>
-<h4 id="4-1-1-amd">4.1.1 AMD</h4>
+<h1 id="-">浏览器环境</h1>
+<h2 id="-">模块化</h2>
+<h3 id="amd">AMD</h3>
 <p>[强制] 使用 <code>AMD</code> 作为模块定义。</p>
 <p>解释：</p>
 <p>AMD 作为由社区认可的模块定义形式，提供多种重载提供灵活的使用方式，并且绝大多数优秀的 Library 都支持 AMD，适合作为规范。</p>
@@ -1990,7 +1991,7 @@ Tree.prototype.selectNode = function (id) {
 <li>不应该有 .js 后缀。</li>
 <li>跟文件的路径保持一致。</li>
 </ol>
-<h4 id="4-1-2-define">4.1.2 define</h4>
+<h3 id="define">define</h3>
 <p>[建议] 定义模块时不要指明 <code>id</code> 和 <code>dependencies</code>。</p>
 <p>解释：</p>
 <p>在 AMD 的设计思想里，模块名称是和所在路径相关的，匿名的模块更利于封包和迁移。模块依赖应在模块定义内部通过 <code>local require</code> 引用。</p>
@@ -2015,7 +2016,7 @@ Tree.prototype.selectNode = function (id) {
     }
 );
 </code></pre>
-<h4 id="4-1-3-require">4.1.3 require</h4>
+<h3 id="require">require</h3>
 <p>[强制] 全局运行环境中，<code>require</code> 必须以 <code>async require</code> 形式调用。</p>
 <p>解释：</p>
 <p>模块的加载过程是异步的，同步调用并无法保证得到正确的结果。</p>
@@ -2056,8 +2057,8 @@ var foo = require(&#39;foo&#39;);
     }
 );
 </code></pre>
-<h3 id="4-2-dom">4.2 DOM</h3>
-<h4 id="4-2-1-">4.2.1 元素获取</h4>
+<h2 id="dom">DOM</h2>
+<h3 id="-">元素获取</h3>
 <p>[建议] 对于单个元素，尽可能使用 <code>document.getElementById</code> 获取，避免使用<code>document.all</code>。</p>
 <p>[建议] 对于多个元素的集合，尽可能使用 <code>context.getElementsByTagName</code> 获取。其中 <code>context</code> 可以为 <code>document</code> 或其他元素。指定 <code>tagName</code> 参数为 <code>*</code> 可以获得所有子元素。</p>
 <p>[建议] 遍历元素集合时，尽量缓存集合长度。如需多次操作同一集合，则应将集合转为数组。</p>
@@ -2082,16 +2083,16 @@ alert(elements[0].tagName);
 &lt;/script&gt;
 </code></pre>
 <p>[建议] 获取元素的直接子元素时使用 <code>children</code>。避免使用<code>childNodes</code>，除非预期是需要包含文本、注释和属性类型的节点。</p>
-<h4 id="4-2-2-">4.2.2 样式获取</h4>
+<h3 id="-">样式获取</h3>
 <p>[建议] 获取元素实际样式信息时，应使用 <code>getComputedStyle</code> 或 <code>currentStyle</code>。</p>
 <p>解释：</p>
 <p>通过 style 只能获得内联定义或通过 JavaScript 直接设置的样式。通过 CSS class 设置的元素样式无法直接通过 style 获取。</p>
-<h4 id="4-2-3-">4.2.3 样式设置</h4>
+<h3 id="-">样式设置</h3>
 <p>[建议] 尽可能通过为元素添加预定义的 className 来改变元素样式，避免直接操作 style 设置。</p>
 <p>[强制] 通过 style 对象设置元素样式时，对于带单位非 0 值的属性，不允许省略单位。</p>
 <p>解释：</p>
 <p>除了 IE，标准浏览器会忽略不规范的属性值，导致兼容性问题。</p>
-<h4 id="4-2-4-dom-">4.2.4 DOM 操作</h4>
+<h3 id="dom-">DOM 操作</h3>
 <p>[建议] 操作 <code>DOM</code> 时，尽量减少页面 <code>reflow</code>。</p>
 <p>解释：</p>
 <p>页面 reflow 是非常耗时的行为，非常容易导致性能瓶颈。下面一些场景会触发浏览器的reflow：</p>
@@ -2109,7 +2110,7 @@ alert(elements[0].tagName);
 <li>在循环体中拼接 HTML 字符串，循环结束后写父元素的 innerHTML。</li>
 </ol>
 <p>第一种方法看起来比较标准，但是每次循环都会对 DOM 进行操作，性能极低。在这里推荐使用第二种方法。</p>
-<h4 id="4-2-5-dom-">4.2.5 DOM 事件</h4>
+<h3 id="dom-">DOM 事件</h3>
 <p>[建议] 优先使用 <code>addEventListener / attachEvent</code> 绑定事件，避免直接在 HTML 属性中或 DOM 的 <code>expando</code> 属性绑定事件处理。</p>
 <p>解释：</p>
 <p>expando 属性绑定事件容易导致互相覆盖。</p>
