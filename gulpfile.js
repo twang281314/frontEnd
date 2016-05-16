@@ -1,3 +1,4 @@
+
 var gulp = require('gulp');
 var i5ting_toc = require('gulp-i5ting-toc');
 
@@ -13,3 +14,7 @@ gulp.task('default', function() {
     gulp.src('sample.md')
         .pipe(i5ting_toc(opt));
 });
+
+var express = require('express');
+
+express.Router

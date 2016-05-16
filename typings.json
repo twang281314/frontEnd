@@ -1,0 +1,8 @@
+{
+  "ambientDependencies": {
+    "angular": "registry:dt/angular#1.5.0+20160509150441",
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "jquery": "registry:dt/jquery#1.10.0+20160417213236",
+    "node": "registry:dt/node#6.0.0+20160514165920"
+  }
+}
