@@ -1,71 +1,25 @@
 <html>
-  <head>
-	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>iscs_frontEnd:css-style-guide</title>
-		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
-		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
-		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
-	  <style>
-		pre {
-		    counter-reset: line-numbering;
-		    border: solid 1px #d9d9d9;
-		    border-radius: 0;
-		    background: #fff;
-		    padding: 0;
-		    line-height: 23px;
-		    margin-bottom: 30px;
-		    white-space: pre;
-		    overflow-x: auto;
-		    word-break: inherit;
-		    word-wrap: inherit;
-		}
 
-		pre a::before {
-		  content: counter(line-numbering);
-		  counter-increment: line-numbering;
-		  padding-right: 1em; /* space after numbers */
-		  width: 25px;
-		  text-align: right;
-		  opacity: 0.7;
-		  display: inline-block;
-		  color: #aaa;
-		  background: #eee;
-		  margin-right: 16px;
-		  padding: 2px 10px;
-		  font-size: 13px;
-		  -webkit-touch-callout: none;
-		  -webkit-user-select: none;
-		  -khtml-user-select: none;
-		  -moz-user-select: none;
-		  -ms-user-select: none;
-		  user-select: none;
-		}
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>iscs_FrontEnd:css-style-guide</title>
+	<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/css/themes/github.css" media="all" rel="stylesheet" type="text/css" />
 
-		pre a:first-of-type::before {
-		  padding-top: 10px;
-		}
+</head>
 
-		pre a:last-of-type::before {
-		  padding-bottom: 10px;
-		}
+<body>
+	<div>
+		<div style='width:25%;'>
+			<ul id="tree" class="ztree" style='width:100%'>
 
-		pre a:only-of-type::before {
-		  padding: 10px;
-		}
-
-		.highlight { background-color: #ffffcc } /* RIGHT */
-		</style>
-  </head>
-  <body>
-	  <div>
-				<div style='width:25%;'>
-						<ul id="tree" class="ztree" style='width:100%'>
-
-						</ul>
-				</div>
-        <div id='readme' style='width:70%;margin-left:20%;'>
-          	<article class='markdown-body'>
-            	<p><strong>CSS编码规范</strong></p>
+			</ul>
+		</div>
+		<div id='readme' style='width:70%;margin-left:20%;'>
+			<article class='markdown-body'>
+				<p><strong>CSS编码规范</strong></p>
 <h1 id="-">前言</h1>
 <p>CSS 作为网页样式的描述语言，在百度一直有着广泛的应用。本文档的目标是使 CSS 代码风格保持一致，容易被理解和被维护。</p>
 <p>虽然本文档是针对 CSS 设计的，但是在使用各种 CSS 的预编译器(如 less、sass、stylus 等)时，适用的部分也应尽量遵循本文档的约定。</p>
@@ -741,24 +695,29 @@ h1 {
 <h2 id="expression">Expression</h2>
 <p>[强制] 禁止使用 <code>Expression</code>。</p>
 
-          	</article>
-        </div>
+			</article>
 		</div>
-  </body>
+	</div>
+</body>
+
 </html>
 <script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
 <script type="text/javascript" src="toc/js/ztree_toc.js"></script>
 <script type="text/javascript" src="toc_conf.js"></script>
+<script type="text/javascript" src="toc/js/prettify.js"></script>
 
-<SCRIPT type="text/javascript" >
-<!--
-$(document).ready(function(){
-    var css_conf = eval(markdown_panel_style);
-    $('#readme').css(css_conf)
-    
-    var conf = eval(jquery_ztree_toc_opts);
+<SCRIPT type="text/javascript">
+
+	$(function() {
+		var css_conf = eval(markdown_panel_style);
+		$('#readme').css(css_conf)
+
+		var conf = eval(jquery_ztree_toc_opts);
 		$('#tree').ztree_toc(conf);
-});
-//-->
+		$('pre').addClass('prettyprint linenums');
+		$('td pre').removeClass('prettyprint');
+		prettyPrint();
+
+	});
 </SCRIPT>

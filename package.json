@@ -17,8 +17,13 @@
   },
   "homepage": "https://github.com/twang281314/iscs_frontEnd#readme",
   "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-i5ting-toc": "^1.0.1",
-    "i5ting_toc": "^1.1.2"
+    "bufferhelper": "^0.2.0",
+    "commander": "^2.5.0",
+    "config": "^1.7.0",
+    "handlebars": "^2.0.0",
+    "marked": "^0.3.2",
+    "object-assign": "^1.0.0",
+    "open": "0.0.5",
+    "shelljs": "^0.3.0"
   }
 }
