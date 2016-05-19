@@ -1,0 +1,568 @@
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>iscs_FrontEnd:ims</title>
+	<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/css/themes/github.css" media="all" rel="stylesheet" type="text/css" />
+	<style>
+		table {
+			border: 1px solid #ccc;
+			border-left: 0;
+			width: 100%;
+			font-size: 14px;
+		}
+		
+		tbody,
+		thead,
+		tr {
+			width: 100%;
+		}
+		
+		tr th {
+			border: 1px solid #ccc;
+			border-right: 0;
+			background: #FF6537;
+			color: #fff;
+			height: 40px;
+			padding: 5px 10px;
+			font-size: 14px;
+		}
+		
+		tr td {
+			text-align: left;
+			padding: 5px 10px;
+			border: 1px solid #ccc;
+			border-right: 0;
+		}
+		
+		tr:nth-child(odd) {
+			background: #f4f4f4;
+		}
+		
+		table tr:hover td {
+			background: #ccc;
+		}
+		
+		.markdown-body h1 {
+			font-size: 20px;
+			color: #FF6537;
+		}
+		
+		.markdown-body h2 {
+			font-size: 18px;
+		}
+		
+		.markdown-body h3 {
+			font-size: 16px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div>
+		<div style='width:25%;'>
+			<ul id="tree" class="ztree" style='width:100%'>
+
+			</ul>
+		</div>
+		<div id='readme' style='width:70%;margin-left:20%;'>
+			<article class='markdown-body'>
+				<p><strong> ims - 原始订单处理中心</strong></p>
+<blockquote>
+<p>将平台的订单下载至原始订单处理中心,然后将订单进行处理.最后传入oms系统进行处理.</p>
+</blockquote>
+<p>修改日志</p>
+<table>
+<thead>
+<tr>
+<th>版本号</th>
+<th>修改内容</th>
+<th>修改日期</th>
+<th>修改人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v0.1</td>
+<td>第一次创建文档</td>
+<td>2016-04-26</td>
+<td>徐纯</td>
+</tr>
+<tr>
+<td>v0.2</td>
+<td>修改一些细节问题</td>
+<td>2016-04-26</td>
+<td>徐纯</td>
+</tr>
+<tr>
+<td>v0.2</td>
+<td>修改一些细节问题</td>
+<td>2016-04-26</td>
+<td>徐纯</td>
+</tr>
+</tbody>
+</table>
+<h1 id="-">平台退款单</h1>
+<table>
+<thead>
+<tr>
+<th>环境</th>
+<th>HTTP请求地址</th>
+<th>HTTPS请求地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正式环境</td>
+<td><a href="http://192.168.6.143:8080/originRefund">http://192.168.6.143:8080/originRefund</a></td>
+<td><a href="https://192.168.6.143:8080/originRefund">https://192.168.6.143:8080/originRefund</a></td>
+</tr>
+<tr>
+<td>测试环境</td>
+<td><a href="http://192.168.6.143:8080/originRefund">http://192.168.6.143:8080/originRefund</a></td>
+<td><a href="https://192.168.6.143:8080/originRefund">https://192.168.6.143:8080/originRefund</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="-">列表页</h2>
+<h3 id="-url">请求url</h3>
+<pre><code>/list
+</code></pre><h3 id="-">请求参数</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>示例值</th>
+<th>更多限制</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>currentPage</td>
+<td>int</td>
+<td>必须</td>
+<td>1</td>
+<td></td>
+<td>第几页</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>int</td>
+<td>必须</td>
+<td>20</td>
+<td></td>
+<td>每页数量</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>int</td>
+<td>否</td>
+<td>orderId&amp;asc</td>
+<td>只能按一个字段排序</td>
+<td>排序字段 asc升序 desc降序</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>string</td>
+<td>否</td>
+<td>[{&quot;filed&quot;: &quot;shopId&quot;,&quot;compare&quot;: &quot;equal&quot;,&quot;value&quot;: &quot;100&quot;,&quot;datatype&quot;: &quot;number&quot;}]</td>
+<td></td>
+<td>查询条件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">响应参数</h3>
+<h3 id="-">请求示例</h3>
+<pre><code> {
+   &quot;currentPage&quot; : 1,
+   &quot;filter&quot; : [
+      {
+         &quot;compare&quot; : &quot;equal&quot;,
+         &quot;datatype&quot; : &quot;number&quot;,
+         &quot;filed&quot; : &quot;shopId&quot;,
+         &quot;value&quot; : &quot;100&quot;
+      }
+   ],
+   &quot;pageSize&quot; : 20,
+   &quot;sort&quot; : &quot;orderId&amp;asc&quot;
+}
+</code></pre><h3 id="-">响应示例</h3>
+<pre><code>{
+   &quot;code&quot; : 0,
+   &quot;data&quot; : {
+      &quot;allNum&quot; : 17,
+      &quot;contentList&quot; : [
+         {
+            &quot;buyerNick&quot; : &quot;&quot;,
+            &quot;downTime&quot; : &quot;2016-04-13 14:40:07&quot;,
+            &quot;goodStatus&quot; : &quot;&quot;,
+            &quot;hasGoodsReturn&quot; : 1,
+            &quot;iscsReceiptStatus&quot; : &quot;&quot;,
+            &quot;modifyTime&quot; : &quot;2016-04-13 14:40:07&quot;,
+            &quot;orderId&quot; : &quot;10027064534&quot;,
+            &quot;orderPayment&quot; : 49.50,
+            &quot;orderStatus&quot; : &quot;&quot;,
+            &quot;outerId&quot; : &quot;&quot;,
+            &quot;platformId&quot; : 10,
+            &quot;platformRefundStatus&quot; : &quot;&quot;,
+            &quot;processStatus&quot; : 10,
+            &quot;productName&quot; : &quot;&quot;,
+            &quot;productNumId&quot; : &quot;&quot;,
+            &quot;refundCreateTime&quot; : &quot;&quot;,
+            &quot;refundFee&quot; : 49.50,
+            &quot;refundId&quot; : 123456,
+            &quot;refundUkid&quot; : 111564100000013003,
+            &quot;remark&quot; : &quot;&quot;,
+            &quot;returnOutSid&quot; : &quot;&quot;,
+            &quot;returnReason&quot; : &quot;&quot;,
+            &quot;returnTmsCode&quot; : &quot;20&quot;,
+            &quot;serviceStatus&quot; : &quot;&quot;,
+            &quot;shopId&quot; : 10,
+            &quot;skuNumId&quot; : &quot;&quot;,
+            &quot;subOrderId&quot; : &quot;&quot;,
+            &quot;targetOrderUkid&quot; : 10
+         }
+      ],
+      &quot;currentPage&quot; : 2,
+      &quot;pageNum&quot; : 2,
+      &quot;pageSize&quot; : 1
+   },
+   &quot;msg&quot; : &quot;&quot;
+}
+</code></pre><h3 id="-">错误码解释</h3>
+<h2 id="-">退款单详情</h2>
+<h3 id="-url">请求url</h3>
+<pre><code>/refundInfo
+</code></pre><h3 id="-">请求参数</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>示例值</th>
+<th>更多限制</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>platformId</td>
+<td>int</td>
+<td>必须</td>
+<td>1</td>
+<td></td>
+<td>平台ID</td>
+</tr>
+<tr>
+<td>refundId</td>
+<td>string</td>
+<td>必须</td>
+<td>1023655555555</td>
+<td></td>
+<td>平台退款单ID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">响应参数</h3>
+<h3 id="-">请求示例</h3>
+<pre><code>
+{
+&quot;platformId&quot; :2,
+&quot;refundId&quot; :20,
+}
+</code></pre><h3 id="-">响应示例</h3>
+<pre><code>{
+   &quot;buyerNick&quot; : &quot;&quot;,
+   &quot;downTime&quot; : &quot;2016-04-13 14:40:07&quot;,
+   &quot;goodStatus&quot; : &quot;&quot;,
+   &quot;hasGoodsReturn&quot; : 1,
+   &quot;iscsReceiptStatus&quot; : &quot;&quot;,
+   &quot;modifyTime&quot; : &quot;2016-04-13 14:40:07&quot;,
+   &quot;orderId&quot; : &quot;10027064534&quot;,
+   &quot;orderPayment&quot; : 49.50,
+   &quot;orderStatus&quot; : &quot;&quot;,
+   &quot;outerId&quot; : &quot;&quot;,
+   &quot;platformId&quot; : 10,
+   &quot;platformRefundStatus&quot; : &quot;&quot;,
+   &quot;processStatus&quot; : 10,
+   &quot;productName&quot; : &quot;&quot;,
+   &quot;productNumId&quot; : &quot;&quot;,
+   &quot;refundCreateTime&quot; : &quot;&quot;,
+   &quot;refundFee&quot; : 49.50,
+   &quot;refundId&quot; : 123456,
+   &quot;refundUkid&quot; : 111564100000013003,
+   &quot;remark&quot; : &quot;&quot;,
+   &quot;returnOutSid&quot; : &quot;&quot;,
+   &quot;returnReason&quot; : &quot;&quot;,
+   &quot;returnTmsCode&quot; : &quot;20&quot;,
+   &quot;serviceStatus&quot; : &quot;&quot;,
+   &quot;shopId&quot; : 10,
+   &quot;skuNumId&quot; : &quot;&quot;,
+   &quot;subOrderId&quot; : &quot;&quot;,
+   &quot;targetOrderUkid&quot; : 10
+}
+</code></pre><h3 id="-">错误码解释</h3>
+<h2 id="-">退款单同步</h2>
+<h3 id="-url">请求url</h3>
+<pre><code>/refreshRefund
+</code></pre><h3 id="-">请求参数</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>示例值</th>
+<th>更多限制</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>platformId</td>
+<td>int</td>
+<td>必须</td>
+<td>1</td>
+<td></td>
+<td>平台ID</td>
+</tr>
+<tr>
+<td>refundId</td>
+<td>string</td>
+<td>必须</td>
+<td>1023655555555</td>
+<td></td>
+<td>平台退款单ID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">响应参数</h3>
+<h3 id="-">请求示例</h3>
+<pre><code>
+[
+   {
+      &quot;platformId&quot; : 2,
+      &quot;refundId&quot; : 20
+   },
+   {
+      &quot;platformId&quot; : 3,
+      &quot;refundId&quot; : 21
+   }
+]
+</code></pre><h3 id="-">响应示例</h3>
+<pre><code>{
+   &quot;fail&quot; : 2,
+   &quot;success&quot; : 3
+}
+</code></pre><h3 id="-">错误码解释</h3>
+<h1 id="-">原始订单</h1>
+<table>
+<thead>
+<tr>
+<th>环境</th>
+<th>HTTP请求地址</th>
+<th>HTTPS请求地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正式环境</td>
+<td><a href="http://192.168.6.143:8080/originTrade">http://192.168.6.143:8080/originTrade</a></td>
+<td><a href="https://192.168.6.143:8080/originTrade">https://192.168.6.143:8080/originTrade</a></td>
+</tr>
+<tr>
+<td>测试环境</td>
+<td><a href="http://192.168.6.143:8080/originTrade">http://192.168.6.143:8080/originTrade</a></td>
+<td><a href="https://192.168.6.143:8080/originTrade">https://192.168.6.143:8080/originTrade</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="-">列表页</h2>
+<h3 id="-url">请求url</h3>
+<pre><code>/list
+</code></pre><h3 id="-">请求参数</h3>
+<pre><code>
+</code></pre><h3 id="-">响应参数</h3>
+<pre><code>
+</code></pre><h3 id="-">请求示例</h3>
+<pre><code>
+{
+   &quot;currentPage&quot; : 1,
+   &quot;filter&quot; : [
+      {
+         &quot;compare&quot; : &quot;equal&quot;,
+         &quot;datatype&quot; : &quot;number&quot;,
+         &quot;field&quot; : &quot;shopId&quot;,
+         &quot;value&quot; : &quot;10&quot;
+      }
+   ],
+   &quot;pageSize&quot; : 20,
+   &quot;sort&quot; : &quot;orderId&amp;asc&quot;
+}
+</code></pre><h3 id="-">响应示例</h3>
+<pre><code>{
+   &quot;body&quot; : &quot;&quot;,
+   &quot;data&quot; : {
+      &quot;allNum&quot; : 17,
+      &quot;contentList&quot; : [
+         {
+            &quot;buyerMessage&quot; : &quot;&quot;,
+            &quot;buyerNick&quot; : &quot;jianglixiao2008@163.com&quot;,
+            &quot;content&quot; : &quot;&quot;,
+            &quot;discountFee&quot; : &quot;&quot;,
+            &quot;downTime&quot; : &quot;2016-04-13 14:40:07&quot;,
+            &quot;freightFee&quot; : &quot;&quot;,
+            &quot;isCod&quot; : &quot;&quot;,
+            &quot;isFullFields&quot; : &quot;&quot;,
+            &quot;itemList&quot; : &quot;&quot;,
+            &quot;modifyTime&quot; : &quot;2016-04-13 14:40:07&quot;,
+            &quot;orderCreateTime&quot; : &quot;2016-04-05 16:00:35&quot;,
+            &quot;orderId&quot; : &quot;10027064534&quot;,
+            &quot;orderPayTime&quot; : &quot;&quot;,
+            &quot;orderPayment&quot; : &quot;&quot;,
+            &quot;orderSellerFee&quot; : &quot;&quot;,
+            &quot;orderType&quot; : &quot;&quot;,
+            &quot;originTradeStatus&quot; : 100,
+            &quot;placeOrderStatus&quot; : &quot;&quot;,
+            &quot;platformId&quot; : &quot;&quot;,
+            &quot;platformOrderStatus&quot; : &quot;20&quot;,
+            &quot;receiverAddress&quot; : &quot;&quot;,
+            &quot;receiverCity&quot; : &quot;宁波市&quot;,
+            &quot;receiverCounty&quot; : &quot;慈溪市&quot;,
+            &quot;receiverMobile&quot; : &quot;&quot;,
+            &quot;receiverName&quot; : &quot;&quot;,
+            &quot;receiverPhone&quot; : &quot;&quot;,
+            &quot;receiverState&quot; : &quot;浙江省&quot;,
+            &quot;receiverZip&quot; : &quot;&quot;,
+            &quot;releaseDate&quot; : &quot;&quot;,
+            &quot;releaseTime&quot; : &quot;&quot;,
+            &quot;sellerMemo&quot; : &quot;&quot;,
+            &quot;shopId&quot; : 10,
+            &quot;sourceOrderId&quot; : &quot;&quot;,
+            &quot;stockId&quot; : &quot;&quot;,
+            &quot;storeCode&quot; : &quot;&quot;,
+            &quot;targetOrderUkid&quot; : &quot;&quot;,
+            &quot;totalFee&quot; : 49.50,
+            &quot;tradeUkid&quot; : 111564100000013003
+         }
+      ],
+      &quot;currentPage&quot; : 2,
+      &quot;pageNum&quot; : 2,
+      &quot;pageSize&quot; : 1
+   },
+   &quot;code&quot; : 0,
+   &quot;msg&quot; : &quot;&quot;
+}
+</code></pre><h3 id="-">错误码解释</h3>
+<h2 id="-">订单收货人信息查询</h2>
+<h3 id="-url">请求url</h3>
+<pre><code>/getRecipientInfo
+</code></pre><h3 id="-">请求参数</h3>
+<h3 id="-">响应参数</h3>
+<h3 id="-">请求示例</h3>
+<h3 id="-">响应示例</h3>
+<h3 id="-">错误码解释</h3>
+<h2 id="-">订单基本信息查询</h2>
+<h3 id="-url">请求url</h3>
+<pre><code>/getBaseInfo
+</code></pre><h3 id="-">请求参数</h3>
+<h3 id="-">响应参数</h3>
+<h3 id="-">请求示例</h3>
+<pre><code>  {
+    &quot;tradeUkid &quot;: 24
+  }
+</code></pre><h3 id="-">响应示例</h3>
+<pre><code>{
+   &quot;body&quot; : &quot;&quot;,
+   &quot;data&quot; : {
+      &quot;baBuyer&quot; : {
+         &quot;buyerNick&quot; : &quot;催眠刺&quot;,
+         &quot;buyerUkid&quot; : &quot;&quot;,
+         &quot;createDate&quot; : &quot;&quot;,
+         &quot;createUserId&quot; : &quot;&quot;,
+         &quot;dateUpdated&quot; : &quot;&quot;,
+         &quot;isMember&quot; : &quot;&quot;,
+         &quot;memberIntegral&quot; : 111,
+         &quot;memberLevel&quot; : &quot;1&quot;,
+         &quot;receiverMobile&quot; : &quot;111&quot;,
+         &quot;userIdUpdated&quot; : &quot;&quot;
+      },
+      &quot;vOriginTrade&quot; : {
+         &quot;buyerMessage&quot; : &quot;&quot;,
+         &quot;buyerNick&quot; : &quot;催眠刺&quot;,
+         &quot;content&quot; : &quot;&quot;,
+         &quot;discountFee&quot; : 83.920,
+         &quot;downTime&quot; : &quot;2016-04-14 13:36:35&quot;,
+         &quot;freightFee&quot; : 0.0,
+         &quot;isCod&quot; : &quot;&quot;,
+         &quot;isFullFields&quot; : 1,
+         &quot;itemList&quot; : &quot;&quot;,
+         &quot;modifyTime&quot; : &quot;2016-04-14 13:36:35&quot;,
+         &quot;orderCreateTime&quot; : &quot;&quot;,
+         &quot;orderId&quot; : &quot;BK2015IS-20160414-00181&quot;,
+         &quot;orderPayTime&quot; : &quot;2016-04-14 12:43:26&quot;,
+         &quot;orderPayment&quot; : 139.40,
+         &quot;orderSellerFee&quot; : 149.40,
+         &quot;orderType&quot; : &quot;TRADE&quot;,
+         &quot;originTradeStatus&quot; : 100,
+         &quot;placeOrderStatus&quot; : &quot;&quot;,
+         &quot;platformId&quot; : 160,
+         &quot;platformOrderStatus&quot; : &quot;&quot;,
+         &quot;receiverAddress&quot; : &quot;中国联合网络通信有限公司自贡分公司四川省自贡市自流井区汇东路50号&quot;,
+         &quot;receiverCity&quot; : &quot;自贡市&quot;,
+         &quot;receiverCounty&quot; : &quot;自流井区&quot;,
+         &quot;receiverMobile&quot; : &quot;18681310712&quot;,
+         &quot;receiverName&quot; : &quot;曾睿&quot;,
+         &quot;receiverPhone&quot; : &quot;&quot;,
+         &quot;receiverState&quot; : &quot;四川省&quot;,
+         &quot;receiverZip&quot; : &quot;&quot;,
+         &quot;releaseDate&quot; : &quot;&quot;,
+         &quot;releaseTime&quot; : &quot;&quot;,
+         &quot;sellerMemo&quot; : &quot;&quot;,
+         &quot;shopId&quot; : 250523,
+         &quot;sourceOrderId&quot; : &quot;&quot;,
+         &quot;stockId&quot; : 2,
+         &quot;storeCode&quot; : &quot;&quot;,
+         &quot;targetOrderUkid&quot; : &quot;&quot;,
+         &quot;totalFee&quot; : 149.40,
+         &quot;tradeUkid&quot; : 24
+      }
+   },
+   &quot;code&quot; : 0,
+   &quot;msg&quot; : &quot;&quot;
+}
+</code></pre><h3 id="-">错误码解释</h3>
+
+			</article>
+		</div>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+<script type="text/javascript" src="toc/js/prettify.js"></script>
+
+<SCRIPT type="text/javascript">
+	$(function() {
+		var css_conf = eval(markdown_panel_style);
+		$('#readme').css(css_conf)
+
+		var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+		$('pre').addClass('prettyprint linenums');
+		$('td pre').removeClass('prettyprint');
+		prettyPrint();
+
+	});
+</SCRIPT>
