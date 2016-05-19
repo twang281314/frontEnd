@@ -26,4 +26,5 @@
 
 https://github.com/i5ting/tocmd.npm
 
-i5ting_toc -f index.md -o 
+
+>node bin/tocmd.js  -f ims.md  -o
