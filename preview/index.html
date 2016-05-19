@@ -1,71 +1,77 @@
 <html>
-  <head>
-	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>iscs_frontEnd:index</title>
-		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
-		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
-		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
-	  <style>
-		pre {
-		    counter-reset: line-numbering;
-		    border: solid 1px #d9d9d9;
-		    border-radius: 0;
-		    background: #fff;
-		    padding: 0;
-		    line-height: 23px;
-		    margin-bottom: 30px;
-		    white-space: pre;
-		    overflow-x: auto;
-		    word-break: inherit;
-		    word-wrap: inherit;
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>iscs_FrontEnd:index</title>
+	<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/css/themes/github.css" media="all" rel="stylesheet" type="text/css" />
+	<style>
+		table {
+			border: 1px solid #ccc;
+			border-left: 0;
+			width: 100%;
+			font-size: 14px;
 		}
-
-		pre a::before {
-		  content: counter(line-numbering);
-		  counter-increment: line-numbering;
-		  padding-right: 1em; /* space after numbers */
-		  width: 25px;
-		  text-align: right;
-		  opacity: 0.7;
-		  display: inline-block;
-		  color: #aaa;
-		  background: #eee;
-		  margin-right: 16px;
-		  padding: 2px 10px;
-		  font-size: 13px;
-		  -webkit-touch-callout: none;
-		  -webkit-user-select: none;
-		  -khtml-user-select: none;
-		  -moz-user-select: none;
-		  -ms-user-select: none;
-		  user-select: none;
+		
+		tbody,
+		thead,
+		tr {
+			width: 100%;
 		}
-
-		pre a:first-of-type::before {
-		  padding-top: 10px;
+		
+		tr th {
+			border: 1px solid #ccc;
+			border-right: 0;
+			background: #FF6537;
+			color: #fff;
+			height: 40px;
+			padding: 5px 10px;
+			font-size: 14px;
 		}
-
-		pre a:last-of-type::before {
-		  padding-bottom: 10px;
+		
+		tr td {
+			text-align: left;
+			padding: 5px 10px;
+			border: 1px solid #ccc;
+			border-right: 0;
 		}
-
-		pre a:only-of-type::before {
-		  padding: 10px;
+		
+		tr:nth-child(odd) {
+			background: #f4f4f4;
 		}
+		
+		table tr:hover td {
+			background: #ccc;
+		}
+		
+		.markdown-body h1 {
+			font-size: 20px;
+			color: #FF6537;
+		}
+		
+		.markdown-body h2 {
+			font-size: 18px;
+		}
+		
+		.markdown-body h3 {
+			font-size: 16px;
+		}
+	</style>
 
-		.highlight { background-color: #ffffcc } /* RIGHT */
-		</style>
-  </head>
-  <body>
-	  <div>
-				<div style='width:25%;'>
-						<ul id="tree" class="ztree" style='width:100%'>
+</head>
 
-						</ul>
-				</div>
-        <div id='readme' style='width:70%;margin-left:20%;'>
-          	<article class='markdown-body'>
-            	<h1 id="-">前端工程化</h1>
+<body>
+	<div>
+		<div style='width:25%;'>
+			<ul id="tree" class="ztree" style='width:100%'>
+
+			</ul>
+		</div>
+		<div id='readme' style='width:70%;margin-left:20%;'>
+			<article class='markdown-body'>
+				<h1 id="-">前端工程化</h1>
 <blockquote>
 <p>喂喂喂，那个切图的，把页面写好就发给研发工程师套模板吧。</p>
 </blockquote>
@@ -846,24 +852,28 @@ proxy_pass http://www.b.com/;
 <p><a href="http://cnodejs.org/topic/56ef3edd532839c33a99d00e">http://cnodejs.org/topic/56ef3edd532839c33a99d00e</a></p>
 <p>慕课网视频教程:<a href="http://www.imooc.com/course/list?c=angularjs">http://www.imooc.com/course/list?c=angularjs</a></p>
 
-          	</article>
-        </div>
+			</article>
 		</div>
-  </body>
+	</div>
+</body>
+
 </html>
 <script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
 <script type="text/javascript" src="toc/js/ztree_toc.js"></script>
 <script type="text/javascript" src="toc_conf.js"></script>
+<script type="text/javascript" src="toc/js/prettify.js"></script>
 
-<SCRIPT type="text/javascript" >
-<!--
-$(document).ready(function(){
-    var css_conf = eval(markdown_panel_style);
-    $('#readme').css(css_conf)
-    
-    var conf = eval(jquery_ztree_toc_opts);
+<SCRIPT type="text/javascript">
+	$(function() {
+		var css_conf = eval(markdown_panel_style);
+		$('#readme').css(css_conf)
+
+		var conf = eval(jquery_ztree_toc_opts);
 		$('#tree').ztree_toc(conf);
-});
-//-->
+		$('pre').addClass('prettyprint linenums');
+		$('td pre').removeClass('prettyprint');
+		prettyPrint();
+
+	});
 </SCRIPT>
