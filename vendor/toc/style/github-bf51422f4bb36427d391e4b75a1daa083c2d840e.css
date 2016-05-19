@@ -3988,7 +3988,7 @@ table.capped-list.mini-icons .mini-icon {
 }
 
 .markdown-body code {
-    white-space: nowrap
+    /*white-space: nowrap*/
 }
 
 .markdown-body pre>code {
