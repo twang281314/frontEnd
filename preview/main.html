@@ -1,0 +1,192 @@
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<title>iscs_FrontEnd:main</title>
+	<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+	<!--<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />-->
+	<link href="toc/css/metroStyle/metroStyle.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/css/themes/github-v2.min.css" media="all" rel="stylesheet" type="text/css" />
+	<style>
+		table {
+			border: 1px solid #ccc;
+			border-left: 0;
+			width: 100%;
+			font-size: 14px;
+		}
+		
+		tbody,
+		thead,
+		tr {
+			width: 100%;
+		}
+		
+		tr th {
+			border: 1px solid #ccc;
+			border-right: 0;
+			background: #FF6537;
+			color: #fff;
+			height: 40px;
+			padding: 5px 10px;
+			font-size: 14px;
+		}
+		
+		tr td {
+			text-align: left;
+			padding: 5px 10px;
+			border: 1px solid #ccc;
+			border-right: 0;
+		}
+		
+		tr:nth-child(odd) {
+			background: #f4f4f4;
+		}
+		
+		table tr:hover td {
+			background: #ccc;
+		}
+		
+		.markdown-body h1 {
+			font-size: 20px;
+			color: #FF6537;
+		}
+		
+		.markdown-body h2 {
+			font-size: 18px;
+		}
+		
+		.markdown-body h3 {
+			font-size: 16px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div>
+		<div style='width:25%;'>
+			<ul id="tree" class="ztree" style='width:100%'>
+
+			</ul>
+		</div>
+		<div id='readme' style='width:70%;margin-left:20%;'>
+			<article class='markdown-body'>
+				<p><strong><em>网仓UED知识库</em></strong></p>
+<blockquote>
+<p>整理了一些前端的文章和开发用到的文档</p>
+</blockquote>
+<h1 id="-">前端教程</h1>
+<table>
+<thead>
+<tr>
+<th>文档名称</th>
+<th>链接地址</th>
+<th>添加日期</th>
+<th>添加人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>关于前端</td>
+<td><a href="/frontEnd.html">/frontEnd.html</a></td>
+<td>2016-05-20</td>
+<td>王涛</td>
+</tr>
+<tr>
+<td>javaScript开发规范</td>
+<td><a href="/javascript-style-guide.html">/javascript-style-guide.html</a></td>
+<td>2016-05-20</td>
+<td>王涛</td>
+</tr>
+<tr>
+<td>css开发规范</td>
+<td><a href="/css-style-guide.html">/css-style-guide.html</a></td>
+<td>2016-05-20</td>
+<td>王涛</td>
+</tr>
+<tr>
+<td>html开发规范</td>
+<td><a href="/html-style-guide.html">/html-style-guide.html</a></td>
+<td>2016-05-20</td>
+<td>王涛</td>
+</tr>
+</tbody>
+</table>
+<h1 id="-">前端文档</h1>
+<table>
+<thead>
+<tr>
+<th>文档名称</th>
+<th>链接地址</th>
+<th>添加日期</th>
+<th>添加人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>打印模板设计</td>
+<td><a href="/printTemplate.html">/printTemplate.html</a></td>
+<td>2016-05-20</td>
+<td>王涛</td>
+</tr>
+</tbody>
+</table>
+<h1 id="-">后端文档</h1>
+<table>
+<thead>
+<tr>
+<th>文档名称</th>
+<th>链接地址</th>
+<th>添加日期</th>
+<th>添加人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ims文档</td>
+<td><a href="/ims.html">/ims.html</a></td>
+<td>2016-05-20</td>
+<td>王涛</td>
+</tr>
+<tr>
+<td>oms文档</td>
+<td><a href="/oms.html">/oms.html</a></td>
+<td>2016-05-20</td>
+<td>王涛</td>
+</tr>
+<tr>
+<td>wos文档</td>
+<td><a href="/wos.html">/wos.html</a></td>
+<td>2016-05-20</td>
+<td>王涛</td>
+</tr>
+</tbody>
+</table>
+
+			</article>
+		</div>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+<script type="text/javascript" src="toc/js/prettify.js"></script>
+
+<SCRIPT type="text/javascript">
+	$(function() {
+		var css_conf = eval(markdown_panel_style);
+		$('#readme').css(css_conf)
+
+		var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+		$('pre').addClass('prettyprint linenums');
+		$('td pre').removeClass('prettyprint');
+		prettyPrint();
+
+	});
+</SCRIPT>

@@ -3802,7 +3802,7 @@ table.capped-list.mini-icons .mini-icon {
 }
 
 .markdown-body hr {
-    background: transparent url("/assets/primer/markdown/dirty-shade-a46e6e1679bb726b30abdfdb0d08835b1681c46a.png") repeat-x 0 0;
+    /*background: transparent url("/assets/primer/markdown/dirty-shade-a46e6e1679bb726b30abdfdb0d08835b1681c46a.png") repeat-x 0 0;*/
     border: 0 none;
     color: #ccc;
     height: 4px;

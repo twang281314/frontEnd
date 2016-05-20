@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>网仓三号 api管理平台</title>
+    <meta name="keywords" content="documentation,dox" />
+    <meta name="description" content="Generate your documentation." />
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+    <script src="assets/prettify.js"></script>
+    <script src="assets/jquery-1.8.2.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/base.css" />
+    <link href="assets/themes/github.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="indexcss/docs.css">
+    <style>
+            table {
+                border:1px solid #ccc;
+                border-left:0;
+                width:100%;
+            }
+            tr th {
+                border: 1px solid #ccc;
+                border-right:0;
+                background: #FF6537;
+                color:#fff;
+                height:40px;
+                padding: 5px 10px;
+            }
+            tr td {
+                text-align: left;
+                padding: 5px 10px;
+                border: 1px solid #ccc;
+                border-right:0;
+            }
+            tr:nth-child(odd) {
+              background: #f4f4f4;
+            }
+            table tr:hover  td{ background: #ccc;}
+      </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-static-top top-navbar" role="navigation">
+        <div class="navbar-inner">
+            <div class="container"> 
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class=""><a href="iscs.html">首页</a> </li>
+                        <li class=""><a href="index.html">文档中心</a> </li>
+                        <li class=""><a href="api.html">api数据类型</a> </li>
+                        <li class=""><a href="records.html">变更记录</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <header class="jumbotron subhead">
+      <div class="container">
+        <h1>doxmate <small>Version: 0.3.0 By @Jackson Tian</small></h1>
+        <p class="lead">
+          Generate your documentation.
+        </p>
+      </div>
+    </header>
+
+<div class="container content">
+  <div class="row">
+  	<div class="col-md-3">
+      <ul class="nav nav-list bs-docs-sidenav affix">
+
+  <li class="level_2">
+    <a href="#index_打印模板主表" title="打印模板主表">
+      <i class="icon-chevron-right"></i>打印模板主表
+    </a>
+  </li>
+
+  <li class="level_2">
+    <a href="#index_打印模板从表" title="打印模板从表">
+      <i class="icon-chevron-right"></i>打印模板从表
+    </a>
+  </li>
+
+  <li class="level_2">
+    <a href="#index_模板列表页(用于模板列表页获取数据)" title="模板列表页(用于模板列表页获取数据)">
+      <i class="icon-chevron-right"></i>模板列表页(用于模板列表页获取数据)
+    </a>
+  </li>
+
+  <li class="level_2">
+    <a href="#index_模板详情接口(用于获取模板内容)" title="模板详情接口(用于获取模板内容)">
+      <i class="icon-chevron-right"></i>模板详情接口(用于获取模板内容)
+    </a>
+  </li>
+
+  <li class="level_2">
+    <a href="#index_模板设计编辑接口(用于新增和编辑模板内容)" title="模板设计编辑接口(用于新增和编辑模板内容)">
+      <i class="icon-chevron-right"></i>模板设计编辑接口(用于新增和编辑模板内容)
+    </a>
+  </li>
+
+</ul>
+
+    </div>
+    <div class="col-md-9">
+      <section>
+        <p><strong><em>打印模板</em></strong></p><p>修改日志</p><table>
+<thead>
+<tr>
+<th>版本号</th>
+<th>修改内容</th>
+<th>修改日期</th>
+<th>修改人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v0.1</td>
+<td>添加文档</td>
+<td>2016-04-25</td>
+<td>王涛</td>
+</tr>
+<tr>
+<td>v0.2</td>
+<td>添加和完善字段</td>
+<td>2016-04-28</td>
+<td>王涛</td>
+</tr>
+<tr>
+<td>v0.3</td>
+<td>完善后端接口文档</td>
+<td>2016-04-29</td>
+<td>王涛</td>
+</tr>
+<tr>
+<td>v0.4</td>
+<td>主表新增viewWidth、viewHeight、orient三个字段</td>
+<td>2016-04-30</td>
+<td>王涛</td>
+</tr>
+<tr>
+<td>v0.5</td>
+<td>修改itemCode、itemName、itemContent等字段的说明</td>
+<td>2016-05-06</td>
+<td>王涛</td>
+</tr>
+</tbody>
+</table>
+<h1>打印模板功能设计</h1>
+<p>原型地址：  </p><pre><code>http://192.168.6.179
+</code></pre><p>功能设计地址：</p><pre><code>http://192.168.6.146:8090/pages/viewpage.action?pageId=5833403
+</code></pre><h1>打印模板表结构设计</h1>
+<h2>打印模板主表</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>描述</th>
+<th>数据类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>templateId</td>
+<td>模板主键</td>
+<td>double</td>
+<td>模板主键</td>
+</tr>
+<tr>
+<td>templateName</td>
+<td>模板名称</td>
+<td>string</td>
+<td>模板名称</td>
+</tr>
+<tr>
+<td>stockId</td>
+<td>仓库ID</td>
+<td>int</td>
+<td>关联仓库</td>
+</tr>
+<tr>
+<td>transporterId</td>
+<td>运输商ID</td>
+<td>int</td>
+<td>运输商</td>
+</tr>
+<tr>
+<td>shopIds</td>
+<td>店铺ID</td>
+<td>int</td>
+<td>店铺</td>
+</tr>
+<tr>
+<td>shopNames</td>
+<td>店铺名称</td>
+<td>string</td>
+<td>店铺名称</td>
+</tr>
+<tr>
+<td>templateType</td>
+<td>模板类型</td>
+<td>string</td>
+<td>快递单、装箱单、发货单、拣选单、贺卡、发票等</td>
+</tr>
+<tr>
+<td>pageWidth</td>
+<td>宽度</td>
+<td>int</td>
+<td>宽度</td>
+</tr>
+<tr>
+<td>pageHeight</td>
+<td>高度</td>
+<td>int</td>
+<td>高度</td>
+</tr>
+<tr>
+<td>pageTop</td>
+<td>上偏移量</td>
+<td>int</td>
+<td>上偏移量</td>
+</tr>
+<tr>
+<td>pageLeft</td>
+<td>左偏移量</td>
+<td>int</td>
+<td>左偏移量</td>
+</tr>
+<tr>
+<td>createDate</td>
+<td>创建时间</td>
+<td>datetime</td>
+<td></td>
+</tr>
+<tr>
+<td>createUser</td>
+<td>创建人</td>
+<td>int</td>
+<td>创建人Id</td>
+</tr>
+<tr>
+<td>updateDate</td>
+<td>编辑时间</td>
+<td>datetime</td>
+<td></td>
+</tr>
+<tr>
+<td>updateUser</td>
+<td>修改人</td>
+<td>int</td>
+<td>修改人</td>
+</tr>
+<tr>
+<td>isUse</td>
+<td>是否使用</td>
+<td>bool</td>
+<td>模板是否在使用</td>
+</tr>
+<tr>
+<td>viewWidth</td>
+<td>可视编辑区域宽度</td>
+<td>int</td>
+<td>可视编辑区域宽度</td>
+</tr>
+<tr>
+<td>viewHeight</td>
+<td>可视编辑区域高度</td>
+<td>int</td>
+<td>可视编辑区域高度</td>
+</tr>
+<tr>
+<td>orient</td>
+<td>打印方向</td>
+<td>int</td>
+<td>1 纵(正)向打印，固定纸张<br> 2 横向打印，固定纸张 <br> 0(或其它) 打印方向由操作者自行选择或按打印机缺省设置</td>
+</tr>
+</tbody>
+</table>
+<h2>打印模板从表</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>描述</th>
+<th>数据类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>templateDetailId</td>
+<td>模板从表主键</td>
+<td>double</td>
+<td>模板从表主键</td>
+</tr>
+<tr>
+<td>templateId</td>
+<td>模板主表UKid</td>
+<td>double</td>
+<td>关联模板主表</td>
+</tr>
+<tr>
+<td>itemType</td>
+<td>打印项的基本属性</td>
+<td>int</td>
+<td>0 普通项<br>1 页眉页脚<br>2 页号项 <br>3 页数项<br> 4 多页项缺省<br>（不调用本函数时）值0</td>
+</tr>
+<tr>
+<td>itemCustomType</td>
+<td>打印项类型</td>
+<td>int</td>
+<td>0:固定文本打印项<br> 1:数据打印项(转换模板时需要绑定数据源)<br> 2:明细表格</td>
+</tr>
+<tr>
+<td>itemClass</td>
+<td>打印项对象类型</td>
+<td>int</td>
+<td>2:普通文本<br> 31:矩形<br>32:实心矩形<br>33:椭圆<br> 34: 实心椭圆<br> 35:直线<br> 4:Htm超文本<br>8:图像<br>9:条码<br></td>
+</tr>
+<tr>
+<td>itemName</td>
+<td>打印项对象名称</td>
+<td>string</td>
+<td>为保证能唯一识别打印项 该字段由前端按照规律动态生成一个唯一码</td>
+</tr>
+<tr>
+<td>itemCode</td>
+<td>打印项绑定的字段名称</td>
+<td>string</td>
+<td>对于数据打印项，对应于数据源字段名称<br>明细表格为固定值 detailTable<br> 固定文本项和itemName一样</td>
+</tr>
+<tr>
+<td>itemTop</td>
+<td>上边距</td>
+<td>int</td>
+<td>打印项在纸张内的上边距，整数或字符型，整数时缺省长度单位为px</td>
+</tr>
+<tr>
+<td>itemLeft</td>
+<td>左边距</td>
+<td>int</td>
+<td>打印项在纸张内的左边距，整数或字符型，整数时缺省长度单位为px</td>
+</tr>
+<tr>
+<td>itemWidth</td>
+<td>宽度</td>
+<td>int</td>
+<td>打印区域的宽度，整数或字符型，整数时缺省长度单位为px</td>
+</tr>
+<tr>
+<td>itemHeight</td>
+<td>高度</td>
+<td>int</td>
+<td>打印区域的高度，整数或字符型，整数时缺省长度单位为px</td>
+</tr>
+<tr>
+<td>itemFontName</td>
+<td>字体</td>
+<td>string</td>
+<td>与操作系统字体名一致，缺省是“宋体”</td>
+</tr>
+<tr>
+<td>itemFontSize</td>
+<td>字号</td>
+<td>double</td>
+<td>数值型 单位pt 缺省值9 可以为小数</td>
+</tr>
+<tr>
+<td>itemFontColor</td>
+<td>字体颜色</td>
+<td>string</td>
+<td>整数或字符型，整数时是颜色的十进制RGB值；字符时是超文本颜色值，<br/>可以是“#”加三色16进制值组合，<br/>也可以是英文颜色名；</td>
+</tr>
+<tr>
+<td>itemContent</td>
+<td>打印项内容</td>
+<td>string</td>
+<td>纯文本内容，字符型，未限制长度<br>itemCustomType=0时是打印内容<br>itemCustomType=1时是打印项中文名称<br>itemCustomType=2时是明细表格html代码</td>
+</tr>
+<tr>
+<td>itemBold</td>
+<td>是否粗体</td>
+<td>int</td>
+<td>1代表粗体，0代表非粗体，缺省值是0</td>
+</tr>
+<tr>
+<td>itemItalic</td>
+<td>是否斜体</td>
+<td>int</td>
+<td>1代表斜体，0代表非斜体，缺省值是0</td>
+</tr>
+<tr>
+<td>itemUnderline</td>
+<td>是否下划线</td>
+<td>int</td>
+<td>1代表有下划线，0代表无下划线，缺省值是0</td>
+</tr>
+<tr>
+<td>itemAlignment</td>
+<td>对齐方式</td>
+<td>int</td>
+<td>1--左靠齐 2--居中 3--右靠齐，缺省值是1</td>
+</tr>
+<tr>
+<td>itemAngle</td>
+<td>打印项旋转角度</td>
+<td>int</td>
+<td>逆时针旋转角度数，单位是度，0度表示不旋转，旋转时以对象的左上角为原点</td>
+</tr>
+<tr>
+<td>itemPenWidth</td>
+<td>线条宽度</td>
+<td>int</td>
+<td>单位是(打印)像素，缺省值是1，非实线的线条宽也是0</td>
+</tr>
+<tr>
+<td>itemPenStyle</td>
+<td>线条风格</td>
+<td>int</td>
+<td>0:实线  1:破折线 2:点线 3:点划线 4:双点划线 缺省值是0</td>
+</tr>
+<tr>
+<td>itemReadOnly</td>
+<td>是否禁止修改</td>
+<td>bool</td>
+<td>打印维护时,是否禁止修改</td>
+</tr>
+<tr>
+<td>itemPreviewOnly</td>
+<td>是否仅预览</td>
+<td>bool</td>
+<td>打印项是否仅预览</td>
+</tr>
+</tbody>
+</table>
+<h1>打印模板数据接口</h1>
+<h2>模板列表页(用于模板列表页获取数据)</h2>
+<h3>请求地址</h3>
+<pre><code> http://192.168.200.71:8080/wos/printerTemplate/list
+</code></pre><h3>请求数据格式</h3>
+<pre><code>{
+    &quot;currentPage&quot;: 1,
+    &quot;pageSize&quot;: 20,
+    &quot;sort&quot;: &quot;stockId&amp;asc&quot;,
+    &quot;filter&quot;: [
+        {
+            &quot;filed&quot;: &quot;templateType&quot;,
+            &quot;compare&quot;: &quot;equal&quot;,
+            &quot;value&quot;: &quot;dzmd&quot;,
+            &quot;datatype&quot;: string
+        },
+        {
+            ....
+        }
+    ]
+}
+</code></pre><h3>返回数据格式</h3>
+<pre><code>{
+  &quot;errorCode&quot;: 0,
+  &quot;errorMsg&quot;: &quot;&quot;,
+  &quot;data&quot;: {
+    &quot;currentPage&quot;: 1,
+    &quot;allNum&quot;: 3,
+    &quot;pageSize&quot;: 20,
+    &quot;contentList&quot;: [
+      {
+        &quot;templateId&quot;: 131579000000010002,
+        &quot;templateType&quot;: &quot;电子面单&quot;,
+        &quot;templateName&quot;: &quot;打印模版&quot;,
+        &quot;stockId&quot;: 23025,
+        &quot;transporterId&quot;: 236,
+        &quot;shopIds&quot;: &quot;2665&quot;,
+        &quot;shopNames&quot;: &quot;测试&quot;,
+        &quot;isUse&quot;: 0,
+        &quot;createUser&quot;: 0,
+        &quot;updateUser&quot;: &quot;&quot;,
+        &quot;createDate&quot;: &quot;2016-04-28 16:13:23&quot;,
+        &quot;updateDate&quot;: &quot;&quot;,
+        &quot;pageHeight&quot;: &quot;&quot;,
+        &quot;pageWidth&quot;: 210,
+        &quot;pageTop&quot;: 2,
+        &quot;pageLeft&quot;: &quot;&quot;,
+        &quot;dmPrinterDetailTemplate&quot;: []
+      },
+      {
+        &quot;templateId&quot;: 131579400000011000,
+        &quot;templateType&quot;: &quot;电子面单&quot;,
+        &quot;templateName&quot;: &quot;打印模版&quot;,
+        &quot;stockId&quot;: 23025,
+        &quot;transporterId&quot;: 236,
+        &quot;shopIds&quot;: &quot;2665&quot;,
+        &quot;shopNames&quot;: &quot;测试&quot;,
+        &quot;isUse&quot;: 0,
+        &quot;createUser&quot;: 0,
+        &quot;updateUser&quot;: &quot;&quot;,
+        &quot;createDate&quot;: &quot;2016-04-28 17:17:40&quot;,
+        &quot;updateDate&quot;: &quot;&quot;,
+        &quot;pageHeight&quot;: &quot;&quot;,
+        &quot;pageWidth&quot;: 210,
+        &quot;pageTop&quot;: 2,
+        &quot;pageLeft&quot;: &quot;&quot;,
+        &quot;dmPrinterDetailTemplate&quot;: []
+      },
+      {
+        &quot;templateId&quot;: 131579700000010000,
+        &quot;templateType&quot;: &quot;电子面单&quot;,
+        &quot;templateName&quot;: &quot;打印模版&quot;,
+        &quot;stockId&quot;: 23025,
+        &quot;transporterId&quot;: 236,
+        &quot;shopIds&quot;: &quot;2665&quot;,
+        &quot;shopNames&quot;: &quot;测试&quot;,
+        &quot;isUse&quot;: 0,
+        &quot;createUser&quot;: 0,
+        &quot;updateUser&quot;: &quot;&quot;,
+        &quot;createDate&quot;: &quot;2016-04-28 16:06:42&quot;,
+        &quot;updateDate&quot;: &quot;&quot;,
+        &quot;pageHeight&quot;: &quot;&quot;,
+        &quot;pageWidth&quot;: 210,
+        &quot;pageTop&quot;: 2,
+        &quot;pageLeft&quot;: &quot;&quot;,
+        &quot;dmPrinterDetailTemplate&quot;: []
+      }
+    ]
+  }
+}
+</code></pre><h2>模板详情接口(用于获取模板内容)</h2>
+<h3>请求地址</h3>
+<pre><code>http://192.168.200.71:8080/wos/printerTemplate/getDmPrinterTemplate
+</code></pre><h3>请求数据格式</h3>
+<pre><code>{
+    &quot;templateUkid&quot;:&quot;131579700000010000&quot;
+}
+</code></pre><h3>返回数据格式</h3>
+<pre><code>{
+    &quot;templateId&quot;: 131579700000010000,
+    &quot;templateType&quot;: &quot;电子面单&quot;,
+    &quot;templateName&quot;: &quot;打印模版&quot;,
+    &quot;stockId&quot;: 23025,
+    &quot;transporterId&quot;: 236,
+    &quot;shopIds&quot;: &quot;2665&quot;,
+    &quot;shopNames&quot;: &quot;测试&quot;,
+    &quot;isUse&quot;: 0,
+    &quot;createUser&quot;: 0,
+    &quot;updateUser&quot;: &quot;&quot;,
+    &quot;createDate&quot;: &quot;2016-04-28 16:06:42&quot;,
+    &quot;updateDate&quot;: &quot;&quot;,
+    &quot;pageHeight&quot;: &quot;&quot;,
+    &quot;pageWidth&quot;: 210,
+    &quot;pageTop&quot;: 2,
+    &quot;pageLeft&quot;: &quot;&quot;,
+
+    &quot;dmPrinterDetailTemplate&quot; :[
+     {
+            &quot;templateDetailUkid&quot; : &quot;023666&quot;,
+            &quot;itemName&quot; : &quot;orderNo&quot;,
+            &quot;itemContent&quot; : &quot;订单号&quot;,
+            &quot;itemCode&quot; : &quot;orderNo&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;96&quot;,
+            &quot;itemLeft&quot; : &quot;122&quot;,
+            &quot;itemWidth&quot; : &quot;60&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+    },{
+            &quot;templateDetailUkid&quot; : &quot;2365555&quot;,
+            &quot;itemName&quot; : &quot;orderNo&quot;,
+            &quot;itemContent&quot; : &quot;订单号&quot;,
+            &quot;itemCode&quot; : &quot;orderNo&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;96&quot;,
+            &quot;itemLeft&quot; : &quot;122&quot;,
+            &quot;itemWidth&quot; : &quot;60&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+    }]
+}
+</code></pre><h2>模板设计编辑接口(用于新增和编辑模板内容)</h2>
+<h3>请求地址</h3>
+<pre><code> http://192.168.200.71:8080/wos/printerTemplate/modifyDmPrinterTemplate
+</code></pre><h3>请求数据格式</h3>
+<h4>列表页编辑按钮</h4>
+<p>此时只修改模板主表数据</p><pre><code>{
+
+    &quot;templateName&quot;:&quot;通用电子面单&quot;,
+    &quot;templateType&quot;: &quot;电子面单&quot;,
+    &quot;stockId&quot;: 23025,
+    &quot;transporterId&quot;: 236,
+    &quot;shopIds&quot;: &quot;2665&quot;,
+    &quot;shopNames&quot;: &quot;测试&quot;,
+    &quot;isUse&quot;: 0,
+    &quot;createUser&quot;: 0,
+    &quot;updateUser&quot;: &quot;&quot;,
+    &quot;createDate&quot;: &quot;2016-04-28 16:06:42&quot;,
+    &quot;updateDate&quot;: &quot;&quot;,
+    &quot;pageHeight&quot;: &quot;&quot;,
+    &quot;pageWidth&quot;: 210,
+    &quot;pageTop&quot;: 2,
+    &quot;pageLeft&quot;: &quot;&quot;,
+    &quot;dmPrinterDetailTemplate&quot; : []
+
+}
+</code></pre><h4>列表页设计按钮</h4>
+<p>此时请求数据会同时包括主表数据和从表数据</p><pre><code>{
+    &quot;templateName&quot;:&quot;通用电子面单&quot;,
+    &quot;templateType&quot;: &quot;电子面单&quot;,
+    &quot;stockId&quot;: 23025,
+    &quot;transporterId&quot;: 236,
+    &quot;shopIds&quot;: &quot;2665&quot;,
+    &quot;shopNames&quot;: &quot;测试&quot;,
+    &quot;isUse&quot;: 0,
+    &quot;createUser&quot;: 0,
+    &quot;updateUser&quot;: &quot;&quot;,
+    &quot;createDate&quot;: &quot;2016-04-28 16:06:42&quot;,
+    &quot;updateDate&quot;: &quot;&quot;,
+    &quot;pageHeight&quot;: &quot;&quot;,
+    &quot;pageWidth&quot;: 210,
+    &quot;pageTop&quot;: 2,
+    &quot;pageLeft&quot;: &quot;&quot;,
+    &quot;dmPrinterDetailTemplate&quot; : [
+        {
+            &quot;templateDetailUkid&quot; : &quot;0&quot;,
+            &quot;itemName&quot; : &quot;orderNo&quot;,
+            &quot;itemContent&quot; : &quot;订单号&quot;,
+            &quot;itemCode&quot; : &quot;orderNo&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;96&quot;,
+            &quot;itemLeft&quot; : &quot;122&quot;,
+            &quot;itemWidth&quot; : &quot;60&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;printer&quot;,
+            &quot;itemContent&quot; : &quot;打单员&quot;,
+            &quot;itemCode&quot; : &quot;printer&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;407&quot;,
+            &quot;itemLeft&quot; : &quot;118&quot;,
+            &quot;itemWidth&quot; : &quot;75&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;printTime&quot;,
+            &quot;itemContent&quot; : &quot;打单时间&quot;,
+            &quot;itemCode&quot; : &quot;printTime&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;407&quot;,
+            &quot;itemLeft&quot; : &quot;274&quot;,
+            &quot;itemWidth&quot; : &quot;100&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;userNick&quot;,
+            &quot;itemContent&quot; : &quot;买家昵称&quot;,
+            &quot;itemCode&quot; : &quot;userNick&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;119&quot;,
+            &quot;itemLeft&quot; : &quot;122&quot;,
+            &quot;itemWidth&quot; : &quot;120&quot;,
+            &quot;itemHeight&quot; : &quot;19&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;mobile&quot;,
+            &quot;itemContent&quot; : &quot;手机号码&quot;,
+            &quot;itemCode&quot; : &quot;mobile&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;142&quot;,
+            &quot;itemLeft&quot; : &quot;122&quot;,
+            &quot;itemWidth&quot; : &quot;120&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;province&quot;,
+            &quot;itemContent&quot; : &quot;省份&quot;,
+            &quot;itemCode&quot; : &quot;province&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;165&quot;,
+            &quot;itemLeft&quot; : &quot;126&quot;,
+            &quot;itemWidth&quot; : &quot;40&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;city&quot;,
+            &quot;itemContent&quot; : &quot;市(州)&quot;,
+            &quot;itemCode&quot; : &quot;city&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;165&quot;,
+            &quot;itemLeft&quot; : &quot;166&quot;,
+            &quot;itemWidth&quot; : &quot;80&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;district&quot;,
+            &quot;itemContent&quot; : &quot;区(县)&quot;,
+            &quot;itemCode&quot; : &quot;district&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;165&quot;,
+            &quot;itemLeft&quot; : &quot;246&quot;,
+            &quot;itemWidth&quot; : &quot;80&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        },
+        {
+            &quot;itemName&quot; : &quot;address&quot;,
+            &quot;itemContent&quot; : &quot;地址&quot;,
+            &quot;itemCode&quot; : &quot;address&quot;,
+            &quot;itemClass&quot; : 2,
+            &quot;itemTop&quot; : &quot;165&quot;,
+            &quot;itemLeft&quot; : &quot;326&quot;,
+            &quot;itemWidth&quot; : &quot;215&quot;,
+            &quot;itemHeight&quot; : &quot;20&quot;,
+            &quot;itemFontName&quot; : &quot;宋体&quot;,
+            &quot;itemFontSize&quot; : 9,
+            &quot;itemColor&quot; : &quot;#000000&quot;,
+            &quot;itemBold&quot; : 0,
+            &quot;itemItalic&quot; : 0,
+            &quot;itemUnderline&quot; : 0,
+            &quot;itemAlignment&quot; : 0,
+            &quot;itemAngle&quot; : 0,
+            &quot;itemPenWidth&quot; : 1,
+            &quot;itemPenHeight&quot; : &quot;&quot;,
+            &quot;itemOnlyRead&quot; : &quot;&quot;,
+            &quot;itemPreviewOnly&quot; : &quot;0&quot;
+        }
+    ]
+}
+</code></pre><h3>返回数据格式</h3>
+<pre><code>
+{
+    errorCode : 0, //错误代码：如果为0则表示成功，其他均为失败
+    errorMsg : ”error”, //错误信息。如果正确则为null
+    data :
+    {
+        templateId : ”21321”
+    } //成功时返回
+
+}
+</code></pre>
+      </section>
+  
+    </div>
+  </div>
+</div>
+      <footer class="footer">
+        <div class="container">
+          <p class="pull-right">
+            <a href="#">Back to top</a>
+          </p>
+          <p>此文档通过doxmate生成。主题借鉴Bootstrap API文档风格，注解基于<a href="https://github.com/visionmedia/dox">Dox</a>。欢迎关注doxmate作者<a href="http://weibo.com/shyvo" target="_blank">@朴灵</a></p>
+          <ul class="footer-links">
+            <li><a href="https://github.com/visionmedia/dox">Dox主页</a></li>
+            <li><a href="http://html5ify.com/doxmate">Doxmate主页</a></li>
+            <li><a href="https://github.com/JacksonTian/doxmate">Doxmate源码</a></li>
+            <li><a href="https://github.com/JacksonTian/doxmate/issues?state=open">提交bug</a></li>
+          </ul>
+      </div>
+    </footer>
+    <script>
+      $(function() {
+        $('pre').addClass('prettyprint linenums');
+        $('td pre').removeClass('prettyprint');
+        prettyPrint();
+        var $window = $(window);
+        var sidenav = $('.bs-docs-sidenav');
+        if (sidenav.height() < window.innerHeight) {
+          sidenav.affix({
+            offset: {
+              top: function () {
+                return $window.width() <= 980 ? 290 : 210
+              },
+              bottom: 200
+            }
+          });
+        } else {
+          sidenav.removeClass('affix');
+        }
+        $(".content").find('h1, h2, h3, h4, h5, h6').each(function () {
+          var node = $(this);
+          // 总是设置id
+          node.attr("id", node.data('id') || "index_" + node.text());
+        });
+
+        $('.bs-docs-sidenav .accordion-marker').on('click', function(event) {
+          var current = $(event.currentTarget);
+          current.find('.glyphicon').toggleClass('glyphicon-chevron-right glyphicon-chevron-down');
+        });
+      });
+    </script>
+  
+  </body>
+</html>
+

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>网仓三号 api管理平台</title>
+    <meta name="keywords" content="documentation,dox" />
+    <meta name="description" content="Generate your documentation." />
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+    <script src="assets/prettify.js"></script>
+    <script src="assets/jquery-1.8.2.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/base.css" />
+    <link href="assets/themes/github.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="indexcss/docs.css">
+    <style>
+            table {
+                border:1px solid #ccc;
+                border-left:0;
+                width:100%;
+            }
+            tr th {
+                border: 1px solid #ccc;
+                border-right:0;
+                background: #FF6537;
+                color:#fff;
+                height:40px;
+                padding: 5px 10px;
+            }
+            tr td {
+                text-align: left;
+                padding: 5px 10px;
+                border: 1px solid #ccc;
+                border-right:0;
+            }
+            tr:nth-child(odd) {
+              background: #f4f4f4;
+            }
+            table tr:hover  td{ background: #ccc;}
+      </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-static-top top-navbar" role="navigation">
+        <div class="navbar-inner">
+            <div class="container"> 
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class=""><a href="iscs.html">首页</a> </li>
+                        <li class=""><a href="index.html">文档中心</a> </li>
+                        <li class=""><a href="api.html">api数据类型</a> </li>
+                        <li class=""><a href="records.html">变更记录</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <header class="jumbotron subhead">
+      <div class="container">
+        <h1>doxmate <small>Version: 0.3.0 By @Jackson Tian</small></h1>
+        <p class="lead">
+          Generate your documentation.
+        </p>
+      </div>
+    </header>
+
+<div class="container content">
+  <div class="row">
+    <div class="col-md-3 bs-docs-sidebar">
+      <ul class="nav nav-list bs-docs-sidenav affix">
+
+  <li>
+		<div class="accordion" id="doxmate">
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<a href="#api_doxmate" class="api_side_link">doxmate</a>
+					<div class="accordion-marker">
+						<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#doxmate" href="#collapse_doxmate">
+							 <span class="glyphicon glyphicon-chevron-right"></span>
+						</a>
+					</div>
+				</div>
+				<div class="accordion-body collapse" id="collapse_doxmate">
+					<div class="accordion-inner">
+					<ul class="indexs">
+					
+						<li>
+							<a href="#doxmate_exports_getIndexs">getIndexs</a>
+						</li>
+					
+						<li>
+							<a href="#doxmate_exports_version">version</a>
+						</li>
+					
+						<li>
+							<a href="#doxmate_exports_process">process</a>
+						</li>
+					
+						<li>
+							<a href="#doxmate_exports_list">list</a>
+						</li>
+					
+						<li>
+							<a href="#doxmate_exports_export">export</a>
+						</li>
+					
+					</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+  </li>
+
+</ul>
+
+    </div>
+    <div class="col-md-9">
+      
+        <section id="api_doxmate" class="api">
+  <h2>doxmate: API索引</h2>
+  <ul class="indexs">
+  
+    <li>
+      <a href="#doxmate_exports_getIndexs">getIndexs</a>
+    </li>
+
+    <li>
+      <a href="#doxmate_exports_version">version</a>
+    </li>
+
+    <li>
+      <a href="#doxmate_exports_process">process</a>
+    </li>
+
+    <li>
+      <a href="#doxmate_exports_list">list</a>
+    </li>
+
+    <li>
+      <a href="#doxmate_exports_export">export</a>
+    </li>
+
+  </ul>
+  <hr />
+
+  
+  <h3 data-id="doxmate_exports_getIndexs">
+    getIndexs
+  </h3>
+  
+
+  <p>从Markdown中提取标题列表</p>
+
+  <p>方法签名</p>
+  <table class="table table-striped table-bordered table-hover table-condensed">
+  
+    <tr>
+      <td>方法</td>
+      <td colspan="3">exports.getIndexs()</td> 
+    </tr>
+  
+
+    <tr>
+      <td>返回</td>
+      <td>Array</td>
+      <td colspan="2"><pre>&lt;p&gt;返回标题列表&lt;/p&gt;</pre></td> </tr>
+  
+
+  
+  </table>
+  
+  
+  <h3 data-id="doxmate_exports_version">
+    version
+  </h3>
+  
+
+  <p>doxmate的版本号</p>
+
+  <p>方法签名</p>
+  <table class="table table-striped table-bordered table-hover table-condensed">
+  
+    <tr>
+      <td>属性</td>
+      <td colspan="3">exports.version</td> 
+    </tr>
+  
+
+  
+  </table>
+  
+  
+  <h3 data-id="doxmate_exports_process">
+    process
+  </h3>
+  
+
+  <p>处理目录，生成文档</p>
+
+  <p>方法签名</p>
+  <table class="table table-striped table-bordered table-hover table-condensed">
+  
+    <tr>
+      <td>方法</td>
+      <td colspan="3">exports.process()</td> 
+    </tr>
+  
+
+    <tr>
+      <td>参数</td>
+      <td>input(String)</td>
+      <td colspan="2"><p>输入目录路径</p></td>
+    </tr>
+  
+
+    <tr>
+      <td>参数</td>
+      <td>output(String)</td>
+      <td colspan="2"><p>输出目录路径</p></td>
+    </tr>
+  
+
+  
+  </table>
+  
+  
+  <h3 data-id="doxmate_exports_list">
+    list
+  </h3>
+  
+
+  <p>显示所有主题列表</p>
+
+  <p>方法签名</p>
+  <table class="table table-striped table-bordered table-hover table-condensed">
+  
+    <tr>
+      <td>方法</td>
+      <td colspan="3">exports.list()</td> 
+    </tr>
+  
+
+  
+  </table>
+  
+  
+  <h3 data-id="doxmate_exports_export">
+    export
+  </h3>
+  
+
+  <p>导出模板</p>
+
+  <p>方法签名</p>
+  <table class="table table-striped table-bordered table-hover table-condensed">
+  
+    <tr>
+      <td>方法</td>
+      <td colspan="3">exports.export()</td> 
+    </tr>
+  
+
+  
+  </table>
+  
+</section>
+
+      
+    </div>
+  </div>
+</div>
+      <footer class="footer">
+        <div class="container">
+          <p class="pull-right">
+            <a href="#">Back to top</a>
+          </p>
+          <p>此文档通过doxmate生成。主题借鉴Bootstrap API文档风格，注解基于<a href="https://github.com/visionmedia/dox">Dox</a>。欢迎关注doxmate作者<a href="http://weibo.com/shyvo" target="_blank">@朴灵</a></p>
+          <ul class="footer-links">
+            <li><a href="https://github.com/visionmedia/dox">Dox主页</a></li>
+            <li><a href="http://html5ify.com/doxmate">Doxmate主页</a></li>
+            <li><a href="https://github.com/JacksonTian/doxmate">Doxmate源码</a></li>
+            <li><a href="https://github.com/JacksonTian/doxmate/issues?state=open">提交bug</a></li>
+          </ul>
+      </div>
+    </footer>
+    <script>
+      $(function() {
+        $('pre').addClass('prettyprint linenums');
+        $('td pre').removeClass('prettyprint');
+        prettyPrint();
+        var $window = $(window);
+        var sidenav = $('.bs-docs-sidenav');
+        if (sidenav.height() < window.innerHeight) {
+          sidenav.affix({
+            offset: {
+              top: function () {
+                return $window.width() <= 980 ? 290 : 210
+              },
+              bottom: 200
+            }
+          });
+        } else {
+          sidenav.removeClass('affix');
+        }
+        $(".content").find('h1, h2, h3, h4, h5, h6').each(function () {
+          var node = $(this);
+          // 总是设置id
+          node.attr("id", node.data('id') || "index_" + node.text());
+        });
+
+        $('.bs-docs-sidenav .accordion-marker').on('click', function(event) {
+          var current = $(event.currentTarget);
+          current.find('.glyphicon').toggleClass('glyphicon-chevron-right glyphicon-chevron-down');
+        });
+      });
+    </script>
+  
+  </body>
+</html>
+
