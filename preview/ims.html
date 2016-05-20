@@ -8,7 +8,7 @@
 	<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
 	<!--<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />-->
 	<link href="toc/css/metroStyle/metroStyle.css" media="all" rel="stylesheet" type="text/css" />
-	<link href="toc/css/themes/github.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/css/themes/github-v2.min.css" media="all" rel="stylesheet" type="text/css" />
 	<style>
 		table {
 			border: 1px solid #ccc;
@@ -182,7 +182,7 @@
 </table>
 <h3 id="-">响应参数</h3>
 <h3 id="-">请求示例</h3>
-<pre><code> {
+<pre><code class="lang-json"> {
    &quot;currentPage&quot; : 1,
    &quot;filter&quot; : [
       {
@@ -195,8 +195,9 @@
    &quot;pageSize&quot; : 20,
    &quot;sort&quot; : &quot;orderId&amp;asc&quot;
 }
-</code></pre><h3 id="-">响应示例</h3>
-<pre><code>{
+</code></pre>
+<h3 id="-">响应示例</h3>
+<pre><code class="lang-json">{
    &quot;code&quot; : 0,
    &quot;data&quot; : {
       &quot;allNum&quot; : 17,
@@ -238,7 +239,8 @@
    },
    &quot;msg&quot; : &quot;&quot;
 }
-</code></pre><h3 id="-">错误码解释</h3>
+</code></pre>
+<h3 id="-">错误码解释</h3>
 <h2 id="-">退款单详情</h2>
 <h3 id="-url">请求url</h3>
 <pre><code>/refundInfo
@@ -275,13 +277,14 @@
 </table>
 <h3 id="-">响应参数</h3>
 <h3 id="-">请求示例</h3>
-<pre><code>
+<pre><code class="lang-json">
 {
 &quot;platformId&quot; :2,
 &quot;refundId&quot; :20,
 }
-</code></pre><h3 id="-">响应示例</h3>
-<pre><code>{
+</code></pre>
+<h3 id="-">响应示例</h3>
+<pre><code class="lang-json">{
    &quot;buyerNick&quot; : &quot;&quot;,
    &quot;downTime&quot; : &quot;2016-04-13 14:40:07&quot;,
    &quot;goodStatus&quot; : &quot;&quot;,
@@ -311,7 +314,8 @@
    &quot;subOrderId&quot; : &quot;&quot;,
    &quot;targetOrderUkid&quot; : 10
 }
-</code></pre><h3 id="-">错误码解释</h3>
+</code></pre>
+<h3 id="-">错误码解释</h3>
 <h2 id="-">退款单同步</h2>
 <h3 id="-url">请求url</h3>
 <pre><code>/refreshRefund
@@ -348,7 +352,7 @@
 </table>
 <h3 id="-">响应参数</h3>
 <h3 id="-">请求示例</h3>
-<pre><code>
+<pre><code class="lang-json">
 [
    {
       &quot;platformId&quot; : 2,
@@ -359,12 +363,14 @@
       &quot;refundId&quot; : 21
    }
 ]
-</code></pre><h3 id="-">响应示例</h3>
-<pre><code>{
+</code></pre>
+<h3 id="-">响应示例</h3>
+<pre><code class="lang-json">{
    &quot;fail&quot; : 2,
    &quot;success&quot; : 3
 }
-</code></pre><h3 id="-">错误码解释</h3>
+</code></pre>
+<h3 id="-">错误码解释</h3>
 <h1 id="-">原始订单</h1>
 <table>
 <thead>
@@ -395,7 +401,7 @@
 </code></pre><h3 id="-">响应参数</h3>
 <pre><code>
 </code></pre><h3 id="-">请求示例</h3>
-<pre><code>
+<pre><code class="lang-json">
 {
    &quot;currentPage&quot; : 1,
    &quot;filter&quot; : [
@@ -409,8 +415,9 @@
    &quot;pageSize&quot; : 20,
    &quot;sort&quot; : &quot;orderId&amp;asc&quot;
 }
-</code></pre><h3 id="-">响应示例</h3>
-<pre><code>{
+</code></pre>
+<h3 id="-">响应示例</h3>
+<pre><code class="lang-json">{
    &quot;body&quot; : &quot;&quot;,
    &quot;data&quot; : {
       &quot;allNum&quot; : 17,
@@ -463,7 +470,8 @@
    &quot;code&quot; : 0,
    &quot;msg&quot; : &quot;&quot;
 }
-</code></pre><h3 id="-">错误码解释</h3>
+</code></pre>
+<h3 id="-">错误码解释</h3>
 <h2 id="-">订单收货人信息查询</h2>
 <h3 id="-url">请求url</h3>
 <pre><code>/getRecipientInfo
@@ -482,7 +490,7 @@
     &quot;tradeUkid &quot;: 24
   }
 </code></pre><h3 id="-">响应示例</h3>
-<pre><code>{
+<pre><code class="lang-json">{
    &quot;body&quot; : &quot;&quot;,
    &quot;data&quot; : {
       &quot;baBuyer&quot; : {
@@ -541,7 +549,8 @@
    &quot;code&quot; : 0,
    &quot;msg&quot; : &quot;&quot;
 }
-</code></pre><h3 id="-">错误码解释</h3>
+</code></pre>
+<h3 id="-">错误码解释</h3>
 
 			</article>
 		</div>
