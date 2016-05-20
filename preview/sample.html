@@ -1,0 +1,120 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:sample</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<p>大家好，我是桑世龙，github和cnodejs上的i5ting，目前在天津创业，空弦科技cto，公司目前使用技术主要是nodejs，moajs作者，
+技术栈算所谓的MEAN（mongodb  + express + angular + node），所有代码都部署在阿里云上</p>
+<p>曾在新浪，网秦等工作过</p>
+<p>算全栈程序员吧，java、php、perl、ruby，bi、云计算、ios、android、h5都做过，带过前端、后端、数据分析、移动端负责人、做过首席架构师、技术总监</p>
+<p>哈哈</p>
+<p>我的名字i5ting，原因是我媳妇叫张婷，哈哈</p>
+<p>闲言少叙，下面开始正题 《高效编码习惯训练》</p>
+<p>本次主要讲4部分</p>
+<ul>
+<li>1) vsc编辑器用法（含nodejs调试）</li>
+<li>2) 习惯训练</li>
+<li>3) linux常用命令,和如何使用nodejs写命令行根据</li>
+<li>4）如何快速阅读源码</li>
+</ul>
+<p>先按照一小时讲，如果时间不够的话，明后天继续，讲的时候大家不要提问，讲完后一周内随时都可以提问</p>
+<p>先讲几点我对编程的思考</p>
+<ul>
+<li>如果没有目标就向钱看，有目标就向前看</li>
+<li>如果你不得不做，那就热爱它，直到玩出乐趣，没乐趣就换职业吧</li>
+<li>你要相信自己可以的，一旦你体会到玩的快乐，会上瘾的（真正的快乐掌握在少数人手里）</li>
+<li>一次只做一件事儿，抗干扰</li>
+<li>能偷懒的就偷懒，懒才有创造力，程序员应该是一个自豪的职业，而非拷贝粘贴</li>
+<li>时间应该用来思考，而不是浪费在写代码上</li>
+<li>工具是把双刃剑，用好了是绝对高效，值得付出</li>
+<li>键盘操作比较鼠标快，你不需要鼠标</li>
+<li>终端命令组合着用更灵活，足以完成各种任务</li>
+<li>殊途同归，大道至简，学会了一样在学其他就很简单了，原理、操作都是相同的</li>
+</ul>
+<p>最后一条，花钱了，要好好学，对得起学费</p>
+<p>在自己的心里给世界画一张地图，旅游如此，编码也是如此，想高效编码，从现在开始</p>
+<p>下面我们先看一下vsc用法</p>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
