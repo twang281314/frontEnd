@@ -434,12 +434,9 @@
 ---
 
 以下是 [@拔赤](http://weibo.com/jayli) 总结的前端技能图：
-![拔赤总结的前端技能图](https://raw.githubusercontent.com/nieweidong/fetool/master/img/fe.jpg)
+![拔赤总结的前端技能图](img/fe.jpg)
 
 ---
 
 完善 ing，慢慢把 __Evernote__ 和 __浏览器书签__ 里面的好东西慢慢捣腾到这儿，更欢迎 PR，谢谢。
 
-<img src="https://raw.githubusercontent.com/nieweidong/fetool/master/img/me.jpg" width="120" height="120" style="border-radius: 60px;" />
-
-#### 用自己青涩时的照片镇楼，哇哈哈~
