@@ -24,7 +24,3 @@
 
  360ued: http://uxc.360.cn/
 
-https://github.com/i5ting/tocmd.npm
-
-
->node bin/tocmd.js  -f ims.md  -o
