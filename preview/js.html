@@ -1,0 +1,911 @@
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<title>iscs_FrontEnd:js</title>
+	<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+	<!--<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />-->
+	<link href="toc/css/metroStyle/metroStyle.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/css/themes/github-v2.min.css" media="all" rel="stylesheet" type="text/css" />
+	<link type="text/css" rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+	<link type="text/css" rel="stylesheet" href="indexcss/docs.css">
+	<style>
+		table {
+			border: 1px solid #ccc;
+			border-left: 0;
+			width: 100%;
+			font-size: 14px;
+		}
+		
+		tbody,
+		thead,
+		tr {
+			width: 100%;
+		}
+		
+		tr th {
+			border: 1px solid #ccc;
+			border-right: 0;
+			background: #FF6537;
+			color: #fff;
+			height: 40px;
+			padding: 5px 10px;
+			font-size: 14px;
+		}
+		
+		tr td {
+			text-align: left;
+			padding: 5px 10px;
+			border: 1px solid #ccc;
+			border-right: 0;
+		}
+		
+		tr:nth-child(odd) {
+			background: #f4f4f4;
+		}
+		
+		table tr:hover td {
+			background: #ccc;
+		}
+		
+		.markdown-body h1 {
+			font-size: 20px;
+			color: #FF6537;
+		}
+		
+		.markdown-body h2 {
+			font-size: 18px;
+		}
+		
+		.markdown-body h3 {
+			font-size: 16px;
+		}
+		
+		#header {
+			width: 100%;
+			height: 25px;
+			background-color: #FF6537;
+			position: fixed;
+			top: 0;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li><a href="index.html">首页</a> </li>
+						<li><a href="main.html">文档中心</a> </li>
+						<!--<li><a href="api.html">api数据类型</a> </li>
+						<li><a href="records.html">变更记录</a> </li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div style='width:25%;'>
+			<ul id="tree" class="ztree" style='width:100%;margin-top:50px;'>
+
+			</ul>
+		</div>
+		<div id='readme' style='width:70%;margin-left:20%;margin-top:50px;'>
+			<article class='markdown-body'>
+				<blockquote>
+<p><a href="https://github.com/jsfront/src/edit/master/js.md">https://github.com/jsfront/src/edit/master/js.md</a></p>
+<h3 id="-">以下是常用的代码收集，没有任何技术含量，只是填坑的积累。转载请注明出处，谢谢。</h3>
+</blockquote>
+<h4 id="1-pc-js">1. PC - js</h4>
+<ul>
+<li><p>返回指定范围的随机数(m-n之间)的公式</p>
+<pre><code class="lang-javascript">Math.random()*(n-m)+m
+</code></pre>
+</li>
+<li><p><a href="http://stackoverflow.com/questions/1357118/event-preventdefault-vs-return-false">return false</a></p>
+</li>
+<li><p><a href="http://www.75team.com/archives/201">return false</a></p>
+<pre><code class="lang-javascript">// event.preventDefault()会阻挡预设要发生的事件.
+// event.stopPropagation()会阻挡发生冒泡事件.
+// 而return false则是前面两者的事情他都会做：
+// 他会做event.preventDefault();
+// 他会做event.stopPropagation();
+// 停止callback function的执行并且立即return回来
+</code></pre>
+</li>
+<li><p>防止被Iframe嵌套</p>
+<pre><code class="lang-javascript">if(top != self){
+  location.href = ”about:blank”;
+}
+</code></pre>
+</li>
+<li><p>两种图片lazy加载的方式
+第一个By JS中级交流群 成都-猎巫 第二个By 上海-zenki 
+```javascript
+// @description 准备为图片预加载使用的插件
+// 使用的图片容器css类名为lazy-load-wrap
+// 图片真实地址为data-lazy-src
+// 当lazy-load-wrap容器进入视口，则开始替换容器内所有需要延迟加载的图片路径，并更改容器的加载状态
+//第一种方法
+$.fn.compassLazyLoad=function(){
+  var _HEIGHT=window.innerHeight,
+  _lazyLoadWrap=$(&#39;.lazy-load-wrap&#39;);</p>
+<p>  var methods={</p>
+<pre><code>  setOffsetTop:function(){
+      $.each(_lazyLoadWrap,function(i,n){
+          $(n).attr({
+              &#39;top&#39;:n.offsetTop-_HEIGHT,
+              &#39;status&#39;:&#39;wait&#39;
+          });
+      })
+  },
+  isShow:function(){
+      var _scrollTop=$(window).scrollTop;
+      //利用image容器判断是否进入视口，而非image本身
+      $.each(_lazyLoadWrap,function(){
+          var _that=$(this);
+          if (_that.attr(&#39;status&#39;)===&#39;done&#39;) {
+              return;
+          };
+          if (_that.attr(&#39;top&#39;)&lt;=_scrollTop) {
+              _that.find(&#39;img[data-lazy-src]&#39;).each(function(i,n){
+                  n.src=$(n).data(&#39;lazy-src&#39;);
+              });
+              _that.attr(&#39;status&#39;,&#39;done&#39;);
+          };
+      })
+  },
+  scroll:function(){
+      $(window).on(&#39;scroll&#39;,function(){
+          methods.isShow();
+      });
+  },
+  init:function(){
+      methods.setOffsetTop();
+      methods.isShow();
+      methods.scroll();
+  }
+</code></pre><p>  };
+  methods.init();</p>
+</li>
+</ul>
+<p>}</p>
+<p>//第二种方法</p>
+<p>var exist=(function($){
+    var timer=null,
+    temp=[].slice.call($(&#39;.container&#39;));
+    ret={};</p>
+<pre><code>for(var i=0,len=temp.length-1;i&lt;=len;i++){
+    ret[i]=temp[i];
+}
+var isExist=function(winTop,winEnd){
+    for(var i in ret){
+        console.log(ret);
+        var item=ret[i],
+        eleTop=item.offsetTop,
+        eleEnd=eleTop+item.offsetHeight;
+
+        if((eleTop&gt;winTop&amp;&amp;eleTop&lt;=winEnd)||(eleEnd&gt;winTop&amp;&amp;eleEnd&lt;=winEnd)){
+            $(item).css(&#39;background&#39;,&#39;none&#39;);
+            new Tab($(item).attr(&#39;id&#39;),data).init;
+            delete ret[i];
+        }
+    }
+}
+return {
+    timer:timer;
+    isExist:isExist;
+};
+</code></pre><p>})($);</p>
+<p>//第三种方法
+Zepto(function ($) {
+    var swiper = new Swiper(&#39;.swiper-container&#39;, {
+        pagination: &#39;.swiper-pagination&#39;,
+        paginationClickable: true,
+        autoplay: 3000,
+        loop: true,
+        autoplayDisableOnInteraction: false
+    });
+    (function lazyLoad() {
+        var imgs = $(&quot;.lazyLoad&quot;);
+        var src = &#39;&#39;;
+        $.each(imgs, function (index, item) {
+            src = $(item).attr(&#39;data-src&#39;);
+            $(item).attr(&#39;src&#39;, src);
+        });
+    })();
+});
+$(function () {
+    var lazyLoadTimerId = null;
+    /// 智能加载事件
+    $(window).bind(&quot;scroll&quot;, function () {
+        clearTimeout(lazyLoadTimerId);
+        lazyLoadTimerId = setTimeout(function () {
+            // 延迟加载所有图片
+            var isHttp = (location.protocol === &quot;http:&quot;);
+            $(&quot;#ym_images img&quot;).each(function () {
+                var self = $(this);
+                if (self.filter(&quot;:above-the-fold&quot;).length &gt; 0) {
+                    var originUrl = self.attr(&quot;data-original&quot;);
+                    self.attr(&quot;src&quot;, originUrl);
+                }
+            });
+        }, 500);
+    });
+});</p>
+<pre><code>
+- 某年某月的1号为星期几
+```javascript
+var weekday = [&quot;星期日&quot;, &quot;星期一&quot;, &quot;星期二&quot;, &quot;星期三&quot;, &quot;星期四&quot;, &quot;星期五&quot;, &quot;星期六&quot;];
+weekday[new Date(2015, 9, 1).getDay()];    //2015年10月1号
+</code></pre><h4 id="2-mobile-js">2. Mobile - js</h4>
+<ul>
+<li><a href="http://caibaojian.com/browser-ios-or-android.html">js 判断IOS, 安卓</a><pre><code class="lang-javascript">var u = navigator.userAgent, app = navigator.appVersion;
+var isAndroid = u.indexOf(&#39;Android&#39;) &gt; -1 || u.indexOf(&#39;Linux&#39;) &gt; -1; //android终端或者uc浏览器
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+alert(&#39;是否是Android：&#39;+isAndroid);
+alert(&#39;是否是iOS：&#39;+isiOS);
+</code></pre>
+</li>
+</ul>
+<h4 id="3-weixin-http-loo2k-com-blog-detecting-wechat-client-">3. <a href="http://loo2k.com/blog/detecting-wechat-client/">微信 weixin</a></h4>
+<ul>
+<li><p>UserAgent 判断微信客户端</p>
+<pre><code class="lang-javascript">// Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12F70 MicroMessenger/6.1.5 NetType/WIFI
+function isWechat() {  
+  var ua = navigator.userAgent.toLowerCase();
+  return /micromessenger/i.test(ua) || /windows phone/i.test(ua);
+}
+</code></pre>
+</li>
+<li><p>JS接口安全域名不填写，分享onMenuShareAppMessage直接会取默认值。</p>
+<pre><code class="lang-javascript">// 分享onMenuShareAppMessage直接会取默认值
+</code></pre>
+</li>
+<li><p>关闭当前页面</p>
+<pre><code class="lang-javascript">WeixinJSBridge.call(&#39;closeWindow&#39;);
+</code></pre>
+</li>
+<li><p><a href="http://www.cnblogs.com/true_to_me/p/3565039.html">支付接口方法调用必须在addevent里边调用</a></p>
+<pre><code class="lang-javascript">document.addEventListener(&#39;WeixinJSBridgeReady&#39;, function onBridgeReady(){
+  that.initOrder();
+}, false);
+</code></pre>
+</li>
+<li><p>支付接口方法调用必须在</p>
+<pre><code class="lang-javascript">WeixinJSBridge.invoke(&#39;getBrandWCPayRequest&#39;, d, function(res){
+  if(res.err_msg == &quot;get_brand_wcpay_request:ok&quot;){
+      // alert(&quot;支付成功&quot;);
+      // union.release(d.orderId);
+      resetUrl();
+      paySuccess(&#39;home&#39;, d.orderId);
+  } else {
+      cancelOrder(d.orderId);
+      // alert(res.err_msg);
+  }
+  loading.hide();
+});
+</code></pre>
+</li>
+<li><p>瀑布流无限加载实例 </p>
+<pre><code class="lang-javascript">// be dependent on jquery &amp; jquery.infinitescroll.min.js
+// insert this &#39;&lt;div id=&quot;more&quot;&gt;&lt;a href=&quot;api?page=&quot;&gt;&lt;/a&gt;&lt;/div&gt;&#39; to your page.html
+(function($){
+$(function(){
+    var $container = $(&#39;.list-wrap-gd&#39;);
+    function layOutCallBack() {
+        $container.imagesLoaded(function(){
+            $container.masonry({
+                itemSelector: &#39;.item-bar&#39;,
+                gutter: 10
+            });
+        });
+        $container.imagesLoaded().progress( function() {
+            $container.masonry(&#39;layout&#39;);
+        });
+    }
+
+    layOutCallBack();
+
+    $container.infinitescroll({
+        navSelector : &quot;#more&quot;,
+        nextSelector : &quot;#more a&quot;,
+        itemSelector : &quot;.item-bar&quot;,
+        pixelsFromNavToBottom: 300,
+        loading:{
+            img: &quot;/images/masonry_loading.gif&quot;,
+            msgText: &#39; &#39;,
+            finishedMsg: &quot;&lt;em&gt;已经到最后一页&lt;/em&gt;&quot;,
+            finished: function(){
+                $(&quot;#more&quot;).remove();
+                $(&quot;#infscr-loading&quot;).hide();
+            }
+        },
+        errorCallback:function(){
+            $(window).unbind(&#39;.infscr&#39;);
+        },
+        pathParse: function (path, nextPage) {
+            var query = &quot;&quot;;
+            var keyword=$(&quot;#search_keyword&quot;).val();
+            var cat_id=$(&quot;#cat_id&quot;).val();
+            var brand_id=$(&quot;#brand_id&quot;).val();
+            var country_id = $(&quot;#country_id&quot;).val();
+            query = query + &quot;&amp;namekeyword=&quot;+keyword;
+            query = query +&quot;&amp;cat_id=&quot;+cat_id
+            query = query + &quot;&amp;brand_id=&quot; + brand_id; 
+            query = query + &quot;&amp;country_id=&quot; + country_id;
+            path = [path,query];
+            return path;
+        }
+    },
+
+    function(newElements) {
+        var $newElems = $( newElements ).css({ opacity: 0 });
+        $newElems.imagesLoaded(function(){
+            $newElems.animate({ opacity: 1 });
+            $container.masonry( &#39;appended&#39;, $newElems, true );
+            layOutCallBack();
+        });
+    });
+});
+})(jQuery);
+</code></pre>
+</li>
+<li><p><a href="https://www.snip2code.com/Snippet/176582/--iOS-Safari----input---focus-fixed-----">iOS，Safari浏览器，input等表单focus后fixed元素错位问题</a>
+```javascript
+if( /iPhone|iPod|iPad/i.test(navigator.userAgent) ) {
+$(document).on(&#39;focus&#39;, &#39;input, textarea&#39;, function()
+{
+   $(&#39;header&#39;).css(&quot;position&quot;, &#39;absolute&#39;);
+   $(&#39;footer&#39;).css(&quot;position&quot;, &#39;absolute&#39;);</p>
+<p>});</p>
+<p>$(document).on(&#39;blur&#39;, &#39;input, textarea&#39;, function()
+{</p>
+<pre><code> $(&#39;header&#39;).css(&quot;position&quot;, &#39;fixed&#39;);
+ $(&#39;footer&#39;).css(&quot;position&quot;, &#39;fixed&#39;);
+</code></pre><p>});
+} </p>
+</li>
+</ul>
+<pre><code>
+- 得到地理位置
+```javascript
+function getLocation(callback){
+  if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(
+              function(p){
+                  callback(p.coords.latitude, p.coords.longitude);
+              },
+              function(e){
+                  var msg = e.code + &quot;\n&quot; + e.message;
+              }
+      );
+  }
+}
+</code></pre><ul>
+<li><p><a href="http://isux.tencent.com/web-app-rem.html">rem计算适配</a></p>
+<pre><code class="lang-javascript">(function(doc, win){
+var docEl = doc.documentElement,
+    resizeEvt = &#39;orientationchange&#39; in window ? &#39;orientationchange&#39; : &#39;resize&#39;,
+    recalc = function(){
+        var clientWidth = docEl.clientWidth;
+        if(!clientWidth) return;
+        docEl.style.fontSize = 20 * (clientWidth / 320) + &#39;px&#39;;
+    };
+
+if(!doc.addEventListener) return;
+win.addEventListener(resizeEvt, recalc, false);
+doc.addEventListener(&#39;DOMContentLoaded&#39;, recalc, false);
+})(document, window);
+</code></pre>
+</li>
+<li><p><a href="http://www.html-js.com/article/3041">另外一种rem方案</a>
+```javascript
+var dpr, rem, scale;
+var docEl = document.documentElement;
+var fontEl = document.createElement(&#39;style&#39;);
+var metaEl = document.querySelector(&#39;meta[name=&quot;viewport&quot;]&#39;);</p>
+</li>
+</ul>
+<p>dpr = window.devicePixelRatio || 1;
+rem = docEl.clientWidth * 2 / 10;
+scale = 1 / dpr;</p>
+<p>// 设置viewport，进行缩放，达到高清效果
+metaEl.setAttribute(&#39;content&#39;, &#39;width=&#39; + dpr * docEl.clientWidth + &#39;,initial-scale=&#39; + scale + &#39;,maximum-scale=&#39; + scale + &#39;, minimum-scale=&#39; + scale + &#39;,user-scalable=no&#39;);</p>
+<p>// 设置data-dpr属性，留作的css hack之用
+docEl.setAttribute(&#39;data-dpr&#39;, dpr);</p>
+<p>// 动态写入样式
+docEl.firstElementChild.appendChild(fontEl);
+fontEl.innerHTML = &#39;html{font-size:&#39; + rem + &#39;px!important;}&#39;;</p>
+<p>// 给js调用的，某一dpr下rem和px之间的转换函数
+window.rem2px = function(v) {
+    v = parseFloat(v);
+    return v * rem;
+};
+window.px2rem = function(v) {
+    v = parseFloat(v);
+    return v / rem;
+};</p>
+<p>window.dpr = dpr;
+window.rem = rem;</p>
+<pre><code>
+- 获取js所在路径
+```js
+function getJsDir (src) {
+    var script = null;
+
+    if (src) {
+        script = [].filter.call(document.scripts, function (v) {
+            return v.src.indexOf(src) !== -1;
+        })[0];
+    } else {
+        script = document.scripts[document.scripts.length - 1];
+    }
+
+    return script ? script.src.substr(0, script.src.lastIndexOf(&#39;/&#39;)) : script;
+}
+</code></pre><ul>
+<li><p>从全局捕获错误</p>
+<pre><code class="lang-js">window.onerror = function (errMsg, scriptURI, lineNumber, columnNumber, errorObj) {
+  setTimeout(function () {
+      var rst = {
+          &quot;错误信息：&quot;: errMsg,
+          &quot;出错文件：&quot;: scriptURI,
+          &quot;出错行号：&quot;: lineNumber,
+          &quot;出错列号：&quot;: columnNumber,
+          &quot;错误详情：&quot;: errorObj
+      };
+
+      alert(JSON.stringify(rst, null, 10));
+  });
+};
+</code></pre>
+</li>
+<li><p><a href="https://www.zhihu.com/question/26228251/answer/32405529">如何通过 js 修改微信浏览器的title?</a></p>
+<pre><code class="lang-javascript">var $body = $(&#39;body&#39;);
+document.title = &#39;title&#39;; // hack在微信等webview中无法修改document.title的情况    
+var $iframe = $(&#39;&lt;iframe src=&quot;/favicon.ico&quot;&gt;&lt;/iframe&gt;&#39;).on(&#39;load&#39;, function(){ 
+  setTimeout(function(){ 
+      $iframe.off(&#39;load&#39;).remove() 
+  }, 0) 
+}).appendTo($body)
+</code></pre>
+</li>
+</ul>
+<h4 id="1-js">1. 常用方法 - js</h4>
+<ul>
+<li><p>字符串长度截取</p>
+<pre><code class="lang-js">function cutstr(str, len) {
+  var temp,
+      icount = 0,
+      patrn = /[^\x00-\xff]/，
+      strre = &quot;&quot;;
+  for (var i = 0; i &lt; str.length; i++) {
+      if (icount &lt; len - 1) {
+          temp = str.substr(i, 1);
+              if (patrn.exec(temp) == null) {
+                 icount = icount + 1
+          } else {
+              icount = icount + 2
+          }
+          strre += temp
+          } else {
+          break;
+      }
+  }
+  return strre + &quot;...&quot;
+}
+</code></pre>
+</li>
+<li><p>替换全部</p>
+<pre><code class="lang-js">String.prototype.replaceAll = function(s1, s2) {
+  return this.replace(new RegExp(s1, &quot;gm&quot;), s2)
+}
+`
+</code></pre>
+</li>
+<li><p>清除空格</p>
+<pre><code class="lang-js">String.prototype.trim = function() {
+  var reExtraSpace = /^\s*(.*?)\s+$/;
+  return this.replace(reExtraSpace, &quot;$1&quot;)
+}
+</code></pre>
+</li>
+<li><p>清除左空格/右空格</p>
+<pre><code class="lang-js">function ltrim(s){ return s.replace( /^(\s*|　*)/, &quot;&quot;); } 
+function rtrim(s){ return s.replace( /(\s*|　*)$/, &quot;&quot;); }
+</code></pre>
+</li>
+<li>判断是否以某个字符串开头<pre><code class="lang-js">String.prototype.startWith = function (s) {
+  return this.indexOf(s) == 0
+}
+</code></pre>
+</li>
+<li>判断是否以某个字符串结束    <pre><code class="lang-js">String.prototype.endWith = function (s) {
+  var d = this.length - s.length;
+  return (d &gt;= 0 &amp;&amp; this.lastIndexOf(s) == d)
+}
+</code></pre>
+</li>
+<li>转义html标签<pre><code class="lang-js">function HtmlEncode(text) {
+  return text.replace(/&amp;/g, &#39;&amp;&#39;).replace(/\&quot;/g, &#39;&quot;&#39;).replace(/&lt;/g, &#39;&lt;&#39;).replace(/&gt;/g, &#39;&gt;&#39;)
+}
+</code></pre>
+</li>
+<li>时间日期格式转换<pre><code class="lang-js">Date.prototype.Format = function(formatStr) {
+  var str = formatStr;
+  var Week = [&#39;日&#39;, &#39;一&#39;, &#39;二&#39;, &#39;三&#39;, &#39;四&#39;, &#39;五&#39;, &#39;六&#39;];
+  str = str.replace(/yyyy|YYYY/, this.getFullYear());
+  str = str.replace(/yy|YY/, (this.getYear() % 100) &gt; 9 ? (this.getYear() % 100).toString() : &#39;0&#39; + (this.getYear() % 100));
+  str = str.replace(/MM/, (this.getMonth() + 1) &gt; 9 ? (this.getMonth() + 1).toString() : &#39;0&#39; + (this.getMonth() + 1));
+  str = str.replace(/M/g, (this.getMonth() + 1));
+  str = str.replace(/w|W/g, Week[this.getDay()]);
+  str = str.replace(/dd|DD/, this.getDate() &gt; 9 ? this.getDate().toString() : &#39;0&#39; + this.getDate());
+  str = str.replace(/d|D/g, this.getDate());
+  str = str.replace(/hh|HH/, this.getHours() &gt; 9 ? this.getHours().toString() : &#39;0&#39; + this.getHours());
+  str = str.replace(/h|H/g, this.getHours());
+  str = str.replace(/mm/, this.getMinutes() &gt; 9 ? this.getMinutes().toString() : &#39;0&#39; + this.getMinutes());
+  str = str.replace(/m/g, this.getMinutes());
+  str = str.replace(/ss|SS/, this.getSeconds() &gt; 9 ? this.getSeconds().toString() : &#39;0&#39; + this.getSeconds());
+  str = str.replace(/s|S/g, this.getSeconds());
+  return str
+}
+</code></pre>
+</li>
+<li>判断是否为数字类型    <pre><code class="lang-js">function isDigit(value) {
+  var patrn = /^[0-9]*$/;
+  if (patrn.exec(value) == null || value == &quot;&quot;) {
+      return false
+  } else {
+      return true
+  }
+}
+</code></pre>
+</li>
+<li>设置cookie值<pre><code class="lang-js">function setCookie(name, value, Hours) {
+  var d = new Date();
+  var offset = 8;
+  var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+  var nd = utc + (3600000 * offset);
+  var exp = new Date(nd);
+  exp.setTime(exp.getTime() + Hours * 60 * 60 * 1000);
+  document.cookie = name + &quot;=&quot; + escape(value) + &quot;;path=/;expires=&quot; + exp.toGMTString() + &quot;;domain=360doc.com;&quot;
+}
+</code></pre>
+</li>
+<li>获取cookie值<pre><code class="lang-js">function getCookie(name) {
+  var arr = document.cookie.match(new RegExp(&quot;(^| )&quot; + name + &quot;=([^;]*)(;|$)&quot;));
+  if (arr != null) return unescape(arr[2]);
+  return null
+}
+</code></pre>
+</li>
+<li>加载样式文件表    <pre><code class="lang-js">function LoadStyle(url) {
+  try {
+      document.createStyleSheet(url)
+  } catch(e) {
+      var cssLink = document.createElement(&#39;link&#39;);
+      cssLink.rel = &#39;stylesheet&#39;;
+      cssLink.type = &#39;text/css&#39;;
+      cssLink.href = url;
+      var head = document.getElementsByTagName(&#39;head&#39;)[0];
+      head.appendChild(cssLink)
+  }
+}
+</code></pre>
+</li>
+<li>返回脚本内容<pre><code class="lang-js">function evalscript(s) {
+  if(s.indexOf(&#39;&lt;script&#39;) == -1) return s;
+  var p = /&lt;script[^\&gt;]*?&gt;([^\x00]*?)&lt;\/script&gt;/ig;
+  var arr = [];
+  while(arr = p.exec(s)) {
+      var p1 = /&lt;script[^\&gt;]*?src=\&quot;([^\&gt;]*?)\&quot;[^\&gt;]*?(reload=\&quot;1\&quot;)?(?:charset=\&quot;([\w\-]+?)\&quot;)?&gt;&lt;\/script&gt;/i;
+      var arr1 = [];
+      arr1 = p1.exec(arr[0]);
+      if(arr1) {
+          appendscript(arr1[1], &#39;&#39;, arr1[2], arr1[3]);
+      } else {
+          p1 = /&lt;script(.*?)&gt;([^\x00]+?)&lt;\/script&gt;/i;
+          arr1 = p1.exec(arr[0]);
+          appendscript(&#39;&#39;, arr1[2], arr1[1].indexOf(&#39;reload=&#39;) != -1);
+      }
+  }
+  return s;
+}
+</code></pre>
+</li>
+<li>清除脚本内容<pre><code class="lang-js">function stripscript(s) {
+  return s.replace(/&lt;script.*?&gt;.*?&lt;\/script&gt;/ig, &#39;&#39;);
+}
+</code></pre>
+</li>
+<li><p>动态加载脚本文件</p>
+<pre><code class="lang-js">function appendscript(src, text, reload, charset) {
+  var id = hash(src + text);
+  if(!reload &amp;&amp; in_array(id, evalscripts)) return;
+  if(reload &amp;&amp; $(id)) {
+      $(id).parentNode.removeChild($(id));
+  }
+
+  evalscripts.push(id);
+  var scriptNode = document.createElement(&quot;script&quot;);
+  scriptNode.type = &quot;text/javascript&quot;;
+  scriptNode.id = id;
+  scriptNode.charset = charset ? charset : (BROWSER.firefox ? document.characterSet : document.charset);
+  try {
+      if(src) {
+          scriptNode.src = src;
+          scriptNode.onloadDone = false;
+          scriptNode.onload = function () {
+              scriptNode.onloadDone = true;
+              JSLOADED[src] = 1;
+           };
+           scriptNode.onreadystatechange = function () {
+               if((scriptNode.readyState == &#39;loaded&#39; || scriptNode.readyState == &#39;complete&#39;) &amp;&amp; !scriptNode.onloadDone) {
+                  scriptNode.onloadDone = true;
+                  JSLOADED[src] = 1;
+              }
+           };
+      } else if(text){
+          scriptNode.text = text;
+      }
+      document.getElementsByTagName(&#39;head&#39;)[0].appendChild(scriptNode);
+  } catch(e) {}
+}
+</code></pre>
+</li>
+<li>返回按ID检索的元素对象<pre><code class="lang-js">function $(id) {
+  return !id ? null : document.getElementById(id);
+}
+</code></pre>
+</li>
+<li>检验URL链接是否有效    <pre><code class="lang-js">function getUrlState(URL){ 
+  var xmlhttp = new ActiveXObject(&quot;microsoft.xmlhttp&quot;); 
+  xmlhttp.Open(&quot;GET&quot;,URL, false);  
+  try{  
+          xmlhttp.Send(); 
+  }catch(e){
+  }finally{ 
+      var result = xmlhttp.responseText; 
+      if(result){
+          if(xmlhttp.Status==200){ 
+              return(true); 
+           }else{ 
+                 return(false); 
+           } 
+       }else{ 
+           return(false); 
+       } 
+  }
+}
+</code></pre>
+</li>
+<li>获取当前路径<pre><code class="lang-js">var currentPageUrl = &quot;&quot;;
+if (typeof this.href === &quot;undefined&quot;) {
+  currentPageUrl = document.location.toString().toLowerCase();
+}else {
+  currentPageUrl = this.href.toString().toLowerCase();
+}
+</code></pre>
+</li>
+<li>获取页面高度<pre><code class="lang-js">function getPageHeight(){
+  var g = document, a = g.body, f = g.documentElement, d = g.compatMode == &quot;BackCompat&quot;
+                  ? a
+                  : g.documentElement;
+  return Math.max(f.scrollHeight, a.scrollHeight, d.clientHeight);
+}
+</code></pre>
+</li>
+<li>获取页面可视宽度<pre><code class="lang-js">function getPageViewWidth(){
+  var d = document, a = d.compatMode == &quot;BackCompat&quot; ? 
+                        d.body: d.documentElement;
+  return a.clientWidth;
+}
+</code></pre>
+</li>
+<li>获取页面宽度<pre><code class="lang-js">function getPageWidth(){
+  var g = document, a = g.body, f = g.documentElement, d = g.compatMode == &quot;BackCompat&quot;?
+                        a: g.documentElement;
+  return Math.max(f.scrollWidth, a.scrollWidth, d.clientWidth);
+}
+</code></pre>
+</li>
+<li>随机数时间戳<pre><code class="lang-js">function uniqueId(){
+  var a=Math.random,b=parseInt;
+  return Number(new Date()).toString()+b(10*a())+b(10*a())+b(10*a());
+}
+</code></pre>
+</li>
+<li>日期格式化函数<pre><code class="lang-js">Date.prototype.format = function(format){
+  var o = {
+      &quot;M+&quot; : this.getMonth()+1, //month
+      &quot;d+&quot; : this.getDate(),    //day
+      &quot;h+&quot; : this.getHours(),   //hour
+      &quot;m+&quot; : this.getMinutes(), //minute
+      &quot;s+&quot; : this.getSeconds(), //second
+      &quot;q+&quot; : Math.floor((this.getMonth()+3)/3),  //quarter
+      &quot;S&quot; : this.getMilliseconds() //millisecond
+  };
+  if(/(y+)/.test(format)) format=format.replace(RegExp.$1,
+(this.getFullYear()+&quot;&quot;).substr(4 - RegExp.$1.length));
+  for(var k in o){
+      if(new RegExp(&quot;(&quot;+ k +&quot;)&quot;).test(format))
+          format = format.replace(RegExp.$1,RegExp.$1.length==1 ? o[k] :(&quot;00&quot;+ o[k]).substr((&quot;&quot;+ o[k]).length));
+  }
+  return format;
+}
+//调用
+//new Date().format(&quot;yyyy-MM-dd hh:mm:ss&quot;);
+</code></pre>
+</li>
+<li>返回顶部的通用方法<pre><code class="lang-js">function backTop(btnId) {
+  var btn = document.getElementById(btnId);
+  var d = document.documentElement;
+  var b = document.body;
+  window.onscroll = set;
+  btn.style.display = &quot;none&quot;;
+  btn.onclick = function() {
+      btn.style.display = &quot;none&quot;;
+      window.onscroll = null;
+      this.timer = setInterval(function() {
+          d.scrollTop -= Math.ceil((d.scrollTop + b.scrollTop) * 0.1);
+          b.scrollTop -= Math.ceil((d.scrollTop + b.scrollTop) * 0.1);
+          if ((d.scrollTop + b.scrollTop) == 0) clearInterval(btn.timer, window.onscroll = set);
+          }, 10);
+  };
+  function set() {
+      btn.style.display = (d.scrollTop + b.scrollTop &gt; 100) ? &#39;block&#39;: &quot;none&quot;
+  }
+};
+backTop(&#39;goTop&#39;);
+</code></pre>
+</li>
+<li>获得URL中GET参数值<pre><code class="lang-js">// 用法：如果地址是 test.htm?t1=1&amp;t2=2&amp;t3=3, 那么能取得：GET[&quot;t1&quot;], GET[&quot;t2&quot;], GET[&quot;t3&quot;]
+function get_get(){ 
+  querystr = window.location.href.split(&quot;?&quot;)
+  if(querystr[1]){
+      GETs = querystr[1].split(&quot;&amp;&quot;);
+      GET = [];
+      for(i=0;i&lt;GETs.length;i++){
+            tmp_arr = GETs.split(&quot;=&quot;)
+            key=tmp_arr[0]
+            GET[key] = tmp_arr[1]
+      }
+  }
+  return querystr[1];
+}
+</code></pre>
+</li>
+<li>数组去重<pre><code class="lang-js">String.prototype.unique=function(){
+  var x=this.split(/[\r\n]+/);
+  var y=&#39;&#39;;
+  for(var i=0;i&lt;x.length;i++){
+      if(!new RegExp(&quot;^&quot;+x.replace(/([^\w])/ig,&quot;\\$1&quot;)+&quot;$&quot;,&quot;igm&quot;).test(y)){
+          y+=x+&quot;\r\n&quot;
+      }
+  }
+  return y
+};
+</code></pre>
+</li>
+<li>按字典顺序，对每行进行数组排序<pre><code class="lang-js">function SetSort(){
+  var text=K1.value.split(/[\r\n]/).sort().join(&quot;\r\n&quot;);//顺序
+  var test=K1.value.split(/[\r\n]/).sort().reverse().join(&quot;\r\n&quot;);//反序
+  K1.value=K1.value!=text?text:test;
+}
+</code></pre>
+</li>
+<li>字符串反序输出<pre><code class="lang-js">function IsReverse(text){
+  return text.split(&#39;&#39;).reverse().join(&#39;&#39;);
+}
+</code></pre>
+</li>
+<li>金额大写转换函数<pre><code class="lang-js">//格式转换
+function transform(tranvalue) {
+  try {
+      var i = 1;
+      var dw2 = new Array(&quot;&quot;, &quot;万&quot;, &quot;亿&quot;); //大单位
+      var dw1 = new Array(&quot;拾&quot;, &quot;佰&quot;, &quot;仟&quot;); //小单位
+      var dw = new Array(&quot;零&quot;, &quot;壹&quot;, &quot;贰&quot;, &quot;叁&quot;, &quot;肆&quot;, &quot;伍&quot;, &quot;陆&quot;, &quot;柒&quot;, &quot;捌&quot;, &quot;玖&quot;); //整数部分用
+      //以下是小写转换成大写显示在合计大写的文本框中     
+      //分离整数与小数
+      var source = splits(tranvalue);
+      var num = source[0];
+      var dig = source[1];
+      //转换整数部分
+      var k1 = 0; //计小单位
+      var k2 = 0; //计大单位
+      var sum = 0;
+      var str = &quot;&quot;;
+      var len = source[0].length; //整数的长度
+      for (i = 1; i &lt;= len; i++) {
+            var n = source[0].charAt(len - i); //取得某个位数上的数字
+            var bn = 0;
+            if (len - i - 1 &gt;= 0) {
+              bn = source[0].charAt(len - i - 1); //取得某个位数前一位上的数字
+            }
+            sum = sum + Number(n);
+            if (sum != 0) {
+              str = dw[Number(n)].concat(str); //取得该数字对应的大写数字，并插入到str字符串的前面
+              if (n == &#39;0&#39;) sum = 0;
+            }
+            if (len - i - 1 &gt;= 0) { //在数字范围内
+              if (k1 != 3) { //加小单位
+                    if (bn != 0) {
+                      str = dw1[k1].concat(str);
+                    }
+                    k1++;
+              } else { //不加小单位，加大单位
+                    k1 = 0;
+                    var temp = str.charAt(0);
+                    if (temp == &quot;万&quot; || temp == &quot;亿&quot;) //若大单位前没有数字则舍去大单位
+                    str = str.substr(1, str.length - 1);
+                    str = dw2[k2].concat(str);
+                    sum = 0;
+              }
+            }
+            if (k1 == 3){ //小单位到千则大单位进一
+              k2++;
+            }
+      }
+      //转换小数部分
+      var strdig = &quot;&quot;;
+      if (dig != &quot;&quot;) {
+            var n = dig.charAt(0);
+            if (n != 0) {
+              strdig += dw[Number(n)] + &quot;角&quot;; //加数字
+            }
+            var n = dig.charAt(1);
+            if (n != 0) {
+              strdig += dw[Number(n)] + &quot;分&quot;; //加数字
+            }
+      }
+      str += &quot;元&quot; + strdig;
+  } catch(e) {
+      return &quot;0元&quot;;
+  }
+  return str;
+}
+//拆分整数与小数
+function splits(tranvalue) {
+  var value = new Array(&#39;&#39;, &#39;&#39;);
+  temp = tranvalue.split(&quot;.&quot;);
+  for (var i = 0; i &lt; temp.length; i++) {
+      value = temp;
+  }
+  return value;
+}
+</code></pre>
+</li>
+</ul>
+
+			</article>
+		</div>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+<script type="text/javascript" src="toc/js/prettify.js"></script>
+
+<SCRIPT type="text/javascript">
+	$(function() {
+		var css_conf = eval(markdown_panel_style);
+		$('#readme').css(css_conf)
+
+		var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+		$('pre').addClass('prettyprint linenums');
+		$('td pre').removeClass('prettyprint');
+		prettyPrint();
+
+	});
+</SCRIPT>

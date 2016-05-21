@@ -1,0 +1,469 @@
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<title>iscs_FrontEnd:css</title>
+	<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+	<!--<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />-->
+	<link href="toc/css/metroStyle/metroStyle.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/css/themes/github-v2.min.css" media="all" rel="stylesheet" type="text/css" />
+	<link type="text/css" rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+	<link type="text/css" rel="stylesheet" href="indexcss/docs.css">
+	<style>
+		table {
+			border: 1px solid #ccc;
+			border-left: 0;
+			width: 100%;
+			font-size: 14px;
+		}
+		
+		tbody,
+		thead,
+		tr {
+			width: 100%;
+		}
+		
+		tr th {
+			border: 1px solid #ccc;
+			border-right: 0;
+			background: #FF6537;
+			color: #fff;
+			height: 40px;
+			padding: 5px 10px;
+			font-size: 14px;
+		}
+		
+		tr td {
+			text-align: left;
+			padding: 5px 10px;
+			border: 1px solid #ccc;
+			border-right: 0;
+		}
+		
+		tr:nth-child(odd) {
+			background: #f4f4f4;
+		}
+		
+		table tr:hover td {
+			background: #ccc;
+		}
+		
+		.markdown-body h1 {
+			font-size: 20px;
+			color: #FF6537;
+		}
+		
+		.markdown-body h2 {
+			font-size: 18px;
+		}
+		
+		.markdown-body h3 {
+			font-size: 16px;
+		}
+		
+		#header {
+			width: 100%;
+			height: 25px;
+			background-color: #FF6537;
+			position: fixed;
+			top: 0;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li><a href="index.html">首页</a> </li>
+						<li><a href="main.html">文档中心</a> </li>
+						<!--<li><a href="api.html">api数据类型</a> </li>
+						<li><a href="records.html">变更记录</a> </li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div style='width:25%;'>
+			<ul id="tree" class="ztree" style='width:100%;margin-top:50px;'>
+
+			</ul>
+		</div>
+		<div id='readme' style='width:70%;margin-left:20%;margin-top:50px;'>
+			<article class='markdown-body'>
+				<h3 id="-">以下是常用的代码收集，没有任何技术含量，只是填坑的积累。转载请注明出处，谢谢。</h3>
+<h4 id="1-css-2-x">1. css 2.x</h4>
+<ul>
+<li><p>文字换行</p>
+<pre><code class="lang-css">/*强制不换行*/
+white-space:nowrap;
+/*自动换行*/
+word-wrap: break-word;
+word-break: normal;
+/*强制英文单词断行*/
+word-break:break-all;
+</code></pre>
+</li>
+<li><p>两端对齐</p>
+<pre><code class="lang-css">text-align:justify;text-justify:inter-ideogra
+</code></pre>
+</li>
+<li><p><a href="http://www.cnblogs.com/niao/archive/2012/09/07/2674511.html">去掉Webkit(chrome)浏览器中input(文本框)或textarea的黄色焦点框</a></p>
+<pre><code class="lang-css">input,button,select,textarea{ outline:none;}
+textarea{ font-size:13px; resize:none;}
+</code></pre>
+</li>
+<li><p><a href="http://www.tuicool.com/articles/EZ777n">去掉chrome记住密码后自动填充表单的黄色背景</a></p>
+</li>
+<li><p>ie6: position:fixed
+```css
+.fixed-top /<em> position fixed Top </em>/{position:fixed;bottom:auto;top:0; }</p>
+</li>
+<li><p>html .fixed-top /<em> IE6 position fixed Top </em>/{position:absolute;bottom:auto;top:expression(eval(document.documentElement.scrollTop));}
+*html{background-image:url(about:blank);background-attachment:fixed;}
+```</p>
+</li>
+<li><p>clearfix
+```css
+.clearfix:after{visibility:hidden;display:block;font-size:0;content:&quot; &quot;;clear:both;height:0;}
+.clearfix{display:inline-block;}
+html[xmlns] .clearfix{display:block;}</p>
+</li>
+<li>html .clearfix{height:1%;}</li>
+</ul>
+<p>.clearfix{*zoom: 1;}
+.clearfix:after{clear:both;display:table;content:&quot;”;}</p>
+<p>.clearfix{overflow:hidden;_zoom:1;}</p>
+<pre><code>[http://www.daqianduan.com/3606.html](http://www.daqianduan.com/3606.html)
+
+- seperate-table
+```css
+.tab{border-collapse:separate;border:1px solid #e0e0e0;}
+.tab th,.tab td{padding:3px;font-size:12px;background:#f5f9fb;border:1px solid;border-color:#fff #deedf6 #deedf6 #fff;}
+.tab th{background:#edf4f0;}
+.tab tr.even td{background:#fff;}
+</code></pre><pre><code class="lang-html">&lt;table class=&quot;tab&quot; width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;
+    &lt;tr&gt;
+        &lt;th&gt;111&lt;/th&gt;
+        &lt;td&gt;222&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th&gt;111&lt;/th&gt;
+        &lt;td&gt;222&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<ul>
+<li>min-height: 最小高度兼容代码<pre><code class="lang-css">.minheight500{min-height:500px;height:auto !important;height:500px;overflow:visible;}
+</code></pre>
+</li>
+<li>鼠标不允许点击<pre><code class="lang-css">cursor:not-allowed;
+</code></pre>
+</li>
+<li><p>mac font: osx平台字体优化</p>
+<pre><code class="lang-css">font-family:&quot;Hiragino Sans GB&quot;,&quot;Hiragino Sans GB W3&quot;,&#39;微软雅黑&#39;;
+</code></pre>
+</li>
+<li><p>文字过多后显示省略号</p>
+<pre><code class="lang-css">.ellipsis,.ell{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+</code></pre>
+</li>
+</ul>
+<h4 id="2-css-3">2. css 3</h4>
+<ul>
+<li><p>title 换行</p>
+<pre><code class="lang-html">&amp;#13;
+</code></pre>
+</li>
+<li><p>关闭 x 符号</p>
+<pre><code class="lang-html">&amp;#215;
+</code></pre>
+</li>
+<li><p>投影
+```css
+.b{box-shadow:inset 1px -1px 0 #f1f1f1;text-shadow:1px 1px 0px #630;}
+filter:progid:DXImageTransform.Microsoft.gradient(enabled=&#39;true&#39;,startColorstr=&#39;#99000000&#39;,endColorstr=&#39;#99000000&#39;);background:rgba(0,0,0,.6);</p>
+</li>
+</ul>
+<p>background:rgba(0,0,0,0.5);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=&#39;#50000000&#39;,endColorstr=&#39;#50000000&#39;)\9;</p>
+<pre><code>- [search占位](http://www.qianduan.net/search-box-style-custom-webkit.html)
+```css
+::-webkit-input-placeholder {}
+::-moz-input-placeholder {}
+input:focus::-webkit-input-placeholder { color: transparent; }
+-webkit-appearance:none;  google边框去除
+input[type=&quot;search&quot;]{-webkit-appearance:textfield;} // 去除chrome默认样式
+http://i.wanz.im/2011/02/04/remove_border_from_input_type_search/
+http://blog.csdn.net/do_it__/article/details/6789699
+line-height: normal; /* for non-ie */
+line-height: 22px\9; /* for ie */
+</code></pre><ul>
+<li><p><a href="http://www.colorzilla.com/gradient-editor/">全部浏览器的兼容代码生成</a>
+<a href="http://segmentfault.com/a/1190000000362621">CSS 实现 textArea 的 placeholder 换行</a></p>
+</li>
+<li><p>阻止默认事件</p>
+<pre><code class="lang-css">pointer-events:none;
+</code></pre>
+</li>
+<li><p><a href="http://ntesmailfetc.blog.163.com/blog/static/20628706120139184457401/">去掉输入框聚焦时候的白色背景</a></p>
+<pre><code class="lang-css">-webkit-user-modify: read-write-plaintext-only;
+</code></pre>
+</li>
+<li><p><a href="http://www.cnblogs.com/hongru/archive/2013/02/06/2902938.html">input:focus时input不随软键盘升起而抬高的情况</a></p>
+<pre><code class="lang-css">:focus{-webkit-tap-highlight-color:rgba(255, 255, 255, 0);
+-webkit-user-modify:read-write-plaintext-only;}
+</code></pre>
+</li>
+<li><p>变灰 gray</p>
+<pre><code class="lang-css">html{
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: url(&quot;data:image/svg+xml;utf8,&lt;svg xmlns=\&#39;http://www.w3.org/2000/svg\&#39;&gt;&lt;filter id=\&#39;grayscale\&#39;&gt;&lt;feColorMatrix type=\&#39;matrix\&#39; values=\&#39;0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\&#39;/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale&quot;);
+  filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+  -webkit-filter: grayscale(1);
+}
+</code></pre>
+</li>
+<li>firefox 阻止选中<pre><code class="lang-css">-moz-user-focus:ignore;-moz-user-input:disabled;-moz-user-select:none;
+</code></pre>
+</li>
+<li>箭头
+```css
+display:block;border:solid transparent;line-height: 0;width:0; height:0;border-top:solid #0288ce;border-width:8px 6px 0 6px;</li>
+</ul>
+<p>border-style:solid; border-width:7px; border-color:transparent transparent transparent #ff7020;
+position:absolute;top: 0;left: 0;border-width:20px;border-style:solid;border-color:#d1ddde transparent transparent #d1ddde;</p>
+<pre><code>ie6 bug测试，把border-style设为dashed.
+
+- 取消textarea右下角可拖动手柄
+```css
+resize:none
+</code></pre><ul>
+<li>取消chrome form表单的聚焦边框<pre><code class="lang-css">input,button,select,textarea{outline:none}
+textarea{resize:none}
+</code></pre>
+</li>
+<li>取消a链接的黄色边框<pre><code class="lang-css">a{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+</code></pre>
+</li>
+<li>取消input,button焦点或点击时蓝色边框<pre><code class="lang-css">input{outline:none;}
+</code></pre>
+</li>
+<li>webkit 水平居中<pre><code class="lang-css">display:-webkit-box;-webkit-box-pack:center; -webkit-box-align: center;
+position:absolute; top:50%;left:50%;transform:translate(-50%,-50%);
+</code></pre>
+</li>
+<li>取消chrome 搜索x提示<pre><code class="lang-css">input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+  display: none;
+}
+</code></pre>
+</li>
+<li><a href="http://stackoverflow.com/questions/2338102/override-browser-form-filling-and-input-highlighting-with-html-css">chrome取消默认黄色背景</a><pre><code class="lang-css">input:-webkit-autofill {-webkit-box-shadow: 0 0 0px 1000px white inset;}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+autocomplete=&quot;off&quot;
+</code></pre>
+</li>
+<li>手机版本网页a标记虚线框问题<pre><code class="lang-css">a:focus {outline:none;-moz-outline:none;}
+</code></pre>
+</li>
+<li>焦点去除背景<pre><code class="lang-css">-webkit-tap-highlight-color:rgba(255, 255, 255, 0);
+-webkit-tap-highlight-color:transparent;  // i.e. Nexus5/Chrome and Kindle Fire HD 7&#39;&#39;
+</code></pre>
+</li>
+<li><p>placeholder占位符颜色自定义</p>
+<pre><code class="lang-css">input:-moz-placeholder {color: #369;}
+::-webkit-input-placeholder {color:#369;}
+</code></pre>
+</li>
+<li><p><a href="http://hi.barretlee.com/2014/03/31/tap-highlight-in-webview/">IOS 禁用高亮</a></p>
+<pre><code class="lang-css">-webkit-tap-highlight-color:rgba(255,0,0,0.5);-webkit-tap-highlight-color:transparent; /* For some Androids */
+</code></pre>
+</li>
+<li><p>IOS iframe 滚动 <a href="http://www.cnblogs.com/flash3d/archive/2013/09/28/3343877.html">滚动回弹特效</a></p>
+<pre><code class="lang-css">-webkit-overflow-scrolling:touch;overflow-y:scroll;
+</code></pre>
+</li>
+<li><p><a href="http://www.qianduan.net/introduce-user-select/">禁止选中文本</a></p>
+<pre><code class="lang-css">-moz-user-select:none;
+-webkit-user-select:none;
+-ms-user-select:none;
+user-select:none;
+</code></pre>
+</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2013/11/%E5%B0%8Ftip-%E4%BD%BF%E7%94%A8css%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E6%88%90%E6%A8%A1%E7%B3%8A%E6%AF%9B%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C/">模糊(毛玻璃)效果1</a></li>
+<li><a href="http://mao.li/css3-blur-filter-pratice/">模糊(毛玻璃)效果2</a></li>
+<li><p><a href="http://codepen.io/ariona/pen/geFIK">模糊(毛玻璃)逼真效果</a></p>
+<pre><code class="lang-css">.blur {    
+  -webkit-filter: blur(10px); /* Chrome, Opera */
+     -moz-filter: blur(10px);
+      -ms-filter: blur(10px);    
+          filter: blur(10px);    
+}
+</code></pre>
+<pre><code class="lang-html">&lt;img src=&quot;mm1.jpg&quot; /&gt;
+&lt;img src=&quot;mm1.jpg&quot; class=&quot;blur&quot; /&gt;
+</code></pre>
+</li>
+<li><p>显示旋转加载图片，<a href="https://github.com/chalecao/chale/blob/master/iscroll.js">下拉加载数据</a>
+```css
+#pullDown .pullDownIcon{display:inline-block;vertical-align:middle;width:40px;height:40px;background:url(<a href="https://github.com/chalecao/chale/blob/master/pull-icon%402x.png">https://github.com/chalecao/chale/blob/master/pull-icon%402x.png</a>) 0 0 no-repeat;-webkit-background-size:40px 80px;background-size:40px 80px;-webkit-transition-property:-webkit-transform;-webkit-transition-duration:250ms}
+#pullDown .pullDownIcon{-webkit-transform:rotate(0deg) translateZ(0)}
+#pullDown .pullDownLabel{display:inline-block;vertical-align:middle;margin-left:5px;}
+#pullDown.flip .pullDownIcon{-webkit-transform:rotate(-180deg) translateZ(0)}
+#pullDown.loading .pullDownIcon{background-position:0 100%;-webkit-transform:rotate(0deg) translateZ(0);-webkit-transition-duration:0ms;-webkit-animation-name:loading;-webkit-animation-duration:2s;-webkit-animation-iteration-count:infinite;-webkit-animation-timing-function:linear}
+@-webkit-keyframes loading{
+  from{-webkit-transform:rotate(0deg) translateZ(0)}
+  to{-webkit-transform:rotate(360deg) translateZ(0)}
+}</p>
+</li>
+</ul>
+<pre><code>
+```html
+&lt;div id=&quot;pullDown&quot; class=&quot;none loading&quot;&gt;
+    &lt;span class=&quot;pullDownIcon&quot;&gt;&lt;/span&gt;&lt;span class=&quot;pullDownLabel&quot;&gt;正在载入中...&lt;/span&gt;
+&lt;/div&gt;
+</code></pre><ul>
+<li><p>手机多终端适配 media query<a href="http://club.zoomla.cn/PItem?id=12594">web app iphone4 iphone5 iphone6 响应式布局 适配代码</a></p>
+<pre><code class="lang-css">@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone4/4s */
+  .class{}
+}
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone5 */
+  .class{}
+}
+@media (device-height:667px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone6 */
+  .class{}
+}
+@media (device-height:736px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone6 Plus */
+  .class{}
+}
+</code></pre>
+</li>
+<li><p>屏蔽苹果浏览器对数字的识别<a href="http://blog.sina.com.cn/s/blog_51048da70101cgea.html">Meta标签中的format-detection属性及含义</a></p>
+<pre><code class="lang-html">&lt;meta content=&quot;telephone=no&quot; name=&quot;format-detection&quot;&gt;
+</code></pre>
+</li>
+<li><p>移除HTML5 input在type=&quot;number&quot;时的上下小箭头</p>
+<ul>
+<li>在chrome下：<pre><code class="lang-css">input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0; 
+}
+</code></pre>
+</li>
+<li><p>Firefox下：</p>
+<pre><code class="lang-css">input[type=&quot;number&quot;]{-moz-appearance:textfield;}
+</code></pre>
+</li>
+<li><p>第二种方案：</p>
+<ul>
+<li>将type=&quot;number&quot;改为type=&quot;tel&quot;，同样是数字键盘，但是没有箭头。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="http://java-er.com/blog/html5-mobile-call-sms/">HTML5手机浏览直接给一个号码打电话，发短信</a></p>
+</li>
+</ul>
+<pre><code class="lang-html">&lt;a href=&quot;tel:15222222222&quot;&gt;移动WEB页面JS一键拨打号码咨询功能&lt;/a&gt;
+&lt;a href=&quot;sms:15222222222&quot;&gt;移动WEB页面JS一键发送短信咨询功能&lt;/a&gt;
+&lt;!--移动web页面自动探测电话号码--&gt;
+&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;&gt;
+&lt;meta http-equiv=&quot;x-rim-auto-match&quot; content=&quot;none&quot;&gt;
+</code></pre>
+<ul>
+<li><a href="http://www.w3cways.com/1772.html">CSS判断横屏竖屏</a><pre><code class="lang-css">@media screen and (orientation: portrait) {
+/*竖屏 css*/
+} 
+@media screen and (orientation: landscape) {
+/*横屏 css*/
+}
+</code></pre>
+</li>
+</ul>
+<pre><code class="lang-javascript">//判断手机横竖屏状态：
+window.addEventListener(&quot;onorientationchange&quot; in window ? &quot;orientationchange&quot; : &quot;resize&quot;, function() {
+        if (window.orientation === 180 || window.orientation === 0) { 
+            alert(&#39;竖屏状态！&#39;);
+        } 
+        if (window.orientation === 90 || window.orientation === -90 ){ 
+            alert(&#39;横屏状态！&#39;);
+        }  
+    }, false); 
+//移动端的浏览器一般都支持window.orientation这个参数，通过这个参数可以判断出手机是处在横屏还是竖屏状态。
+</code></pre>
+<ul>
+<li><p>rem 适配，内容太多，只贴网址</p>
+<ul>
+<li><a href="https://github.com/imweb/mobile/issues/3">rem自适应方案</a></li>
+<li><a href="http://www.cnblogs.com/willian/p/3573353.html">html5移动端页面分辨率设置及相应字体大小设置的靠谱使用方式</a></li>
+<li><a href="http://www.html-js.com/article/Mobile-terminal-H5-mobile-terminal-HD-multi-screen-adaptation-scheme%203041">移动端高清、多屏适配方案</a></li>
+<li><a href="http://xiaoyuze88.github.io/blog/2015/05/12/%E9%80%9A%E8%BF%87rem%E5%B8%83%E5%B1%80+media-query%E7%9A%84aspect-ratio%E5%AE%9E%E7%8E%B0%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%A8%E6%9C%BA%E5%9E%8B%E9%80%82%E9%85%8D%E8%A6%86%E7%9B%96/">通过rem布局+media-query:aspect-ratio实现移动端全机型适配覆盖</a></li>
+<li><a href="http://isux.tencent.com/web-app-rem.html">web app变革之rem</a></li>
+<li><a href="http://www.html-js.com/article/2402">手机淘宝的flexible设计与实现</a></li>
+<li><a href="https://github.com/amfe/lib-flexible">移动端自适应方案</a></li>
+<li><a href="http://www.html-js.com/article/3041">【原创】移动端高清、多屏适配方案</a></li>
+<li><a href="http://qietuwang.baijia.baidu.com/article/73861">6个html5页面适配iphone6的技巧</a></li>
+<li><a href="http://segmentfault.com/a/1190000003690140">关于移动端 rem 布局的一些总结</a></li>
+<li><a href="http://www.cnblogs.com/lyzg/p/4877277.html">从网易与淘宝的font-size思考前端设计稿与工作流</a></li>
+<li><a href="http://f2e.souche.com/blog/yi-dong-duan-zi-gua-ying-fang-an/">移动端自适应方案</a></li>
+<li><a href="http://www.w3ctech.com/topic/979">MobileWeb 适配总结</a></li>
+<li><a href="http://www.html-js.com/article/JavaScript-learning-notes%203234">移动端web app自适应布局探索与总结</a></li>
+<li><p>公式</p>
+<pre><code class="lang-javascript">  var PAGE_MAX_WIDTH = 1280,
+      BASE_FONT_SIZE = 50;
+  (function() {
+      function n() {
+          e.fontSize = Math.min(window.innerWidth / PAGE_MAX_WIDTH * BASE_FONT_SIZE, BASE_FONT_SIZE) + &quot;px&quot;
+      }
+      var e = document.documentElement.style;
+      window.addEventListener(&quot;load&quot;, n),
+      window.addEventListener(&quot;resize&quot;, n),
+      n();
+  }());
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+
+			</article>
+		</div>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+<script type="text/javascript" src="toc/js/prettify.js"></script>
+
+<SCRIPT type="text/javascript">
+	$(function() {
+		var css_conf = eval(markdown_panel_style);
+		$('#readme').css(css_conf)
+
+		var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+		$('pre').addClass('prettyprint linenums');
+		$('td pre').removeClass('prettyprint');
+		prettyPrint();
+
+	});
+</SCRIPT>

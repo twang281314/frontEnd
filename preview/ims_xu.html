@@ -1,0 +1,478 @@
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<title>iscs_FrontEnd:ims_xu</title>
+	<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+	<!--<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />-->
+	<link href="toc/css/metroStyle/metroStyle.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/css/themes/github-v2.min.css" media="all" rel="stylesheet" type="text/css" />
+	<link type="text/css" rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+	<link type="text/css" rel="stylesheet" href="indexcss/docs.css">
+	<style>
+		table {
+			border: 1px solid #ccc;
+			border-left: 0;
+			width: 100%;
+			font-size: 14px;
+		}
+		
+		tbody,
+		thead,
+		tr {
+			width: 100%;
+		}
+		
+		tr th {
+			border: 1px solid #ccc;
+			border-right: 0;
+			background: #FF6537;
+			color: #fff;
+			height: 40px;
+			padding: 5px 10px;
+			font-size: 14px;
+		}
+		
+		tr td {
+			text-align: left;
+			padding: 5px 10px;
+			border: 1px solid #ccc;
+			border-right: 0;
+		}
+		
+		tr:nth-child(odd) {
+			background: #f4f4f4;
+		}
+		
+		table tr:hover td {
+			background: #ccc;
+		}
+		
+		.markdown-body h1 {
+			font-size: 20px;
+			color: #FF6537;
+		}
+		
+		.markdown-body h2 {
+			font-size: 18px;
+		}
+		
+		.markdown-body h3 {
+			font-size: 16px;
+		}
+		
+		#header {
+			width: 100%;
+			height: 25px;
+			background-color: #FF6537;
+			position: fixed;
+			top: 0;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li><a href="index.html">首页</a> </li>
+						<li><a href="main.html">文档中心</a> </li>
+						<!--<li><a href="api.html">api数据类型</a> </li>
+						<li><a href="records.html">变更记录</a> </li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div style='width:25%;'>
+			<ul id="tree" class="ztree" style='width:100%;margin-top:50px;'>
+
+			</ul>
+		</div>
+		<div id='readme' style='width:70%;margin-left:20%;margin-top:50px;'>
+			<article class='markdown-body'>
+				<p>#
+ims - 原始订单处理中心
+将平台的订单下载至原始订单处理中心, 然后将订单进行处理.最后传入oms系统进行处理.</p>
+<p>#更新记录## 更新记录</p>
+<hr>
+<p>更新日期 | 更新摘要 | 负责人: -- -- -- -- -- - | : -- -- -- -- -- - | : -- -- --
+    2016 - 04 - 26 | 第一次创建文档 | 徐纯
+2016 - 04 - 26 | 修改一些细节问题 | 徐纯
+2016 - 04 - 26 | 修改一些细节问题 | 徐纯</p>
+<p>-- - #Group 原始退款单</p>
+<h2 id="-list-">获取列表[/list]</h2>
+<pre><code>    ###
+    获取列表[POST]
+
+    + Request(application / json)
+
+    {
+        &quot;currentPage&quot;: 1,
+        &quot;pageSize&quot;: 20,
+        &quot;sort&quot;: &quot;orderId&amp;asc&quot;,
+        &quot;filter&quot;: [{
+            &quot;filed&quot;: &quot;shopId&quot;,
+            &quot;compare&quot;: &quot;equal&quot;,
+            &quot;value&quot;: &quot;100&quot;,
+            &quot;datatype&quot;: &quot;number&quot;
+        }]
+    }
+
+    + Response 200(application / json)
+
+    {
+        &quot;errorCode&quot;: 0,
+        &quot;errorMsg&quot;: &quot;&quot;,
+        &quot;body&quot;: &quot;&quot;,
+        &quot;data&quot;: {
+            &quot;pageNum&quot;: 2,
+            &quot;currentPage&quot;: 2,
+            &quot;allNum&quot;: 17,
+            &quot;pageSize&quot;: 1,
+            &quot;contentList&quot;: [{
+                &quot;refundUkid&quot;: 111564100000013003,
+                &quot;shopId&quot;: 10,
+                &quot;refundId&quot;: 123456,
+                &quot;downTime&quot;: &quot;2016-04-13 14:40:07&quot;,
+                &quot;modifyTime&quot;: &quot;2016-04-13 14:40:07&quot;,
+                &quot;refundCreateTime&quot;: &quot;&quot;,
+                &quot;orderId&quot;: &quot;10027064534&quot;,
+                &quot;subOrderId&quot;: &quot;&quot;,
+                &quot;productNumId&quot;: &quot;&quot;,
+                &quot;skuNumId&quot;: &quot;&quot;,
+                &quot;outerId&quot;: &quot;&quot;,
+                &quot;hasGoodsReturn&quot;: 1,
+                &quot;platformRefundStatus&quot;: &quot;&quot;,
+                &quot;returnTmsCode&quot;: &quot;20&quot;,
+                &quot;returnOutSid&quot;: &quot;&quot;,
+                &quot;returnReason&quot;: &quot;&quot;,
+                &quot;remark&quot;: &quot;&quot;,
+                &quot;refundFee&quot;: 49.5,
+                &quot;orderPayment&quot;: 49.5,
+                &quot;buyerNick&quot;: &quot;&quot;,
+                &quot;productName&quot;: &quot;&quot;,
+                &quot;goodStatus&quot;: &quot;&quot;,
+                &quot;targetOrderUkid&quot;: 10,
+                &quot;platformId&quot;: 10,
+                &quot;processStatus&quot;: 10,
+                &quot;orderStatus&quot;: &quot;&quot;,
+                &quot;iscsReceiptStatus&quot;: &quot;&quot;,
+                &quot;serviceStatus&quot;: &quot;&quot;
+            }]
+        }
+    }
+
+
+    ##
+    退款单同步[/refreshRefund]
+
+        ###
+        退款单同步[POST]
+
+        + Request(application / json)
+
+        {
+            &quot;platformId&quot;: 2,
+            &quot;refundId&quot;: 20,
+            &quot;refundUkid&quot;: 40
+        }
+
+        + Response 200(application / json)
+
+        {
+            &quot;success&quot;: 3,
+            &quot;fail&quot;: 2
+        }
+
+
+        ##
+        退款单详情[/refundInfo]
+
+            ###
+            退款单详情[POST]
+
+            + Request(application / json)
+
+            {
+                &quot;platformId&quot;: 2,
+                &quot;refundId&quot;: 20
+            }
+
+            + Response 200(application / json)
+
+            {
+                &quot;refundUkid&quot;: 111564100000013003,
+                &quot;shopId&quot;: 10,
+                &quot;refundId&quot;: 123456,
+                &quot;downTime&quot;: &quot;2016-04-13 14:40:07&quot;,
+                &quot;modifyTime&quot;: &quot;2016-04-13 14:40:07&quot;,
+                &quot;refundCreateTime&quot;: &quot;&quot;,
+                &quot;orderId&quot;: &quot;10027064534&quot;,
+                &quot;subOrderId&quot;: &quot;&quot;,
+                &quot;productNumId&quot;: &quot;&quot;,
+                &quot;skuNumId&quot;: &quot;&quot;,
+                &quot;outerId&quot;: &quot;&quot;,
+                &quot;hasGoodsReturn&quot;: 1,
+                &quot;platformRefundStatus&quot;: &quot;&quot;,
+                &quot;returnTmsCode&quot;: &quot;20&quot;,
+                &quot;returnOutSid&quot;: &quot;&quot;,
+                &quot;returnReason&quot;: &quot;&quot;,
+                &quot;remark&quot;: &quot;&quot;,
+                &quot;refundFee&quot;: 49.5,
+                &quot;orderPayment&quot;: 49.5,
+                &quot;buyerNick&quot;: &quot;&quot;,
+                &quot;productName&quot;: &quot;&quot;,
+                &quot;goodStatus&quot;: &quot;&quot;,
+                &quot;targetOrderUkid&quot;: 10,
+                &quot;platformId&quot;: 10,
+                &quot;processStatus&quot;: 10,
+                &quot;orderStatus&quot;: &quot;&quot;,
+                &quot;iscsReceiptStatus&quot;: &quot;&quot;,
+                &quot;serviceStatus&quot;: &quot;&quot;
+            }
+
+
+            #
+            Group 原始销售订单
+
+            ## 获取列表[/list]
+
+                ###
+                获取列表[POST]
+
+                + Request(application / json)
+
+                {
+                    &quot;currentPage&quot;: 1,
+                    &quot;pageSize&quot;: 20,
+                    &quot;sort&quot;: &quot;orderId&amp;asc&quot;,
+                    &quot;filter&quot;: [{
+                        &quot;field&quot;: &quot;shopId&quot;,
+                        &quot;compare&quot;: &quot;equal&quot;,
+                        &quot;value&quot;: &quot;10&quot;,
+                        &quot;datatype&quot;: &quot;number&quot;
+                    }]
+                }
+
+                + Response 200(application / json)
+
+                {
+                    &quot;errorCode&quot;: 0,
+                    &quot;errorMsg&quot;: &quot;&quot;,
+                    &quot;body&quot;: &quot;&quot;,
+                    &quot;data&quot;: {
+                        &quot;pageNum&quot;: 2,
+                        &quot;currentPage&quot;: 2,
+                        &quot;allNum&quot;: 17,
+                        &quot;pageSize&quot;: 1,
+                        &quot;contentList&quot;: [{
+                            &quot;tradeUkid&quot;: 111564100000013003,
+                            &quot;sourceOrderId&quot;: &quot;&quot;,
+                            &quot;shopId&quot;: 10,
+                            &quot;downTime&quot;: &quot;2016-04-13 14:40:07&quot;,
+                            &quot;modifyTime&quot;: &quot;2016-04-13 14:40:07&quot;,
+                            &quot;releaseTime&quot;: &quot;&quot;,
+                            &quot;originTradeStatus&quot;: 100,
+                            &quot;itemList&quot;: &quot;&quot;,
+                            &quot;orderId&quot;: &quot;10027064534&quot;,
+                            &quot;platformId&quot;: &quot;&quot;,
+                            &quot;stockId&quot;: &quot;&quot;,
+                            &quot;targetOrderUkid&quot;: &quot;&quot;,
+                            &quot;content&quot;: &quot;&quot;,
+                            &quot;storeCode&quot;: &quot;&quot;,
+                            &quot;orderType&quot;: &quot;&quot;,
+                            &quot;platformOrderStatus&quot;: &quot;20&quot;,
+                            &quot;isFullFields&quot;: &quot;&quot;,
+                            &quot;placeOrderStatus&quot;: &quot;&quot;,
+                            &quot;orderCreateTime&quot;: &quot;2016-04-05 16:00:35&quot;,
+                            &quot;orderPayTime&quot;: &quot;&quot;,
+                            &quot;totalFee&quot;: 49.5,
+                            &quot;orderSellerFee&quot;: &quot;&quot;,
+                            &quot;orderPayment&quot;: &quot;&quot;,
+                            &quot;freightFee&quot;: &quot;&quot;,
+                            &quot;discountFee&quot;: &quot;&quot;,
+                            &quot;buyerNick&quot;: &quot;jianglixiao2008@163.com&quot;,
+                            &quot;receiverName&quot;: &quot;&quot;,
+                            &quot;receiverMobile&quot;: &quot;&quot;,
+                            &quot;receiverPhone&quot;: &quot;&quot;,
+                            &quot;receiverState&quot;: &quot;浙江省&quot;,
+                            &quot;receiverCity&quot;: &quot;宁波市&quot;,
+                            &quot;receiverCounty&quot;: &quot;慈溪市&quot;,
+                            &quot;receiverZip&quot;: &quot;&quot;,
+                            &quot;receiverAddress&quot;: &quot;&quot;,
+                            &quot;isCod&quot;: &quot;&quot;,
+                            &quot;buyerMessage&quot;: &quot;&quot;,
+                            &quot;sellerMemo&quot;: &quot;&quot;,
+                            &quot;releaseDate&quot;: &quot;&quot;
+                        }]
+                    }
+                }
+
+
+                ##
+                订单收货人信息查询[/getRecipientInfo]
+
+                    ###
+                    订单收货人信息查询[POST]
+
+                    + Request(application / json)
+
+                    {
+                        &quot;tradeUkid&quot;: 888888
+                    }
+
+                    + Response 200(application / json)
+
+                    {
+                        &quot;errorCode&quot;: 0,
+                        &quot;errorMsg&quot;: &quot;&quot;,
+                        &quot;body&quot;: &quot;&quot;,
+                        &quot;data&quot;: {
+                            &quot;tradeUkid&quot;: 24,
+                            &quot;sourceOrderId&quot;: &quot;&quot;,
+                            &quot;shopId&quot;: &quot;&quot;,
+                            &quot;downTime&quot;: &quot;&quot;,
+                            &quot;modifyTime&quot;: &quot;&quot;,
+                            &quot;releaseTime&quot;: &quot;&quot;,
+                            &quot;originTradeStatus&quot;: &quot;&quot;,
+                            &quot;itemList&quot;: &quot;&quot;,
+                            &quot;orderId&quot;: &quot;&quot;,
+                            &quot;platformId&quot;: &quot;&quot;,
+                            &quot;stockId&quot;: &quot;&quot;,
+                            &quot;targetOrderUkid&quot;: &quot;&quot;,
+                            &quot;content&quot;: &quot;&quot;,
+                            &quot;storeCode&quot;: &quot;&quot;,
+                            &quot;orderType&quot;: &quot;&quot;,
+                            &quot;platformOrderStatus&quot;: &quot;&quot;,
+                            &quot;isFullFields&quot;: &quot;&quot;,
+                            &quot;placeOrderStatus&quot;: &quot;&quot;,
+                            &quot;orderCreateTime&quot;: &quot;&quot;,
+                            &quot;orderPayTime&quot;: &quot;&quot;,
+                            &quot;totalFee&quot;: &quot;&quot;,
+                            &quot;orderSellerFee&quot;: &quot;&quot;,
+                            &quot;orderPayment&quot;: &quot;&quot;,
+                            &quot;freightFee&quot;: &quot;&quot;,
+                            &quot;discountFee&quot;: &quot;&quot;,
+                            &quot;buyerNick&quot;: &quot;&quot;,
+                            &quot;receiverName&quot;: &quot;曾睿&quot;,
+                            &quot;receiverMobile&quot;: &quot;18681310712&quot;,
+                            &quot;receiverPhone&quot;: &quot;&quot;,
+                            &quot;receiverState&quot;: &quot;四川省&quot;,
+                            &quot;receiverCity&quot;: &quot;自贡市&quot;,
+                            &quot;receiverCounty&quot;: &quot;自流井区&quot;,
+                            &quot;receiverZip&quot;: &quot;&quot;,
+                            &quot;receiverAddress&quot;: &quot;中国联合网络通信有限公司自贡分公司四川省自贡市自流井区汇东路50号&quot;,
+                            &quot;isCod&quot;: &quot;&quot;,
+                            &quot;buyerMessage&quot;: &quot;&quot;,
+                            &quot;sellerMemo&quot;: &quot;&quot;,
+                            &quot;releaseDate&quot;: &quot;&quot;
+                        }
+                    }
+
+
+                    ##
+                    订单基本信息查询[/getBaseInfo]
+
+                        ###
+                        订单基本信息查询[POST]
+
+                        + Request(application / json)
+
+                        {
+                            &quot;tradeUkid &quot;: 24
+                        }
+
+                        + Response 200(application / json)
+
+                        {
+                            &quot;errorCode&quot;: 0,
+                            &quot;errorMsg&quot;: &quot;&quot;,
+                            &quot;body&quot;: &quot;&quot;,
+                            &quot;data&quot;: {
+                                &quot;baBuyer&quot;: {
+                                    &quot;buyerUkid&quot;: &quot;&quot;,
+                                    &quot;buyerNick&quot;: &quot;催眠刺&quot;,
+                                    &quot;receiverMobile&quot;: &quot;111&quot;,
+                                    &quot;isMember&quot;: &quot;&quot;,
+                                    &quot;memberLevel&quot;: &quot;1&quot;,
+                                    &quot;memberIntegral&quot;: 111,
+                                    &quot;createDate&quot;: &quot;&quot;,
+                                    &quot;createUserId&quot;: &quot;&quot;,
+                                    &quot;dateUpdated&quot;: &quot;&quot;,
+                                    &quot;userIdUpdated&quot;: &quot;&quot;
+                                },
+                                &quot;vOriginTrade&quot;: {
+                                    &quot;tradeUkid&quot;: 24,
+                                    &quot;sourceOrderId&quot;: &quot;&quot;,
+                                    &quot;shopId&quot;: 250523,
+                                    &quot;downTime&quot;: &quot;2016-04-14 13:36:35&quot;,
+                                    &quot;modifyTime&quot;: &quot;2016-04-14 13:36:35&quot;,
+                                    &quot;releaseTime&quot;: &quot;&quot;,
+                                    &quot;originTradeStatus&quot;: 100,
+                                    &quot;itemList&quot;: &quot;&quot;,
+                                    &quot;orderId&quot;: &quot;BK2015IS-20160414-00181&quot;,
+                                    &quot;platformId&quot;: 160,
+                                    &quot;stockId&quot;: 2,
+                                    &quot;targetOrderUkid&quot;: &quot;&quot;,
+                                    &quot;content&quot;: &quot;&quot;,
+                                    &quot;storeCode&quot;: &quot;&quot;,
+                                    &quot;orderType&quot;: &quot;TRADE&quot;,
+                                    &quot;platformOrderStatus&quot;: &quot;&quot;,
+                                    &quot;isFullFields&quot;: 1,
+                                    &quot;placeOrderStatus&quot;: &quot;&quot;,
+                                    &quot;orderCreateTime&quot;: &quot;&quot;,
+                                    &quot;orderPayTime&quot;: &quot;2016-04-14 12:43:26&quot;,
+                                    &quot;totalFee&quot;: 149.4,
+                                    &quot;orderSellerFee&quot;: 149.4,
+                                    &quot;orderPayment&quot;: 139.4,
+                                    &quot;freightFee&quot;: 0.0,
+                                    &quot;discountFee&quot;: 83.92,
+                                    &quot;buyerNick&quot;: &quot;催眠刺&quot;,
+                                    &quot;receiverName&quot;: &quot;曾睿&quot;,
+                                    &quot;receiverMobile&quot;: &quot;18681310712&quot;,
+                                    &quot;receiverPhone&quot;: &quot;&quot;,
+                                    &quot;receiverState&quot;: &quot;四川省&quot;,
+                                    &quot;receiverCity&quot;: &quot;自贡市&quot;,
+                                    &quot;receiverCounty&quot;: &quot;自流井区&quot;,
+                                    &quot;receiverZip&quot;: &quot;&quot;,
+                                    &quot;receiverAddress&quot;: &quot;中国联合网络通信有限公司自贡分公司四川省自贡市自流井区汇东路50号&quot;,
+                                    &quot;isCod&quot;: &quot;&quot;,
+                                    &quot;buyerMessage&quot;: &quot;&quot;,
+                                    &quot;sellerMemo&quot;: &quot;&quot;,
+                                    &quot;releaseDate&quot;: &quot;&quot;
+                                }
+                            }
+                        }
+</code></pre>
+			</article>
+		</div>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+<script type="text/javascript" src="toc/js/prettify.js"></script>
+
+<SCRIPT type="text/javascript">
+	$(function() {
+		var css_conf = eval(markdown_panel_style);
+		$('#readme').css(css_conf)
+
+		var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+		$('pre').addClass('prettyprint linenums');
+		$('td pre').removeClass('prettyprint');
+		prettyPrint();
+
+	});
+</SCRIPT>
