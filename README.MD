@@ -24,3 +24,27 @@
 
  360ued: http://uxc.360.cn/
 
+ # 开放平台api列表：
+
+http://open.taobao.com
+
+http://open.suning.com
+
+http://open.yhd.com
+
+http://jos.jd.com
+
+http://developer.waimai.meituan.com/doc/show
+
+http://openapi.eleme.io/v2/platform.html#id101
+
+http://open.koudaitong.com/doc
+
+# 使用说明
+
+``` bash
+cnpm install 
+gulp build              # 将当前目录下所有的md文全部生成html
+gulp build --f main.md  #指定md文件
+
+```
