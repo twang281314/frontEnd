@@ -61,3 +61,33 @@ gulp.task('build', function() {
     
     console.log('全部生成完毕！！！');
 });
+
+/**
+ * 监视文件变化 自动生成html
+ */
+gulp.task('watch', function() {
+
+    gulp.watch(['*.md'], function(event) {
+
+        //s=s.replace(/(.*/){0,}([^.]+).*/ig,"$2") ;//Page1.htm 
+
+        var name = event.path.replace(/.*\\/, '').trim();
+
+        var tempName = name.replace('.md', '').trim();
+
+        tocmd(pwd, name, 'document/' + tempName + '.html', false, opt)
+
+        console.log('文件：'+name+'已重新生成html');
+        
+    });
+});
+
+/**
+ * 开发使用说明
+ * gulp build 将当前目录下所有md文件全部重新生成html
+ * gulp build --f api.md 将指定的md文件生成html
+ * gulp 将监视文件变化 实时生成html
+ * 
+ */
+
+gulp.task('default', ['watch']);
