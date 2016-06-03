@@ -23,6 +23,7 @@
     "gulp": "^3.9.1",
     "handlebars": "^2.0.0",
     "marked": "^0.3.2",
+    "minimist": "^1.2.0",
     "object-assign": "^1.0.0",
     "open": "0.0.5",
     "shelljs": "^0.3.0"
