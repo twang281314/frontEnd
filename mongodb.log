@@ -1,0 +1,198 @@
+Mon May 30 13:25:08.191 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 10ms
+Mon May 30 13:26:08.420 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 40ms
+Mon May 30 13:50:09.536 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 57ms
+Mon May 30 13:50:13.601 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 294ms
+Mon May 30 13:50:15.922 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 138ms
+Mon May 30 13:50:54.829 [TTLMonitor] query *.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:0 keyUpdates:0 locks(micros) r:26798303 nreturned:0 reslen:20 26037ms
+Mon May 30 13:50:55.367 [TTLMonitor] query admin.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:2 keyUpdates:0 locks(micros) r:312203 nreturned:0 reslen:20 295ms
+Mon May 30 13:51:19.656 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 211ms
+Mon May 30 13:51:28.298 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 314ms
+Mon May 30 13:51:33.040 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 253ms
+Mon May 30 13:51:55.816 [TTLMonitor] query *.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:0 keyUpdates:0 locks(micros) r:187328 nreturned:0 reslen:20 180ms
+Mon May 30 13:52:39.636 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 277ms
+Mon May 30 13:52:46.789 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 157ms
+Mon May 30 13:52:52.232 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 247ms
+Mon May 30 13:53:55.681 [TTLMonitor] query *.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:0 keyUpdates:0 locks(micros) r:36064645 nreturned:0 reslen:20 35737ms
+Mon May 30 13:53:57.793 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 104ms
+Mon May 30 13:54:05.395 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 449ms
+Mon May 30 13:54:11.952 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 245ms
+Mon May 30 13:55:21.339 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 268ms
+Mon May 30 13:55:24.544 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 33ms
+Mon May 30 13:55:24.580 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 7ms
+Mon May 30 13:55:24.799 [TTLMonitor] query admin.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:2 keyUpdates:0 numYields: 2 locks(micros) r:117923817 nreturned:0 reslen:20 66676ms
+Mon May 30 13:55:25.123 [TTLMonitor] query blog.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:13 keyUpdates:0 locks(micros) r:160354 nreturned:0 reslen:20 154ms
+Mon May 30 13:56:27.424 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 301ms
+Mon May 30 13:56:33.856 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 313ms
+Mon May 30 13:56:41.003 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 484ms
+Mon May 30 13:57:35.071 [DataFileSync] flushing mmaps took 19910ms  for 12 files
+Mon May 30 13:57:35.113 [TTLMonitor] query *.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:0 keyUpdates:0 locks(micros) r:47915462 nreturned:0 reslen:20 49524ms
+Mon May 30 13:57:35.686 [TTLMonitor] query admin.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:2 keyUpdates:0 locks(micros) r:214810 nreturned:0 reslen:20 197ms
+Mon May 30 13:57:46.107 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 329ms
+Mon May 30 13:57:49.111 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 266ms
+Mon May 30 13:57:53.239 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 195ms
+Mon May 30 13:58:59.224 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 484ms
+Mon May 30 13:59:07.180 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 446ms
+Mon May 30 13:59:14.865 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 156ms
+Mon May 30 13:59:45.880 [TTLMonitor] query *.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:0 keyUpdates:0 locks(micros) r:40886591 nreturned:0 reslen:20 39826ms
+Mon May 30 14:00:20.233 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 182ms
+Mon May 30 14:00:26.710 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 191ms
+Mon May 30 14:00:33.034 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 128ms
+Mon May 30 14:01:17.955 [TTLMonitor] query admin.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:2 keyUpdates:0 numYields: 1 locks(micros) r:98556880 nreturned:0 reslen:20 62859ms
+Mon May 30 14:01:43.464 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 444ms
+Mon May 30 14:01:52.862 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 330ms
+Mon May 30 14:01:59.970 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 284ms
+Mon May 30 14:03:08.501 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 138ms
+Mon May 30 14:03:21.101 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 388ms
+Mon May 30 14:03:33.126 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 847ms
+Mon May 30 14:04:42.632 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 445ms
+Mon May 30 14:04:50.708 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 538ms
+Mon May 30 14:04:58.449 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 235ms
+Mon May 30 14:05:09.342 [TTLMonitor] query blog.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:13 keyUpdates:0 numYields: 5 locks(micros) r:324328893 nreturned:0 reslen:20 199285ms
+Mon May 30 14:06:07.906 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 361ms
+Mon May 30 14:06:19.356 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 540ms
+Mon May 30 14:06:30.138 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 891ms
+Mon May 30 14:06:33.728 [DataFileSync] flushing mmaps took 14143ms  for 12 files
+Mon May 30 14:06:37.431 [TTLMonitor] query local.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:0 keyUpdates:0 locks(micros) r:53472708 nreturned:0 reslen:20 53508ms
+Mon May 30 14:07:10.111 [TTLMonitor] query myblog.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:5 keyUpdates:0 numYields: 1 locks(micros) r:1683154 nreturned:0 reslen:20 736ms
+Mon May 30 14:17:52.709 [initandlisten] connection accepted from 74.82.47.3:44083 #109 (6 connections now open)
+Mon May 30 14:17:53.000 [conn109] end connection 74.82.47.3:44083 (5 connections now open)
+Mon May 30 14:18:19.194 [initandlisten] connection accepted from 74.82.47.3:50280 #110 (6 connections now open)
+Mon May 30 14:18:19.201 [conn110] command denied: { listDatabases: 1 }
+Mon May 30 14:18:19.404 [conn110] end connection 74.82.47.3:50280 (5 connections now open)
+Mon May 30 15:12:37.279 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 323ms
+Mon May 30 15:12:47.318 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 426ms
+Mon May 30 15:12:53.481 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 170ms
+Mon May 30 15:13:24.017 [TTLMonitor] query *.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:0 keyUpdates:0 locks(micros) r:160399 nreturned:0 reslen:20 154ms
+Mon May 30 15:16:01.227 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 189ms
+Mon May 30 15:16:07.888 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 286ms
+Mon May 30 15:16:12.436 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 131ms
+Mon May 30 15:17:19.940 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 518ms
+Mon May 30 15:17:29.326 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 169ms
+Mon May 30 15:17:36.811 [TTLMonitor] query *.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:0 keyUpdates:0 locks(micros) r:46838322 nreturned:0 reslen:20 48140ms
+Mon May 30 15:17:39.403 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 276ms
+Mon May 30 15:17:40.821 [TTLMonitor] query admin.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:2 keyUpdates:0 locks(micros) r:412563 nreturned:0 reslen:20 387ms
+Mon May 30 15:34:44.628 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 335ms
+Mon May 30 15:34:56.846 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 546ms
+Mon May 30 15:35:06.492 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 447ms
+Mon May 30 15:35:46.925 [DataFileSync] flushing mmaps took 20510ms  for 12 files
+Mon May 30 15:36:14.167 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 322ms
+Mon May 30 15:36:17.131 [TTLMonitor] query *.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:0 keyUpdates:0 locks(micros) r:55948281 nreturned:0 reslen:20 58991ms
+Mon May 30 15:36:21.643 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 275ms
+Mon May 30 15:36:30.012 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 374ms
+Mon May 30 15:37:38.598 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 254ms
+Mon May 30 15:37:49.829 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 737ms
+Mon May 30 15:37:58.555 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 355ms
+Mon May 30 15:38:38.217 [TTLMonitor] query admin.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:2 keyUpdates:0 numYields: 1 locks(micros) r:143591179 nreturned:0 reslen:20 91832ms
+Mon May 30 15:39:09.370 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 458ms
+Mon May 30 15:39:18.048 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 463ms
+Mon May 30 15:39:26.128 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 120ms
+Mon May 30 15:39:30.259 [TTLMonitor] query blog.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:13 keyUpdates:0 numYields: 1 locks(micros) r:45001527 nreturned:0 reslen:20 19082ms
+Mon May 30 15:40:32.199 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 173ms
+Mon May 30 15:40:36.994 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 237ms
+Mon May 30 15:40:38.794 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 166ms
+Mon May 30 15:41:02.010 [TTLMonitor] query *.system.indexes query: { expireAfterSeconds: { $exists: true } } ntoreturn:0 ntoskip:0 nscanned:0 keyUpdates:0 locks(micros) r:18177710 nreturned:0 reslen:20 17989ms
+Tue May 31 13:43:12.722 [initandlisten] connection accepted from 184.105.139.70:45082 #111 (6 connections now open)
+Tue May 31 13:43:13.154 [conn111] end connection 184.105.139.70:45082 (5 connections now open)
+Tue May 31 13:43:35.635 [initandlisten] connection accepted from 184.105.139.70:55630 #112 (6 connections now open)
+Tue May 31 13:43:35.682 [conn112] command denied: { listDatabases: 1 }
+Tue May 31 13:43:35.875 [conn112] end connection 184.105.139.70:55630 (5 connections now open)
+Wed Jun  1 20:34:38.580 [initandlisten] connection accepted from 184.105.139.68:40700 #113 (6 connections now open)
+Wed Jun  1 20:34:38.832 [conn113] end connection 184.105.139.68:40700 (5 connections now open)
+Wed Jun  1 20:35:03.645 [initandlisten] connection accepted from 184.105.139.68:43954 #114 (6 connections now open)
+Wed Jun  1 20:35:03.645 [conn114] command denied: { listDatabases: 1 }
+Wed Jun  1 20:35:03.879 [conn114] end connection 184.105.139.68:43954 (5 connections now open)
+Thu Jun  2 09:08:31.861 [initandlisten] connection accepted from 115.236.172.146:57231 #115 (6 connections now open)
+Thu Jun  2 09:08:32.007 [conn115]  authenticate db: myblog { authenticate: 1, user: "wangtao", nonce: "3fe55f2a2f1b2af1", key: "c801005a0eea483ef135d5d3a3c75d5f" }
+Thu Jun  2 09:08:32.641 [conn115] command myblog.$cmd command: { authenticate: 1, user: "wangtao", nonce: "3fe55f2a2f1b2af1", key: "c801005a0eea483ef135d5d3a3c75d5f" } ntoreturn:1 keyUpdates:0 locks(micros) r:582230 reslen:74 642ms
+Thu Jun  2 09:08:36.556 [conn115] end connection 115.236.172.146:57231 (5 connections now open)
+Thu Jun  2 09:34:43.634 [initandlisten] connection accepted from 115.236.172.146:58068 #116 (6 connections now open)
+Thu Jun  2 09:34:43.697 [conn116]  authenticate db: myblog { authenticate: 1, user: "wangtao", nonce: "5df766e5bae03b7c", key: "a81c7df7676db7ee3f3f8e3593fd3dd7" }
+Thu Jun  2 09:35:00.240 [conn116] end connection 115.236.172.146:58068 (5 connections now open)
+Thu Jun  2 09:35:03.779 [initandlisten] connection accepted from 115.236.172.146:58080 #117 (6 connections now open)
+Thu Jun  2 09:35:03.859 [conn117]  authenticate db: myblog { authenticate: 1, user: "wangtao", nonce: "8baf9e1c159c5add", key: "0f5b5a493548ffb75fc54c652633e6a6" }
+Thu Jun  2 09:35:03.860 [conn117] auth: key mismatch wangtao, ns:myblog
+Thu Jun  2 09:36:38.178 [conn117] end connection 115.236.172.146:58080 (5 connections now open)
+Thu Jun  2 09:36:40.879 [initandlisten] connection accepted from 115.236.172.146:58124 #118 (6 connections now open)
+Thu Jun  2 09:36:40.940 [conn118]  authenticate db: myblog { authenticate: 1, user: "wangtao", nonce: "cdaf32618fdd0c4c", key: "2bc99ab096ef68b9b09dcb564ffbe167" }
+Thu Jun  2 09:36:43.052 [conn118] end connection 115.236.172.146:58124 (5 connections now open)
+Thu Jun  2 10:56:54.120 [initandlisten] connection accepted from 115.236.172.146:60620 #119 (6 connections now open)
+Thu Jun  2 10:56:54.199 [conn119]  authenticate db: myblog { authenticate: 1, user: "wangtao", nonce: "ffc93e47d0cc14c3", key: "fcd225b0cf7300d798aec8195ae30198" }
+Thu Jun  2 10:56:56.960 [conn119] end connection 115.236.172.146:60620 (5 connections now open)
+Thu Jun  2 13:36:43.172 [initandlisten] connection accepted from 115.236.172.146:65160 #120 (6 connections now open)
+Thu Jun  2 13:36:43.261 [conn120]  authenticate db: myblog { authenticate: 1, user: "wangtao", nonce: "a68f19cd8d72d20a", key: "45225a10fa97e1de38ff6e3b79d6a7cd" }
+Thu Jun  2 13:36:49.131 [conn120] end connection 115.236.172.146:65160 (5 connections now open)
+Thu Jun  2 19:47:45.569 [initandlisten] connection accepted from 74.82.47.2:47498 #121 (6 connections now open)
+Thu Jun  2 19:47:45.907 [conn121] end connection 74.82.47.2:47498 (5 connections now open)
+Thu Jun  2 19:48:05.543 [initandlisten] connection accepted from 74.82.47.2:55690 #122 (6 connections now open)
+Thu Jun  2 19:48:05.543 [conn122] command denied: { listDatabases: 1 }
+Thu Jun  2 19:48:05.764 [conn122] end connection 74.82.47.2:55690 (5 connections now open)
+Fri Jun  3 09:13:16.088 [initandlisten] connection accepted from 127.0.0.1:50006 #123 (6 connections now open)
+Fri Jun  3 09:13:16.127 [conn123] command denied: { getLog: "startupWarnings" }
+Fri Jun  3 09:13:16.166 [conn123] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:13:38.318 [conn123] assertion 16550 not authorized for query on test.system.users ns:test.system.users query:{}
+Fri Jun  3 09:13:38.322 [conn123] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:14:01.054 [conn123] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:14:01.546 [conn123] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:14:01.593 [conn123] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:14:01.624 [conn123] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:14:01.656 [conn123] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:14:01.685 [conn123] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:14:01.717 [conn123] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:14:01.748 [conn123] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:14:07.039 [conn123] assertion 16550 not authorized for query on test.system.namespaces ns:test.system.namespaces query:{}
+Fri Jun  3 09:14:07.040 [conn123] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:20:11.848 [conn123] end connection 127.0.0.1:50006 (5 connections now open)
+Fri Jun  3 09:32:49.929 [initandlisten] connection accepted from 127.0.0.1:50021 #124 (6 connections now open)
+Fri Jun  3 09:32:49.933 [conn124] command denied: { getLog: "startupWarnings" }
+Fri Jun  3 09:32:49.934 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:32:53.806 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:34:21.988 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:34:29.156 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:36:29.828 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:36:39.243 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:36:43.160 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:36:45.026 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:36:45.689 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:36:46.144 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:36:46.544 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:36:47.376 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:39:30.244 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:39:35.678 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:39:36.661 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:39:37.708 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:39:39.709 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:44:56.814 [conn124]  authenticate db: test { authenticate: 1, nonce: "9d8a048fee8f6300", user: "wangtao", key: "cedfd4881e5b6661925209046e213611" }
+Fri Jun  3 09:44:56.815 [conn124] auth: couldn't find user wangtao@test, test.system.users
+Fri Jun  3 09:44:56.816 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:45:18.966 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:45:37.926 [conn124]  authenticate db: myblog { authenticate: 1, nonce: "6c5c534d2f5c3093", user: "wangtao", key: "3214c1dfb18c7249c874ed0fe6d5e2f1" }
+Fri Jun  3 09:45:37.927 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:45:46.729 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:46:12.021 [conn124] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:46:14.733 [conn124] end connection 127.0.0.1:50021 (5 connections now open)
+Fri Jun  3 09:46:19.344 [initandlisten] connection accepted from 127.0.0.1:50027 #125 (6 connections now open)
+Fri Jun  3 09:46:19.347 [conn125] command denied: { getLog: "startupWarnings" }
+Fri Jun  3 09:46:19.349 [conn125] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:46:23.124 [conn125] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:46:40.516 [conn125]  authenticate db: myblog { authenticate: 1, nonce: "891ee8b0fa6c5281", user: "wangtao", key: "01a37f58b12cd18b54c51c7828732185" }
+Fri Jun  3 09:46:40.517 [conn125] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:46:46.957 [conn125] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:46:55.548 [conn125] end connection 127.0.0.1:50027 (5 connections now open)
+Fri Jun  3 09:47:46.261 [initandlisten] connection accepted from 127.0.0.1:50028 #126 (6 connections now open)
+Fri Jun  3 09:47:46.265 [conn126] command denied: { getLog: "startupWarnings" }
+Fri Jun  3 09:47:46.266 [conn126] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:47:51.242 [conn126] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:47:57.977 [conn126] command denied: { listDatabases: 1.0 }
+Fri Jun  3 09:47:57.981 [conn126] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:48:18.433 [conn126]  authenticate db: myblog { authenticate: 1, nonce: "ae062a1be5b8ad58", user: "wangtao", key: "ab35f7728405aec49cbb116569b8bb5c" }
+Fri Jun  3 09:48:18.435 [conn126] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:48:27.467 [conn126] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:48:44.574 [conn126] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:49:05.847 [conn126] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:49:05.935 [conn126] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:53:07.541 [conn126] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:53:35.252 [conn126] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:57:55.923 [conn126] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:58:16.503 [conn126] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:58:32.307 [conn126] command denied: { replSetGetStatus: 1.0, forShell: 1.0 }
+Fri Jun  3 09:59:23.798 [conn126] end connection 127.0.0.1:50028 (5 connections now open)
