@@ -1,0 +1,147 @@
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<title>iscs_FrontEnd:css_reference_manual</title>
+	<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+	<!--<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />-->
+	<link href="toc/css/metroStyle/metroStyle.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/css/themes/github-v2.min.css" media="all" rel="stylesheet" type="text/css" />
+	<link type="text/css" rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+	<link type="text/css" rel="stylesheet" href="indexcss/docs.css">
+	<style>
+		table {
+			border: 1px solid #ccc;
+			border-left: 0;
+			width: 100%;
+			font-size: 14px;
+		}
+		
+		tbody,
+		thead,
+		tr {
+			width: 100%;
+		}
+		
+		tr th {
+			border: 1px solid #ccc;
+			border-right: 0;
+			background: #FF6537;
+			color: #fff;
+			height: 40px;
+			padding: 5px 10px;
+			font-size: 14px;
+		}
+		
+		tr td {
+			text-align: left;
+			padding: 5px 10px;
+			border: 1px solid #ccc;
+			border-right: 0;
+		}
+		
+		tr:nth-child(odd) {
+			background: #f4f4f4;
+		}
+		
+		table tr:hover td {
+			background: #ccc;
+		}
+		
+		.markdown-body h1 {
+			font-size: 20px;
+			color: #FF6537;
+		}
+		
+		.markdown-body h2 {
+			font-size: 18px;
+		}
+		
+		.markdown-body h3 {
+			font-size: 16px;
+		}
+		
+		#header {
+			width: 100%;
+			height: 25px;
+			background-color: #FF6537;
+			position: fixed;
+			top: 0;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li><a href="index.html">首页</a> </li>
+						<li><a href="main.html">文档中心</a> </li>
+						<!--<li><a href="api.html">api数据类型</a> </li>
+						<li><a href="records.html">变更记录</a> </li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div style='width:25%;'>
+			<ul id="tree" class="ztree" style='width:100%;margin-top:50px;'>
+
+			</ul>
+		</div>
+		<div id='readme' style='width:70%;margin-left:20%;margin-top:50px;'>
+			<article class='markdown-body'>
+				<h1 id="-introduction">简介 Introduction</h1>
+<h2 id="-introduction-to-css">关于样式表 Introduction To CSS</h2>
+<h3 id="-">说明</h3>
+<p>本手册针对的是已有一定网页设计制作经验的读者。其目的是提供最新的样式表内容的快速索引及注释。所以对于样式表的基础知识，在此仅简单介绍，恕不赘述。 </p>
+<h3 id="-">什么是层叠样式表</h3>
+<blockquote>
+<p>CSS是Cascading Style Sheet（层叠样式表）的缩写。是用于（增强）控制网页样式并允许将样式信息与网页内容分离的一种标记性语言。 
+CSS不需要编译,可以直接由浏览器执行(属于浏览器解释型语言)。 
+CSS2.1是目前被使用最广泛的版本，而目前还在开发中的CSS3具有更吸引人的特性。 
+本手册除了CSS2.1外，还涵盖了大部分的CSS3内容。但由于CSS3尚未定稿，不可避免会出现一些变动。</p>
+</blockquote>
+<h1 id="-properties">属性 Properties</h1>
+<h2 id="-positioning">定位 Positioning</h2>
+<h3 id="positon">positon</h3>
+<p><strong>语法:</strong><br>position：static | relative | absolute | fixed | center | page | sticky<br>默认值：static<br>适用于：除display属性定义为table-column-group | table-column之外的所有元素<br>继承性：无<br>动画性：否<br>计算值：指定值<br>媒体：视觉  </p>
+<p><strong>取值</strong><br>static： 对象遵循常规流。此时4个定位偏移属性不会被应用。<br>relative： 对象遵循常规流，并且参照自身在常规流中的位置通过top，right，bottom，left这4个定位偏移属性进行偏移时不会影响常规流中的任何元素。<br>absolute： 对象脱离常规流，此时偏移属性参照的是离自身最近的定位祖先元素，如果没有定位的祖先元素，则一直回溯到body元素。盒子的偏移位置不影响常规流中的任何元素，其margin不与其他任何margin折叠。<br>fixed： 与absolute一致，但偏移定位是以窗口为参考。当出现滚动条时，对象不会随着滚动。<br>center： 与absolute一致，但偏移定位是以定位祖先元素的中心点为参考。盒子在其包含容器垂直水平居中。（CSS3）<br>page： 与absolute一致。元素在分页媒体或者区域块内，元素的包含块始终是初始包含块，否则取决于每个absolute模式。（CSS3）<br>sticky： 对象在常态时遵循常规流。它就像是relative和fixed的合体，当在屏幕中时按常规流排版，当卷动到屏幕外时则表现如fixed。该属性的表现是现实中你见到的吸附效果。（CSS3）   </p>
+<p><strong>说明</strong><br>检索对象的定位方式。  </p>
+<ul>
+<li>当position的值为非static时，其层叠级别通过z-index属性定义。</li>
+<li>绝对定位的元素，在top，right，bottom，left属性未设置时，会紧随在其前面的兄弟元素之后，但在位置上不影响常规流中的任何元素。用这个特性你或许会干这样的事：</li>
+<li>对应的脚本特性为position</li>
+</ul>
+<iframe width="100%" height="300" src="//jsrun.net/MaKKp/embedded/html,css,result/light/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+			</article>
+		</div>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+<script type="text/javascript" src="toc/js/prettify.js"></script>
+
+<SCRIPT type="text/javascript">
+	$(function() {
+		var css_conf = eval(markdown_panel_style);
+		$('#readme').css(css_conf)
+
+		var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+		$('pre').addClass('prettyprint linenums');
+		$('td pre').removeClass('prettyprint');
+		prettyPrint();
+
+	});
+</SCRIPT>

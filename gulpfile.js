@@ -75,7 +75,7 @@ gulp.task('watch', function() {
 
         var tempName = name.replace('.md', '').trim();
 
-        tocmd(pwd, name, 'document/' + tempName + '.html', false, opt)
+        tocmd(pwd, name, 'preview/' + tempName + '.html', false, opt)
 
         console.log('文件：'+name+'已重新生成html');
         
