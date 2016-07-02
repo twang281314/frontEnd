@@ -1,0 +1,308 @@
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<title>iscs_FrontEnd:api</title>
+	<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+	<!--<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />-->
+	<link href="toc/css/metroStyle/metroStyle.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="toc/css/themes/github-v2.min.css" media="all" rel="stylesheet" type="text/css" />
+	<link type="text/css" rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+	<link type="text/css" rel="stylesheet" href="indexcss/docs.css">
+	<style>
+		table {
+			border: 1px solid #ccc;
+			border-left: 0;
+			width: 100%;
+			font-size: 14px;
+		}
+		
+		tbody,
+		thead,
+		tr {
+			width: 100%;
+		}
+		
+		tr th {
+			border: 1px solid #ccc;
+			border-right: 0;
+			background: #FF6537;
+			color: #fff;
+			height: 40px;
+			padding: 5px 10px;
+			font-size: 14px;
+		}
+		
+		tr td {
+			text-align: left;
+			padding: 5px 10px;
+			border: 1px solid #ccc;
+			border-right: 0;
+		}
+		
+		tr:nth-child(odd) {
+			background: #f4f4f4;
+		}
+		
+		table tr:hover td {
+			background: #ccc;
+		}
+		
+		.markdown-body h1 {
+			font-size: 20px;
+			color: #FF6537;
+		}
+		
+		.markdown-body h2 {
+			font-size: 18px;
+		}
+		
+		.markdown-body h3 {
+			font-size: 16px;
+		}
+		
+		#header {
+			width: 100%;
+			height: 25px;
+			background-color: #FF6537;
+			position: fixed;
+			top: 0;
+		}
+	</style>
+
+</head>
+
+<body>
+	
+	<div>
+		<div style='width:25%;'>
+			<ul id="tree" class="ztree" style='width:100%;'>
+
+			</ul>
+		</div>
+		<div id='readme' style='width:70%;margin-left:20%;'>
+			<article class='markdown-body'>
+				<p><strong>api接口说明</strong></p>
+<blockquote>
+<p>针对前后端api的总体说明</p>
+</blockquote>
+<h1 id="-">系统级输入参数</h1>
+<p>API参数共由两部分组成, 系统级参数指所有由 后端 提供的API所必须的参数, 应用级参数是指对应API所需的参数。 
+在没有特别说明的一般情况下, 系统级参数是调用API时所必须传递的参数</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>参数描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>string</td>
+<td>请求数据类型</td>
+</tr>
+<tr>
+<td>m</td>
+<td>string</td>
+<td>模块名称，自定义(web,android,ios)。便于进行接口统计</td>
+</tr>
+<tr>
+<td>v</td>
+<td>string</td>
+<td>api版本</td>
+</tr>
+<tr>
+<td>t</td>
+<td>string</td>
+<td>请求时间戳</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>访问码 由登陆接口获取</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>string</td>
+<td>签名</td>
+</tr>
+</tbody>
+</table>
+<p>系统级参数全部放入请求header中</p>
+<p>angularjs</p>
+<pre><code class="lang-js">config.headers = config.headers || {};
+var token = app.caches.getItem(&quot;token&quot;);
+var userId = app.caches.getItem(&#39;userId&#39;);
+if (!!token)
+{
+    var timeStamp = new Date().Format(&#39;yyyy-MM-dd hh:mm:ss&#39;);
+    config.headers[&quot;Content-Type&quot;] = &quot;application/json&quot;;
+    config.headers[&quot;m&quot;] = &quot;web&quot;;
+    config.headers[&quot;v&quot;] = app.caches.getItem(&#39;version&#39;);
+    config.headers[&quot;t&quot;] = timeStamp;
+    config.headers[&quot;token&quot;] = token;
+    //由token + t + m + userId 以编码utf-8获取md5，将md5字符串转成大写
+    config.headers[&quot;sign&quot;] = md5.createHash(token + timeStamp + &#39;web&#39; + userId).toUpperCase();
+    //console.log(config.headers[&quot;sign&quot;]);
+}
+return config;
+</code></pre>
+<p>jquery</p>
+<pre><code class="lang-js">//通过jquery发送请求
+service.ajaxSend = function (req)
+{
+    //设置headers
+    var token = app.caches.getItem(&quot;token&quot;);
+    var userId = app.caches.getItem(&quot;userId&quot;);
+    var timeStamp = new Date().Format(&quot;yyyy-MM-dd hh:mm:ss&quot;);
+    var sign = md5.createHash(token + timeStamp + &quot;web&quot; + userId).toUpperCase();
+
+    loading.show();
+    req = $.extend(
+        {
+
+            contentType : &quot;application/json&quot;,
+
+            headers :
+            {
+                &quot;m&quot; : &quot;web&quot;,
+                &quot;v&quot; : app.caches.getItem(&#39;version&#39;),
+                &quot;t&quot; : timeStamp,
+                &quot;token&quot; : token,
+                &quot;sign&quot; : sign
+            }
+        }, req);
+
+    var dtd = $.Deferred();
+
+    $.ajax(req)
+    .done(function (response)
+    {
+        loading.hide();
+        //若将dataType设为json 序列化会出现精度丢失问题
+        //因此在这里进行序列化
+        dtd.resolve(JSON.parse(response));
+    }
+    )
+    .fail(function (response)
+    {
+        loading.hide();
+        dtd.reject(response);
+    }
+    );
+
+    return dtd.promise();
+}
+</code></pre>
+<h1 id="-">返回参数格式说明</h1>
+<pre><code class="lang-json">
+{
+    &quot;code&quot; : &quot;4&quot;,//返回编码
+    &quot;msg&quot; : &quot;&quot;,//返回信息
+    &quot;data&quot; : &quot;&quot;//返回数据
+}
+</code></pre>
+<h1 id="-">全局错误返回码说明</h1>
+<h2 id="-">错误码说明</h2>
+<p>在返回的json里，错误码说明如下：</p>
+<p>code为0代表响应成功
+非0时表示接口调用失败 发生异常</p>
+<h2 id="-">错误码列表</h2>
+<h3 id="-">系统级错误</h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>错误描述</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>系统错误</td>
+<td>系统发生错误,请联系管理员.iscs@iscs.com.cn</td>
+</tr>
+<tr>
+<td>2</td>
+<td>必要参数丢失</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>参数不合法(参数类型不对，例如：需要传入的是数字类型的，却传入了字符类型的参数)</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>token不存在或已失效</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>计算签名错误！非法请求</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>检查权限失败（用户没有操作权限）</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>方法不存在</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">业务级错误</h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>错误描述</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>52</td>
+<td>缺少必选参数</td>
+<td></td>
+</tr>
+<tr>
+<td>53</td>
+<td>参数不合法(参数类型不对，例如：需要传入的是数字类型的，却传入了字符类型的参数)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+			</article>
+		</div>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+<script type="text/javascript" src="toc/js/prettify.js"></script>
+
+<SCRIPT type="text/javascript">
+	$(function() {
+		var css_conf = eval(markdown_panel_style);
+		$('#readme').css(css_conf)
+
+		var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+		$('pre').addClass('prettyprint linenums');
+		$('td pre').removeClass('prettyprint');
+		prettyPrint();
+
+	});
+</SCRIPT>

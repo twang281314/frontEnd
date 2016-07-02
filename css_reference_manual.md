@@ -43,4 +43,10 @@ sticky： 对象在常态时遵循常规流。它就像是relative和fixed的合
 * 绝对定位的元素，在top，right，bottom，left属性未设置时，会紧随在其前面的兄弟元素之后，但在位置上不影响常规流中的任何元素。用这个特性你或许会干这样的事：
 * 对应的脚本特性为position
 
-<iframe width="100%" height="300" src="//jsrun.net/MaKKp/embedded/html,css,result/light/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsrun.net/uaKKp/embedded/html,css,result/light/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+### z-index
+
+**语法**  
+
+z-index: auto | (<int>)
