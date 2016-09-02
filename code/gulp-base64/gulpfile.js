@@ -12,6 +12,7 @@ gulp.task('build', ['copy'], function() {
 
     return gulp.src('src/app.css')
           .pipe(base64({
+            maxImageSize: 8*1024*1024, // bytes,默认值比较小 而且不提示 是个坑
             debug: true
           }))
          .pipe(gulp.dest('dist'));
