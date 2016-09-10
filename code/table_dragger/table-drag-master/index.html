@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>table-drag samples</title>
+    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="sample1.css">
+	<link rel="stylesheet" href="sample2.css">
+	<link rel="stylesheet" href="sample3.css">
+	<link rel="stylesheet" href="sample4.css">
+</head>
+<body>
+	<a href="https://github.com/irhc">
+		<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png">
+	</a>
+	
+	<h1>table-<span style="color:#DD1812;">drag</span></h1>
+	<h5>Dragging (drag'n'drop) columns of html tables.</h5>
+	<div>
+	<p>
+	<a href="https://github.com/irhc/table-drag">Repository and description on github</a>
+	</p>
+	</div>
+	<p>
+	Move the mouse over the table headers and simply drag'n'drop it to change the order of the table columns.
+	</p>
+	<h3>Sample 1</h3>
+	Options: distance: 0 (default), restoreState: true (default)
+
+		<table id="sample1" class="sample1" cellpadding="0" cellspacing="0" border="0">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>&Auml;nderungsdatum</th>
+					<th>Typ</th>
+					<th>Gr&ouml;&szlig;e</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>libraries</td>
+					<td>08.10.2013 12:38</td>
+					<td>Dateiordner</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>views</td>
+					<td>08.10.2013 12:38</td>
+					<td>Dateiordner</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>css</td>
+					<td>18.05.2014 11:08</td>
+					<td>Dateiordner</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>.htaccess</td>
+					<td>03.06.2013 14:29</td>
+					<td>HTACCESS-Datei</td>
+					<td>1 KB</td>
+				</tr>
+				<tr>
+					<td>config.php</td>
+					<td>03.06.2013 14:29</td>
+					<td>PHP-Datei</td>
+					<td>3 KB</td>
+				</tr>
+				<tr>
+					<td>blank.html</td>
+					<td>18.05.2014 11:08</td>
+					<td>HTLM-Datei</td>
+					<td>1 KB</td>
+				</tr>
+			</tbody>
+		</table>
+	
+
+	<h3>Sample 2 (from <a href="http://akottr.github.io/dragtable/">akottr</a>)</h3>
+	Options: distance: 0, restoreState: true
+	
+      <table id="sample2" class="sar-table">
+        <thead>
+          <tr>
+            <th>TIME</th>
+
+            <th>%user</th>
+            <th>%nice</th>
+            <th>%system</th>
+            <th>%iowait</th>
+            <th>%idle</th>                     
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>12:10:01 AM</td><td>28.86</td><td>0.04</td><td>1.65</td><td>0.08</td><td>69.36</td>
+          </tr>
+          <tr>
+            <td>12:20:01 AM</td><td>26.54</td><td>0.00</td><td>1.64</td><td>0.08</td><td>71.74</td>
+
+          </tr> 
+          <tr>
+            <td>12:30:01 AM</td><td>29.73</td><td>0.00</td><td>1.66</td><td>0.09</td><td>68.52</td>
+          </tr>
+        </tbody>
+      </table>
+	
+	<h3>Sample 3 (from <a href="http://tablesorter.com/docs/">tablesorter</a>)</h3>
+	Options: distance: 60, restoreState: true (default)
+	
+	<table id="sample3" class="tablesorter"> 
+		<thead> 
+			<tr> 
+				<th>Last Name</th> 
+				<th>First Name</th> 
+				<th>Email</th> 
+				<th>Due</th> 
+				<th>Web Site</th> 
+			</tr> 
+		</thead> 
+		<tbody> 
+			<tr> 
+				<td>Smith</td> 
+				<td>John</td> 
+				<td>jsmith@gmail.com</td> 
+				<td>$50.00</td> 
+				<td>http://www.jsmith.com</td> 
+			</tr> 
+			<tr> 
+				<td>Bach</td> 
+				<td>Frank</td> 
+				<td>fbach@yahoo.com</td> 
+				<td>$50.00</td> 
+				<td>http://www.frank.com</td> 
+			</tr> 
+			<tr> 
+				<td>Doe</td> 
+				<td>Jason</td> 
+				<td>jdoe@hotmail.com</td> 
+				<td>$100.00</td> 
+				<td>http://www.jdoe.com</td> 
+			</tr> 
+			<tr> 
+				<td>Conway</td> 
+				<td>Tim</td> 
+				<td>tconway@earthlink.net</td> 
+				<td>$50.00</td> 
+				<td>http://www.timconway.com</td> 
+			</tr> 
+		</tbody> 
+	</table> 
+	
+	<h3>Sample 4 (from <a href="http://tristen.ca/tablesort/demo/">tablesort</a>)</h3>
+	Options: distance: 60, restoreState: false
+	
+	<table id='sample4' class='sort'>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Birthday</th>
+          <th>Grocery item</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Gonzo the Great</td>
+          <td>12-2-70</td>
+          <td>Radishes</td>
+          <td>$0.63</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ernie</td>
+          <td>10/11/69</td>
+          <td>Fish</td>
+          <td>$12.09</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Bert</td>
+          <td>10/11/1969</td>
+          <td>Broccoli</td>
+          <td>$0.79</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Cookie Monster</td>
+          <td>1/09/1966</td>
+          <td>Oreo cookies</td>
+          <td>$2.78</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Kermit</td>
+          <td>12-05-1955</td>
+          <td>Granola</td>
+          <td>$4.73</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Sam the Eagle</td>
+          <td>04/07/75</td>
+          <td>Corn dog</td>
+          <td>$5.50</td>
+        </tr>
+      </tbody>
+    </table>
+	
+	<script src='table-drag.min.js'></script>
+	<script>
+	  new TableDrag(document.getElementById('sample1'));
+	  new TableDrag(document.getElementById('sample2'), { distance: 0, restoreState: true });
+	  new TableDrag(document.getElementById('sample3'), { distance: 60 });
+	  new TableDrag(document.getElementById('sample4'), { distance: 60, restoreState: false });
+	</script>
+
+</body>
+</html>

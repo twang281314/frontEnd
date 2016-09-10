@@ -1,0 +1,25 @@
+.sample1 {
+    font-family: "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 14px;
+	background-color: white;
+}
+
+.sample1 thead > tr > th {
+    padding: 0px 5px 0px 5px;
+    text-align:left;
+    border-right: 1px solid #dfeaf7;
+}
+.sample1 td {
+    padding: 1px 5px 1px 5px;
+    text-align:left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.sample1 tbody > tr:first-child > td {
+    padding-top:10px;
+}
+.sample1 th:first-child, td:first-child {
+    padding-left:15px;
+}

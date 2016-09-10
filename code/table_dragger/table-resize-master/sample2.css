@@ -1,0 +1,25 @@
+.sar-table {
+    font-size: 10px;
+    border-collapse:collapse;
+    font-family: verdana, sans-serif;
+}
+.sar-table td, .sar-table th {
+    text-align:left;
+    vertical-align:top;
+    border:1px solid #CCC;
+    font-size:0.9em;
+    padding:3px;
+}
+
+.sar-table tr{
+    marging:0;
+    padding:0;
+}
+
+table.sar-table th {
+    background:none repeat scroll 0 0 #FBF9EA;
+    color:#000;
+    font-weight:normal;
+    height:20px;
+    width:100px;
+}
