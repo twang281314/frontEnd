@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>test</title>
+</head>
+<body ondragstart="oDragStart()">
+    <script>
+       
+        var isFromCellIndex, isToCellIndex;
+
+        function oDragStart() {
+            if (event.srcElement.tagName == "td") {
+                window.event.datatransfer.effectAllowed = "move";
+                isFromCellIndex = event.srcElement.cellIndex; //开始drag时表格列索引  
+            }
+
+        }
+
+        function oDragEnd() {
+            var isValue, i, isCellIndex;
+
+            if (event.srcElement.tagName == "td") {
+
+                isToCellIndex = event.srcElement.cellIndex; //结束drag时表格列索引  
+                //如果  
+                if (isFromCellIndex < isToCellIndex) {
+                    for (i = 0; i < document.all.oTable.rows.length; i++) {
+                        isValue = document.all.oTable.rows(i).cells(isFromCellIndex).innerText;
+
+                        for (isCellIndex = isFromCellIndex; isCellIndex < isToCellIndex; isCellIndex++) {
+                            document.all.oTable.rows(i).cells(isCellIndex).innerText = document.all.oTable.rows(i).cells(isCellIndex + 1).innerText;
+                        }
+                        document.all.oTable.rows(i).cells(isToCellIndex).innerText = isValue;
+                    }
+
+                } else {
+                    for (i = 0; i < document.all.oTable.rows.length; i++) {
+                        isValue = document.all.oTable.rows(i).cells(isFromCellIndex).innerText;
+
+                        for (isCellIndex = isFromCellIndex; isCellIndex > isToCellIndex; isCellIndex--) {
+
+
+                            document.all.oTable.rows(i).cells(isCellIndex).innerText = document.all.oTable.rows(i).cells(isCellIndex - 1).innerText;
+
+                        }
+                        document.all.oTable.rows(i).cells(isToCellIndex).innerText = isValue;
+                    }
+
+                }
+            }
+
+
+        }
+
+        function oSelect(event) {
+            if (event.srcElement.tagName == "td") {
+                var oRange = document.body.createTextrange();
+                oRange.moveToElementText(event.srcElement);
+                oRange.select();
+
+            }
+        }
+      
+    </script>
+    <table id="oTable" width="400px" onmouseover="oSelect(event)" ondragenter="return false;" ondragover="return false;" ondrop="oDragEnd()" border>
+        <tr>
+            <td>第一列</td>
+            <td>第二列</td>
+            <td>第三列</td>
+            <td>第四列</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>4</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>w</td>
+            <td>7</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+    </table>
+    <br>
+</body>
+</html>

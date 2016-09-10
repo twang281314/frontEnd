@@ -1,0 +1,650 @@
+<!doctype   html   public   "-//W3C//DTD   HTML   4.0   Transitional//EN">
+<html>
+
+<head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <script type="text/javascript" src="sorttab.js"></script>
+  <script type="text/javascript" src="movetab.js"></script>
+  <STYLE>
+    td {
+      width: 20%;
+      height: 20px;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+      cursor: default;
+    }
+    
+    th {
+      width: 20%;
+      height: 20px;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+      cursor: default;
+    }
+    
+    div {
+      font-size: 13px;
+    }
+    
+    th {
+      height: 20px;
+      font-size: 12px;
+      font-weight: normal;
+      border-bottom: 2px solid black;
+      background-color: #CCCCCC
+    }
+    
+    table {
+      border: 1px solid black;
+      font-size: 13px;
+    }
+  </STYLE>
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--  
+
+
+    var Main_Tab = null; //定义全局变量Main_Tab，使之指向固定表“ExTable”。以后可以使用表对象。  
+    var dragColStart = 0; //初始化拖拽起始表列与结束表列  
+    var dragColEnd = 0;
+
+    //  function   ini()  
+    //  {  
+    //  Main_Tab= ExTable; //指向固定表  
+    //  }  
+    function ChangeColumn(table, sor, tag) //交换表中的两列，需要遍历每一行，然后交换每一个元素。因为没有表列对象。  
+    {
+      //  alert(table.rows.length);
+      for (var i = 0; i < table.rows.length; i++)
+        table.rows[i].cells[sor].swapNode(table.rows[i].cells[tag]);
+
+    }
+    var dragdiv;
+    //   document.body.onclick=function(){
+    //      alert("sdfds")
+    //          dragdiv=document.createElement("DIV");
+    //       dragdiv.onselectstart = function()
+    //       {return false};
+    //       document.body.appendChild(dragdiv);
+    //  }   
+
+    function init() {
+      dragdiv = document.createElement("DIV");
+      dragdiv.onselectstart = function() {
+        return false
+      };
+      document.body.appendChild(dragdiv);
+
+    }
+
+    function movespan(obj) //obj为触发拖动事件的源“td”对象  
+    {
+      Main_Tab = ExTable; //指向固定表  
+      var nx = event.x,
+        ny = event.y;
+      var tab_data = document.getElementById("ExTable");
+
+      setspan();
+
+      function setspan() //动态的显示一个拖动中的表“td”对象  
+      {
+
+        // 	  dragdiv.style.left=nx-dragdiv.offsetWidth/2;
+        // 	  dragdiv.style.top=ny-dragdiv.offsetHeight/2;
+        var cell;
+        cell = obj;
+        var t = cell.offsetTop;
+        var l = cell.offsetLeft;
+        while (cell = cell.offsetParent) {
+          //alert(cell);
+          l += cell.offsetLeft;
+          t += cell.offsetTop;
+        }
+        dragdiv.style.border = "1px solid black";
+        dragdiv.style.left = l - 1.4;
+        dragdiv.style.top = t + 2.0;
+
+        dragdiv.style.fontSize = obj.currentStyle.fontSize;
+        dragdiv.style.textAlign = "center";
+        dragdiv.style.display = "";
+        dragdiv.innerHTML = obj.innerHTML;
+        //dragdiv.style.border = "1px solid black";
+        dragdiv.style.width = obj.offsetWidth;
+        dragdiv.style.height = obj.offsetHeight;
+        //		 	  dragdiv.style.backgroundPositionX="3px";
+        //		 	  dragdiv.style.backgroundPositionY="20px";
+        dragdiv.style.cursor = "hand";
+        dragdiv.style.position = "absolute";
+        dragdiv.style.backgroundColor = obj.style.backgroundColor;
+        dragdiv.style.filter = "alpha(opacity=50)";
+        //			  domospan.style.display="";  
+        //			  domospan.innerText=obj.innerText;//Caption为被拖动对象的Caption  
+        //			  domospan.style.left=nx-domospan.offsetWidth/2;  
+        //			  domospan.style.top=ny-domospan.offsetHeight/2;  
+
+      }
+      //定义一个只在触发拖动事件后方才运行的OnMouseMove事件; 
+      //            tab_data.onmousemove=function(){  
+      document.onmousemove = function() {
+
+        //			     domospan.style.left=event.x-domospan.offsetWidth/2;  
+        //			     domospan.style.top=event.y-domospan.offsetHeight/2;  
+
+        dragdiv.style.left = event.x - dragdiv.offsetWidth / 2;
+        dragdiv.style.top = event.y - dragdiv.offsetHeight / 2;
+
+      }
+
+      function get_Element(the_ele, the_tag) //利用此函数，可以避免出现错误。当拖动目标移到表外是，将忽略错误。  
+      {
+        the_tag = the_tag.toLowerCase();
+        if (the_ele.tagName.toLowerCase() == the_tag)
+          return the_ele;
+        while (the_ele = the_ele.offsetParent) {
+          if (the_ele.tagName.toLowerCase() == the_tag)
+            return the_ele;
+        }
+        return (null);
+      }
+
+      //dragdiv.onmouseup=function(){  
+      document.onmouseup = function() {
+          //alert("鼠标起来");
+
+          var the_start = get_Element(obj, "th");
+          if (the_start != null) {
+            dragColStart = the_start.cellIndex;
+          } else {
+            return (null);
+          }
+
+          //while 当对象不为空时就可以循环
+          //domospan.style.display="none";  
+
+          dragdiv.style.display = "none";
+
+          //  document.body.removeChild(dragdiv);
+          var the_end = get_Element(document.elementFromPoint(event.x, event.y), "th");
+          var curleftX = parseInt(dragdiv.style.left);
+          //curleftX=curleftX.substr(0,curleftX.length-2);
+          var curtopY = parseInt(dragdiv.style.top);
+          // curtopY=curtopY.substr(0,curtopY.length-2);
+
+          var currightX = parseInt(dragdiv.style.left) + parseInt(dragdiv.style.width);
+          // alert(dragdiv.style.left+"   "+currightX);
+          //=currightX.substr(0,currightX.length-2);
+          // alert(currightX);
+          var firstelm = document.elementFromPoint(curleftX, curtopY);
+          var secondelm = document.elementFromPoint(currightX, curtopY);
+          //			  var testfrist=
+          //              get_Element(document.elementFromPoint(event.x+dragdiv.offsetWidth/2,event.y-dragdiv.offsetHeight/2),"td");
+
+          var testfrist =
+            get_Element(document.elementFromPoint(curleftX, curtopY), "th");
+          var testsecond =
+            get_Element(document.elementFromPoint(currightX, curtopY), "th");
+          //alert("鼠标位置:"+curleftX+"  层最顶单:"+currightX);
+          //alert(event.x+dragdiv.offsetWidth/2);
+          //  alert("左:"+testfrist.innerHTML+"  右:"+testsecond.innerHTML);
+          //  alert(testfrist==testsecond);
+          //			  alert(testsecond.innerHTML);               
+          //	  alert(firstelm.innerHTML);
+          //			  alert(secondelm.innerHTML);
+          //alert(the_end.innerHTML);
+          if (the_end != null) {
+            dragColEnd = the_end.cellIndex;
+          } else {
+            return (null);
+          }
+          if (testfrist == testsecond) {
+            ChangeColumn(tab_data, dragColStart, dragColEnd);
+          } else
+            changeSort(tab_data, obj, testfrist, testsecond);
+        }
+        //     ChangeColumn(table,sor,tag) 
+      function changeSort(table, targettag, firsttag, secondtag) {
+        //         if(firsttag==secondtag){
+        //            for(var   i=0;i<table.rows.length;i++)  
+        //              table.rows[i].cells[sor].swapNode(table.rows[i].cells[tag]);  
+        //         }else{
+        if (secondtag == null || firsttag == null)
+          return;
+        var targetleft = targettag.offsetLeft + targettag.offsetWidth;
+        //            alert(targetleft);
+        var ftagleft = firsttag.offsetLeft + firsttag.offsetWidth;
+        //            alert(targetleft+"  "+ftagleft);
+        //   alert(secondtag==null);
+        var stagleft = secondtag.offsetLeft + secondtag.offsetWidth;
+        var targindex = targettag.cellIndex;
+        var findex = firsttag.cellIndex;
+        var sindex = secondtag.cellIndex;
+        var arrtar = new Array();
+        for (var i = 0; i < table.rows.length; i++)
+          arrtar[i] = table.rows[i].cells[targindex];
+        //当拖动的td在左边时
+        if (ftagleft > targetleft && stagleft > targetleft) {
+          //alert("左进入循环...");
+          for (var k = targindex; k < findex; k++) {
+            for (var i = 0; i < table.rows.length; i++) {
+              table.rows[i].cells[k].swapNode(table.rows[i].cells[k + 1]);
+            }
+          }
+        }
+        if (ftagleft < targetleft && stagleft < targetleft) { //当拖动的td在右边时
+          //alert("子进入循环...");
+          for (var k = targindex; k > sindex; k--) {
+            for (var i = 0; i < table.rows.length; i++) {
+              table.rows[i].cells[k].swapNode(table.rows[i].cells[k - 1]);
+            }
+          }
+        }
+
+        // }
+      }
+
+    }
+    //-->
+  </SCRIPT>
+</head>
+
+<body onload="init()">
+  <table id="ExTable" align="center" cellpadding="0" cellspacing="0" ondrag="return false;">
+    <tr>
+      <th onmousedown="movespan(this)" onselectstart="return false" id="td1">语言名称</th>
+      <th onmousedown="movespan(this)" onselectstart="return false" id="td2">掌握程度</th>
+      <th onmousedown="movespan(this)" onselectstart="return false" id="td3">版本号</th>
+      <th onmousedown="movespan(this)" onselectstart="return false" id="td4">框架知识</th>
+    </tr>
+    <tr>
+      <td>Delphi</td>
+      <td>熟练</td>
+      <td>6.0</td>
+      <TD>Stuts</TD>
+    </tr>
+    <tr>
+      <td>VC</td>
+      <td>熟练</td>
+      <td>6.0</td>
+      <TD>Windows</TD>
+    </tr>
+    <tr>
+      <td>VB</td>
+      <td>了解</td>
+      <td>6.0</td>
+      <TD>PageMaker</TD>
+    </tr>
+    <tr>
+      <td>C#</td>
+      <td>了解</td>
+      <td>DotnetFramWork</td>
+      <td>usa</td>
+    </tr>
+    <tr>
+      <td>PB</td>
+      <td>不懂</td>
+      <td>7.0</td>
+      <td>usa</td>
+    </tr>
+    <tr>
+      <td>ASP</td>
+      <td>了解</td>
+      <td>无</td>
+      <td>office</td>
+    </tr>
+    <tr>
+      <td>JavaScript</td>
+      <td>了解</td>
+      <td>无</td>
+      <td>indai</td>
+    </tr>
+    <tr>
+      <td>QT</td>
+      <td>了解</td>
+      <td>无</td>
+      <td>usa</td>
+    </tr>
+    <tr>
+      <td>Kylix</td>
+      <td>了解</td>
+      <td>3.0</td>
+      <td>usa</td>
+    </tr>
+    <tr>
+      <td>SQL</td>
+      <td>了解</td>
+      <td>7.0</td>
+      <td>china</td>
+    </tr>
+  </table>
+
+</body>
+
+</html>
+<!doctype   html   public   "-//W3C//DTD   HTML   4.0   Transitional//EN">
+<html>
+
+<head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <script type="text/javascript" src="sorttab.js"></script>
+  <script type="text/javascript" src="movetab.js"></script>
+  <STYLE>
+    td {
+      width: 20%;
+      height: 20px;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+      cursor: default;
+    }
+    
+    th {
+      width: 20%;
+      height: 20px;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+      cursor: default;
+    }
+    
+    div {
+      font-size: 13px;
+    }
+    
+    th {
+      height: 20px;
+      font-size: 12px;
+      font-weight: normal;
+      border-bottom: 2px solid black;
+      background-color: #CCCCCC
+    }
+    
+    table {
+      border: 1px solid black;
+      font-size: 13px;
+    }
+  </STYLE>
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--  
+
+
+    var Main_Tab = null; //定义全局变量Main_Tab，使之指向固定表“ExTable”。以后可以使用表对象。  
+    var dragColStart = 0; //初始化拖拽起始表列与结束表列  
+    var dragColEnd = 0;
+
+    //  function   ini()  
+    //  {  
+    //  Main_Tab= ExTable; //指向固定表  
+    //  }  
+    function ChangeColumn(table, sor, tag) //交换表中的两列，需要遍历每一行，然后交换每一个元素。因为没有表列对象。  
+    {
+      //  alert(table.rows.length);
+      for (var i = 0; i < table.rows.length; i++)
+        table.rows[i].cells[sor].swapNode(table.rows[i].cells[tag]);
+
+    }
+    var dragdiv;
+    //   document.body.onclick=function(){
+    //      alert("sdfds")
+    //          dragdiv=document.createElement("DIV");
+    //       dragdiv.onselectstart = function()
+    //       {return false};
+    //       document.body.appendChild(dragdiv);
+    //  }   
+
+    function init() {
+      dragdiv = document.createElement("DIV");
+      dragdiv.onselectstart = function() {
+        return false
+      };
+      document.body.appendChild(dragdiv);
+
+    }
+
+    function movespan(obj) //obj为触发拖动事件的源“td”对象  
+    {
+      Main_Tab = ExTable; //指向固定表  
+      var nx = event.x,
+        ny = event.y;
+      var tab_data = document.getElementById("ExTable");
+
+      setspan();
+
+      function setspan() //动态的显示一个拖动中的表“td”对象  
+      {
+
+        // 	  dragdiv.style.left=nx-dragdiv.offsetWidth/2;
+        // 	  dragdiv.style.top=ny-dragdiv.offsetHeight/2;
+        var cell;
+        cell = obj;
+        var t = cell.offsetTop;
+        var l = cell.offsetLeft;
+        while (cell = cell.offsetParent) {
+          //alert(cell);
+          l += cell.offsetLeft;
+          t += cell.offsetTop;
+        }
+        dragdiv.style.border = "1px solid black";
+        dragdiv.style.left = l - 1.4;
+        dragdiv.style.top = t + 2.0;
+
+        dragdiv.style.fontSize = obj.currentStyle.fontSize;
+        dragdiv.style.textAlign = "center";
+        dragdiv.style.display = "";
+        dragdiv.innerHTML = obj.innerHTML;
+        //dragdiv.style.border = "1px solid black";
+        dragdiv.style.width = obj.offsetWidth;
+        dragdiv.style.height = obj.offsetHeight;
+        //		 	  dragdiv.style.backgroundPositionX="3px";
+        //		 	  dragdiv.style.backgroundPositionY="20px";
+        dragdiv.style.cursor = "hand";
+        dragdiv.style.position = "absolute";
+        dragdiv.style.backgroundColor = obj.style.backgroundColor;
+        dragdiv.style.filter = "alpha(opacity=50)";
+        //			  domospan.style.display="";  
+        //			  domospan.innerText=obj.innerText;//Caption为被拖动对象的Caption  
+        //			  domospan.style.left=nx-domospan.offsetWidth/2;  
+        //			  domospan.style.top=ny-domospan.offsetHeight/2;  
+
+      }
+      //定义一个只在触发拖动事件后方才运行的OnMouseMove事件; 
+      //            tab_data.onmousemove=function(){  
+      document.onmousemove = function() {
+
+        //			     domospan.style.left=event.x-domospan.offsetWidth/2;  
+        //			     domospan.style.top=event.y-domospan.offsetHeight/2;  
+
+        dragdiv.style.left = event.x - dragdiv.offsetWidth / 2;
+        dragdiv.style.top = event.y - dragdiv.offsetHeight / 2;
+
+      }
+
+      function get_Element(the_ele, the_tag) //利用此函数，可以避免出现错误。当拖动目标移到表外是，将忽略错误。  
+      {
+        the_tag = the_tag.toLowerCase();
+        if (the_ele.tagName.toLowerCase() == the_tag)
+          return the_ele;
+        while (the_ele = the_ele.offsetParent) {
+          if (the_ele.tagName.toLowerCase() == the_tag)
+            return the_ele;
+        }
+        return (null);
+      }
+
+      //dragdiv.onmouseup=function(){  
+      document.onmouseup = function() {
+          //alert("鼠标起来");
+
+          var the_start = get_Element(obj, "th");
+          if (the_start != null) {
+            dragColStart = the_start.cellIndex;
+          } else {
+            return (null);
+          }
+
+          //while 当对象不为空时就可以循环
+          //domospan.style.display="none";  
+
+          dragdiv.style.display = "none";
+
+          //  document.body.removeChild(dragdiv);
+          var the_end = get_Element(document.elementFromPoint(event.x, event.y), "th");
+          var curleftX = parseInt(dragdiv.style.left);
+          //curleftX=curleftX.substr(0,curleftX.length-2);
+          var curtopY = parseInt(dragdiv.style.top);
+          // curtopY=curtopY.substr(0,curtopY.length-2);
+
+          var currightX = parseInt(dragdiv.style.left) + parseInt(dragdiv.style.width);
+          // alert(dragdiv.style.left+"   "+currightX);
+          //=currightX.substr(0,currightX.length-2);
+          // alert(currightX);
+          var firstelm = document.elementFromPoint(curleftX, curtopY);
+          var secondelm = document.elementFromPoint(currightX, curtopY);
+          //			  var testfrist=
+          //              get_Element(document.elementFromPoint(event.x+dragdiv.offsetWidth/2,event.y-dragdiv.offsetHeight/2),"td");
+
+          var testfrist =
+            get_Element(document.elementFromPoint(curleftX, curtopY), "th");
+          var testsecond =
+            get_Element(document.elementFromPoint(currightX, curtopY), "th");
+          //alert("鼠标位置:"+curleftX+"  层最顶单:"+currightX);
+          //alert(event.x+dragdiv.offsetWidth/2);
+          //  alert("左:"+testfrist.innerHTML+"  右:"+testsecond.innerHTML);
+          //  alert(testfrist==testsecond);
+          //			  alert(testsecond.innerHTML);               
+          //	  alert(firstelm.innerHTML);
+          //			  alert(secondelm.innerHTML);
+          //alert(the_end.innerHTML);
+          if (the_end != null) {
+            dragColEnd = the_end.cellIndex;
+          } else {
+            return (null);
+          }
+          if (testfrist == testsecond) {
+            ChangeColumn(tab_data, dragColStart, dragColEnd);
+          } else
+            changeSort(tab_data, obj, testfrist, testsecond);
+        }
+        //     ChangeColumn(table,sor,tag) 
+      function changeSort(table, targettag, firsttag, secondtag) {
+        //         if(firsttag==secondtag){
+        //            for(var   i=0;i<table.rows.length;i++)  
+        //              table.rows[i].cells[sor].swapNode(table.rows[i].cells[tag]);  
+        //         }else{
+        if (secondtag == null || firsttag == null)
+          return;
+        var targetleft = targettag.offsetLeft + targettag.offsetWidth;
+        //            alert(targetleft);
+        var ftagleft = firsttag.offsetLeft + firsttag.offsetWidth;
+        //            alert(targetleft+"  "+ftagleft);
+        //   alert(secondtag==null);
+        var stagleft = secondtag.offsetLeft + secondtag.offsetWidth;
+        var targindex = targettag.cellIndex;
+        var findex = firsttag.cellIndex;
+        var sindex = secondtag.cellIndex;
+        var arrtar = new Array();
+        for (var i = 0; i < table.rows.length; i++)
+          arrtar[i] = table.rows[i].cells[targindex];
+        //当拖动的td在左边时
+        if (ftagleft > targetleft && stagleft > targetleft) {
+          //alert("左进入循环...");
+          for (var k = targindex; k < findex; k++) {
+            for (var i = 0; i < table.rows.length; i++) {
+              table.rows[i].cells[k].swapNode(table.rows[i].cells[k + 1]);
+            }
+          }
+        }
+        if (ftagleft < targetleft && stagleft < targetleft) { //当拖动的td在右边时
+          //alert("子进入循环...");
+          for (var k = targindex; k > sindex; k--) {
+            for (var i = 0; i < table.rows.length; i++) {
+              table.rows[i].cells[k].swapNode(table.rows[i].cells[k - 1]);
+            }
+          }
+        }
+
+        // }
+      }
+
+    }
+    //-->
+  </SCRIPT>
+</head>
+
+<body onload="init()">
+  <table id="ExTable" align="center" cellpadding="0" cellspacing="0" ondrag="return false;">
+    <tr>
+      <th onmousedown="movespan(this)" onselectstart="return false" id="td1">语言名称</th>
+      <th onmousedown="movespan(this)" onselectstart="return false" id="td2">掌握程度</th>
+      <th onmousedown="movespan(this)" onselectstart="return false" id="td3">版本号</th>
+      <th onmousedown="movespan(this)" onselectstart="return false" id="td4">框架知识</th>
+    </tr>
+    <tr>
+      <td>Delphi</td>
+      <td>熟练</td>
+      <td>6.0</td>
+      <TD>Stuts</TD>
+    </tr>
+    <tr>
+      <td>VC</td>
+      <td>熟练</td>
+      <td>6.0</td>
+      <TD>Windows</TD>
+    </tr>
+    <tr>
+      <td>VB</td>
+      <td>了解</td>
+      <td>6.0</td>
+      <TD>PageMaker</TD>
+    </tr>
+    <tr>
+      <td>C#</td>
+      <td>了解</td>
+      <td>DotnetFramWork</td>
+      <td>usa</td>
+    </tr>
+    <tr>
+      <td>PB</td>
+      <td>不懂</td>
+      <td>7.0</td>
+      <td>usa</td>
+    </tr>
+    <tr>
+      <td>ASP</td>
+      <td>了解</td>
+      <td>无</td>
+      <td>office</td>
+    </tr>
+    <tr>
+      <td>JavaScript</td>
+      <td>了解</td>
+      <td>无</td>
+      <td>indai</td>
+    </tr>
+    <tr>
+      <td>QT</td>
+      <td>了解</td>
+      <td>无</td>
+      <td>usa</td>
+    </tr>
+    <tr>
+      <td>Kylix</td>
+      <td>了解</td>
+      <td>3.0</td>
+      <td>usa</td>
+    </tr>
+    <tr>
+      <td>SQL</td>
+      <td>了解</td>
+      <td>7.0</td>
+      <td>china</td>
+    </tr>
+  </table>
+
+</body>
+
+</html>

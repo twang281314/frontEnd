@@ -1,0 +1,49 @@
+.sort {
+  background:#fff;
+  max-width:100%;
+  border-spacing:0;
+  width:100%;
+  //margin:10px 0;
+  border:1px solid #ddd;
+  border-collapse:separate;
+  *border-collapse:collapsed;
+  -webkit-box-shadow:0 0 4px rgba(0,0,0,0.10);
+     -moz-box-shadow:0 0 4px rgba(0,0,0,0.10);
+          box-shadow:0 0 4px rgba(0,0,0,0.10);
+  }
+  .sort th,
+  .sort td {
+    padding:8px;
+    line-height:18px;
+    text-align:left;
+    border-top:1px solid #ddd;
+    }
+  .sort th {
+    background:#eee;
+    //background:-webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#eee));
+    //background:-moz-linear-gradient(top, #f6f6f6, #eee);
+    text-shadow:0 1px 0 #fff;
+    font-weight:bold;
+    vertical-align:bottom;
+    }
+  .sort td {
+    vertical-align:top;
+    }
+  .sort thead:first-child tr th,
+  .sort thead:first-child tr td {
+    border-top:0;
+    }
+  .sort tbody + tbody {
+    border-top:2px solid #ddd;
+    }
+  .sort th + th,
+  .sort td + td,
+  .sort th + td,
+  .sort td + th {
+    border-left:1px solid #ddd;
+    }
+  .sort thead:first-child tr:first-child th,
+  .sort tbody:first-child tr:first-child th,
+  .sort tbody:first-child tr:first-child td {
+    border-top:0;
+    }

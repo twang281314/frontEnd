@@ -1,0 +1,9 @@
+body {background-color: #f9f9f9}
+.container {margin-top: 20px;}
+th[draggable] a,
+th[draggable] {cursor: move;}
+th[draggable] a:hover,
+th[draggable] a {display: block; text-decoration: none; color: #333333;}
+.drag {background-color: rgba(0, 0, 0, 0.25); opacity: 0.25}
+.dnd-drag {opacity: 0.25}
+.over {background-color: rgba(0, 0, 255, 0.35);}

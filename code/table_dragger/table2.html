@@ -1,0 +1,147 @@
+<html>
+<title>table拖动(兼容Firefox 3.5/IE6)，固定表格宽度</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style type="text/css"><!--
+.bg {
+font-size:12px;
+color:#000000;
+table-layout:fixed;//这个属性可以隐藏文字
+}
+.bg td{
+font-size:12px;
+color:#000000;
+text-align:left;
+line-height:15px;
+height:20px;
+}
+.bg td.tit{
+background-color:#e2e2e2;
+color:#000;
+height:17px;
+text-align:center;
+line-height:15px;
+}
+.bg td.num{
+background-color:#e2e2e2;
+color:#000;
+text-align:right;
+line-height:15px;
+height:22px;
+width:30px;
+}
+.resizeDivClass{
+text-align:right;
+width:3px;
+margin:0px 0 0px 0;
+background:#fff;
+border:0px;
+float:right;
+cursor:e-resize;
+}
+--></style>
+<script type="text/javascript"><!--
+window.onload=function(){
+drag(document.getElementById('drag'));
+drag(document.getElementById('drag2'));
+drag(document.getElementById('drag3'));
+drag(document.getElementById('drag4'));
+};
+function drag(o,r){
+o.p_p_c_gw=function(index)/*取得o.parentNode.parentNode.cells的宽度，兼容IE6和Firefox*/{
+if(window.ActiveXObject){
+return o.parentNode.parentNode.cells[o.parentNode.cellIndex+index].offsetWidth;
+}else{
+return parseInt(o.parentNode.parentNode.cells[o.parentNode.cellIndex+index].offsetWidth)-
+parseInt(o.parentNode.parentNode.parentNode.parentNode.cellPadding)*2-2;
+}
+}
+
+o.p_p_p_sw=function(index,w)/*设置所有行的第index个单元格为w，在IE下可只设第一行*/{
+for(var i=0;i<o.parentNode.parentNode.parentNode.parentNode.rows.length;i++) {
+o.parentNode.parentNode.parentNode.parentNode.rows[i].cells[index].style.width=w;
+}
+}
+
+var out=document.getElementById('my');
+
+o.firstChild.onmousedown=function(){return false;};
+o.onmousedown=function(a){
+var d=document;if(!a)a=window.event;
+var lastX=a.clientX;
+var watch_dog=o.p_p_c_gw(0)+o.p_p_c_gw(1);//有时候拖拽过快表格会变大，至于为什么会这样我也不清楚。watch_dog是为了保证表格不会变大，
+if(o.setCapture)
+o.setCapture();
+else if(window.captureEvents)
+window.captureEvents(Event.MOUSEMOVE|Event.MOUSEUP);
+//
+d.onmousemove=function(a){
+if(!a)a=window.event;
+if(o.p_p_c_gw(0)+o.p_p_c_gw(1)>watch_dog){
+o.p_p_p_sw(o.parentNode.cellIndex+1,watch_dog-o.p_p_c_gw(0));
+return;
+}
+var t=a.clientX-lastX;out.innerHTML=t;
+if(t>0) {//right
+if(parseInt(o.parentNode.parentNode.cells[o.parentNode.cellIndex+1].style.width)-t<10)
+return;
+o.p_p_p_sw(o.parentNode.cellIndex,o.p_p_c_gw(0)+t);
+o.p_p_p_sw(o.parentNode.cellIndex+1,o.p_p_c_gw(1)-t);
+} else {//left
+if(parseInt(o.parentNode.parentNode.cells[o.parentNode.cellIndex].style.width)+t<10)
+return;
+o.p_p_p_sw(o.parentNode.cellIndex,o.p_p_c_gw(0)+t);
+o.p_p_p_sw(o.parentNode.cellIndex+1,o.p_p_c_gw(1)-t);
+}
+lastX=a.clientX;
+};
+d.onmouseup=function(){
+if(o.releaseCapture)
+o.releaseCapture();
+else if(window.captureEvents)
+window.captureEvents(Event.MOUSEMOVE|Event.MOUSEUP);
+d.onmousemove=null;
+d.onmouseup=null;
+};
+};
+}
+// --></script>
+<body >
+<table class="bg" width="60%" border="1" cellspacing="0" cellpadding="0" bordercolorlight="#7b7b7b" bordercolordark="#efefef" id="theObjTable" >
+<tr >
+<td class="num" >序号</td>
+<td class="tit" >
+<span class="resizeDivClass" id="drag"><img src="images/box1.gif" src="images/box1.gif" width="3" height="18"></span>
+公司名称
+</td>
+<td class="tit" >
+<span class="resizeDivClass" id="drag2"><img src="images/box1.gif" src="images/box1.gif" width="3" height="18"></span>
+订单客户
+</td>
+<td class="tit" >
+<span class="resizeDivClass" id="drag3"><img src="images/box1.gif" src="images/box1.gif" width="3" height="18"></span>
+部门
+</td>
+<td class="tit" >
+<span class="resizeDivClass" id="drag4"><img src="images/box1.gif" src="images/box1.gif" width="3" height="18"></span>
+业务员
+</td>
+<td class="tit" >
+
+交款方式
+</td>
+</tr>
+<tr >
+<td class="num" >1</td>
+<td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="javascript:showJobCommentDialog(2325,%20null);">未到期 (30天)</a></td></tr></table></div></td>
+<td ><div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%">jb51.net</div></td>
+<td >广告部</td>
+<td >王天一</td>
+<td >现金</td>
+</tr >
+</table>
+<div id="my"></div>
+<div id="my2"></div>
+</body>
+</html> 

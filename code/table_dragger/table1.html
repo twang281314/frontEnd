@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+* {}{
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size: 12px;
+ color: #333333;
+}
+-->
+</style>
+</head>
+
+<body>
+<div>
+<table id="dataTable" border="1" cellpadding="0" cellspacing="0" style="table-layout:fixed;border-collapse:collapse;">
+ <colgroup>
+  <col style="width:200px;" />
+  <col style="width:100px;" />
+  <col style="width:100px;" />
+  <col style="width:100px;" />
+  <col style="width:100px;" />
+ </colgroup>
+ <thead>
+ <tr>
+  <td>拖动我1</td>
+  <td>拖动我2</td>
+  <td>拖动我3</td>
+  <td>拖动我4</td>
+  <td>拖动我5</td>
+ </tr>
+ </thead>
+ <tr>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+ </tr>
+ <tr>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+ </tr>
+ <tr>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+ </tr>
+ <tr>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+ </tr>
+ <tr>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+  <td align="center"><div
+nowrap="" align="center"><table><tr><td><a
+href="">未到期 (30天)</a></td></tr></table></div></td>
+ </tr>
+</table>
+</div>
+<script language="javascript" type="text/javascript">
+var JPos = {};
+(function($){
+ 
+ $.getAbsPos = function(pTarget){
+  var x_ = y_ = 0;
+ 
+  if(pTarget.style.position != "absolute"){ 
+   while(pTarget.offsetParent){
+     x_ += pTarget.offsetLeft;
+     y_ += pTarget.offsetTop;
+     pTarget = pTarget.offsetParent;
+   }
+  }
+   x_ += pTarget.offsetLeft;
+   y_ += pTarget.offsetTop;
+  return {x:x_,y:y_};
+ }
+
+ $.getEventPos = function(evt){
+   var _x,_y;
+   evt = JEvent.getEvent(evt);
+   if(evt.pageX || evt.pageY){
+    _x = evt.pageX;
+    _y = evt.pageY;
+   }else if(evt.clientX || evt.clientY){
+    _x = evt.clientX + (document.body.scrollLeft || document.documentElement.scrollLeft) - (document.body.clientLeft || document.documentElement.clientLeft);
+    _y = evt.clientY + (document.body.scrollTop || document.documentElement.scrollTop) - (document.body.clientTop || document.documentElement.clientTop);
+   }else{
+    return $.getAbsPos(evt.target);
+   }
+   return {x:_x,y:_y};
+ }
+ 
+})(JPos);
+
+
+//=======================================================================================
+
+var JEvent = {};
+(function($){
+ $.getEvent = function(evt){    
+  evt = window.event || evt;
+    
+  if(!evt){
+   var fun = JEvent.getEvent.caller;
+   while(fun != null){
+    evt = fun.arguments[0];
+    if(evt && evt.constructor == Event)
+     break;
+    fun = fun.caller;
+   }
+  }
+  
+  return evt;
+ }
+ 
+ $.doEvent = function(fun){
+  var args = arguments;
+  return function(){
+   return fun(args);
+  }
+ }
+})(JEvent);
+//=======================================================================================
+
+var colIndex;
+var dataTable = document.getElementById("dataTable");
+var cols = dataTable.getElementsByTagName("COL");
+
+var dragMask = document.createElement("DIV");
+var mAWidth = mAHeight = 30;
+document.body.insertBefore(dragMask,document.body.lastChild);
+dragMask.style.cssText = "width:" + mAWidth + "px;height:" + mAHeight + "px;position:absolute;background-color:#000;filter: Alpha(Opacity=10);-moz-opacity:0.1;opacity: 0.1;display:none;z-index:999999999;display:none;";
+
+var mask_mousemove = function(evt){
+ if(document.selection){//IE ,Opera
+  if(document.selection.empty)
+   document.selection.empty();//IE
+  else{//Opera
+   document.selection = null;
+  }
+ }else if(window.getSelection){//FF,Safari
+  window.getSelection().removeAllRanges();
+ }
+ 
+ var oPos = JPos.getAbsPos(this);
+ var mPos = JPos.getEventPos(evt);
+ 
+ var x = mPos.x - oPos.x - mAWidth / 2;
+ var tmpX = parseInt(cols[colIndex].style.width) + x;
+ dragMask.style.left = mPos.x - mAWidth / 2 + "px";
+ cols[colIndex].style.width = tmpX >= 2 ? tmpX + "px" : "2px";
+ if(!document.all)
+  dataTable.parentNode.style.width = dataTable.parentNode.clientWidth + x + "px";//这一句为处理FF时用。
+}
+
+var mask_mouseup = function(evt){
+ dragMask.style.display = "none";
+}
+
+dragMask.onmousemove = mask_mousemove;
+dragMask.onmouseup = mask_mouseup;
+
+var cell_mousedown = function(evt){
+ colIndex = this.colIndex;
+ var mPos = JPos.getEventPos(evt);
+ with(dragMask.style){
+  left = mPos.x - mAWidth / 2  + "px";
+  top = mPos.y - mAHeight / 2 + "px";
+  display = "";
+ }
+}
+
+var chk_click = function(evt){
+ var obj = cols[this.colIndex];
+ if(this.checked){
+  obj.style.cssText = obj.css_ ? obj.css_ : "width:100px;";
+ }else{
+  obj.css_ = obj.style.cssText;
+  obj.style.cssText = document.all ? "display:none" : "visibility: collapse;overflow:hidden;width:0px;";
+ }
+}
+
+var i , o;
+var label ,chk;
+for(i = 0 ; o = dataTable.rows[0].cells[i] ; i++){
+ o.colIndex = i;
+ o.onmousedown = cell_mousedown;
+ 
+ label = document.createElement("LABEL");
+ document.body.insertBefore(label,document.body.lastChild);
+ chk = document.createElement("INPUT");
+ chk.type = "checkbox";
+ label.appendChild(chk);
+ chk.onclick = chk_click;
+ chk.colIndex = i;
+ chk.checked = "checked";
+ label.appendChild(document.createTextNode(o.innerHTML));
+}
+</script>
+</body>
+</html>

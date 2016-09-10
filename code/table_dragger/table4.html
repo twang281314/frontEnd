@@ -1,0 +1,81 @@
+    <!DOCTYPE html>  
+    <html>  
+      <head>  
+        <style type="text/css">  
+            table{  
+                border-top:solid 1px black;   
+                border-left:solid 1px black;  
+                font-size:12px;  
+                width: 100%;  
+            }  
+            th{  
+                white-space: nowrap;  
+            }  
+            th,td{  
+                border-right-style: solid;  
+                border-right-width: 1px;  
+                border-bottom-style: solid;  
+                border-bottom-width: 1px;  
+                height:30px;  
+            }  
+            .dragable{  
+                width: 3px;  
+                height:100%;   
+                background-color: white;  
+                float: right;  /*这个样式与效果有一定关系,其他无所谓*/  
+                cursor: col-resize;  
+            }  
+        </style>  
+        <script type="text/javascript">  
+            var draging = false;//是否拖拽中  
+            var dragElement = null;//当前拖拽的th  
+            var offsetLeft = 0;//当前拖拽的th与绝对左坐标  
+            var offsetWidth = 0;//当前拖拽的th的绝对宽度  
+            function mousedown(){  
+                if(draging) return;  
+                draging = true;  
+                dragElement = window.event.srcElement.parentNode;  
+                offsetLeft = dragElement.offsetLeft;  
+                document.body.style.cursor = "col-resize";  
+                document.body.onselectstart = function(){return false;};//拖拽的时候，鼠标滑过字的时候，不让选中(默认鼠标选中字的效果,大家都知道)  
+            }  
+            function mouseup(){  
+                draging = false;  
+                dragElement = null;  
+                document.body.style.cursor = "auto";  
+                document.body.onselectstart = function(){return true};  
+            }  
+            function mousemove(){  
+                if(draging && dragElement){  
+                    var width = event.clientX-offsetLeft;  
+                    if(width>0){  
+                        dragElement.style.width = width;  
+                        offsetWidth = dragElement.offsetWidth;  
+                    }else{  
+                        dragElement.style.width = offsetWidth;  
+                    }  
+                }  
+            }  
+        </script>  
+      </head>  
+      <body onmousemove="mousemove();" onmouseup="mouseup();">  
+        <table cellpadding="0" cellspacing="0">  
+            <thead>  
+                <tr>  
+                    <th style="width: 120px;">编号<span class="dragable" onmousedown="mousedown();">&nbsp;</span></th>  
+                    <th style="width: 120px;">姓名<span class="dragable" onmousedown="mousedown();">&nbsp;</span></th>  
+                    <th style="width: 120px;">年龄<span class="dragable" onmousedown="mousedown();">&nbsp;</span></th>  
+                    <th>备注</th>  
+                </tr>  
+            </thead>  
+            <tbody>  
+                <tr>  
+                    <td>1</td>  
+                    <td>Siuon</td>  
+                    <td>100</td>  
+                    <td>JavaEE工程师...</td>  
+                </tr>  
+            </tbody>  
+        </table>  
+      </body>  
+    </html>  
