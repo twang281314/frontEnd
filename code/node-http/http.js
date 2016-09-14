@@ -1,3 +1,6 @@
+/**
+ * node 提供http服务
+ */
 var PORT = 3000;
 
 var http = require('http');
