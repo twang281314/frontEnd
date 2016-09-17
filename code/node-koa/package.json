@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "koa": "^2.0.0",
+    "koa-response-time": "^2.0.0",
     "koa-router": "^7.0.1",
     "koa-static": "^2.0.0"
   }
