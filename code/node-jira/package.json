@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "jira-connector": "^2.3.0"
+  }
+}
