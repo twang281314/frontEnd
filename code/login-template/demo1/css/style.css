@@ -1,0 +1,636 @@
+body {
+	font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #404040;
+	line-height: 1;
+}
+
+body,
+.login-submit,
+.login-submit:before,
+.login-submit:after {
+	background: #373737 url("../Images/bg.png") 0 0 repeat;
+}
+
+.LoginWindow {
+	display: "";
+	height: 200px;
+	width: 400px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -125px;
+	margin-left: -205px;
+	border: 1px solid #666;
+	background: #373737 url("../Images/bg.png") 0 0 repeat;
+	animation: LoginWindow 2s linear;
+	-moz-animation: LoginWindow 2s linear;
+	/* Firefox */
+	-webkit-animation: LoginWindow 2s linear;
+	/* Safari 和 Chrome */
+	-o-animation: LoginWindow 2s linear;
+	/* Opera */
+}
+
+@keyframes LoginWindow {
+	0% {
+		filter: alpha(opacity=0);
+		opacity: 0;
+		margin-top: -115px;
+		margin-left: -195px;
+	}
+	70% {
+		filter: alpha(opacity=1);
+		opacity: 1;
+		margin-top: -115px;
+		margin-left: -195px;
+	}
+	100% {
+		margin-top: -125px;
+		margin-left: -205px
+	}
+}
+
+@-moz-keyframes LoginWindow
+/* Firefox */
+
+{
+	0% {
+		filter: alpha(opacity=0);
+		opacity: 0;
+		margin-top: -115px;
+		margin-left: -195px;
+	}
+	70% {
+		filter: alpha(opacity=1);
+		opacity: 1;
+		margin-top: -115px;
+		margin-left: -195px;
+	}
+	100% {
+		margin-top: -125px;
+		margin-left: -205px
+	}
+}
+
+@-webkit-keyframes LoginWindow
+/* Safari 和 Chrome */
+
+{
+	0% {
+		filter: alpha(opacity=0);
+		opacity: 0;
+		margin-top: -115px;
+		margin-left: -195px;
+	}
+	70% {
+		filter: alpha(opacity=1);
+		opacity: 1;
+		margin-top: -115px;
+		margin-left: -195px;
+	}
+	100% {
+		margin-top: -125px;
+		margin-left: -205px
+	}
+}
+
+@-o-keyframes LoginWindow
+/* Opera */
+
+{
+	0% {
+		filter: alpha(opacity=0);
+		opacity: 0;
+		margin-top: -115px;
+		margin-left: -195px;
+	}
+	70% {
+		filter: alpha(opacity=1);
+		opacity: 1;
+		margin-top: -115px;
+		margin-left: -195px;
+	}
+	100% {
+		margin-top: -125px;
+		margin-left: -205px
+	}
+}
+
+.login_frame {
+	height: 200px;
+	width: 400px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -124px;
+	margin-left: -204px;
+	box-shadow: 10px 10px 1px #000000;
+	animation: login_frame 2s linear;
+	-moz-animation: login_frame 2s linear;
+	/* Firefox */
+	-webkit-animation: login_frame 2s linear;
+	/* Safari 和 Chrome */
+	-o-animation: login_frame 2s linear;
+	/* Opera */
+}
+
+@keyframes login_frame {
+	0% {
+		filter: alpha(opacity=0);
+		opacity: 0;
+	}
+	70% {
+		filter: alpha(opacity=0);
+		opacity: 0;
+	}
+	100% {
+		filter: alpha(opacity=1);
+		opacity: 1;
+	}
+}
+
+@-moz-keyframes login_frame
+/* Firefox */
+
+{
+	0% {
+		filter: alpha(opacity=0);
+		opacity: 0;
+	}
+	70% {
+		filter: alpha(opacity=0);
+		opacity: 0;
+	}
+	100% {
+		filter: alpha(opacity=1);
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes login_frame
+/* Safari 和 Chrome */
+
+{
+	0% {
+		filter: alpha(opacity=0);
+		opacity: 0;
+	}
+	70% {
+		filter: alpha(opacity=0);
+		opacity: 0;
+	}
+	100% {
+		filter: alpha(opacity=1);
+		opacity: 1;
+	}
+}
+
+@-o-keyframes login_frame
+/* Opera */
+
+{
+	0% {
+		filter: alpha(opacity=0);
+		opacity: 0;
+	}
+	70% {
+		filter: alpha(opacity=0);
+		opacity: 0;
+	}
+	100% {
+		filter: alpha(opacity=1);
+		opacity: 1;
+	}
+}
+
+a {
+	color: #00a1d2;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #fff;
+}
+
+.registration {
+	padding-left: 100px;
+	font-size: 13px;
+	font-weight: 100;
+	letter-spacing: 1px;
+}
+
+.login,
+.regiest {
+	position: relative;
+	margin: 50px 0px 0px 20px;
+	width: 400px;
+	padding-right: 32px;
+	font-weight: 300;
+	color: #a8a7a8;
+	text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+}
+
+.regiest {
+	margin: 0 auto;
+}
+
+.login p {
+	margin: 0 0 10px;
+}
+
+input,
+button {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	font-weight: 300px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+input[type=text],
+input[type=password] {
+	padding: 0 10px;
+	width: 300px;
+	height: 40px;
+	color: #bbb;
+	text-shadow: 1px 1px 1px black;
+	background: rgba(0, 0, 0, 0.16);
+	border: 0;
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+	box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+	color: white;
+	background: rgba(0, 0, 0, 0.1);
+	outline: 0;
+}
+
+.login-submit {
+	position: absolute;
+	top: 12px;
+	right: 57px;
+	width: 48px;
+	height: 48px;
+	padding: 8px;
+	border-radius: 32px;
+	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+}
+
+.login-submit:before,
+.login-submit:after {
+	content: '';
+	z-index: 1;
+	position: absolute;
+}
+
+.login-submit:before {
+	top: 28px;
+	left: -4px;
+	width: 4px;
+	height: 10px;
+	-webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.06);
+	box-shadow: inset 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.login-submit:after {
+	top: -4px;
+	bottom: -4px;
+	right: -4px;
+	width: 36px;
+}
+
+.login-button {
+	position: relative;
+	z-index: 2;
+	width: 48px;
+	height: 48px;
+	padding: 0 0 48px;
+	/* Fix wrong positioning in Firefox 9 & older (bug 450418) */
+	text-indent: 120%;
+	white-space: nowrap;
+	overflow: hidden;
+	background: none;
+	border: 0;
+	border-radius: 24px;
+	cursor: pointer;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.1);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.1);
+	/* Must use another pseudo element for the gradient background because Webkit */
+	/* clips the background incorrectly inside elements with a border-radius.     */
+	transition-duration: 0.8s;
+	transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	/* IE 9 */
+	-webkit-transform: rotate(180deg);
+	/* Safari and Chrome */
+	-o-transform: rotate(180deg);
+	/* Opera */
+	-moz-transform: rotate(180deg);
+	/* Firefox */
+	animation: login_button 3s;
+	-moz-animation: login_button 3s;
+	/* Firefox */
+	-webkit-animation: login_button 3s;
+	/* Safari 和 Chrome */
+	-o-animation: login_button 3s;
+	/* Opera */
+}
+
+@keyframes login_button {
+	0% {
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		/* IE 9 */
+		-webkit-transform: rotate(0deg);
+		/* Safari and Chrome */
+		-o-transform: rotate(0deg);
+		/* Opera */
+		-moz-transform: rotate(0deg)
+	}
+	70% {
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		/* IE 9 */
+		-webkit-transform: rotate(0deg);
+		/* Safari and Chrome */
+		-o-transform: rotate(0deg);
+		/* Opera */
+		-moz-transform: rotate(0deg)
+	}
+	100% {
+		transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		/* IE 9 */
+		-webkit-transform: rotate(180deg);
+		/* Safari and Chrome */
+		-o-transform: rotate(180deg);
+		/* Opera */
+		-moz-transform: rotate(180deg);
+		/* Firefox */
+	}
+}
+
+@-moz-keyframes login_button
+/* Firefox */
+
+{
+	0% {
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		/* IE 9 */
+		-webkit-transform: rotate(0deg);
+		/* Safari and Chrome */
+		-o-transform: rotate(0deg);
+		/* Opera */
+		-moz-transform: rotate(0deg)
+	}
+	70% {
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		/* IE 9 */
+		-webkit-transform: rotate(0deg);
+		/* Safari and Chrome */
+		-o-transform: rotate(0deg);
+		/* Opera */
+		-moz-transform: rotate(0deg)
+	}
+	100% {
+		transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		/* IE 9 */
+		-webkit-transform: rotate(180deg);
+		/* Safari and Chrome */
+		-o-transform: rotate(180deg);
+		/* Opera */
+		-moz-transform: rotate(180deg);
+		/* Firefox */
+	}
+}
+
+@-webkit-keyframes login_button
+/* Safari 和 Chrome */
+
+{
+	0% {
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		/* IE 9 */
+		-webkit-transform: rotate(0deg);
+		/* Safari and Chrome */
+		-o-transform: rotate(0deg);
+		/* Opera */
+		-moz-transform: rotate(0deg)
+	}
+	70% {
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		/* IE 9 */
+		-webkit-transform: rotate(0deg);
+		/* Safari and Chrome */
+		-o-transform: rotate(0deg);
+		/* Opera */
+		-moz-transform: rotate(0deg)
+	}
+	100% {
+		transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		/* IE 9 */
+		-webkit-transform: rotate(180deg);
+		/* Safari and Chrome */
+		-o-transform: rotate(180deg);
+		/* Opera */
+		-moz-transform: rotate(180deg);
+		/* Firefox */
+	}
+}
+
+@-o-keyframes login_button
+/* Opera */
+
+{
+	0% {
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		/* IE 9 */
+		-webkit-transform: rotate(0deg);
+		/* Safari and Chrome */
+		-o-transform: rotate(0deg);
+		/* Opera */
+		-moz-transform: rotate(0deg)
+	}
+	70% {
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		/* IE 9 */
+		-webkit-transform: rotate(0deg);
+		/* Safari and Chrome */
+		-o-transform: rotate(0deg);
+		/* Opera */
+		-moz-transform: rotate(0deg)
+	}
+	100% {
+		transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		/* IE 9 */
+		-webkit-transform: rotate(180deg);
+		/* Safari and Chrome */
+		-o-transform: rotate(180deg);
+		/* Opera */
+		-moz-transform: rotate(180deg);
+		/* Firefox */
+	}
+}
+
+.login-button:hover {
+	transform: rotate(360deg);
+	-moz-transform: rotate(360deg);
+	/* Firefox 4 */
+	-webkit-transform: rotate(360deg);
+	/* Safari and Chrome */
+	-o-transform: rotate(360deg);
+	/* Opera */
+}
+
+.login-button:before {
+	content: '';
+	position: absolute;
+	top: 5px;
+	bottom: 5px;
+	left: 5px;
+	right: 5px;
+	background: #00a2d3;
+	border-radius: 24px;
+	background-image: -webkit-linear-gradient(top, #00a2d3, #0d7796);
+	background-image: -moz-linear-gradient(top, #00a2d3, #0d7796);
+	background-image: -o-linear-gradient(top, #00a2d3, #0d7796);
+	background-image: linear-gradient(to bottom, #00a2d3, #0d7796);
+	-webkit-box-shadow: inset 0 0 0 1px #00a2d3, 0 0 0 5px rgba(0, 0, 0, 0.16);
+	box-shadow: inset 0 0 0 1px #00a2d3, 0 0 0 5px rgba(0, 0, 0, 0.16);
+}
+
+.login-button:active:before {
+	background: #0591ba;
+	background-image: -webkit-linear-gradient(top, #0591ba, #00a2d3);
+	background-image: -moz-linear-gradient(top, #0591ba, #00a2d3);
+	background-image: -o-linear-gradient(top, #0591ba, #00a2d3);
+	background-image: linear-gradient(to bottom, #0591ba, #00a2d3);
+}
+
+.login-button:after {
+	content: '';
+	position: absolute;
+	top: 15px;
+	left: 12px;
+	width: 25px;
+	height: 19px;
+	background: url("../Images/arrow.png") 0 0 no-repeat;
+}
+
+::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+.lt-ie9 input[type=text],
+.lt-ie9 input[type=password] {
+	line-height: 40px;
+	background: #282828;
+}
+
+.lt-ie9 .login-submit {
+	position: absolute;
+	top: 12px;
+	right: -28px;
+	padding: 4px;
+}
+
+.lt-ie9 .login-submit:before,
+.lt-ie9 .login-submit:after {
+	display: none;
+}
+
+.lt-ie9 .login-button {
+	line-height: 48px;
+}
+
+h2 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #a8a7a8;
+	text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+	margin-top: 10%;
+}
+
+#timeArea {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	text-align: center;
+}
+
+.opacity_bg {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #000;
+	opacity: 0.6;
+	margin: auto;
+	z-index: 1049;
+	display: none;
+}
+
+.box {
+	width: 35%;
+	height: 50%;
+	background: #373737 url("../Images/bg.png") 0 0 repeat;
+	border: 12px solid #000;
+	border-radius: 5px;
+	box-shadow: 0 0 50px #fff;
+	display: none;
+	position: absolute;
+	z-index: 2
+}
+
+.regiest {
+	text-align: center;
+	width: 100%;
+}
+
+.regiest p {
+	width: 100%;
+}
+
+.regiest ul {
+	list-style: none;
+}
+
+.regiest ul li {
+	float: left;
+}
+
+#btn2 {
+	width: 100%;
+	text-align: center;
+}
+
+#btn2 input {
+	background: none;
+	width: 100px;
+	height: 35px;
+	color: blue;
+	margin-left: 40%;
+	border-radius: 20px 20px 20px 20px;
+}
+
+#btn2 input:hover {
+	background: #2fffff;
+	color: #fff;
+}
