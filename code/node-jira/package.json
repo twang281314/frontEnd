@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "jira-connector": "^2.3.0"
+    "jira-connector": "^2.3.0",
+    "node-rest-client": "^2.0.1"
   }
 }

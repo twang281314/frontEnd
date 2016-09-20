@@ -5,27 +5,36 @@ var jira = new JiraClient({
     protocol: 'http',
     basic_auth: {
         username: 'wangtao',
-        password: '*****'
+        password: '8002381'
     }
 });
 
-jira.issue.getIssue({
-    issueKey: 'XDW-1891'
-}, function(error, issue) {
+// jira.issue.getIssue({
+//     issueKey: 'XDW-1927'
+// }, function(error, issue) {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log(issue);
+//     }
+// });
+
+// jira.filter.getFilter({
+//     filterId: 1000
+// }, function(error, filter) {
+
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log(filter);
+//     }
+// });
+
+jira.jql.getAutoCompleteData({}, function(error, result) {
+
     if (error) {
         console.log(error);
     } else {
-        console.log(issue);
-    }
-});
-
-jira.filter.getFilter({
-    filterId: 1000
-}, function(error, filter) {
-
-    if (error) {
-        console.log(error);
-    } else {
-        console.log(filter);
+        console.log(result);
     }
 });
