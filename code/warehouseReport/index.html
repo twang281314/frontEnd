@@ -20,7 +20,7 @@
     <script type="text/javascript" src="../../scripts/libs/echarts/theme/iscs-theme.js"></script>
     <!--<script type="text/javascript" src="/scripts/JsBridge.js"></script>-->
     <script type="text/javascript">
-        var spmChart = echarts.init(document.getElementById("main"), 'iscs');
+        var warehouseChart = echarts.init(document.getElementById("main"), 'iscs');
         var option = {
             tooltip: {
                 trigger: 'axis'
@@ -52,8 +52,7 @@
             }],
             yAxis: [{
                 type: 'value'
-            }
-            ],
+            }],
             series: [{
                 name: '拣选箱数',
                 type: 'bar',
@@ -69,31 +68,37 @@
             }]
         };
 
+        var getReportData = function() {
+            //warehouseChart.showLoading();
+            $.ajax({
+                url: 'http://192.168.200.138:8001/DmCamara.asmx/GetPickingUserJson',
+                type: 'get',
+                dataType: 'json',
+                success: function(data) {
+                    // warehouseChart.hideLoading();
+                    var userNameArray = []; //拣选员数组
+                    var packageCountArray = []; //拣选包裹数组
+                    var pickingQtyArray = []; //拣选件数数组
+                    var stLocationNumArray = []; //库位数数组
+                    data.Table.forEach(function(item) {
+                        userNameArray.push(item.USER_NAME);
+                        packageCountArray.push(item.PACKAGECOUNT);
+                        pickingQtyArray.push(item.PICKINGQTY);
+                        stLocationNumArray.push(item.ST_LOCATION_NUM);
+                    });
 
-        $.ajax({
-            url: 'http://192.168.200.138:8001/DmCamara.asmx/GetPickingUserJson',
-            type: 'get',
-            dataType: 'json',
-            success: function(data) {
-                var userNameArray = []; //拣选员数组
-                var packageCountArray = []; //拣选包裹数组
-                var pickingQtyArray = []; //拣选件数数组
-                var stLocationNumArray = []; //库位数数组
-                data.Table.forEach(function(item) {
-                    userNameArray.push(item.USER_NAME);
-                    packageCountArray.push(item.PACKAGECOUNT);
-                    pickingQtyArray.push(item.PICKINGQTY);
-                    stLocationNumArray.push(item.ST_LOCATION_NUM);
-                });
+                    option.xAxis[0].data = userNameArray;
+                    option.series[0].data = packageCountArray;
+                    option.series[1].data = pickingQtyArray;
+                    option.series[2].data = stLocationNumArray;
 
-                option.xAxis[0].data = userNameArray;
-                option.series[0].data = packageCountArray;
-                option.series[1].data = pickingQtyArray;
-                option.series[2].data = stLocationNumArray;
+                    warehouseChart.setOption(option);
+                }
+            });
+        }
+        getReportData();
 
-                spmChart.setOption(option);
-            }
-        });
+        setInterval(getReportData, 5000);//定时刷新
     </script>
 </body>
 
