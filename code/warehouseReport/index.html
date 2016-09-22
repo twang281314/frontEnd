@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>仓库报表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../styles/app.css">
+</head>
+
+<body>
+    <div id="main" style="width:100%;height:100%;position:fixed;display:block"></div>
+    <div id="info" style="width:100%;background-color:red;color:blue;display:none"></div>
+    <script type="text/javascript" src="../../scripts/libs/zepto/zepto.min.js"></script>
+    <script type="text/javascript" src="../../scripts/libs/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="../../scripts/libs/echarts/theme/iscs-theme.js"></script>
+    <!--<script type="text/javascript" src="/scripts/JsBridge.js"></script>-->
+    <script type="text/javascript">
+        var spmChart = echarts.init(document.getElementById("main"), 'iscs');
+        var option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            toolbox: {
+                feature: {
+                    dataView: {
+                        show: true,
+                        readOnly: false
+                    },
+                    magicType: {
+                        show: true,
+                        type: ['line', 'bar']
+                    },
+                    restore: {
+                        show: true
+                    },
+                    saveAsImage: {
+                        show: true
+                    }
+                }
+            },
+            legend: {
+                data: ['拣选箱数', '拣选件数', '库位数']
+            },
+            xAxis: [{
+                type: 'category',
+                data: []
+            }],
+            yAxis: [{
+                type: 'value'
+            }
+            ],
+            series: [{
+                name: '拣选箱数',
+                type: 'bar',
+                data: []
+            }, {
+                name: '拣选件数',
+                type: 'bar',
+                data: []
+            }, {
+                name: '库位数',
+                type: 'bar',
+                data: []
+            }]
+        };
+
+
+        $.ajax({
+            url: 'http://192.168.200.138:8001/DmCamara.asmx/GetPickingUserJson',
+            type: 'get',
+            dataType: 'json',
+            success: function(data) {
+                var userNameArray = []; //拣选员数组
+                var packageCountArray = []; //拣选包裹数组
+                var pickingQtyArray = []; //拣选件数数组
+                var stLocationNumArray = []; //库位数数组
+                data.Table.forEach(function(item) {
+                    userNameArray.push(item.USER_NAME);
+                    packageCountArray.push(item.PACKAGECOUNT);
+                    pickingQtyArray.push(item.PICKINGQTY);
+                    stLocationNumArray.push(item.ST_LOCATION_NUM);
+                });
+
+                option.xAxis[0].data = userNameArray;
+                option.series[0].data = packageCountArray;
+                option.series[1].data = pickingQtyArray;
+                option.series[2].data = stLocationNumArray;
+
+                spmChart.setOption(option);
+            }
+        });
+    </script>
+</body>
+
+</html>

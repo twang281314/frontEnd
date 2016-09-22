@@ -1,0 +1,9 @@
+#touchs{
+margin: 10px;width: 100px;height: auto;min-height: 100px;
+border:1px solid #c2ddb6;border-radius: 2px;background:blue;
+}
+#touchs li {list-style: none;}
+.clear{
+margin-left: 10px;display:inline-block;height: 24px;width: 40px;color:#fff;
+font-size: 14px;line-height: 24px;background: black;text-align: center;
+}

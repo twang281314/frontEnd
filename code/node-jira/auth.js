@@ -4,7 +4,7 @@ client = new Client();
 var loginArgs = {
     data: {
         "username": "wangtao",
-        "password": "5666666"
+        "password": "8002381"
     },
     headers: {
         "Content-Type": "application/json"
@@ -23,15 +23,16 @@ client.post("http://jira.iscs.com.cn/rest/auth/1/session", loginArgs, function(d
             },
             data: {
                 // Provide additional data for the JIRA search. You can modify the JQL to search for whatever you want.
-                jql: "type=Bug AND status=Closed"
+               // jql: "type=Bug AND status=Closed"
+                username:'wangtao'
             }
         };
         // Make the request return the search results, passing the header information including the cookie.
-        client.post("http://jira.iscs.com.cn/rest/api/2/search", searchArgs, function(searchResult, response) {
+        client.get("http://jira.iscs.com.cn/rest/api/2/avatar", searchArgs, function(searchResult, response) {
             console.log('status code:', response.statusCode);
             console.log('search result:', searchResult);
         });
     } else {
-        throw "Login failed :("+JSON.stringify(response);
+        console.log(response);
     }
 });
