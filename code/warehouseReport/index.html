@@ -44,28 +44,42 @@
                 }
             },
             legend: {
-                data: ['拣选箱数', '拣选件数', '库位数']
+                data: ['拣选箱数', '拣选件数']
             },
             xAxis: [{
                 type: 'category',
                 data: []
             }],
             yAxis: [{
-                type: 'value'
+                type: 'value',
+                scale: true,
+                name: '拣选箱数',
+                max: 'dataMax',
+                min: 0
+            }, {
+                type: 'value',
+                scale: true,
+                name: '拣选件数',
+                max: 'dataMax',
+                min: 0
             }],
             series: [{
-                name: '拣选箱数',
-                type: 'bar',
-                data: []
-            }, {
-                name: '拣选件数',
-                type: 'bar',
-                data: []
-            }, {
-                name: '库位数',
-                type: 'bar',
-                data: []
-            }]
+                    name: '拣选箱数',
+                    type: 'bar',
+                    yAxisIndex: 0,
+                    data: []
+                }, {
+                    name: '拣选件数',
+                    type: 'bar',
+                    yAxisIndex: 1,
+                    data: []
+                }
+                //, {
+                //     name: '库位数',
+                //     type: 'bar',
+                //     data: []
+                // }
+            ]
         };
 
         var getReportData = function() {
@@ -79,18 +93,18 @@
                     var userNameArray = []; //拣选员数组
                     var packageCountArray = []; //拣选包裹数组
                     var pickingQtyArray = []; //拣选件数数组
-                    var stLocationNumArray = []; //库位数数组
+                    //var stLocationNumArray = []; //库位数数组
                     data.Table.forEach(function(item) {
                         userNameArray.push(item.USER_NAME);
                         packageCountArray.push(item.PACKAGECOUNT);
                         pickingQtyArray.push(item.PICKINGQTY);
-                        stLocationNumArray.push(item.ST_LOCATION_NUM);
+                        //stLocationNumArray.push(item.ST_LOCATION_NUM);
                     });
 
                     option.xAxis[0].data = userNameArray;
                     option.series[0].data = packageCountArray;
                     option.series[1].data = pickingQtyArray;
-                    option.series[2].data = stLocationNumArray;
+                    // option.series[2].data = stLocationNumArray;
 
                     warehouseChart.setOption(option);
                 }
@@ -98,7 +112,7 @@
         }
         getReportData();
 
-        setInterval(getReportData, 5000);//定时刷新
+        setInterval(getReportData, 5000); //定时刷新
     </script>
 </body>
 
