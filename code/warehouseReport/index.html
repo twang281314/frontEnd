@@ -48,7 +48,14 @@
             },
             xAxis: [{
                 type: 'category',
-                data: []
+                data: [],
+                axisLabel: {
+                    // rotate: 90 //刻度旋转45度角
+                    interval: 0,
+                    formatter: function(val) {
+                        return val.split("").join("\n");
+                    }
+                }
             }],
             yAxis: [{
                 type: 'value',
