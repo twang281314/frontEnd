@@ -22,14 +22,25 @@ client.post("http://jira.iscs.com.cn/rest/auth/1/session", loginArgs, function(d
                 "Content-Type": "application/json"
             },
             data: {
-                // Provide additional data for the JIRA search. You can modify the JQL to search for whatever you want.
-               // jql: "type=Bug AND status=Closed"
-                username:'wangtao'
+                "jql": "project = XDW AND issuetype in (任务, 子任务) AND Sprint = 302 ORDER BY summary DESC, status ASC, Rank ASC",
+                // "jql": "project = XDW-1915",
+                "startAt": 0,
+                "maxResults": 100,
+                "fields": [
+                    "summary",
+                    "status",
+                    "assignee",
+                    "aggregatetimeoriginalestimate",
+                    "aggregatetimespent",
+                    "aggregateprogress",
+                    "aggregatetimeestimate"
+                ]
+               
             }
         };
         // Make the request return the search results, passing the header information including the cookie.
-        client.get("http://jira.iscs.com.cn/rest/api/2/avatar", searchArgs, function(searchResult, response) {
-            console.log('status code:', response.statusCode);
+        client.post("http://jira.iscs.com.cn/rest/api/2/search", searchArgs, function(searchResult, response) {
+            console.log('status code:', response);
             console.log('search result:', searchResult);
         });
     } else {
