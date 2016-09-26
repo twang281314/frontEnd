@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>url二维码</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <style type="text/css">
+        .eweima {
+            width: 200px;
+            height: 200px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="eweima"></div>
+    <script type="text/javascript">
+        document.write("<img src=\"http://s.jiathis.com/qrcode.php?url=");
+        title = "veryhuo.com"
+        document.write(window.location.href);
+        document.write("\" width=\"200\" height=\"200\" alt=\"二维码\"/>");
+    </script>
+</body>
+</html>
