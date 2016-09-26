@@ -1,0 +1,15 @@
+{
+  "name": "report",
+  "version": "1.0.0",
+  "description": "warehouse report",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "browser-sync start --server --files '**/*.css, **/*.html'"
+  },
+  "keywords": [
+    "report"
+  ],
+  "author": "anytao",
+  "license": "ISC"
+}

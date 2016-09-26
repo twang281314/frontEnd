@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>仓库报表</title>
+    <title>仓库报表-拣选统计</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <!--<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />-->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -11,14 +11,10 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="../../styles/app.css">
 </head>
-
 <body>
     <div id="main" style="width:100%;height:100%;position:fixed;display:block"></div>
-    <div id="info" style="width:100%;background-color:red;color:blue;display:none"></div>
     <script type="text/javascript" src="../../scripts/libs/zepto/zepto.min.js"></script>
     <script type="text/javascript" src="../../scripts/libs/echarts/echarts.min.js"></script>
-    <script type="text/javascript" src="../../scripts/libs/echarts/theme/iscs-theme.js"></script>
-    <!--<script type="text/javascript" src="/scripts/JsBridge.js"></script>-->
     <script type="text/javascript">
         var warehouseChart = echarts.init(document.getElementById("main"), 'iscs');
         var option = {
@@ -118,9 +114,9 @@
             });
         }
         getReportData();
-
-        setInterval(getReportData, 1000*60*2); //定时刷新
-    </script>
+   
+        setInterval(getReportData, 1000 * 60 * 2); //定时刷新
+    </script>  
 </body>
 
 </html>

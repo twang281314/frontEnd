@@ -1,3 +1,4 @@
+> 仓库报表
 
 http://192.168.200.138:8001/DmCamara.asmx/GetPickingUserJson  拣选统计
 
