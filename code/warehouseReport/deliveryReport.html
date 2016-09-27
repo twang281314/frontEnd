@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 
 <head>
     <meta charset="utf-8">
@@ -8,65 +8,47 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="../../styles/app.css">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/app.css">
 </head>
 
 <body>
-
-    <div id="main" class="list">
-
+    <div class="container" style="height:100%;width:100%">
+        <div class="row" style="height:100%;width:100%">
+            <div id="main" class="col-md-4 report">
+            </div>
+            <div id="main1" class="col-md-4 report"></div>
+            <div id="main2" class="col-md-4 report"></div>
+        </div>
     </div>
-    <div id="main1" class="list">
-       
-    </div>
-    <div id="main2" class="list">
-    </div>
-
-    <script type="text/javascript" src="../../scripts/libs/zepto/zepto.min.js"></script>
-    <script type="text/javascript" src="../../scripts/libs/echarts/echarts.min.js"></script>
-    <script type="text/javascript" src="../../scripts/libs/echarts/theme/iscs-theme.js"></script>
-
+    <script type="text/javascript" src="scripts/libs/zepto/zepto.min.js"></script>
+    <script type="text/javascript" src="scripts/libs/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="scripts/libs/echarts/theme/iscs-theme.js"></script>
     <script>
-        var deliveryRreport = echarts.init(document.getElementById('main'), 'iscs');
-        var deliveryRreport1 = echarts.init(document.getElementById('main1'), 'iscs');
-        var deliveryRreport2 = echarts.init(document.getElementById('main2'), 'iscs');
+        var deliveryReport = echarts.init(document.getElementById('main'), 'iscs');
+        var deliveryReport1 = echarts.init(document.getElementById('main1'), 'iscs');
+        var deliveryReport2 = echarts.init(document.getElementById('main2'), 'iscs');
 
         var option = {
             title: {
-                text: '某站点用户访问来源',
-                subtext: '纯属虚构',
+                text: '2016-09-27 发货统计',
+                subtext: '总包裹数',
+                subtextStyle:{
+                    color:'red',
+                    fontSize:'15'
+                },
                 x: 'center'
             },
             tooltip: {
                 trigger: 'item',
                 formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
-            legend: {
-                orient: 'vertical',
-                left: 'left',
-                data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
-            },
             series: [{
-                name: '访问来源',
+                name: '单数',
                 type: 'pie',
-                radius: '55%',
-                center: ['50%', '60%'],
-                data: [{
-                    value: 335,
-                    name: '直接访问'
-                }, {
-                    value: 310,
-                    name: '邮件营销'
-                }, {
-                    value: 234,
-                    name: '联盟广告'
-                }, {
-                    value: 135,
-                    name: '视频广告'
-                }, {
-                    value: 1548,
-                    name: '搜索引擎'
-                }],
+                radius: '50%',
+                center: ['50%', '45%'],
+                data: [],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -77,42 +59,26 @@
             }]
         };
 
-        var option1 = {
+         var option1 = {
             title: {
-                text: '某站点用户访问来源',
-                subtext: '纯属虚构',
+                text: '2016-09-27 发货统计',
+                subtext: '总包裹数',
+                subtextStyle:{
+                    color:'red',
+                    fontSize:'15'
+                },
                 x: 'center'
             },
             tooltip: {
                 trigger: 'item',
                 formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
-            legend: {
-                orient: 'vertical',
-                left: 'left',
-                data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
-            },
             series: [{
-                name: '访问来源',
+                name: '单数',
                 type: 'pie',
-                radius: '55%',
-                center: ['50%', '60%'],
-                data: [{
-                    value: 335,
-                    name: '直接访问'
-                }, {
-                    value: 310,
-                    name: '邮件营销'
-                }, {
-                    value: 234,
-                    name: '联盟广告'
-                }, {
-                    value: 135,
-                    name: '视频广告'
-                }, {
-                    value: 1548,
-                    name: '搜索引擎'
-                }],
+                radius: '50%',
+                center: ['50%', '45%'],
+                data: [],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -123,42 +89,26 @@
             }]
         };
 
-         var option2 = {
+          var option2 = {
             title: {
-                text: '某站点用户访问来源',
-                subtext: '纯属虚构',
+                text: '2016-09-27 发货统计',
+                subtext: '总包裹数',
+                subtextStyle:{
+                    color:'red',
+                    fontSize:'15'
+                },
                 x: 'center'
             },
             tooltip: {
                 trigger: 'item',
                 formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
-            legend: {
-                orient: 'vertical',
-                left: 'left',
-                data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
-            },
             series: [{
-                name: '访问来源',
+                name: '单数',
                 type: 'pie',
-                radius: '55%',
-                center: ['50%', '60%'],
-                data: [{
-                    value: 335,
-                    name: '直接访问'
-                }, {
-                    value: 310,
-                    name: '邮件营销'
-                }, {
-                    value: 234,
-                    name: '联盟广告'
-                }, {
-                    value: 135,
-                    name: '视频广告'
-                }, {
-                    value: 1548,
-                    name: '搜索引擎'
-                }],
+                radius: '50%',
+                center: ['50%', '45%'],
+                data: [],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -169,10 +119,59 @@
             }]
         };
 
+        var getReportData= function (){
+        $.ajax({
+            url:'http://192.168.200.138:8001/DmCamara.asmx/GetDeliveryReportJson',
+            //url:'data/DeliveryReport.json',
+            type:'get',
+            dataType:'json',
+            success : function(data){
+                 var DeliveryReportJson=data.DeliveryReportJson;
+                 for(var key in DeliveryReportJson){
+                     var data=[];
+                     var obj=DeliveryReportJson[key];
+                     data.push({name:'完成数',value:obj.HANDOVER_NUM});
+                     data.push({name:'等待处理',value:obj.WaitDealWith});
+                     data.push({name:'等待波次作业',value:obj.WaitWaveWork});
+                     data.push({name:'拣选完成',value:obj.PickingFinish});
+                     data.push({name:'包装完成',value:obj.PackageOver});
+                     data.push({name:'终捡完成',value:obj.FinalFinish});
+                     data.push({name:'下料完成',value:obj.UnloadFinish});
+                     data.push({name:'交接完成',value:obj.HandoverFinish});
+                     data.push({name:'锁定',value:obj.PackageLock});
+                     data.push({name:'异常',value:obj.PackageError});
+                     data.push({name:'拣选缺货',value:obj.OutOfStock});
+                     data.push({name:'作废',value:obj.PackageInvalid});
+                     data.push({name:'等待打印',value:obj.WaitPrint});
+                     data.push({name:'未分配拣选区',value:obj.NoPickingArea});
+                     data.push({name:'作废待返库',value:obj.InvalidWaitPicking});
+                     data.push({name:'打印完成',value:obj.Print});
+                     data.push({name:'正在拣选',value:obj.Picking});
+                     if(key==0){
+                        option.title.subtext='总包裹数:'+obj.PACKAGENUM;
+                        option.title.text=obj.CREATE_DATE;
+                        option.series[0].data=data;
+                        deliveryReport.setOption(option);
+                     }else if(key==1){
+                        option1.title.subtext='总包裹数:'+obj.PACKAGENUM;
+                        option1.title.text=obj.CREATE_DATE;
+                        option1.series[0].data=data;
+                        deliveryReport1.setOption(option1);
+                     }else if(key==2){
+                         option2.title.subtext='总包裹数:'+obj.PACKAGENUM;
+                         option2.title.text=obj.CREATE_DATE;
+                         option2.series[0].data=data;
+                         deliveryReport2.setOption(option2);
+                     }
+                 }
+            }
+        });
+        }
 
-        deliveryRreport.setOption(option);
-        deliveryRreport1.setOption(option);
-        deliveryRreport2.setOption(option);
+        getReportData();
+
+        setInterval(getReportData, 1000*60*2); //定时刷新
+
     </script>
 </body>
 
