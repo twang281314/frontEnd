@@ -43,7 +43,8 @@ body {
 
 #title{
     text-align: center;
-    font-size:20px;
+    font-size:40px;
     color:orange;
     font-weight: bold;
+    letter-spacing:50px;
 }
