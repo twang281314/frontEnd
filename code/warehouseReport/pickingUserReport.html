@@ -9,12 +9,12 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="../../styles/app.css">
+    <link rel="stylesheet" href="styles/app.css">
 </head>
 <body>
-    <div id="main" style="width:100%;height:100%;position:fixed;display:block"></div>
-    <script type="text/javascript" src="../../scripts/libs/zepto/zepto.min.js"></script>
-    <script type="text/javascript" src="../../scripts/libs/echarts/echarts.min.js"></script>
+    <div id="main" style="width:100%;height:90vh;"></div>
+    <script type="text/javascript" src="scripts/libs/zepto/zepto.min.js"></script>
+    <script type="text/javascript" src="scripts/libs/echarts/echarts.min.js"></script>
     <script type="text/javascript">
         var warehouseChart = echarts.init(document.getElementById("main"), 'iscs');
         var option = {
@@ -46,10 +46,11 @@
                 type: 'category',
                 data: [],
                 axisLabel: {
-                    // rotate: 90 //刻度旋转45度角
+                    //rotate: 45, //刻度旋转45度角
                     interval: 0,
                     formatter: function(val) {
                         return val.split("").join("\n");
+                        //return val;
                     }
                 }
             }],

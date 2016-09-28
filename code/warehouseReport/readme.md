@@ -1,9 +1,9 @@
 > 仓库报表
 
-# pickingUserReport.htm
+# pickingUserReport.html
 http://192.168.200.138:8001/DmCamara.asmx/GetPickingUserJson  拣选统计
 
-
+# packingReport.html
 http://192.168.200.138:8001/DmCamara.asmx/GetPackingJson  包装效率  
 
 # /deliveryReport.html

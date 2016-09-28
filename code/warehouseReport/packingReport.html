@@ -8,20 +8,124 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="../../styles/app.css">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/app.css">
 </head>
 
 <body>
-    <div id="main">
-       这是包装统计报表
+    <div class="container" style="height:100%;width:100%">
+        <div class="row" style="height:100%;width:100%">
+            <div id="main" class="col-md-12" style="height:90vh"></div>
+        </div>
     </div>
-    <script type="text/javascript" src="../../scripts/libs/zepto/zepto.min.js"></script>
-    <script type="text/javascript" src="../../scripts/libs/echarts/echarts.min.js"></script>
-    <script type="text/javascript" src="../../scripts/libs/echarts/theme/iscs-theme.js"></script>
+    <!--<div id="main" style="width:100%;height:100%;"></div>-->
+    <script type="text/javascript" src="scripts/libs/zepto/zepto.min.js"></script>
+    <script type="text/javascript" src="scripts/libs/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="scripts/libs/echarts/theme/iscs-theme.js"></script>
 
     <script>
-      var  deliveryRreport=echarts.init(document.getElementById('main'),'iscs');
+      var  packingRreport=echarts.init(document.getElementById('main'),'iscs');
+          var option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            toolbox: {
+                feature: {
+                    dataView: {
+                        show: true,
+                        readOnly: false
+                    },
+                    magicType: {
+                        show: true,
+                        type: ['line', 'bar']
+                    },
+                    restore: {
+                        show: true
+                    },
+                    saveAsImage: {
+                        show: true
+                    }
+                }
+            },
+            legend: {
+                data: ['包裹数', 'SKU数','商品数']
+            },
+            xAxis: [{
+                type: 'category',
+                data: [],
+                axisLabel: {
+                    //rotate: 45, //刻度旋转45度角
+                    interval: 0,
+                    formatter: function(val) {
+                        return val.split("").join("\n");
+                        //return val;
+                    }
+                }
+            }],
+            yAxis: [{
+                type: 'value',
+                scale: true,
+                name: '包裹数',
+                max: 'dataMax',
+                min: 0
+            }, {
+                type: 'value',
+                scale: true,
+                name: 'SKU数',
+                max: 'dataMax',
+                min: 0
+            }],
+            series: [{
+                    name: '包裹数',
+                    type: 'bar',
+                    yAxisIndex: 0,
+                    data: []
+                }, {
+                    name: 'SKU数',
+                    type: 'bar',
+                    yAxisIndex: 1,
+                    data: []
+                }
+                , {
+                    name: '商品数',
+                    type: 'bar',
+                      yAxisIndex: 1,
+                    data: []
+                }
+            ]
+        };
 
+           var getReportData = function() {
+            //warehouseChart.showLoading();
+            $.ajax({
+                url: 'http://192.168.200.138:8001/DmCamara.asmx/GetPackingJson',
+                type: 'get',
+                dataType: 'json',
+                success: function(data) {
+                    var userNameArray = []; //包装员数组
+                    var packageNumArray = []; //包装包裹数组
+                    var packSkuQtyArray = []; //包装sku数量数组
+                    var packSkuCountArray=[];//包装商品数量
+                    //var stLocationNumArray = []; //库位数数组
+                    data.Table.forEach(function(item) {
+                        userNameArray.push(item.USER_NAME);
+                        packageNumArray.push(item.USERPACKAGENUM);
+                        packSkuQtyArray.push(item.USERSKUNUM);
+                        packSkuCountArray.push(item.USERSKUCOUNTNUM);
+                    });
+
+                    option.xAxis[0].data = userNameArray;
+                    option.series[0].data = packageNumArray;
+                    option.series[1].data = packSkuQtyArray;
+                    option.series[2].data = packSkuCountArray;
+
+                    packingRreport.setOption(option);
+                }
+            });
+        }
+        getReportData();
+   
+        setInterval(getReportData, 1000 * 60 * 2); //定时刷新
     </script>
 </body>
 
