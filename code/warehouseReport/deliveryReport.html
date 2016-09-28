@@ -14,7 +14,10 @@
 
 <body>
     <div class="container" style="height:100%;width:100%">
-        <div class="row" style="height:100%;width:100%">
+        <div id="title" class="row">
+            发货统计
+        </div>
+        <div class="row" style="height:90vh;width:100%">
             <div id="main" class="col-md-4 report">
             </div>
             <div id="main1" class="col-md-4 report"></div>
@@ -149,17 +152,17 @@
                      data.push({name:'正在拣选',value:obj.Picking});
                      if(key==0){
                         option.title.subtext='总包裹数:'+obj.PACKAGENUM;
-                        option.title.text=obj.CREATE_DATE;
+                        option.title.text=obj.CREATE_DATE.substring(0,10);
                         option.series[0].data=data;
                         deliveryReport.setOption(option);
                      }else if(key==1){
                         option1.title.subtext='总包裹数:'+obj.PACKAGENUM;
-                        option1.title.text=obj.CREATE_DATE;
+                        option1.title.text=obj.CREATE_DATE.substring(0,10);
                         option1.series[0].data=data;
                         deliveryReport1.setOption(option1);
                      }else if(key==2){
                          option2.title.subtext='总包裹数:'+obj.PACKAGENUM;
-                         option2.title.text=obj.CREATE_DATE;
+                         option2.title.text=obj.CREATE_DATE.substring(0,10);
                          option2.series[0].data=data;
                          deliveryReport2.setOption(option2);
                      }
