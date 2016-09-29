@@ -32,8 +32,8 @@
         <div class="col-md-8">
             <textarea id="editor" style="background-color: black;" name="editor"></textarea>
         </div>
-        <div class="col-md-4" >
-            <textarea id="con" style="background-color: black;width:100%;height:300px;color:white;" name="editor">
+        <div class="col-md-4">
+            <textarea id="con" style="background-color: black;width:100%;height:600px;color:white;" name="editor">
             
            </textarea>
         </div>
@@ -45,18 +45,24 @@
     <script>
         var myTextarea = document.getElementById('editor');
         var CodeMirrorEditor = CodeMirror.fromTextArea(myTextarea, {
+            value: "function myScript(){return 100;}\n",
             mode: "text/javascript",
             lineNumbers: true,
             theme:'xq-dark',
-            value:"5555"
+            autoMatchParens: true,
+            textWrapping: true
         });
-
+        CodeMirrorEditor.setValue('console.log("welcome to console");');
+        CodeMirrorEditor.setSize("100%","600")
         var con = document.querySelector("#con");
         console.olog = console.log;
         console.log = function() {
                 //do what u want do;
-              
-              con.innerHTML += ""+ [].join.call(JSON.stringify(arguments), '') + "\n";
+              if(typeof arguments[0] =='object'){
+                   con.innerHTML += ""+ [].join.call(JSON.stringify(arguments), '') + "\n";
+              }else{
+                   con.innerHTML += ""+ [].join.call(arguments, '') + "\n";
+              }
               this.olog.apply(this, arguments);
          }
 
