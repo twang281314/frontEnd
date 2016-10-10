@@ -1,0 +1,238 @@
+/* CARD DIMENSIONS */
+
+@width: 19em;
+@height: 27em;
+@shadow: 1em 1em 2em #111111;
+
+/* MIXINS */
+
+.box-shadow (@string: @shadow) {
+    -webkit-box-shadow: @string;
+    -moz-box-shadow: @string;
+    box-shadow: @string;
+}
+
+.box-sizing(@sizing: border-box) {
+    -webkit-box-sizing: @sizing;
+    -moz-box-sizing: @sizing;
+    box-sizing: @sizing;
+}
+
+.border-radius (@radius: 0.5em) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.top-perspective() {
+    /*perspective*/
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -ms-perspective: 1000;
+    -o-perspective: 1000;
+    perspective: 1000;
+}
+
+.flipped-transform-back () {
+    /*transform*/
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.flipped-transform-front {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+.flipper-transform(@transition: 0.4s) {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: @transition;
+    -moz-transition: @transition;
+    -o-transition: @transition;
+    -ms-transition: @transition;
+    transition: @transition;
+}
+
+.back-face-should-be-hidden() {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+
+/* STYLE SHEET */
+
+body {
+    font-family: "myriad-pro", sans-serif;
+    font-size: 100%;
+    text-align: center;
+    color: #D1D1D1;
+    padding: 0;
+    background-color: #333333;
+    margin: 0 auto;
+    padding: 0;
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    a {
+        font-size: 1em;
+        color: RGB(255, 208, 128);
+    }
+}
+
+.flip-container {
+    display: block;
+    margin: 0 auto;
+    width: @width * 1.0;
+    height: @height *1.0;
+}
+
+.flipToFront {
+    .flipped-transform-front();
+}
+
+.flipToBack {
+    .flipped-transform-back();
+}
+
+
+/* flip speed goes here */
+
+.flipper {
+    .top-perspective();
+    .flipper-transform();
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.flip-container,
+.front,
+.back {
+    .back-face-should-be-hidden();
+    text-align: center;
+    color: #333333;
+    padding: 0.25em;
+    h1,
+    h2,
+    h3,
+    a {
+        font-size: 1.25em;
+    }
+}
+
+.face-hidden {
+    /*
+        .face-should-be-hidden();
+    */
+}
+
+.front,
+.back {
+    /* hide back of pane during swap */
+    overflow: scroll;
+    display: inline-block;
+    /* Card overlay eachother */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Make Pretty */
+    .box-sizing();
+    .border-radius();
+    .box-shadow();
+    width: 100%;
+    height: 100%;
+}
+
+
+/* front pane, placed above back */
+
+.front {
+    text-align: center;
+    z-index: 2;
+    background-color: #FEFEFE;
+    .flipped-transform-front ();
+    .box-sizing();
+    border: 0.5em solid #FEFEFE;
+    img {
+        width: 100%;
+        margin: 0 auto;
+        height: auto;
+        .border-radius();
+    }
+}
+
+
+/* back, initially hidden pane */
+
+.back {
+    background-color: #EBEBEB;
+    .flipped-transform-back ();
+    background-image: url('upfeathers.png');
+    background-position: center;
+    background-repeat: repeat;
+    .box-sizing();
+    border: 1em solid #FEFEFE;
+}
+
+
+/* Media Queries */
+
+
+/*
+@highdensity: ~"only screen and (-webkit-min-device-pixel-ratio: 1.5)",
+              ~"only screen and (min--moz-device-pixel-ratio: 1.5)",
+              ~"only screen and (-o-min-device-pixel-ratio: 3/2)",
+              ~"only screen and (min-device-pixel-ratio: 1.5)";
+*/
+
+@mobile: ~"only screen and (max-width: 34em)";
+@tablet: ~"only screen and (min-width: 34em) and (max-width: 55em)";
+@desktop: ~"only screen and (min-width: 55em)";
+@media @mobile {
+    h1,
+    h2,
+    h3 {
+        font-size: 1.25em;
+    }
+    .flip-container,
+    .front,
+    .back {
+        width: @width * 1.0;
+        height: @height *1.0;
+    }
+}
+
+
+/*
+@media @tablet {
+        .flip-container, .front, .back {
+        width: @width * 1.25;
+        height: @height *1.25;
+        
+        h1, h2, h3 {
+            font-size: 1.75em;
+        }
+    }
+}
+
+@media @desktop {
+    .flip-container, .front, .back {
+        width: @width * 1.5;
+        height: @height *1.5;
+        
+    }
+}*/
