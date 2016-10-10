@@ -1,0 +1,201 @@
+/* CARD DIMENSIONS */
+/* MIXINS */
+.flipped-transform-front {
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+/* STYLE SHEET */
+body {
+  font-family: "myriad-pro", sans-serif;
+  font-size: 100%;
+  text-align: center;
+  color: #D1D1D1;
+  background-color: #333333;
+  margin: 0 auto;
+  padding: 0;
+}
+footer {
+  text-align: center;
+  padding: 1em;
+}
+footer a {
+  font-size: 1em;
+  color: #ffd080;
+}
+.flip-container {
+  display: block;
+  margin: 0 auto;
+  width: 19em;
+  height: 27em;
+}
+.flipToFront {
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+.flipToBack {
+  /*transform*/
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+/* flip speed goes here */
+.flipper {
+  /*perspective*/
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  -o-perspective: 1000;
+  perspective: 1000;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -o-transition: 0.4s;
+  -ms-transition: 0.4s;
+  transition: 0.4s;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.flip-container,
+.front,
+.back {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  text-align: center;
+  color: #333333;
+  padding: 0.25em;
+}
+.flip-container h1,
+.front h1,
+.back h1,
+.flip-container h2,
+.front h2,
+.back h2,
+.flip-container h3,
+.front h3,
+.back h3,
+.flip-container a,
+.front a,
+.back a {
+  font-size: 1.25em;
+}
+.face-hidden {
+  /*
+        .face-should-be-hidden();
+    */
+}
+.front,
+.back {
+  /* hide back of pane during swap */
+  overflow: scroll;
+  display: inline-block;
+  /* Card overlay eachother */
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Make Pretty */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -webkit-box-shadow: 1em 1em 2em #111111;
+  -moz-box-shadow: 1em 1em 2em #111111;
+  box-shadow: 1em 1em 2em #111111;
+  width: 100%;
+  height: 100%;
+}
+/* front pane, placed above back */
+.front {
+  text-align: center;
+  z-index: 2;
+  background-color: #FEFEFE;
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 0.5em solid #FEFEFE;
+}
+.front img {
+  width: 100%;
+  margin: 0 auto;
+  height: auto;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+}
+/* back, initially hidden pane */
+.back {
+  background-color: #EBEBEB;
+  /*transform*/
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  background-image: url('http://subtlepatterns.com/patterns/upfeathers.png');
+  background-position: center;
+  background-repeat: repeat;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1em solid #FEFEFE;
+}
+/* Media Queries */
+/*
+@highdensity: ~"only screen and (-webkit-min-device-pixel-ratio: 1.5)",
+              ~"only screen and (min--moz-device-pixel-ratio: 1.5)",
+              ~"only screen and (-o-min-device-pixel-ratio: 3/2)",
+              ~"only screen and (min-device-pixel-ratio: 1.5)";
+*/
+@media only screen and (max-width: 34em) {
+  h1,
+  h2,
+  h3 {
+    font-size: 1.25em;
+  }
+  .flip-container,
+  .front,
+  .back {
+    width: 19em;
+    height: 27em;
+  }
+}
+/*
+@media @tablet {
+        .flip-container, .front, .back {
+        width: @width * 1.25;
+        height: @height *1.25;
+        
+        h1, h2, h3 {
+            font-size: 1.75em;
+        }
+    }
+}
+
+@media @desktop {
+    .flip-container, .front, .back {
+        width: @width * 1.5;
+        height: @height *1.5;
+        
+    }
+}*/
