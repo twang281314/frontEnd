@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>卡片翻转</title>
+    <meta name="description" content="html5" />
+
+
+
+    <link rel="stylesheet" type="text/css" href="app.css" />
+
+</head>
+
+<body>
+    <div ng-app="cardFlipper" ng-controller="AppController">
+        {{name}}
+        <h1>Card Flipping AngularJS</h1>
+        <div class="flip-container">
+            <div class="flipper" ng-click="flipCard()" ng-class="{'flipToFront':isCardRevealed, 'flipToBack':!isCardRevealed}">
+                <div class="back" ng-class="{'face-hidden':hideBackFace}">
+                </div>
+                <div class="front" ng-class="{'face-hidden':!hideBackFace}">
+                    <h1>{{currentCard.title | uppercase}}</h1>
+                    <p ng-if="currentCard.icon">{{currentCard.icon}}</p>
+                    <br ng-if="currentCard.icon" />
+                    <img ng-if="currentCard.imageUrl" src="{{currentCard.imageUrl}}" alt="currentCard.imageAlt" />
+                    <p>{{currentCard.description}}</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div ng-if="currentCard && currentCard.source">
+                <a ng-href="{{currentCard.source}}" target="_blank">Source</a>
+            </div>
+        </footer>
+        <br />
+        <br />
+    </div>
+
+    <script src="//cdn.bootcss.com/angular.js/1.4.9/angular.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>
