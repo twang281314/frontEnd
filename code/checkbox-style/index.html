@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>chec</title>
+
+    <style>
+        #container {
+            margin: 20px auto;
+        }
+        
+        #container span {
+            position: relative;
+        }
+        
+        #container .input_check {
+            position: absolute;
+            visibility: hidden;
+        }
+        
+        #container .input_check+label {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 1px solid #0079dd;
+        }
+        
+        #container .input_check:checked+label:after {
+            content: "";
+            position: absolute;
+            left: 2px;
+            bottom: 12px;
+            width: 9px;
+            height: 4px;
+            border: 2px solid #0079dd;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            -ms-transform: rotate(-60deg);
+            -moz-transform: rotate(-60deg);
+            -webkit-transform: rotate(-60deg);
+            transform: rotate(-45deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>利用css的：after跟transform属性代替checkbox效果</h3>
+    <div id="container">
+        <span><input type="checkbox"class="input_check" id="check3"><label for="check3"></label></span>
+        <span><input type="checkbox"class="input_check" id="check4"><label for="check4"></label></span>
+    </div>
+</body>
+
+</html>

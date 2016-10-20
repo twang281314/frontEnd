@@ -1,0 +1,174 @@
+<script>
+//显示
+function show(o,obj){
+  var m=document.getElementById(obj);
+  m.style.pixelLeft=getL(o);
+  m.style.pixelTop=getT(o)+o.offsetHeight;
+  m.style.visibility='';
+}
+//隐藏
+function hide(obj){
+  document.getElementById(obj).style.visibility='hidden';
+}   
+//取得左边的位移
+function getL(e){
+  var l=e.offsetLeft;
+  while(e=e.offsetParent){
+    l+=e.offsetLeft;
+  }
+  return l;
+}
+//取得顶部的位移
+function getT(e){
+  var t=e.offsetTop;
+  while(e=e.offsetParent){
+    t+=e.offsetTop;
+  }
+  return t;
+}   
+</script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td><a href="pro_class.asp?bigCate=广告制作" id="cate1" onmouseover="show(this,'pro1')" onmouseout="hide('pro1')">广告制作</a></td>
+    </tr>
+    <tr>
+        <td><a href="pro_class.asp?bigCate=展览展示" id="cate2" onmouseover="show(this,'pro2')" onmouseout="hide('pro2')">展览展示</a></td>
+    </tr>
+    <tr>
+        <td><a href="pro_class.asp?bigCate=便携展具" id="cate3" onmouseover="show(this,'pro3')" onmouseout="hide('pro3')">便携展具</a></td>
+    </tr>
+    <tr>
+        <td><a href="pro_class.asp?bigCate=商务服务" id="cate4" onmouseover="show(this,'pro4')" onmouseout="hide('pro4')">商务服务</a></td>
+    </tr>
+    <tr>
+        <td height="77"> </td>
+    </tr>
+
+</table>
+<!--<div id="pro1" style="BORDER:black 1px solid;PADDING:10px;Z-INDEX:100;VISIBILITY:hidden;WIDTH:150px;POSITION:absolute; margin-left:100px; background-color:#FFFFFF; text-align:left" onmouseover="show(proc,'pro1')" onmouseout="hide('pro1')">-->
+<div id="pro1" style="BORDER:1px solid #CCCCCC; PADDING:5px;Z-INDEX:100;VISIBILITY:hidden;WIDTH:175px;POSITION:absolute; margin-left:100px; background-color:#FFFFFF; text-align:left"
+    onmouseover="show(cate1,'pro1')" onmouseout="hide('pro1')">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="zi1">
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25" style="padding:5px 0;"><a href="pro_class.asp?bigCate=广告制作&smallCate=企业VI设计" class="zi1"><strong>企业VI设计</strong><br />Enterprise VI Design</a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25" style="padding:5px 0;"><a href="pro_class.asp?bigCate=广告制作&smallCate=印刷设计" class="zi1"><strong>印刷设计</strong><br />Print Design</a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25" style="padding:5px 0;"><a href="pro_class.asp?bigCate=广告制作&smallCate=平面设计" class="zi1"><strong>平面设计</strong><br />Graphic Design</a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25" style="padding:5px 0;"><a href="pro_class.asp?bigCate=广告制作&smallCate=户外设计" class="zi1"><strong>户外设计</strong><br />Outdoor</a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25" style="padding:5px 0;"><a href="pro_class.asp?bigCate=广告制作&smallCate=平面设计" class="zi1"><strong>平面设计</strong><br />Graphic Design</a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+    </table>
+</div>
+<div id="pro2" style="BORDER:1px solid #CCCCCC; PADDING:5px;Z-INDEX:100;VISIBILITY:hidden;WIDTH:175px;POSITION:absolute; margin-left:100px; background-color:#FFFFFF; text-align:left"
+    onmouseover="show(cate2,'pro2')" onmouseout="hide('pro2')">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="zi1">
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25"><a href="pro_class.asp?bigCate=便携展具&smallCate=拉网展架" class="zi1"><strong>拉网展架</strong></a> <a href="pro_class.asp?bigCate=便携展具&smallCate=易拉宝"
+                    class="zi1"><strong>易拉宝</strong></a> <a href="pro_class.asp?bigCate=便携展具&smallCate=X展架" class="zi1"><strong>X展架</strong></a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25"><a href="pro_class.asp?bigCate=便携展具&smallCate=促销系列" class="zi1"><strong>促销系列</strong></a> <a href="pro_class.asp?bigCate=便携展具&smallCate=海报架"
+                    class="zi1"><strong>海报架</strong></a> <a href="pro_class.asp?bigCate=便携展具&smallCate=桁架" class="zi1"><strong>桁架</strong></a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25"><a href="pro_class.asp?bigCate=便携展具&smallCate=展板边框" class="zi1"><strong>展板边框</strong></a> <a href="pro_class.asp?bigCate=便携展具&smallCate=亚克力制品"
+                    class="zi1"><strong>亚克力制品</strong></a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25"><a href="pro_class.asp?bigCate=便携展具&smallCate=户外系列" class="zi1"><strong>户外系列</strong></a> <a href="pro_class.asp?bigCate=便携展具&smallCate=资料架"
+                    class="zi1"><strong>资料架</strong></a> <a href="pro_class.asp?bigCate=便携展具&smallCate=其他" class="zi1"><strong>其他</strong></a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+    </table>
+</div>
+<div id="pro3" style="BORDER:1px solid #CCCCCC; PADDING:5px;Z-INDEX:100;VISIBILITY:hidden;WIDTH:175px;POSITION:absolute; margin-left:100px; background-color:#FFFFFF; text-align:left"
+    onmouseover="show(cate3,'pro3')" onmouseout="hide('pro3')">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="zi1">
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25" style="padding:5px 0;"><a href="pro_class.asp?bigCate=展览展示&smallCate=展示系统" class="zi1"><strong>展示系统</strong><br />Show Series</a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25" style="padding:5px 0;"><a href="pro_class.asp?bigCate=展览展示&smallCate=导视系统" class="zi1"><strong>导视系统</strong><br />Guides the system</a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25" style="padding:5px 0;"><a href="pro_class.asp?bigCate=展览展示&smallCate=灯箱系列" class="zi1"><strong>灯箱系列</strong><br />Light Box Series</a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+    </table>
+</div>
+<div id="pro4" style="BORDER:1px solid #CCCCCC; PADDING:5px;Z-INDEX:100;VISIBILITY:hidden;WIDTH:175px;POSITION:absolute; margin-left:100px; background-color:#FFFFFF; text-align:left"
+    onmouseover="show(cate4,'pro4')" onmouseout="hide('pro4')">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="zi1">
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25" style="padding:5px 0;"><a href="pro_class.asp?bigCate=商务服务&smallCate=会议服务" class="zi1"><strong>会议服务</strong><br />Conference services</a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25" style="padding:5px 0;"><a href="pro_class.asp?bigCate=商务服务&smallCate=商务礼品" class="zi1"><strong>商务礼品</strong><br />Business Gifts</a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+        <tr>
+            <td height="25" style="padding:5px 0;"><a href="pro_class.asp?bigCate=商务服务&smallCate=器材租赁" class="zi1"><strong>器材租赁</strong><br />Equipment Leasing</a></td>
+        </tr>
+        <tr>
+            <td height="1" background="images/hd.gif"></td>
+        </tr>
+    </table>
+</div>
