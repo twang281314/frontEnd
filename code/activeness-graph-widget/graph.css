@@ -1,0 +1,17 @@
+* {
+    font-family: "PingFang SC","Helvetica Neue","Hiragino Sans GB","Segoe UI","Microsoft YaHei","微软雅黑",sans-serif;
+}
+#activeness-graph rect.day {
+    shape-rendering: crispedges;
+}
+#activeness-graph text.month,
+#activeness-graph text.wday {
+    font-size: 10px;
+    fill: #999;
+}
+
+#activeness-graph{
+    width:800px;
+    height:400px;
+}
+
