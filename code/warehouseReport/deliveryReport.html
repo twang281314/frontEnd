@@ -124,8 +124,8 @@
 
         var getReportData= function (){
         $.ajax({
-            url:'http://192.168.200.138:8001/DmCamara.asmx/GetDeliveryReportJson',
-            //url:'data/DeliveryReport.json',
+            //url:'http://192.168.200.138:8001/DmCamara.asmx/GetDeliveryReportJson',
+            url:'data/DeliveryReport.json',
             type:'get',
             dataType:'json',
             success : function(data){
@@ -133,23 +133,23 @@
                  for(var key in DeliveryReportJson){
                      var data=[];
                      var obj=DeliveryReportJson[key];
-                     data.push({name:'完成数',value:obj.HANDOVER_NUM});
-                     data.push({name:'等待处理',value:obj.WaitDealWith});
-                     data.push({name:'等待波次作业',value:obj.WaitWaveWork});
-                     data.push({name:'拣选完成',value:obj.PickingFinish});
-                     data.push({name:'包装完成',value:obj.PackageOver});
-                     data.push({name:'终捡完成',value:obj.FinalFinish});
-                     data.push({name:'下料完成',value:obj.UnloadFinish});
-                     data.push({name:'交接完成',value:obj.HandoverFinish});
-                     data.push({name:'锁定',value:obj.PackageLock});
-                     data.push({name:'异常',value:obj.PackageError});
-                     data.push({name:'拣选缺货',value:obj.OutOfStock});
-                     data.push({name:'作废',value:obj.PackageInvalid});
-                     data.push({name:'等待打印',value:obj.WaitPrint});
-                     data.push({name:'未分配拣选区',value:obj.NoPickingArea});
-                     data.push({name:'作废待返库',value:obj.InvalidWaitPicking});
-                     data.push({name:'打印完成',value:obj.Print});
-                     data.push({name:'正在拣选',value:obj.Picking});
+                     data.push({name:'完成数('+(obj.HANDOVER_NUM/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.HANDOVER_NUM});
+                     data.push({name:'等待处理('+(obj.WaitDealWith/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.WaitDealWith});
+                     data.push({name:'等待波次作业('+(obj.WaitWaveWork/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.WaitWaveWork});
+                     data.push({name:'拣选完成('+(obj.PickingFinish/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.PickingFinish});
+                     data.push({name:'包装完成('+(obj.PackageOver/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.PackageOver});
+                     data.push({name:'终捡完成('+(obj.FinalFinish/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.FinalFinish});
+                     data.push({name:'下料完成('+(obj.UnloadFinish/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.UnloadFinish});
+                     data.push({name:'交接完成('+(obj.HandoverFinish/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.HandoverFinish});
+                     data.push({name:'锁定('+(obj.PackageLock/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.PackageLock});
+                     data.push({name:'异常('+(obj.PackageError/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.PackageError});
+                     data.push({name:'拣选缺货('+(obj.OutOfStock/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.OutOfStock});
+                     data.push({name:'作废('+(obj.PackageInvalid/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.PackageInvalid});
+                     data.push({name:'等待打印('+(obj.WaitPrint/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.WaitPrint});
+                     data.push({name:'未分配拣选区('+(obj.NoPickingArea/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.NoPickingArea});
+                     data.push({name:'作废待返库('+(obj.InvalidWaitPicking/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.InvalidWaitPicking});
+                     data.push({name:'打印完成('+(obj.Print/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.Print});
+                     data.push({name:'正在拣选('+(obj.Picking/obj.PACKAGENUM*100).toFixed(2)+'%)',value:obj.Picking});
                      if(key==0){
                         option.title.subtext='总包裹数:'+obj.PACKAGENUM;
                         option.title.text=obj.CREATE_DATE.substring(0,10);
