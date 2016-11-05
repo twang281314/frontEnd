@@ -58,12 +58,12 @@ cnpm  install  typings -g     //自动补全
 
 ## 安装常用的插件
 
-### 代码格式化 [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-### html-snippets [html-snippets](https://marketplace.visualstudio.com/items?itemName=abusaidm.html-snippets)
-### Git History [ Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory)
-### html-css-class-completion [ html-css-class-completion](https://marketplace.visualstudio.com/items?itemName=Zignd.html-css-class-completion)
-### html-snippets [html-snippets](https://marketplace.visualstudio.com/items?itemName=abusaidm.html-snippets)
-### JavaScript (ES6) snippets [JavaScript (ES6) snippets](https://marketplace.visualstudio.com/items?itemName=abusaidm.html-snippets)
-### 文件图标 [vscode-icons](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
+1、 代码格式化 [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+2、 html-snippets [html-snippets](https://marketplace.visualstudio.com/items?itemName=abusaidm.html-snippets)
+3、 Git History [ Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory)
+4、 html-css-class-completion [ html-css-class-completion](https://marketplace.visualstudio.com/items?itemName=Zignd.html-css-class-completion)
+5、 html-snippets [html-snippets](https://marketplace.visualstudio.com/items?itemName=abusaidm.html-snippets)
+6、 JavaScript (ES6) snippets [JavaScript (ES6) snippets](https://marketplace.visualstudio.com/items?itemName=abusaidm.html-snippets)
+7、 文件图标 [vscode-icons](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
 
 需要其他插件可以去插件市场寻找 https://marketplace.visualstudio.com/
