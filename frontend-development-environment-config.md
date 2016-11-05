@@ -20,9 +20,9 @@ git config --list  # 查看git配置信息
 ssh-keygen -t rsa -C "你的邮箱地址"
 
 ```
-生成后在下面目录
-C:\Users\你的用户名\.ssh\id_rsa.pub
-将 id_rsa.pub 里面的内容复制下 放到github、bitbucket等git代码管理后台的ssh keys 列表中
+生成后在下面目录  
+C:\Users\你的用户名\.ssh\id_rsa.pub  
+将 id_rsa.pub 里面的内容复制下 放到github、bitbucket等git代码管理后台的ssh keys 列表中  
 
 # node环境配置
 
