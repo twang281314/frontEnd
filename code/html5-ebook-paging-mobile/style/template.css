@@ -1,0 +1,231 @@
+.thumbBar {
+  position: absolute;
+  z-index: 100;
+}
+.outThumbBG{
+  position: absolute;
+  overflow: hidden;
+  /*background-color: #000000;*/
+  /*opacity: 0.9;*/
+}
+.thumbBG {
+  position: absolute;
+  /*background-color: #000000;*/
+  /*opacity: 0.9;*/
+}
+
+.thumbBox {
+  position: absolute;
+}
+
+.thumbItem {
+  position: absolute;
+}
+
+
+a, button {
+  cursor: pointer;
+}
+
+.numbering {
+  position: absolute;
+}
+
+.numberingText{
+  position: absolute;
+}
+.numberingText:after{
+  top: 100%;
+  border: 10px solid transparent;
+  content: " ";
+  width: 0;
+  height: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.numberingText:after{
+  border-top-color: #eee;
+  border-width: 4px;
+  left: 50%;
+  margin-left: -4px;
+  opacity: 0.9;
+}
+
+
+.bottom.right, .bottom.right button, .bottom.right .numbering{
+  position: absolute; 
+  top: 2px;
+  left: auto; }
+  a ,button{
+   cursor: pointer;
+  }
+  .bottom.right{
+  	 padding-right: 10px;
+  }
+  
+  .bottom.left, .bottom.left button, .bottom.left .numbering{
+  position: absolute; 
+  top: 2px;
+  right: auto; }
+  a ,button{
+   cursor: pointer;
+  }
+  .bottom.right{
+  	 padding-right: 10px;
+  }
+  
+  .fbTopBar{
+	
+    overflow: hidden;
+    position: absolute;
+    z-index: 99;
+   
+    
+ 		top: -50px;
+  	left: 0px;
+ 		right: 0px;
+ 	
+  	height: 42px;
+  	
+  	opacity: 0.95;
+  	
+  	border-radius: 0px 0px 10px 10px;
+	}
+  
+	.fbToolBar{
+	
+    overflow: hidden;
+    position: absolute;
+    z-index: 99;
+   
+    
+ 	bottom: -45px;
+  	left: 0px;
+ 	right: 0px;
+ 	
+  	height: 42px;
+  	
+  	border-radius: 5px 5px 5px 5px;
+  	/**
+  	  	
+  	 border-left-width: 0;
+    border-right-width: 0;
+  	  text-shadow: 0 -1px 1px #000000;
+	font-family: Verdana,sans-serif;
+  	 font-size: 12px;
+  	 color: white; 	
+  	 background-color: #111111;*/
+  
+ /* background: gradient(linear, left top, left bottom, from(#333333), to(black));
+  background: -webkit-gradient(linear, left top, left bottom, from(#333333), to(black));
+  background: -moz-linear-gradient(top, #333333, black);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='black');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='black');	*/
+  	opacity: 0.95;
+	}
+	.fbToolBar button, .fbTopBar button {
+    width: 45px;
+    height: 33px;
+    padding: 2px;
+    /*  margin: 1px 0 0 3px;
+    border-top: 1px solid #8c8c8c;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #666666;
+    border-right: 1px solid #404040;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #404040;
+   background: gradient(linear, left top, left bottom, from(#4d4d4d), to(#333333));
+    background: -webkit-gradient(linear, left top, left bottom, from(#4d4d4d), to(#333333));
+    background: -moz-linear-gradient(top, #4d4d4d, #333333);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4d4d4d', endColorstr='#333333');
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4d4d4d', endColorstr='#333333'); */
+	}
+  
+  .halfCircleBtn{
+    overflow: hidden;
+    position: absolute;
+    z-index: 98;
+    display:block;   
+    
+ 		top: -8px;
+  	left: 0px;
+ 		right: 0px;  	
+  	
+  	width:60px;
+  	height:30px;
+  	border-radius: 0px 0px 30px 30px;
+  	background:#ccc;
+  }
+
+.numbering{
+	bottom: 3px;
+	border-radius:5px;
+}
+
+.dock {
+	display: block;
+	margin: 0px auto;
+	bottom: 0px;
+	/*width: 100%;*/
+	text-align: center;
+	position: absolute;
+	/*overflow: hidden;*/
+	/*background:#ffff00;*/
+}
+
+.linea {
+	display: inline-block;
+	/*vertical-align: bottom;*/
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+	/*overflow: visible;*/
+}
+
+.linea img {
+	-webkit-box-reflect: below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(rgba(255,255,255,0.3)));
+	-moz-box-reflect: below 1px -moz-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(rgba(255,255,255,0.3)));
+}
+
+.button {
+	width : 30px;
+	height : 30px;
+	bottom: 3px;
+	border-radius:5px;
+	position:absolute;
+	
+}
+
+.button img {
+	margin-left:6px;
+	margin-top : 6px
+}
+
+.numInnerShadow {
+	background:#ffffff;
+	border-radius:5px;
+	height:18px;
+	width : 87px;
+	border-right-width:0px;
+	border-bottom-width:0px;
+	-moz-box-shadow:    inset 0 0 5px #555555;
+    -webkit-box-shadow: inset 0 0 5px #555555;
+    box-shadow:         inset 0 0 5px #555555;
+    -ms-box-shadow: inset 0 0 5px #555555;
+    -o-box-shadow: inset 0 0 5px #555555;
+}
+
+.searchInnerShadow {
+	background:#ffffff;
+	padding:3px;
+	border-radius:0px;
+	border-right-width:0px;
+	border-bottom-width:0px;
+	-moz-box-shadow:    inset 0 0 5px #555555;
+    -webkit-box-shadow: inset 0 0 5px #555555;
+    box-shadow:         inset 0 0 5px #555555;
+    -ms-box-shadow: inset 0 0 5px #555555;
+    -o-box-shadow: inset 0 0 5px #555555;
+}

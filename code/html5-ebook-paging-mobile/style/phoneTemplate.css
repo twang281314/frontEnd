@@ -1,0 +1,123 @@
+.phoneThumbBar {
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	position: absolute;
+	background-color:#000000;
+	opacity:0.6;
+	height: 120px;
+	z-index: 98;
+}
+.phoneThumbBG {
+	position: absolute;
+	bottom: 1px;
+	/*left: 0px;*/
+	right: 0px;
+	height: 105px;
+	overflow: hidden;
+	opacity: 0.9;
+	/*background-color:#888888;*/
+	z-index:102;
+}
+.phoneThumbBox {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	height: 95px;
+	/*background-color:#ff0000;*/
+}
+.phoneThumbItem{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 60px;
+	height: 82px;
+	border-width: 1px;
+	border-style:inset;
+}
+
+.bottom.right, .bottom.right button, .bottom.right .numbering{
+  position: absolute; 
+  top: 2px;
+  left: auto; }
+  a ,button{
+   cursor: pointer;
+  }
+  .bottom.right{
+  	 padding-right: 10px;
+  }
+  .top.right, .top.right button, .top.right .numbering{
+  position: absolute; 
+  top: 2px;
+  left: auto; }
+   .top.right{
+  	 padding-right: 10px;
+  }
+    .bottom.left, .bottom.left button, .bottom.left .numbering{
+  position: absolute; 
+  top: 2px;
+  right: auto; }
+   .bottom.left{
+  	 padding-left: 0px;
+  }
+	.pbToolBar{
+	
+    overflow: hidden;
+    position: absolute;
+    z-index: 99;
+   
+    
+ 	bottom: -270px;
+  	left: 0px;
+ 	right: 0px;
+ 	
+  	height: 42px;
+	}
+	.pbToolBar button {
+    width: 45px;
+    height: 33px;
+    padding: 2px;
+	}
+		.pbTopBar{
+	
+    overflow: hidden;
+    position: absolute;
+    z-index: 99;
+   
+    
+ 	top: -50px;
+  	left: 0px;
+ 	right: 0px;
+ 	
+  	height: 42px;
+  	
+	}
+	.pbTopBar button {
+    width: 45px;
+    height: 33px;
+    padding: 2px;
+	}
+	.phonebutton{
+		width : 40px;
+		height : 40px;
+		position : absolute;
+		cursor : pointer;
+	}
+	.phonebutton div{
+		width : 25px;
+		height : 25px;
+		margin-left : 7px;
+		margin-top : 7px;
+	}
+	.phoneMoreButton{
+		width : 65px;
+		height : 40px;
+		position : absolute;
+		cursor : pointer;
+	}
+	.phoneMoreButton div{
+		width : 25px;
+		height : 25px;
+		margin-left : 20px;
+		margin-top : 7px;
+	}
