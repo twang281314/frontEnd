@@ -1,0 +1,37 @@
+body {
+  background: #eee;
+}
+
+* {
+  position: absolute;
+  margin: 0; padding: 0;
+}
+
+input[type="text"] {
+  border: 1px solid #ddd;
+  padding: 6px;
+  font-size: 18px;
+  width: 200px;
+  text-transform: uppercase;
+  top: 30px;
+  left: 130px;
+}
+
+input[type="submit"] {
+  display: block;
+  width: 100px;
+  border: 0;
+  line-height: 35px;
+  height: 35px;
+  color: #fff;
+  background: mediumpurple;
+  font-size: 18px;
+  top: 30px;
+  left: 350px;
+  cursor: pointer;
+}
+
+form {
+  width: 600px;
+  height: 100px;
+}
