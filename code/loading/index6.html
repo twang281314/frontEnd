@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>纯css Loading1</title>
+<style>
+.d1 {
+    width: 100px;
+    margin: 100px auto;
+}
+[data-load='circle'] {
+    width: 25px;
+    height: 25px;
+    border: 2px solid #f23;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 55%;
+    -webkit-animation: circle infinite .75s linear;
+    animation: circle infinite .75s linear;
+}
+
+@-webkit-keyframes circle {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes circle {
+    100% {    
+        transform: rotate(360deg);
+    }
+}
+</style>
+</head>
+<body>
+    <div class="d1" data-load="circle"></div>
+</body>
+</html>
