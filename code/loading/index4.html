@@ -1,0 +1,53 @@
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>loading</title>
+		<link rel="stylesheet" href="loading.css">
+	</head>
+	<body>
+		<div style="width:1000px;margin:0 auto;">
+			<p>
+				<input type="button" id="loading1" value="loading我自己">
+				<input type="button" id="loading2" value="loading下面这个div">
+				<input type="button" id="loading3" value="loading全屏">
+			</p>
+			<div id="loading-content" style="width:300px;height:200px;border:1px solid #ccc;background-color:#f2f2f2;">这是个内容的例子</div>
+		</div>
+		  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+		<script src="loading.js"></script>
+		<script>
+		//loading我自己
+		$('#loading1').click(function(){
+			var load = new Loading();
+			load.init({
+				target: this
+			});
+			load.start();
+			setTimeout(function() {
+				load.stop();
+			}, 3000)
+		});
+		//loading下面这个div
+		$('#loading2').click(function(){
+			var load = new Loading();
+			load.init({
+				target: "#loading-content"
+			});
+			load.start();
+			setTimeout(function() {
+				load.stop();
+			}, 3000)
+		});
+		//loading全屏
+		$('#loading3').click(function(){
+			var load = new Loading();
+			load.init();
+			load.start();
+			setTimeout(function() {
+				load.stop();
+			}, 30000)
+		});
+		</script>
+	</body>
+</html>

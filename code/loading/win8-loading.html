@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        #metro-loadbox {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: #080;
+        }
+        
+        .metro-loading {
+            width: 5px;
+            height: 5px;
+            overflow: hidden;
+            background: #fff;
+            border-radius: 100%;
+            position: absolute;
+            top: 10px;
+            right: 100%;
+            opacity: .9;
+        }
+        
+        .metro-loading.pos {
+            right: 0%;
+        }
+    </style>
+
+  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+        $(function(){
+            //创建点
+            for(var i = 1;i < 7;i++){
+                $("<div class='metro-loading'></div>").css("transition", "right " + (0.7 + i / 10).toFixed(1) + "s ease-out").appendTo("#metro-loadbox");
+            };
+            //定时切换
+            clearTimeout(timer);
+            var timer = setTimeout(function(){
+                $(".metro-loading").toggleClass("pos");
+                setTimeout(arguments.callee,1300);
+            },1300);
+        });
+    </script>
+</head>
+
+<body>
+    <div id="metro-loadbox"></div>
+</body>
+
+</html>

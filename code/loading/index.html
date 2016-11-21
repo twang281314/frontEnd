@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .loadingWrap {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -25px;
+            margin-top: -100px;
+            -webkit-animation: loading 2s linear infinite;
+            -moz-animation: loading 2s linear infinite;
+            -webkit-transform-origin: center center;
+            -moz-transform-origin: center center;
+        }
+        
+        @-webkit-keyframes 'loading' {
+            from {
+                -webkit-transform: rotate(0);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        
+        @-moz-keyframes loading {
+            from {
+                -moz-transform: roate(0);
+            }
+            to {
+                -moz-transform: rotate(360deg);
+            }
+        }
+        
+        .loadingLeft,
+        .loadingRight,
+        .loadingTop,
+        .loadingBottom {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            border-style: solid;
+        }
+        
+        .loadingLeft {
+            top: 15px;
+            left: 10px;
+            border-width: 0 0 0 5px;
+            border-radius: 50% 0 0 50%;
+            border-color: #223A63;
+        }
+        
+        .loadingRight {
+            bottom: 15px;
+            right: 10px;
+            border-width: 0 5px 0 0;
+            border-radius: 0 50% 50% 0;
+            border-color: #558985;
+        }
+        
+        .loadingTop {
+            top: 10px;
+            right: 15px;
+            border-width: 5px 0 0 0;
+            border-radius: 50% 50% 0 0;
+            border-color: #83ae89;
+        }
+        
+        .loadingBottom {
+            bottom: 10px;
+            left: 15px;
+            border-width: 0 0 5px 0;
+            border-radius: 0 0 50% 50%;
+            border-color: #ced6ad;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading">
+        <div class="loadingWrap">
+            <span class="loadingLeft"></span>
+            <span class="loadingRight"></span>
+            <span class="loadingTop"></span>
+            <span class="loadingBottom"></span>
+        </div>
+    </div>
+</body>
+
+</html>

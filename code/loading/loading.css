@@ -1,0 +1,3 @@
+.ui-loading{position:absolute;left:0;top:0;z-index: 9999;}
+.ui-loading .ui-loading-mask{ position:absolute;top:0;left:0;background-color: #000;opacity: .2;z-index: 1}
+.ui-loading i{height: 90px;width:90px; display: block;background: url(loading.gif) no-repeat center center;background-size:100% 100%;position: absolute;z-index: 2}

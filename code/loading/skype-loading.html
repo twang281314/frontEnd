@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: skyblue;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: none;
+            }
+            to {
+                transform: rotate(1turn);
+            }
+        }
+        
+        @keyframes scale {
+            from,
+            to {
+                transform: none;
+            }
+            25% {
+                transform: scale(0.35);
+            }
+        }
+        
+        @keyframes show {
+            from,
+            50% {
+                visibility: hidden;
+            }
+            to {
+                visibility: visible;
+            }
+        }
+        
+        .loading {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            margin: 50px auto;
+        }
+        
+        .loading>div {
+            width: 0;
+            height: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: 0 auto;
+            position: relative;
+            transform-origin: center 40px;
+            animation: rotate 2s infinite;
+        }
+        
+        .loading>div:nth-child(1),
+        .loading>div:nth-child(1)::after {
+            animation-delay: 1.09s;
+        }
+        
+        .loading>div:nth-child(2),
+        .loading>div:nth-child(2)::after {
+            animation-delay: 1.18s;
+        }
+        
+        .loading>div:nth-child(3),
+        .loading>div:nth-child(3)::after {
+            animation-delay: 1.27s;
+        }
+        
+        .loading>div:nth-child(4),
+        .loading>div:nth-child(4)::after {
+            animation-delay: 1.36s;
+        }
+        
+        .loading>div:nth-child(5),
+        .loading>div:nth-child(5)::after {
+            animation-delay: 1.45s;
+        }
+        
+        .loading>div:nth-child(6),
+        .loading>div:nth-child(6)::after {
+            animation-delay: 1.54s;
+        }
+        
+        .loading>div:nth-child(7),
+        .loading>div:nth-child(7)::after {
+            animation-delay: 1.63s;
+        }
+        
+        .loading>div:nth-child(8),
+        .loading>div:nth-child(8)::after {
+            animation-delay: 1.72s;
+        }
+        
+        .loading>div::after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: -10px;
+            right: -10px;
+            top: -10px;
+            bottom: -10px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: rgba(255, 255, 255, 0.5) 0 0 2px;
+            animation: scale 2s infinite ease-in-out;
+        }
+        
+        .loading>span {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-family: sans-serif;
+        }
+        
+        .loading>span span {
+            animation: show 2s infinite;
+        }
+        
+        .loading>span span:nth-child(1),
+        .loading>span span:nth-child(1)::after {
+            animation-delay: 1.3s;
+        }
+        
+        .loading>span span:nth-child(2),
+        .loading>span span:nth-child(2)::after {
+            animation-delay: 1.6s;
+        }
+        
+        .loading>span span:nth-child(3),
+        .loading>span span:nth-child(3)::after {
+            animation-delay: 1.9s;
+        }
+        /*# sourceMappingURL=index.css.map */
+    </style>
+</head>
+
+<body>
+    <div class="loading">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+    <span>Loading<span>.</span><span>.</span><span>.</span></span>
+</div>
+</body>
+
+</html>
