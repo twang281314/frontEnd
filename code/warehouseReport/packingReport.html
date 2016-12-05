@@ -101,7 +101,8 @@
            var getReportData = function() {
             //warehouseChart.showLoading();
             $.ajax({
-                url: 'http://192.168.200.138:8001/SePackageWeb.asmx/GetPackingJson',
+                //url: 'http://192.168.200.138:8001/SePackageWeb.asmx/GetPackingJson',
+                url:'data/Packing.json',
                 type: 'get',
                 dataType: 'json',
                 success: function(data) {
