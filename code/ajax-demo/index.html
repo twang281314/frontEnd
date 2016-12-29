@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="text">jj
+    </div>
+    <script>
+        $.ajax({
+            // url: 'http://127.0.0.1:8460/api/users/list',
+            url: 'http://github-ranking.anytao.net/api/repositories/list',
+            success: function (response) {
+                $('#text').html(JSON.stringify(response));
+            }
+        });
+    </script>
+</body>
+
+</html>
