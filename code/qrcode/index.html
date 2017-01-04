@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh_CN" id="data-ng-app" data-ng-app="app">
+
+<head>
+    <title>angular qrccode demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="node_modules/angular/angular.min.js">
+    </script>
+    <script src="node_modules/qrcode-generator/js/qrcode.js">
+    </script>
+    <script src="node_modules/angular-qrcode/angular-qrcode.js">
+    </script>
+    <script>
+        var app = angular.module('app', ['monospaced.qrcode']);
+
+        app.controller('qrcodeCtrl', ['$scope', function ($scope) {
+
+            $scope.name = 'anytao';
+
+        }]);
+    </script>
+</head>
+<body>
+    <div ng-controller="qrcodeCtrl">
+        <p>{{name}}</p>
+        <qrcode data="{{name}}"></qrcode><br>
+        <qrcode data="http://example.com" href="http://example.com"></qrcode>
+    </div>
+</body>
+</html>
