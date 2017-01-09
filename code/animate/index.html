@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: grey;
+            background: url('back.jpg') no-repeat center;
+            background-size: cover;
+            height:100%;
+        }
+        
+        .login-box {
+            width: 360px;
+            height: 360px;
+            margin: 0 auto;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button type="button" onclick="loginSwitch()">点击切换效果</button>
+        <button type="button" onclick="loginSwitchBack()">点击切回效果</button>
+    </div>
+    <div class="login-box animated ">
+    </div>
+    <script>
+        function loginSwitch() {
+            document.getElementsByClassName('login-box')[0].className = 'login-box animated flipInY';
+        }
+
+        function loginSwitchBack() {
+            document.getElementsByClassName('login-box')[0].className = 'login-box animated ';
+        }
+    </script>
+</body>
+
+</html>
