@@ -1,0 +1,152 @@
+.tab-vertical {
+	font-family: 'Microsoft YaHei';
+	position: relative;
+	clear: both;    
+	/*width: 1655px;*/
+	width: 100%;
+}
+.tab-header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	width: 32px;
+	height: 185px;
+	text-align: center;
+}
+.tab-header .tab-line{
+	height: 2px;
+	line-height: 2px;
+	width: 100%;
+	float: left;
+}
+.tab-header .tab-item {
+	line-height: 20px;
+	float: right;
+	width: 27px;
+	height: 50%;
+	cursor: pointer;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	background: #d6d5d5;
+}
+.tab-header .tab-item.active {
+	width: 32px;    
+	background: #3cd2dd;
+}
+.tab-item span {
+	font-size: 16px;
+	display: block;
+	width: 16px;
+	margin: 25px auto;
+	vertical-align: middle;
+	color: #333;
+}
+.tab-item.active span {
+	color: #fff;
+}
+.tab-body {
+	margin-left: 32px;
+	padding: 12px;
+	border: 1px solid #3cd2dd;
+	background: #f7f7f7;
+	overflow: hidden;
+}
+.week-content {
+	position: relative;
+	overflow: hidden;
+	height: 157px;
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+}
+.week-bar {
+	font-family: 'Microsoft YaHei';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.week-row {
+	overflow: hidden;
+	width: 100%;
+	border-left: 1px solid #ddd;
+	background-color: #fff;
+}
+.week-item {
+	float: left;
+	width: 14.2%;
+	height: 157px;
+	cursor: pointer;
+	border-right: 1px solid #ddd;
+}
+.week-item.active2, .week-item.active2 .week-date {
+	background-color: #f5f3f0;
+}
+.week-item.active2 .week-body {
+	background-color: #f5f3f0;
+}
+.week-item .week-date {
+	font-size: 12px;
+	line-height: 30px;
+	display: block;
+	width: 100%;
+	height: 30px;
+	margin: 0 auto;
+	text-align: center;
+	color: #000;
+	background: #f7f7f7;
+}
+.week-body {
+	
+	padding: 12px 0;
+	border-top: 1px solid #ddd;
+	background-color: #fff;
+}
+.week-day {
+	height: 40px;
+	padding: 0 12px;
+}
+.week-left {
+	font-size: 20px;
+	float: left;
+	width: 48%;
+	padding-top: 5px;
+	text-align: left;
+	color: #000;
+}
+.week-right {
+	font-size: 16px;
+	float: right;
+	width: 50%;
+	text-align: right;
+}
+.week-down {
+	clear: both;
+	overflow: hidden;
+	padding-left:8px;
+	margin-top: -3px;
+	/*height: auto;*/
+}
+.week-num {
+	font-family: 'Impact';
+	font-size: 30px;
+	margin-right: 10px;
+	color: #3cd2dd;
+}
+.info-item {
+	font-size: 12px;
+	float: left;
+	margin: 0 5px;
+	white-space:nowrap;
+}
+.info-item a {
+	font-family: 'Arial';
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #6eb6f0;
+}
+.info-item a:hover {
+	text-decoration: underline;
+}

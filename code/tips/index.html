@@ -14,12 +14,258 @@
         }
     </style>
     <link href="css/hoverTips.css" type="text/css" rel="stylesheet">
+    <link href="css/tab.css" type="text/css" rel="stylesheet">
     <!--<script src="http://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>-->
-        <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
     <!--<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>-->
     <script type="text/javascript" src="js/hoverTips.js"></script>
+    <script type="text/javascript" src="js/tab.js"></script>
     <script type="text/javascript">
         $(function () {
+
+
+
+            var list = [{
+                date: '2016-12-12',
+                week: '星期一',
+                contentList: [{
+                    type: 1,
+                    name: '现场勘查',
+                    count: 10
+                }, {
+                    type: 2,
+                    name: '装表接电',
+                    count: 11
+                }, {
+                    type: 3,
+                    name: '<a id="tt" class="tag" href="http://www.js-css.cn" tips="JS代码网">现场申校</a>',
+                    count: 12
+                }, {
+                    type: 3,
+                    name: '一岗制作业',
+                    count: 12
+                }],
+                statusList: [{
+                    type: 1,
+                    name: '处理中',
+                    count: 0
+                }, {
+                    type: 2,
+                    name: '已完工',
+                    count: 11
+                }, {
+                    type: 3,
+                    name: '已回访',
+                    count: 12
+                }]
+            }, {
+                date: '2016-12-13',
+                week: '星期二',
+                contentList: [{
+                    type: 1,
+                    name: '现场勘查',
+                    count: 0
+                }, {
+                    type: 2,
+                    name: '装表接电',
+                    count: 1
+                }, {
+                    type: 3,
+                    name: '现场申校',
+                    count: 12
+                }, {
+                    type: 3,
+                    name: '一岗制作业',
+                    count: 12
+                }],
+                statusList: [{
+                    type: 1,
+                    name: '处理中',
+                    count: 10
+                }, {
+                    type: 2,
+                    name: '已完工',
+                    count: 11
+                }, {
+                    type: 3,
+                    name: '已回访',
+                    count: 12
+                }]
+            }, {
+                date: '2016-12-14',
+                week: '星期三',
+                contentList: [{
+                    type: 1,
+                    name: '现场勘查',
+                    count: 1
+                }, {
+                    type: 2,
+                    name: '装表接电',
+                    count: 1
+                }, {
+                    type: 3,
+                    name: '现场申校',
+                    count: 2
+                }, {
+                    type: 3,
+                    name: '一岗制作业',
+                    count: 12
+                }],
+                statusList: [{
+                    type: 1,
+                    name: '处理中',
+                    count: 10
+                }, {
+                    type: 2,
+                    name: '已完工',
+                    count: 11
+                }, {
+                    type: 3,
+                    name: '已回访',
+                    count: 12
+                }]
+            }, {
+                date: '2016-12-15',
+                week: '星期四',
+                contentList: [{
+                    type: 1,
+                    name: '现场勘查',
+                    count: 10
+                }, {
+                    type: 2,
+                    name: '装表接电',
+                    count: 1
+                }, {
+                    type: 3,
+                    name: '现场申校',
+                    count: 12
+                }, {
+                    type: 3,
+                    name: '一岗制作业',
+                    count: 2
+                }],
+                statusList: [{
+                    type: 1,
+                    name: '处理中',
+                    count: 10
+                }, {
+                    type: 2,
+                    name: '已完工',
+                    count: 11
+                }, {
+                    type: 3,
+                    name: '已回访',
+                    count: 12
+                }]
+            }, {
+                date: '2016-12-16',
+                week: '星期五',
+                contentList: [{
+                    type: 1,
+                    name: '现场勘查',
+                    count: 10
+                }, {
+                    type: 2,
+                    name: '装表接电',
+                    count: 11
+                }, {
+                    type: 3,
+                    name: '现场申校',
+                    count: 12
+                }, {
+                    type: 3,
+                    name: '一岗制作业',
+                    count: 12
+                }],
+                statusList: [{
+                    type: 1,
+                    name: '处理中',
+                    count: 10
+                }, {
+                    type: 2,
+                    name: '已完工',
+                    count: 11
+                }, {
+                    type: 3,
+                    name: '已回访',
+                    count: 12
+                }]
+            }, {
+                date: '2016-12-17',
+                week: '星期六',
+                contentList: [{
+                    type: 1,
+                    name: '现场勘查',
+                    count: 10
+                }, {
+                    type: 2,
+                    name: '装表接电',
+                    count: 11
+                }, {
+                    type: 3,
+                    name: '现场申校',
+                    count: 12
+                }, {
+                    type: 3,
+                    name: '一岗制作业',
+                    count: 12
+                }],
+                statusList: [{
+                    type: 1,
+                    name: '处理中',
+                    count: 10
+                }, {
+                    type: 2,
+                    name: '已完工',
+                    count: 11
+                }, {
+                    type: 3,
+                    name: '已回访',
+                    count: 12
+                }]
+            }, {
+                date: '2016-12-18',
+                week: '星期日',
+                contentList: [{
+                    type: 1,
+                    name: '现场勘查',
+                    count: 10
+                }, {
+                    type: 2,
+                    name: '装表接电',
+                    count: 11
+                }, {
+                    type: 3,
+                    name: '现场申校',
+                    count: 12
+                }, {
+                    type: 3,
+                    name: '一岗制作业',
+                    count: 12
+                }],
+                statusList: [{
+                    type: 1,
+                    name: '处理中',
+                    count: 10
+                }, {
+                    type: 2,
+                    name: '已完工',
+                    count: 11
+                }, {
+                    type: 3,
+                    name: '已回访',
+                    count: 12
+                }]
+            }, ];
+
+            $("#myWeek").tabWeek(list, function (date, type) {
+                if ($.trim(type) != '') {
+                    alert("点击业务类型数字:" + date + "--" + type);
+                } else {
+                    alert("点击当天整块:" + date);
+                }
+            });
+
             $("#tt").manhua_hoverTips(); //使用默认参数，所以不用调用最简洁
             $("#tl").manhua_hoverTips({
                 position: "l"
@@ -35,7 +281,22 @@
 </head>
 
 <body>
-    <div class="docBubble" id="btip97971" style="left: 630.5px; top: 166px; display: none;"><i class="triangle-b" style="left: 23px;"></i>
+    <div class="tab-vertical">
+        <div class="tab-header">
+            <div class="tab-item active"><span>内容</span></div>
+            <div class="tab-line"></div>
+            <div class="tab-item"><span>状态</span></div>
+        </div>
+        <div class="tab-body">
+            <div class="week-content" id="myWeek">
+                <div class="week-bar">
+                    <div class="week-row content"></div>
+                    <div class="week-row status"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="docBubble" id="btip97971" style="left: 630.5px; top: 166px; display: none;"><i class="triangle-b" style="left: 23px;"></i>
         <div class="tl">
             <div class="inner">
                 <div class="cont">JS代码网是一个专门分享JS特效,jQuery特效,div+css样式的一个网站。</div>
@@ -71,7 +332,7 @@
         </div>
         <div class="tr"></div>
         <div class="bl"></div>
-    </div>
+    </div>-->
     <center>
         <br><br><br><br><br>
         <br>
