@@ -1,0 +1,25 @@
+body {
+	background: #f7f7f7;
+	font-family: Arial, Helvetica, sans-serif;               
+    font-size: 12px;	
+}
+.docBubble {position:absolute;max-width:240px; text-align:left;text-align:left;z-index:100; display:none;}
+.docBubble a{ margin-left:0;}
+.docBubble .icon{ background:none;}
+.docBubble .title a {text-decoration: none;}
+.docBubble .tl,.docBubble .tr,.docBubble .bl,.docBubble .inner,.docBubble .triangle-t,.docBubble .triangle-b,.docBubble .close{ background-image:url(../images/manhua_bubbletips.png);_background-image:url(../images/manhua_bubbletips_ie6.png); }
+.docBubble .tl{ float:left; background-position:-20px 0; }
+.docBubble .tr{ position:absolute;right:-12px; top:0;width:12px; height:12px; background-position:100% 0; }
+.docBubble .bl{ position:absolute;left:0; bottom:-12px;  width:12px; height:12px; background-position:-20px 100%; }
+.docBubble .inner{ position: relative;left:12px; width:220px;  margin:12px 0 -12px 0; max-width:220px; background-position:100% 100%; padding:0 12px 12px 2px; _padding-bottom:12px; }
+.docBubble .triangle-t{ position:absolute; z-index:2; top:-7px; width:15px; height:8px; overflow:hidden; }
+.docBubble .triangle-b{ position:absolute; bottom:-18px; z-index:2;  width:15px; height:11px; overflow:hidden; background-position:0 -10px; }
+.docBubble .triangle-l{ position:absolute; left:-10px; z-index:2; top:15px;  width:15px; height:18px; overflow:hidden; background:url(../images/manhua_bubbletips_l.png) no-repeat;_background-image:url(../images/manhua_bubbletips_l_ie6.png) no-repeat;  }
+.docBubble .triangle-r{ position:absolute; right:-19px; z-index:2; top:15px;  width:15px; height:18px; overflow:hidden; background:url(../images/manhua_bubbletips_r.png) no-repeat;_background-image:url(../images/manhua_bubbletips_r_ie6.png) no-repeat;  }
+.docBubble .triangle-t,.docBubble .triangle-b{ right:20px;}
+.docBubble .close{ position:absolute; z-index:1; top:10px; right:2px; width:9px; height:9px; text-indent:-99em; overflow:hidden; background-position:0 -25px; cursor:pointer;}
+.docBubble .inner .icon{ float:left; padding: 2px 0;}
+.docBubble .inner .icon img{ margin-right:10px; }
+.docBubble .inner .cont{ overflow:hidden; zoom:1; line-height:20px;}
+.docBubble .inner .title{ margin:0 0 2px 0; font-size:12px;font-weight:bold;}
+.docBubble .inner .lk-btn{ text-align:right;}

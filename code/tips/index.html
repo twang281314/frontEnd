@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>网友manhua原创鼠标悬浮气泡提示jQuery插件,JS气泡提示代码</title>
+    <meta name="author" content="JS代码网">
+    <meta name="keywords" content="JS特效,JS代码,JS代码大全,JS广告代码,jQuery气泡提示框插件,JS气泡提示插件">
+    <meta name="description" content="网友manhua原创鼠标悬浮气泡提示jQuery插件,非常实用的代码,兼容性非常好,JS代码网推荐下载">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <link href="css/hoverTips.css" type="text/css" rel="stylesheet">
+    <!--<script src="http://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>-->
+        <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>-->
+    <script type="text/javascript" src="js/hoverTips.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#tt").manhua_hoverTips(); //使用默认参数，所以不用调用最简洁
+            $("#tl").manhua_hoverTips({
+                position: "l"
+            }); //改变了显示的位置参数
+            $("#tr").manhua_hoverTips({
+                position: "r"
+            }); //改变了显示的位置参数
+            $("#tb").manhua_hoverTips({
+                position: "b"
+            }); //改变了显示的位置参数
+        });
+    </script>
+</head>
+
+<body>
+    <div class="docBubble" id="btip97971" style="left: 630.5px; top: 166px; display: none;"><i class="triangle-b" style="left: 23px;"></i>
+        <div class="tl">
+            <div class="inner">
+                <div class="cont">JS代码网是一个专门分享JS特效,jQuery特效,div+css样式的一个网站。</div>
+            </div>
+        </div>
+        <div class="tr"></div>
+        <div class="bl"></div>
+    </div>
+    <div class="docBubble" id="btip16488"><i class="triangle-r"></i>
+        <div class="tl">
+            <div class="inner">
+                <div class="cont">JS代码网是一个专门分享JS特效,jQuery特效,div+css样式的一个网站。</div>
+                <div><a href="http://baidu.com" target="_blank">这是个超链接</a></div>
+            </div>
+        </div>
+        <div class="tr"></div>
+        <div class="bl"></div>
+    </div>
+    <div class="docBubble" id="btip44624"><i class="triangle-l"></i>
+        <div class="tl">
+            <div class="inner">
+                <div class="cont">JS代码网是一个专门分享JS特效,jQuery特效,div+css样式的一个网站。</div>
+            </div>
+        </div>
+        <div class="tr"></div>
+        <div class="bl"></div>
+    </div>
+    <div class="docBubble" id="btip17123"><i class="triangle-t"></i>
+        <div class="tl">
+            <div class="inner">
+                <div class="cont">JS代码网是一个专门分享JS特效,jQuery特效,div+css样式的一个网站。</div>
+            </div>
+        </div>
+        <div class="tr"></div>
+        <div class="bl"></div>
+    </div>
+    <center>
+        <br><br><br><br><br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br><a id="tb" class="tag" href="http://www.js-css.cn" tips="JS代码网是一个专门分享JS特效,jQuery特效,div+css样式的一个网站thhhhhhhhhhhhhhhhhhhhhhhhhhhhh。 <div><a href='http://baidu.com' target='_blank'>这是个超链接</a></div>">JS代码网-测试上边</a>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <a id="tr" class="tag" href="http://www.js-css.cn" tips="JS代码网是一个专门分享JS特效,jQuery特效,div+css样式的一个网站。">JS代码网-测试左边</a><br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <a id="tl" class="tag" href="http://www.js-css.cn" tips="JS代码网是一个专门分享JS特效,jQuery特效,div+css样式的一个网站。">JS代码网-测试右边</a><br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <a id="tt" class="tag" href="http://www.js-css.cn" tips="JS代码网是一个专门分享JS特效,jQuery特效,div+css样式的一个网站。">JS代码网-测试下边</a>
+    </center><br>
+</body>
+
+</html>
