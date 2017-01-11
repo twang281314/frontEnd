@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+/*ui-choose样式，可根据实际项目需求进行调整*/
+select.ui-choose{display: none;}
+ul.ui-choose { box-sizing: border-box; display: inline-block; border: 1px solid transparent; font: 100 16px/30px 'microsoft yahei'; border-right: none; border-bottom: none; font-size: 16px; margin: 0; padding: 0; list-style: none; vertical-align: middle; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+ul.ui-choose:after { content: ""; display: table; clear: both; }
+ul.ui-choose>li { box-sizing: border-box; border: 1px solid #ccc; float: left; height: 34px; line-height: 32px; margin: -1px 0 0 -1px; padding: 0 16px; cursor: pointer; position: relative; z-index: 1; min-width: 20px; text-align: center; }
+ul.ui-choose>li:first-child { border-radius: 3px 0 0 3px; }
+ul.ui-choose>li:last-child { border-radius: 0 3px 3px 0; }
+ul.ui-choose>li:hover { z-index: 4; border-color: #0080ff; color: #0080ff; }
+ul.ui-choose>li.selected { z-index: 3; border-color: #0080ff; background-color: #0080ff; color: #fff; }
+ul.ui-choose>li.disabled { z-index: 2; background-color: #f2f2f2; color: #aaa; cursor: not-allowed; }
+ul.ui-choose>li.disabled:hover { border-color: #aaa; }
+ul.ui-choose>li.selected.disabled { z-index: 2; background-color: #8FC7FF; color: #fff; cursor: not-allowed; border-color: #8FC7FF; }
+ul.choose-type-right>li.selected { color: #0080ff; background: transparent url("./icon-selected.png") no-repeat right bottom; }
+ul.ui-choose.choose-flex { display: flex; }
+ul.ui-choose.choose-flex>li { flex: 1; padding: 0 8px; }

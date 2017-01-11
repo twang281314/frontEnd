@@ -1,0 +1,162 @@
+
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ui-choose|列表选择jQuery美化插件</title>
+	<link href="ui-choose.css" rel="stylesheet" />
+	<style>
+    .demo-box {
+        margin: 40px auto;
+        width: 600px;
+        padding: 20px;
+        border: 5px solid #ccc;
+    }
+    
+    .demo-table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    .demo-table caption {
+        border-bottom: 1px dashed #ccc;
+        height: 40px;
+        margin-bottom: 20px;
+        font: 18px/1.2 normal 'microsoft yahei';
+    }
+    
+    .demo-table tr td {
+        padding: 8px 10px;
+        font: 16px/1.8 normal 'microsoft yahei';
+        vertical-align: top;
+    }
+    
+    .ui-input {
+        vertical-align: top;
+        height: 18px;
+        font-size: 16px;
+        line-height: 20px;
+        border: 1px solid #aaa;
+        padding: 6px 8px;
+        border-radius: 3px;
+    }
+		.jq22-header h1{ text-align: center; font-size: 16px; }
+    </style>
+	<!--[if IE]>
+		<script src="http://www.jq22.com/jquery/html5.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+		<header class="jq22-header">
+			<h1>ui-choose|列表选择jQuery美化插件 <span>A jQuery List plugin</span></h1>
+		</header>
+		<div class="demo-box">
+	        <table class="demo-table">
+	            <caption>选择插件演示</caption>
+	            <tr>
+	                <td style="width:120px;">
+	                    <label>普通(ul)</label>
+	                </td>
+	                <td>
+	                    <ul class="ui-choose" id="uc_01">
+	                        <li>html</li>
+	                        <li>css</li>
+	                        <li>javascript</li>
+	                        <li>php</li>
+	                        <li>nodejs</li>
+	                    </ul>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td>
+	                    <label>普通(select)</label>
+	                </td>
+	                <td>
+	                    <select class="ui-choose" id="uc_02">
+	                        <option value="a">html</option>
+	                        <option value="b">php</option>
+	                        <option value="c">css</option>
+	                        <option value="d">javascript</option>
+	                        <option value="e">nodejs</option>
+	                    </select>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td>
+	                    <label>多选(ul)</label>
+	                </td>
+	                <td>
+	                    <ul class="ui-choose" multiple="multiple" id="uc_03">
+	                        <li>html</li>
+	                        <li>css</li>
+	                        <li>javascript</li>
+	                        <li>php</li>
+	                        <li>nodejs</li>
+	                    </ul>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td>
+	                    <label>多选(select)</label>
+	                </td>
+	                <td>
+	                    <select class="ui-choose" multiple="multiple" id="uc_04">
+	                        <option value="a">html</option>
+	                        <option value="b">php</option>
+	                        <option value="c">css</option>
+	                        <option value="d">javascript</option>
+	                        <option value="e">nodejs</option>
+	                    </select>
+	                </td>
+	            </tr>
+	        </table>
+	    </div>
+
+	
+	<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+	<script src="ui-choose.js"></script>
+	<script>
+	// 将所有.ui-choose实例化
+	$('.ui-choose').ui_choose();
+
+	// uc_01 ul 单选
+	var uc_01 = $('#uc_01').data('ui-choose'); // 取回已实例化的对象
+	uc_01.click = function(index, item) {
+	    console.log('click', index, item.text())
+	}
+	uc_01.change = function(index, item) {
+	    console.log('change', index, item.text())
+	}
+
+	// uc_02 select 单选
+	var uc_02 = $('#uc_02').data('ui-choose');
+	uc_02.click = function(value, item) {
+	    console.log('click', value);
+	};
+	uc_02.change = function(value, item) {
+	    console.log('change', value);
+	};
+
+	// uc_03 ul 多选
+	var uc_03 = $('#uc_03').data('ui-choose');
+	uc_03.click = function(index, item) {
+	    console.log('click', index);
+	};
+	uc_03.change = function(index, item) {
+	    console.log('change', index);
+	};
+
+	// uc_04 select 多选
+	var uc_04 = $('#uc_04').ui_choose();
+	uc_04.click = function(value, item) {
+	    console.log('click', value);
+	};
+	uc_04.change = function(value, item) {
+	    console.log('change', value);
+	};
+	</script>
+</body>
+</html>
