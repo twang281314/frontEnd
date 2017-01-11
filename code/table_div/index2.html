@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>用div+css模拟表格对角线</title>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+            border: 1px #525152 solid;
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        
+        th,
+        td {
+            border: 1px solid #525152;
+            text-align: center;
+            font-size: 12px;
+            line-height: 30px;
+            background: #C6C7C6;
+        }
+        
+        th {
+            background: #D6D3D6;
+        }
+        /*模拟对角线*/
+        
+        .out {
+            border-top: 25em #D6D3D6 solid;
+            /*上边框宽度等于表格第一行行高*/
+            border-left: 80px #BDBABD solid;
+            /*左边框宽度等于表格第一行第一格宽度*/
+            position: relative;
+            /*让里面的两个子容器绝对定位*/
+        }
+        
+        b {
+            font-style: normal;
+            display: block;
+            position: absolute;
+            top: -23em;
+            left: -75px;
+            width: 80px;
+        }
+        
+        em {
+            font-style: normal;
+            display: block;
+            position: absolute;
+            top: -40px;
+            left: -90px;
+            width: 80px;
+        }
+        
+        .assessDetail td {
+            background-color: #FFF;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th style="width:80px;" rowspan="3">
+                <div class="out">
+                    <b>内容及标准</b>
+                    <em>考核对象</em>
+                </div>
+            </th>
+            <th>年级</th>
+            <th>班级</th>
+            <th>成绩</th>
+            <th>班级均分</th>
+            <th style="width:80px;" rowspan="3">总分</th>
+        </tr>
+        <tr>
+            <td>职能、职责定位准确，能组织、协调、监督</td>
+            <td>1.职能、职责定位准确，能组织、协调、监督、检查工作； 2.本领域的管理制度有哪些，当年训）行严格、规范到基层，卓有成效。</td>
+            <td>1.职能、职责定位准确，能组织本领域的管理制度有哪些，当年训）行严格、规范到基层，卓有成效。</td>
+            <td>1.职能、职责定位准确，能组织本领域的管理制度有哪些，当年训）行严格、规范到基层，卓有成效。</td>
+        </tr>
+        <tr>
+            <td>1.职能、职责定位准确，协调、当制度是否满足管理需要； 3. 本领域管理制度执行严格、规，卓有</td>
+            <td>1.职能、职责定位准确，协调、当制度是否满足管理需要； 3. 本领域管理制度执行严格、规，卓有</td>
+            <td>1.职能、职责定位准确，协调、当制度是否满足管理需要； 3. 本领域管理制度执行严格、规，卓有</td>
+            <td>1.职能、职责定位准确，协调、当制度是否满足管理需要； 3. 本领域管理制度执行严格、规，卓有成效。</td>
+        </tr>
+        <tr class="assessDetail">
+            <td>部门</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr class="assessDetail">
+            <td>办公室</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+        </tr>
+    </table>
+</body>
+
+</html>
