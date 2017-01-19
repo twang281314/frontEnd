@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <table class="testTa" style="width: 94%;font-size: 0.9rem;line-height: 30px;">
+        <tr>
+            <th class="leri" style="border-bottom:none;text-align:right;"><span style="margin-right: 10px;">内容</span></th>
+            <th rowspan="2">1</th>
+            <th rowspan="2">2</th>
+            <th rowspan="2">3</th>
+            <th rowspan="2">4</th>
+        </tr>
+        <tr>
+            <td class="rito" style="border-top:none;text-align:left;"> <span style="margin-left: 10px;">学员姓名</span> </td>
+        </tr>
+        <tr>
+            <td>小四</td>
+            <td>非常有信心</td>
+            <td>有信心</td>
+            <td>非常有信心</td>
+            <td>有点信心</td>
+        </tr>
+    </table>
+    <canvas id="myCanvas" width='500' height='500' style="position: absolute;left: 0;top: 0;z-index: -1;">Canvas画斜线</canvas>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script>
+        var myCanvas = document.getElementById("myCanvas");
+        context = myCanvas.getContext("2d");
+        // canvas表格斜线  
+        function aa() {
+            var x1 = $('.leri').offset().left; //左上角点相对网页中x坐标  
+            var y1 = $('.leri').offset().top + 1; //<span style="font-family: Arial, Helvetica, sans-serif;">左上角点相对网页中y坐标</span>  
+            var w = $('.leri').width();
+            var h = $('.leri').height();
+            var x2 = x1 + w; //右下角点x  
+            var y2 = y1 + h * 2; //右下角点y  
+
+            console.log("x1=" + x1 + ",y1=" + y1 + ",x2=" + x2 + ",y2=" + y2);
+
+            context.moveTo(x1, y1);
+            context.lineTo(x2, y2);
+            context.strokeStyle = '#ccc';
+            context.stroke();
+            context.closePath();
+
+            context.beginPath(); //虽然没什么用，但是清空画布很有用，没有他清空不了。  
+            context.fillStyle = "rgb(255,255,255)";
+            context.fillRect(0, 0, 10, 10);
+            context.closePath();
+
+        }
+        aa();
+        $(window).resize(function () { //当窗口大小发生变化时，重新画线  
+            context.clearRect(0, 0, 500, 500); //清空画布  
+            aa();
+        })
+    </script>
+</body>
+
+</html>
