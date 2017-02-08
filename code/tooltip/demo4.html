@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Open or Close Tooltip Automatically</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="themes/2/tooltip.js" type="text/javascript"></script>
+    <link href="themes/2/tooltip.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        h3 { font: normal 24px/36px Arial;}
+        h4 { font-family: "Trebuchet MS", Verdana; }    
+        #span4 img {cursor:pointer;margin:20px;}   
+    </style>
+</head>
+<body>
+    <div style="margin: 100px auto; width: 600px;">
+        <p><a href="demo1.html">demo1</a> &nbsp; <a href="demo2.html">demo2</a> &nbsp; <a href="demo3.html">demo3</a> &nbsp; demo4</p>
+        <h3>Open or Close Tooltip Automatically</h3>
+        <p><span id="position1">position1</span></p>
+        <p>Visit <a href="http://www.menucool.com//tooltip/javascript-tooltip">Menucool Tooltip</a> for more demos and instructions.</p>
+        <div style="display:none;">
+            <div id="tip2">
+                <img src="src/tooltips-cd2.jpg" style="float:right;margin-left:12px;width:75px;height:75px;" />
+                <b>Open a Tooltip</b><br /><br />
+                The tooltip can be opened automatically at a desired place.
+            </div>
+            <div id="tip3">
+                <img src="src/tooltips-cd3.jpg" style="float:right;margin-left:16px;width:75px;height:75px;" />
+                <b>Specify where the tooltip to appear</b><br /><br />
+                The tooltip was positioned close to the element with <i>id="position1"</i>.
+            </div>
+            <div id="tip4">
+                <img src="src/tooltips-cd4.jpg" style="float:right;margin-left:16px;width:75px;height:75px;">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+        </div>
+    </div>
+    <script>
+        function open() {
+            var msg = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+            tooltip.pop(null, msg, {position:6});
+        }
+        setTimeout(open, 2000);
+        setTimeout(function () { tooltip.pop(null, "#tip2", {position:6}); }, 5000);
+        setTimeout(function () { tooltip.pop("position1", "#tip3", {position: 1}); }, 9000);
+        setTimeout(function () { tooltip.pop(null, "#tip4", { overlay: true, position: 4 }); }, 13000);
+        setTimeout(tooltip.hide, 16000);
+    </script>
+</body>
+</html>

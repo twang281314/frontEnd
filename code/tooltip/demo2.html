@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Set tooltip HTML content</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="themes/2/tooltip.css" rel="stylesheet" type="text/css" />
+    <script src="themes/2/tooltip.js" type="text/javascript"></script>
+    <style type="text/css">
+        body {background-color:#F9F9F9;}
+        h3 { font: normal 20px/30px Arial;}
+        h4 { font-family: "Trebuchet MS", Verdana; }    
+        #span4 img {cursor:pointer;margin:20px;}   
+    </style>
+    <script type="text/javascript">
+        //don't copy the below script into your page.
+        if (!document.domain) alert("The Ajax will not work if opening the page by local path instead of through HTTP on a web or localhost server");    
+    </script>
+</head>
+<body>
+    <div style="margin: 100px auto; width: 600px;">    
+        <p><a href="demo1.html">demo1</a> &nbsp; demo2 &nbsp; <a href="demo3.html">demo3</a> &nbsp; <a href="demo4.html">demo4</a></p>
+        <h3>Populate tooltip with external document content via Ajax</h3>
+        <p>tooltip.ajax(targetElement, url[, ajaxSettings][, options])</p>
+        <p><a class="tooltip" href="src/tooltip-ajax.html" onmouseover="tooltip.ajax(this, 'src/tooltip-ajax.html');" onclick="return false;">triggered by hijax link</a></p>
+        <p><a class="tooltip" href="src/tooltip-ajax.html#div2" onmouseover="tooltip.ajax(this, 'src/tooltip-ajax.html#div2');" onclick="return false;">load page fragment</a></p>
+        <p>&nbsp;</p>
+        <p>The demo below shows how tooltip is populated from an external XML document:</p>
+        <span id="span4">
+            <img src="src/tooltips-cd1.jpg" onmouseover="myAjaxSetting.context.index = 1; tooltip.ajax(this, 'src/products.xml', myAjaxSetting, {position:0});" alt="" />
+            <img src="src/tooltips-cd2.jpg" onmouseover="myAjaxSetting.context.index = 2; tooltip.ajax(this, 'src/products.xml', myAjaxSetting, {position:0});" alt="" />
+            <img src="src/tooltips-cd3.jpg" onmouseover="myAjaxSetting.context.index = 3; tooltip.ajax(this, 'src/products.xml', myAjaxSetting, {position:0});" alt="" />
+            <img src="src/tooltips-cd4.jpg" onmouseover="myAjaxSetting.context.index = 4; tooltip.ajax(this, 'src/products.xml', myAjaxSetting, {position:0});" alt="" />
+        </span>   
+    </div>
+    <script type="text/javascript">
+
+        var myAjaxSetting = {
+            context: { index: -1 },
+            success: myCallback,
+            responseType: "xml"
+        };
+
+        function myCallback(response, context) {
+            var x = response.documentElement.getElementsByTagName("cd")[context.index];
+            var title = x.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+            var artist = x.getElementsByTagName("artist")[0].childNodes[0].nodeValue;
+            var price = x.getElementsByTagName("price")[0].childNodes[0].nodeValue;
+            var image = "<img src='src/tooltips-cd" + context.index + ".jpg' style='float:right;margin-left:12px;width:75px;height:75px;' />";
+            return "<div style='width:220px;'>" + image + "<b>" + title + "</b><br /><i>" + artist + "</i><br /><br />Price: <span class='red'>$" + price + "</span></div>";
+        }   
+
+    </script>
+</body>
+</html>

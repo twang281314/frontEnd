@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Build Menu with Tooltip</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="themes/3/tooltip.js" type="text/javascript"></script>
+    <link href="themes/3/tooltip.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        body {padding:0;margin:0; font:normal 12px Arial; background:#021e2f url('themes/3/rain-bg.jpg') no-repeat center 93px;}
+        .main {margin: 0 auto; width: 740px; color:#AAA;}
+        .main a {color:#C3D4DE;}
+        
+        #dmhd {background-color:#353c40; height:120px; text-align:center; border-bottom:3px solid #666;}
+        #dmhd a {color:#C3D4DE; text-decoration:none; display:inline-block; margin:4px 20px; padding:4px 14px; border:1px solid #444;}
+        #dmhd a:hover {color:#EEEEEE; background:#3c4448;}
+        
+        #vWrapper {margin-top:80px; padding:6px; width:140px; opacity:0.5; filter:alpha(opacity=50); background:#666;}
+        #vWrapper a {color:#EEEEEE; text-decoration:none; display:block; padding:6px 20px; background:#021e2f;}
+        #vWrapper a:hover {color:#FFF; text-decoration:underline; background:#333;}
+                
+        .column { float:left; padding:0 20px;}
+    </style>
+</head>
+<body>
+    <div id="dmhd">
+    <p><a href="demo1.html">demo1</a><a href="demo2.html">demo2</a><a href="demo3.html">demo3</a><a href="demo4.html">demo4</a></p>
+        <a href="#" onmouseover="tooltip.pop(this, '#sub1', {offsetY:-10, smartPosition:false})">Maecenas</a>
+        <a href="#" onmouseover="tooltip.pop(this, '#sub2', {offsetY:-10, smartPosition:false})">Scelerisque</a>
+        <a href="#" onmouseover="tooltip.pop(this, '#sub3', {offsetY:-10, smartPosition:false})">Consectetur</a>
+    </div>
+    <div class="main">
+        <div id="vWrapper">
+            <a href="#" onmouseover="tooltip.pop(this, '#sub1', {position:1, offsetX:-20, effect:'slide'})">Maecenas</a>
+            <a href="#" onmouseover="tooltip.pop(this, '#sub2', {position:1, offsetX:-20, effect:'slide', sticky: true})">Scelerisque</a>
+            <a href="#" onmouseover="tooltip.pop(this, '#sub3', {position:1, offsetX:-20, effect:'slide'})">Consectetur</a>        
+        </div>
+        <div>
+            <p>&nbsp;</p>        
+            <h3>Build Menu with Tooltip</h3>
+            <p>Visit <a href="http://www.menucool.com/tooltip-menu">www.menucool.com/tooltip-menu</a> for details.</p>
+        </div>
+    </div>
+
+    <!--Menu Data-->
+    <div style="display:none;">
+
+        <div id="sub1">
+            <div class="column">            
+                <a href="#">Duis a risus metus</a><br />
+                <a href="#">Nunc id ipsum felis</a><br />
+                <a href="#">Sed ut ligula felis</a><br />
+                <a href="#">Ut quis lectusnulla</a><br />
+                <a href="#">Donec at est magna</a>                
+            </div>
+            <div class="column">
+                <img src="src/tooltips-cd1.jpg" style="width:75px;height:75px;" alt="" />  
+            </div>  
+        </div>
+        <div id="sub2">
+            <div class="column">
+                <b>Sed eu duieu</b><br />              
+                <a href="#">Duis a risus metus</a><br />
+                <a href="#">Nunc id ipsum felis</a><br />
+                <a href="#">Sed ut ligula felis</a><br />
+                <a href="#">Ut quis lectusnulla</a><br />
+                <a href="#">Donec at est magna</a><br />
+                <a href="#">Duis a risus metus</a><br />
+                <a href="#">Nunc id ipsum felis</a><br />
+                <a href="#">Nunc id ipsum felis</a>
+            </div>
+            <div class="column">
+                <img src="src/tooltips-cd2.jpg" style="width:75px;height:75px;" alt="" /><br />
+                <b>Consectetur Adipisi</b><br />
+                <a href="#">Sed ut ligula felis</a><br />
+                <a href="#">Ut quis lectusnulla</a><br />
+                <a href="#">Donec at est magna</a><br />        
+                <a href="#">Duis a risus metus</a>
+            </div>  
+            <div class="column">
+                <img src="src/tooltips-cd3.jpg" style="width:75px;height:75px;" alt="" /><br />
+                <b>Maecenas a eros</b><br />
+                <a href="#">Nunc id ipsum felis</a><br />
+                <a href="#">Sed ut ligula felis</a><br />
+                <a href="#">Ut quis lectusnulla magna</a><br />
+                <a href="#">Donec at est</a>           
+            </div>  
+        </div>
+        <div id="sub3">
+            <div class="column">
+                <a href="#">Sed ut ligula felis</a><br />
+                <a href="#">Ut quis lectusnulla</a><br />
+                <a href="#">Donec at est magna</a><br />        
+                <a href="#">Duis a risus metus</a>
+            </div>  
+            <div class="column">
+                <img src="src/tooltips-cd4.jpg" style="width:75px;height:75px;" alt="" />
+            </div>  
+            <div style="clear:both;"></div>
+            <div style="width:250px;margin-top:16px;padding-top:12px;border-top:2px solid #666;">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

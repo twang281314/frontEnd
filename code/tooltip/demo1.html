@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Set tooltip HTML content</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="themes/1/tooltip.css" rel="stylesheet" type="text/css" />
+    <script src="themes/1/tooltip.js" type="text/javascript"></script>
+    <style type="text/css">
+        h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;} 
+    </style>
+</head>
+<body>
+    <div style="margin:0 auto; width: 600px;">
+        <p style="padding:50px 0;">demo1 &nbsp; <a href="demo2.html">demo2</a> &nbsp; <a href="demo3.html">demo3</a> &nbsp; <a href="demo4.html">demo4</a></p>
+        <ol style="padding:0;">
+            <li>
+                <h4>tooltip.pop(targetElement, text [, options])</h4>
+                <a  onmouseover="tooltip.pop(this, '<h3>Lorem ipsum</h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in consequat neque, eget tempor ipsum.')">Hover me</a>
+            </li>
+            <li>
+                <h4>tooltip.pop(targetElement, '#contentElementId' [, options])</h4>
+                <img src="src/tooltips-cd3.jpg" onmouseover="tooltip.pop(this, '#tip-6');" alt="" />
+            </li>
+            <li>
+                <h4>The tooltip can be launched by any event: onmouseover, onclick, ect.</h4>
+                <a class="tooltip" href="#" onclick="tooltip.pop(this, '#tip3', {sticky:true, position:0, cssClass:'no-padding'})">Click me</a>
+            </li>
+        </ol>
+
+          <div id="tip-6">
+                <!--<img src="src/tooltips-cd2.jpg" style="float:right;margin-left:12px;width:75px;height:75px;" alt="" />
+                <h3>Allows any HTML content</h3>
+                <p>Allows any HTML content contained in the page by just passing the element ID to the tooltip.pop() command.</p>-->
+
+                gggggggggggggg
+            </div>
+        <div style="display:none;">
+            <div id="tip2">
+                <!--<img src="src/tooltips-cd2.jpg" style="float:right;margin-left:12px;width:75px;height:75px;" alt="" />
+                <h3>Allows any HTML content</h3>
+                <p>Allows any HTML content contained in the page by just passing the element ID to the tooltip.pop() command.</p>-->
+
+                gggggggggggggg
+            </div>
+            <div id="tip3">
+                <img src="src/tooltip-head.jpg" />
+                <div style="padding:20px;">
+                    <h1>Easy to Config</h1>
+                    <p>The tooltip can display with different display modes and styles by configuring the options in the <em>tooltip.js</em>, or passing the options to the tooltip.pop() call if you only need the options apply to an individual element.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
