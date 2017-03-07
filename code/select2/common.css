@@ -1,0 +1,49 @@
+* {
+font-family:'微软雅黑',Arial, Helvetica, sans-serif;
+font-size:14px;
+padding:0px;
+margin:0px;
+}
+
+#header {
+background:#DDD;
+padding:10px 20px;
+border-bottom:2px solid #CCC;
+}
+
+h1 {
+font-size:22px;
+}
+
+h2 {
+font-size:18px;
+border-bottom:1px solid #DDD;
+margin:10px 0;
+}
+
+h3 {
+font-size:14px;
+margin:10px 0;
+padding-left:2px;
+border-left:2px solid #666666;
+}
+
+ul {
+margin-left:20px;
+}
+
+.main {
+margin:20px;
+}
+
+.code {
+border:1px solid #CCC;
+background:#EEE;
+padding:5px;
+font-size:12px;
+font-family:Verdana, Arial;
+color:#333333;
+}
+
+.main{width: 500px; margin: 200px auto}
+.main select{margin-left: 50px;width: 130px; }
