@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <snippet id="header" />
+  <!-- build:css css/style.css -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!--<link rel="stylesheet" href="css/index.css" />-->
+  <!-- endbuild -->
+
+  <title>demo1-Just For Fun</title>
+</head>
+<body>
+  <div id="main">
+    <view id="demo1" home="true" />
+    <view id="login/success"  />
+  </div>
+  <snippet id="footer" />
+  <script type="text/javascript" src="https://res.lightyy.com/lighting/framework/light-1.0.min.js"></script>
+
+  <script type="text/javascript" src="config.js"></script>
+  <!-- build:js js/app.js -->
+  <!--<script src="vue-components.js"></script>-->
+  <!--<script type="text/javascript" src="js/lib/underscore.js"></script>-->
+  <!-- inject:view -->
+  <!-- endinject -->
+
+  <!-- endbuild -->
+
+  <script type="text/javascript">
+    Light.start();
+  </script>
+</body>
+</html>
