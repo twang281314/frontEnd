@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Angular Bootstrap Datepicker Demo</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="angular-bootstrap-datepicker.css" />
+</head>
+
+<body data-ng-app="demo">
+    <div>
+        <div data-ng-controller="AppCtrl">
+            <input id="datepicker" type="text" data-ng-datepicker data-ng-options="datepickerOptions" data-ng-model="date">
+            <input id="datepickerMirror" type="text" data-ng-model="date">
+            <button type="button" ng-click="test2()">点击</button>
+        </div>
+
+    </div>
+
+    <!--<script src="jquery.js"></script>-->
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--<script src="bootstrap/js/bootstrap.js"></script>-->
+    <script src="https://cdn.bootcss.com/angular.js/1.4.8/angular.min.js"></script>
+    <!--<script src="angular.js"></script>-->
+    <script src="angular-bootstrap-datepicker.js" charset="utf-8"></script>
+    <script type="application/javascript">
+        app = angular.module('demo', ['ng-bootstrap-datepicker']);
+
+        app.controller('AppCtrl', function ($scope) {
+            $scope.datepickerOptions = {
+                format: 'yyyy-mm-dd',
+                language: 'fr',
+                startDate: "2012-10-01",
+                endDate: "2012-10-31",
+                autoclose: true,
+                weekStart: 0
+            }
+
+            function UTCDate() {
+                return new Date(Date.UTC.apply(Date, arguments));
+            }
+
+            var today = new Date();
+
+
+
+            $scope.date = today;
+
+            $scope.test2 = function () {
+                $scope.date = '2017-09-30';
+            }
+        });
+    </script>
+</body>
+
+</html>
