@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <snippet id="header" />
   <!-- build:css css/style.css -->
   <link rel="stylesheet" href="css/style.css" />
   <!--<link rel="stylesheet" href="css/index.css" />-->
   <!-- endbuild -->
-  <link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css" rel="stylesheet">
+  <!--<link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css" rel="stylesheet">-->
+  <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
   <title>demo1-Just For Fun</title>
 </head>
+
 <body>
   <div id="main">
-    <view id="openAccount/index" home="true" />
-    <view id="login/success"  />
+    <view id="home" />
+    <!-- 业务办理 -->
+    <view id="home/busiProcessing" parent="home" home="true" />
+    <!-- 消息 -->
+    <view id="home/message" parent="home" />
+    <!-- 办理查询 -->
+    <view id="home/transactQuery" parent="home" />
+    <!-- 我 -->
+    <view id="home/me" parent="home" />
+    <view id="openAccount/index" />
+    <view id="login/success" />
   </div>
   <snippet id="footer" />
   <script type="text/javascript" src="https://res.lightyy.com/lighting/framework/light-1.0.min.js"></script>
-
+  <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
   <script type="text/javascript" src="plugins/weui/weui.min.js"></script>
   <script type="text/javascript" src="config.js"></script>
   <!-- build:js js/app.js -->
@@ -31,4 +44,5 @@
     Light.start();
   </script>
 </body>
+
 </html>

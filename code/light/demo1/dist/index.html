@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
@@ -12,11 +13,242 @@
 <meta name="description" content="">
   <link rel="stylesheet" href="css/style.css">
   <!--<link rel="stylesheet" href="css/index.css" />-->
-  <link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css" rel="stylesheet">
+  <!--<link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css" rel="stylesheet">-->
+  <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
   <title>demo1-Just For Fun</title>
 </head>
+
 <body>
   <div id="main">
+    <div id="home" style="display:none;">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left" href="/demos/card" data-transition="slide-out">
+                <span class="icon icon-left"></span> 返回
+            </a>
+            <h1 class="title">我的生活</h1>
+        </header>
+        <nav class="bar bar-tab">
+            <a class="tab-item active" href="#/home/busiProcessing">
+                <span class="icon icon-home"></span>
+                <span class="tab-label">首页</span>
+            </a>
+            <a class="tab-item" href="#/home/me">
+                <span class="icon icon-me"></span>
+                <span class="tab-label">我</span>
+            </a>
+            <a class="tab-item" href="#/home/message">
+                <span class="icon icon-star"></span>
+                <span class="tab-label">收藏</span>
+            </a>
+            <a class="tab-item" href="#/home/transactQuery">
+                <span class="icon icon-settings"></span>
+                <span class="tab-label">设置</span>
+            </a>
+        </nav>
+        <div class="content">
+            <div><div id="homeBusiProcessing" style="display:none;">
+<div class="page-index">
+  <div class="card">
+    <div style="background-image:url(//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250.3.0q60.jpg)" valign="bottom" class="card-header color-white no-border">旅途的山</div>
+    <div class="card-content">
+      <div class="card-content-inner">
+        <p class="color-gray">发表于 2015/01/15</p>
+        <p>此处是内容...</p>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a href="#" class="link">赞</a>
+      <a href="#" class="link">更多</a>
+    </div>
+  </div>
+  <div class="card">
+    <div style="background-image:url(//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250.3.0q60.jpg)" valign="bottom" class="card-header color-white no-border">旅途的山</div>
+    <div class="card-content">
+      <div class="card-content-inner">
+        <p class="color-gray">发表于 2015/01/15</p>
+        <p>此处是内容...</p>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a href="#" class="link">赞</a>
+      <a href="#" class="link">更多</a>
+    </div>
+  </div>
+    <div class="card">
+    <div style="background-image:url(//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250.3.0q60.jpg)" valign="bottom" class="card-header color-white no-border">旅途的山</div>
+    <div class="card-content">
+      <div class="card-content-inner">
+        <p class="color-gray">发表于 2015/01/15</p>
+        <p>此处是内容...</p>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a href="#" class="link">赞</a>
+      <a href="#" class="link">更多</a>
+    </div>
+  </div>
+    <div class="card">
+    <div style="background-image:url(//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250.3.0q60.jpg)" valign="bottom" class="card-header color-white no-border">旅途的山</div>
+    <div class="card-content">
+      <div class="card-content-inner">
+        <p class="color-gray">发表于 2015/01/15</p>
+        <p>此处是内容...</p>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a href="#" class="link">赞</a>
+      <a href="#" class="link">更多</a>
+    </div>
+  </div>
+  ... 可以多放几张卡片
+</div>
+</div><div id="homeMessage" style="display:none;">
+   <div class="content-block-title">单个选择</div>
+    <div class="content-block">
+      <div class="list-block">
+        <ul>
+          <!-- Text inputs -->
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title label">手机</div>
+                <div class="item-input">
+                  <input type="text" placeholder="选择手机" id="picker">
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div><div id="homeTransactQuery" style="display:none;">
+     <div class="content-block">
+    <p><a href="#" class="button">Usual Button 1</a></p>
+    <p><a href="#" class="button button-light">light button</a></p>
+    <p><a href="#" class="button button-dark">dark button</a></p>
+    <p><a href="#" class="button button-success">success button</a></p>
+    <p><a href="#" class="button button-danger">danger button</a></p>
+    <p><a href="#" class="button button-warning">warning button</a></p>
+    <p><a href="#" class="button disabled">disabled button</a></p>
+  </div>
+  <div class="content-block">
+    <p><a href="#" class="button button-round">Round Button 1</a></p>
+  </div>
+  <div class="content-block">
+    <p><a href="#" class="button button-big">Big Button </a></p>
+    <p><a href="#" class="button button-big button-round">Big Round Button </a></p>
+  </div>
+</div><div id="homeMe" style="display:none;">
+    <div class="list-block">
+        <ul>
+            <!-- Text inputs -->
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">姓名</div>
+                        <div class="item-input">
+                            <input type="text" placeholder="Your name">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-email"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">邮箱</div>
+                        <div class="item-input">
+                            <input type="email" placeholder="E-mail">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-password"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">密码</div>
+                        <div class="item-input">
+                            <input type="password" placeholder="Password" class="">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-gender"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">性别</div>
+                        <div class="item-input">
+                            <select>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- Date -->
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">生日</div>
+                        <div class="item-input">
+                            <input type="date" placeholder="Birth day" value="2014-04-30">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- Switch (Checkbox) -->
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-toggle"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">开关</div>
+                        <div class="item-input">
+                            <label class="label-switch">
+                <input type="checkbox">
+                <div class="checkbox"></div>
+              </label>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="align-top">
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-comment"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">文本域</div>
+                        <div class="item-input">
+                            <textarea></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="content-block">
+        <div class="row">
+            <div class="col-50"><a href="#" class="button button-big button-fill button-danger">取消</a></div>
+            <div class="col-50"><a href="#" class="button button-big button-fill button-success">提交</a></div>
+        </div>
+    </div>
+
+</div></div>
+        </div>
+</div>
+    <!-- 业务办理 -->
+    
+    <!-- 消息 -->
+    
+    <!-- 办理查询 -->
+    
+
+
+    <!-- 我 -->
+    
     <div id="openAccountIndex" style="display:none;">
    <div class="weui-tab">
     <div class="weui-navbar">
@@ -46,7 +278,8 @@
   </div>
   
   <script type="text/javascript" src="https://res.lightyy.com/lighting/framework/light-1.0.min.js"></script>
-
+  <script type="text/javascript" src="//g.alicdn.com/sj/lib/zepto/zepto.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="plugins/weui/weui.min.js"></script>
   <script type="text/javascript" src="config.js"></script>
   <!--<script src="vue-components.js"></script>-->
@@ -54,10 +287,16 @@
   <script type="text/javascript" src="js/regist/index.js"></script>
 <script type="text/javascript" src="js/view/login/success.js"></script>
 <script type="text/javascript" src="js/view/openAccount/index.js"></script>
+<script type="text/javascript" src="js/view/home/me.js"></script>
+<script type="text/javascript" src="js/view/home/transactQuery.js"></script>
+<script type="text/javascript" src="js/view/home/message.js"></script>
+<script type="text/javascript" src="js/view/home/busiProcessing.js"></script>
+<script type="text/javascript" src="js/view/home.js"></script>
 
 
   <script type="text/javascript">
     Light.start();
   </script>
 </body>
+
 </html>
