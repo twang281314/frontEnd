@@ -1,0 +1,125 @@
+{
+    "rows": [
+        {
+            "level": 1,
+            "isLeaf": false,
+            "expanded": true,
+            "org_Id": "2",
+            "parent": "1",
+            "org_name": "北京伟景行股份有限公司",
+            "org_num": "无",
+            "org_category": "公司",
+            "description": "无"
+        },
+        {
+            "level": 2,
+            "isLeaf": true,
+            "expanded": false,
+            "org_Id": "3",
+            "parent": "2",
+            "org_name": "行政部",
+            "org_num": "无",
+            "org_category": "部门",
+            "description": "无"
+        },
+        {
+            "level": 2,
+            "isLeaf": true,
+            "expanded": false,
+            "org_Id": "4",
+            "parent": "2",
+            "org_name": "财务部",
+            "org_num": "无",
+            "org_category": "部门",
+            "description": "无"
+        },
+        {
+            "level": 2,
+            "isLeaf": true,
+            "expanded": false,
+            "org_Id": "5",
+            "parent": "2",
+            "org_name": "信息部",
+            "org_num": "无",
+            "org_category": "部门",
+            "description": "无"
+        },
+        {
+            "level": 1,
+            "isLeaf": false,
+            "expanded": true,
+            "org_Id": "6",
+            "parent": "1",
+            "org_name": "伟景行科技有限公司",
+            "org_num": "无",
+            "org_category": "公司",
+            "description": "无"
+        },
+        {
+            "level": 2,
+            "isLeaf": true,
+            "expanded": false,
+            "org_Id": "7",
+            "parent": "6",
+            "org_name": "新业务部",
+            "org_num": "无",
+            "org_category": "部门",
+            "description": "无"
+        },
+        {
+            "level": 2,
+            "isLeaf": false,
+            "expanded": true,
+            "org_Id": "8",
+            "parent": "6",
+            "org_name": "数据中心",
+            "org_num": "无",
+            "org_category": "部门",
+            "description": "无"
+        },
+        {
+            "level": 3,
+            "isLeaf": true,
+            "expanded": false,
+            "org_Id": "9",
+            "parent": "8",
+            "org_name": "项目一部",
+            "org_num": "无",
+            "org_category": "部门",
+            "description": "无"
+        },
+        {
+            "level": 3,
+            "isLeaf": false,
+            "expanded": true,
+            "org_Id": "10",
+            "parent": "8",
+            "org_name": "项目二部",
+            "org_num": "无",
+            "org_category": "部门",
+            "description": "无"
+        },
+        {
+            "level": 4,
+            "isLeaf": true,
+            "expanded": false,
+            "org_Id": "11",
+            "parent": "10",
+            "org_name": "智慧城市",
+            "org_num": "无",
+            "org_category": "小组",
+            "description": "无"
+        },
+        {
+            "level": 4,
+            "isLeaf": true,
+            "expanded": false,
+            "org_Id": "12",
+            "parent": "10",
+            "org_name": "智慧旅游",
+            "org_num": "无",
+            "org_category": "小组",
+            "description": "无"
+        }
+    ]
+}

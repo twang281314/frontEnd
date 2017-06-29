@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <!-- The jQuery library is a prerequisite for all jqSuite products -->
+    <script type="text/ecmascript" src="http://www.guriddo.net/demo/js/jquery.min.js"></script>
+    <!-- We support more than 40 localizations -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/js/i18n/grid.locale-cn.js"></script>
+    <!-- This is the Javascript file of jqGrid -->
+    <script type="text/javascript" src="http://www.guriddo.net/demo/js/trirand/jquery.jqGrid.min.js"></script>
+    <!-- This is the localization file of the grid controlling messages, labels, etc.
+    <!-- A link to a jQuery UI ThemeRoller theme, more than 22 built-in and many more custom -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- The link to the CSS that the grid needs -->
+    <link rel="stylesheet" href="http://www.guriddo.net/demo/css/trirand/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="js/multiselect/ui.multiselect.css">
+    <script>
+        $.jgrid.defaults.width = 780;
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/multiselect/ui.multiselect.js"></script>
+    <meta charset="utf-8" />
+    <title>jqGrid Loading Data - Million Rows from a REST service</title>
+</head>
+
+<body>
+    <div style="margin-left:20px">
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // jQuery("#jqGrid").jqGrid({
+            //     url: 'js/jqgrid/tree.json',
+            //     datatype: "json",
+            //     // width: 300,
+            //     styleUI: 'Bootstrap',
+            //     treeGrid: true,
+            //     treeGridModel: 'adjacency',
+            //     ExpandColumn: 'name',
+            //     colNames: ['id', '节点名称', '结束日期', '节点层级', '备注'],
+            //     colModel: [{
+            //             name: 'id',
+            //             index: 'id',
+            //             hidden: true
+            //         },
+            //         {
+            //             name: 'name',
+            //             index: 'name',
+            //             width: 200,
+            //             sortable: false
+            //         },
+            //         {
+            //             name: 'endDate',
+            //             index: 'endDate',
+            //             width: 70,
+            //             sortable: false
+            //         },
+            //         {
+            //             name: 'nodeLevel',
+            //             index: 'nodeLevel',
+            //             width: 100,
+            //             sortable: false
+            //         },
+            //         {
+            //             name: 'remark',
+            //             index: 'remark',
+            //             width: 80,
+            //             sortable: false
+            //         }
+            //     ],
+            //     pager: "false",
+            //     jsonReader: {
+            //         root: "dataRows",
+            //         repeatitems: false
+            //     },
+            //     treeReader: {
+            //         level_field: "level",
+            //         parent_id_field: "parent",
+            //         leaf_field: "isLeaf",
+            //         expanded_field: "expanded"
+            //     },
+            //     sortorder: "desc",
+            //     height: '100%'
+            // });
+
+            function gridList() {
+                var $gridList = $("#jqGrid");
+                $gridList.jqGrid({
+                    treeGrid: true,
+                    datatype: "json",
+                    autowidth: true,
+                    //rownumbers: true,
+                    shrinkToFit: false,
+                    styleUI: 'Bootstrap',
+                    gridview: true,
+                    treeGridModel: "adjacency",
+                    ExpandColumn: "org_name",
+                    url: "js/jqgrid/tree.json",
+                    height: $(window).height() - 96,
+                    colModel: [{
+                            label: "主键",
+                            name: "org_Id",
+                            hidden: true,
+                            key: true
+                        },
+                        {
+                            label: '名称',
+                            name: 'org_name',
+                            width: 200,
+                            align: 'left'
+                        },
+                        {
+                            label: '编号',
+                            name: 'org_num',
+                            width: 150,
+                            align: 'left'
+                        },
+                        {
+                            label: '分类',
+                            name: 'org_category',
+                            width: 150,
+                            align: 'left'
+                        },
+                        {
+                            label: '备注',
+                            name: 'description',
+                            width: 150,
+                            align: 'left'
+                        },
+
+                        {
+                            label: '操作',
+                            name: 'org_Id',
+                            width: 150,
+                            align: 'center',
+                            formatter: function (org_Id, options, rowObject) {
+                                var showStatus = rowObject.is_delete == 0 ? "启用" : "禁用";
+                                return '<a href="/index.php?/organise/organise_edit/' + org_Id +
+                                    '">编辑</a> | <a href="/index.php?/organise/organise_del/' +
+                                    org_Id + '">' + showStatus + '</a></td>';
+
+                            }
+                        }
+                    ]
+                });
+            }
+
+            gridList();
+        });
+    </script>
+
+
+</body>
+
+</html>
