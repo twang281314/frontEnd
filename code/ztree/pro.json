@@ -1,0 +1,205 @@
+{
+    "id": 1,
+    "pId": 0,
+    "name": "北京市",
+    "ProSort": 1,
+    "ProRemark": "直辖市"
+}, {
+    "id": 2,
+    "pId": 0,
+    "name": "天津市",
+    "ProSort": 2,
+    "ProRemark": "直辖市"
+}, {
+    "id": 3,
+    "pId": 0,
+    "name": "河北省",
+    "ProSort": 5,
+    "ProRemark": "省份"
+}, {
+    "id": 4,
+    "pId": 0,
+    "name": "山西省",
+    "ProSort": 6,
+    "ProRemark": "省份"
+}, {
+    "id": 5,
+    "pId": 0,
+    "name": "内蒙古自治区",
+    "ProSort": 32,
+    "ProRemark": "自治区"
+}, {
+    "id": 6,
+    "pId": 0,
+    "name": "辽宁省",
+    "ProSort": 8,
+    "ProRemark": "省份"
+}, {
+    "id": 7,
+    "pId": 0,
+    "name": "吉林省",
+    "ProSort": 9,
+    "ProRemark": "省份"
+}, {
+    "id": 8,
+    "pId": 0,
+    "name": "黑龙江省",
+    "ProSort": 10,
+    "ProRemark": "省份"
+}, {
+    "id": 9,
+    "pId": 0,
+    "name": "上海市",
+    "ProSort": 3,
+    "ProRemark": "直辖市"
+}, {
+    "id": 10,
+    "pId": 0,
+    "name": "江苏省",
+    "ProSort": 11,
+    "ProRemark": "省份"
+}, {
+    "id": 11,
+    "pId": 0,
+    "name": "浙江省",
+    "ProSort": 12,
+    "ProRemark": "省份"
+}, {
+    "id": 12,
+    "pId": 0,
+    "name": "安徽省",
+    "ProSort": 13,
+    "ProRemark": "省份"
+}, {
+    "id": 13,
+    "pId": 0,
+    "name": "福建省",
+    "ProSort": 14,
+    "ProRemark": "省份"
+}, {
+    "id": 14,
+    "pId": 0,
+    "name": "江西省",
+    "ProSort": 15,
+    "ProRemark": "省份"
+}, {
+    "id": 15,
+    "pId": 0,
+    "name": "山东省",
+    "ProSort": 16,
+    "ProRemark": "省份"
+}, {
+    "id": 16,
+    "pId": 0,
+    "name": "河南省",
+    "ProSort": 17,
+    "ProRemark": "省份"
+}, {
+    "id": 17,
+    "pId": 0,
+    "name": "湖北省",
+    "ProSort": 18,
+    "ProRemark": "省份"
+}, {
+    "id": 18,
+    "pId": 0,
+    "name": "湖南省",
+    "ProSort": 19,
+    "ProRemark": "省份"
+}, {
+    "id": 19,
+    "pId": 0,
+    "name": "广东省",
+    "ProSort": 20,
+    "ProRemark": "省份"
+}, {
+    "id": 20,
+    "pId": 0,
+    "name": "海南省",
+    "ProSort": 24,
+    "ProRemark": "省份"
+}, {
+    "id": 21,
+    "pId": 0,
+    "name": "广西壮族自治区",
+    "ProSort": 28,
+    "ProRemark": "自治区"
+}, {
+    "id": 22,
+    "pId": 0,
+    "name": "甘肃省",
+    "ProSort": 21,
+    "ProRemark": "省份"
+}, {
+    "id": 23,
+    "pId": 0,
+    "name": "陕西省",
+    "ProSort": 27,
+    "ProRemark": "省份"
+}, {
+    "id": 24,
+    "pId": 0,
+    "name": "新 疆维吾尔自治区",
+    "ProSort": 31,
+    "ProRemark": "自治区"
+}, {
+    "id": 25,
+    "pId": 0,
+    "name": "青海省",
+    "ProSort": 26,
+    "ProRemark": "省份"
+}, {
+    "id": 26,
+    "pId": 0,
+    "name": "宁夏回族自治区",
+    "ProSort": 30,
+    "ProRemark": "自治区"
+}, {
+    "id": 27,
+    "pId": 0,
+    "name": "重庆市",
+    "ProSort": 4,
+    "ProRemark": "直辖市"
+}, {
+    "id": 28,
+    "pId": 0,
+    "name": "四川省",
+    "ProSort": 22,
+    "ProRemark": "省份"
+}, {
+    "id": 29,
+    "pId": 0,
+    "name": "贵州省",
+    "ProSort": 23,
+    "ProRemark": "省份"
+}, {
+    "id": 30,
+    "pId": 0,
+    "name": "云南省",
+    "ProSort": 25,
+    "ProRemark": "省份"
+}, {
+    "id": 31,
+    "pId": 0,
+    "name": "西藏自治区",
+    "ProSort": 29,
+    "ProRemark": "自治区"
+}, {
+    "id": 32,
+    "pId": 0,
+    "name": "台湾省",
+    "ProSort": 7,
+    "ProRemark": "省份"
+}, {
+    "id": 33,
+    "pId": 0,
+    "name": "澳门特别行政区",
+    "ProSort": 33,
+    "ProRemark": "特别行政区"
+}, {
+    "id": 34,
+    "pId": 0,
+    "name": "香港特别行政区",
+    "ProSort": 34,
+    "ProRemark": "特别行政区"
+}
