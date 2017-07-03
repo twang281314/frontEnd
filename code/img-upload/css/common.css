@@ -1,0 +1,256 @@
+* {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	/* Firefox */
+	-webkit-box-sizing: border-box;
+	/* Safari */
+}
+.up-section .type-upimg{
+	display: none;
+}
+::-ms-clear,::-ms-reveal{display:none;}
+textarea{
+	outline: none;
+	line-height: 14px;
+	padding-left: 4px;
+	padding-top: 4px;
+	border: 1px solid #ccc;
+	color: #444;
+	font-size: 14px;
+	outline: none;
+	text-align: left;
+}
+.overflow{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+button{
+	outline: none;
+	border: 0px;
+	font-family: "微软雅黑", "PingFang SC", "arial, helvetica, sans-serif";
+}
+input{
+	font-family: "微软雅黑", "PingFang SC", "arial, helvetica, sans-serif";
+	outline: none;
+}
+a {
+	outline: none;
+}
+a,button{cursor:pointer;} 
+
+body {
+	background: #f4f4f4;
+	font-size: 14px;
+	font-family: "微软雅黑", "PingFang SC", "arial, helvetica, sans-serif";
+}
+.clear {
+	clear: both;
+}
+.full{
+	width: 1210px;
+	min-width: 1210px;
+	margin: 0 auto;
+}
+.full-big{
+	width: 1340px;
+	min-width: 1340px;
+	margin: 0 auto;
+}
+.img-full{
+	display: block;
+	width: 100%;
+}
+::-webkit-input-placeholder {
+	color: #777;
+	font-size: 14px;
+}
+:-moz-placeholder {
+	/* Firefox 18- */
+	color: #777;
+	font-size: 14px;
+}
+::-moz-placeholder {
+	/* Firefox 19+ */
+	color: #777;
+	font-size: 14px;
+}
+:-ms-input-placeholder {
+	color:#777;
+	font-size: 14px;
+}
+/* ====clear float====== */
+/*nav a:visited{color: rgb(65,65,65);}
+aside a:visited{color: rgb(65,65,65);}*/
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.clear:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+/* reset */
+.pic img{display: none;}
+i,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+br,
+em,
+dl,
+dd,
+li,
+ul,
+ol,
+td,
+th,
+pre,
+form,
+body,
+input,
+strong,
+textarea,
+select,figcaption,figure{
+	margin: 0;
+	padding: 0;
+}
+em {
+	font-style: normal
+}
+li {
+	list-style: none
+}
+a {
+	text-decoration: none;
+}
+img {
+	border: none;
+	
+}
+table {
+	border-collapse: collapse;
+}
+textarea {
+	resize: none;
+	overflow: auto;
+}
+a,button{cursor:pointer;} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
