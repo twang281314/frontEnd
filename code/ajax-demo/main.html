@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <title>系统管理</title>
+    <link href="../images/index.ico" rel="shortcut icon" />
+    <script src="/js/jquery-2.0.3.min.js"></script>
+    <script src="/js/macros.js"></script>
+    <script src="/js/ajaxfileupload.js"></script>
+    <script src="/js/kind/kindeditor-min.js"></script>
+    <link href="/css/style.css" id="bjui-link-theme" rel="stylesheet">
+    <link href="/css/font/css/font-awesome.min.css" id="bjui-link-theme" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/js/jedate/jedate.css">
+    <script type="text/javascript" src="/js/jedate/jquery.jedate.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+    <script src="/js/index.js"></script>
+</head>
+
+<body>
+    <div class="whole">
+        <div class="header">
+            <div class="logo">
+                <img src="../images/logo.png" width="150">
+            </div>
+            <div class="indexnav">
+                <ul>
+                    <li class="x1"><a href="" title="通知公告"> <span>12</span></a></li>
+                    <li class="x2">
+                        <div class="dropdown_top">admin&nbsp;欢迎使用</div>
+                        <ul class="dropdown_bot">
+                            <li><a class="deleg" degname="修改密码" degurl="/user/modPasPage.htm" degwidht="500" degheight="330"
+                                    title="修改密码"><i class="fa fa-unlock-alt"></i></a></li>
+                            <li><a href="/user/loginOut.htm" title="注销登陆"><i class="fa fa-power-off"></i></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <ul class="tabnav">
+               
+            </ul>
+        </div>
+
+        <div>
+
+            <script type="text/javascript">
+            </script>
+            <div id="container">
+                <ul class="tabtop ">
+                    <li class="no" zid="indexshou" data-id="-1"><a><i class="fa fa-indent"></i> 菜单导航</a></li>
+                </ul>
+                <div class="offnawall" title="关闭全部"><i class="fa fa-times"></i></div>
+                <div class="refresh" title="刷新"><i class="fa fa-refresh"></i></div>
+                <div class="navtabpanel scrollbar">
+                    <ul class="tobcon">
+                        <li class="no" id="indexshou" data-id="-1">
+                            <div class="incomx">
+                                <button type="button" class="btn btn-primary" onclick="cleanCache()"></i>清楚缓存</button>
+                            </div>
+                        </li>
+
+                        <li style="display:none"></li>
+                    </ul>
+                    <div class="hei20"></div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                function cleanCache() {
+                    $.post("/user/cleanCache.htm", function (data) {
+                        if (data.status == "success") {
+                            window.location.reload();
+                        } else {
+                            promptx(data.message);
+                        }
+                    }, "json");
+                }
+            </script>
+            <div id="bjui-footer">
+            </div>
+</body>
+
+</html>
