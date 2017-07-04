@@ -65,11 +65,11 @@ class TreeSelect {
                 enable: true
             },
             data: {
-				simpleData: {
-					enable: true
-				}
-			},
-             view: {
+                simpleData: {
+                    enable: true
+                }
+            },
+            view: {
                 selectedMulti: false
             },
 
@@ -89,10 +89,12 @@ class TreeSelect {
                         k = "";
                     for (var i = 0, l = nodes.length; i < l; i++) {
                         v += nodes[i].name + ",";
-                        k += nodes[i].name + ",";
+                        k += nodes[i].id + ",";
                     }
                     if (v.length > 0) v = v.substring(0, v.length - 1);
-                    self.input.val(k);
+                    self.input.val(v);
+                    self.value = k;
+                    self.text = v;
                 }
             }
         };
