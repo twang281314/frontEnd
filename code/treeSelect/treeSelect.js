@@ -97,10 +97,13 @@ class TreeSelect {
                         v = "",
                         k = "";
                     for (var i = 0, l = nodes.length; i < l; i++) {
-                        v += nodes[i].name + ",";
-                        k += nodes[i].id + ",";
+                        if (!nodes[i].isParent) {
+                            v += nodes[i].name + ",";
+                            k += nodes[i][self.options.valueKey] + ",";
+                        }
                     }
                     if (v.length > 0) v = v.substring(0, v.length - 1);
+                    if (k.length > 0) k = k.substring(0, k.length - 1);
                     self.input.val(v);
                     self.value = k;
                     self.text = v;
