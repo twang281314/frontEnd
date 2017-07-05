@@ -1,31 +1,12 @@
 'use strict';
 
-var _createClass = (function () {
-    function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];
-            descriptor.enumerable = descriptor.enumerable || false;
-            descriptor.configurable = true;
-            if ('value' in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
-        }
-    }
-    return function (Constructor, protoProps, staticProps) {
-        if (protoProps) defineProperties(Constructor.prototype, protoProps);
-        if (staticProps) defineProperties(Constructor, staticProps);
-        return Constructor;
-    };
-})();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError('Cannot call a class as a function');
-    }
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var uid = 0;
 
-var TreeSelect = (function () {
+var TreeSelect = function () {
     _createClass(TreeSelect, null, [{
         key: 'getUniquId',
         value: function getUniquId() {
@@ -39,7 +20,8 @@ var TreeSelect = (function () {
         var self = this;
 
         var defaultOptions = {
-            valueKey: 'id'
+            valueKey: 'id',
+            isShowInput: true
         };
         self.options = options = $.extend(defaultOptions, options);
         var uid = TreeSelect.getUniquId();
@@ -48,20 +30,29 @@ var TreeSelect = (function () {
         ele.html(tpl);
         var input = ele.find('.treeSelect-input');
         var panel = ele.find('.treeSelect-panel');
+        panel.click(function (event) {
+            if (event && event.stopPropagation) event.stopPropagation();else window.event.cancelBubble = true;
+            return false;
+        });
         self.element = ele;
         self.input = input;
         self.panel = panel;
         ele.css({
             'position': 'relative'
         });
+        if (!self.options.isShowInput) {
+            input.css('display', 'none');
+            self.panel.css('position', 'relative');
+        }
         input.on('keydown', function () {
 
             //input.val(self.text);
             return false;
         });
-        input.click(function () {
+
+        input.click(function (event) {
             if (!self.isOpen()) {
-                self.open();
+                self.open(event);
             } else {
                 self.close();
             }
@@ -72,9 +63,10 @@ var TreeSelect = (function () {
                 url: options.url,
                 dataType: 'json',
                 data: options.param,
-                sucess: function sucess(data) {
+                success: function success(data) {
                     self.render(data);
-                }
+                },
+                error: function error(data) {}
             });
         } else if (options.data) {
             self.render(options.data);
@@ -94,33 +86,44 @@ var TreeSelect = (function () {
             var panel = self.panel;
             var setting = {
                 check: {
-                    enable: true,
-                    chkboxType: {
-                        "Y": "",
-                        "N": ""
+                    enable: true
+                },
+                data: {
+                    simpleData: {
+                        enable: true
                     }
                 },
+                view: {
+                    selectedMulti: false
+                },
+
                 callback: {
-                    onClick: function onClick(event, treeId, treeNode) {
-                        if (!treeNode.isParent) {
-                            self.input.val(treeNode.name);
-                            self.value = treeNode[self.options.valueKey];
-                            self.text = treeNode.name;
-                            self.close();
-                        }
-                    },
+                    onClick: function onClick(event, treeId, treeNode) {},
                     onCheck: function onCheck(e, treeId, treeNode) {
-
-                       debugger;
-
+                        var zTree = $.fn.zTree.getZTreeObj(treeId),
+                            nodes = zTree.getCheckedNodes(true),
+                            v = "",
+                            k = "";
+                        for (var i = 0, l = nodes.length; i < l; i++) {
+                            v += nodes[i].name + ",";
+                            k += nodes[i].id + ",";
+                        }
+                        if (v.length > 0) v = v.substring(0, v.length - 1);
+                        self.input.val(v);
+                        self.value = k;
+                        self.text = v;
                     }
                 }
             };
             self.ztree = $.fn.zTree.init(panel, setting, data);
+            if (!self.options.isShowInput) {
+                self.open();
+            }
         }
     }, {
         key: 'open',
-        value: function open() {
+        value: function open(event) {
+            if (event && event.stopPropagation) event.stopPropagation();else window.event.cancelBubble = true;
             var self = this;
             var panel = self.panel;
             panel.css({
@@ -128,27 +131,44 @@ var TreeSelect = (function () {
                 opacity: 1
             });
             panel.show();
-            self.mask = $('<div class="treeSelect-mask"></div>');
-            $('body').append(self.mask);
-            self.mask.click(function () {
+            $(document).one("click", function (event) {
                 self.close();
             });
+            // self.mask = $('<div class="treeSelect-mask"></div>');
+            // if (self.options.isShowInput) {
+            //     $('body').append(self.mask);
+            // }
+            // self.mask.click(function () {
+            //     if (self.options.isShowInput) {
+            //         self.close();
+            //     }
+            // })
         }
     }, {
         key: 'close',
         value: function close() {
 
             var self = this;
-            //panel.animate({
-            //    height:0,
-            //    opacity:0
-            //},500);
             self.panel.hide();
-            self.mask.remove();
+            // self.mask.remove();
+        }
+        /**
+         * 设置选过的节点
+         * @param {*} ids 
+         */
+
+    }, {
+        key: 'showSelectedNodes',
+        value: function showSelectedNodes(ids) {
+            var idArray = ids.split(',');
+            var self = this;
+            var tree = self.ztree;
+            tree.checkAllNodes(false);
+            idArray.forEach(function (id) {
+                tree.checkNode(tree.getNodeByParam("id", id, null), true, true);
+            });
         }
     }]);
 
     return TreeSelect;
-})();
-
-//# sourceMappingURL=treeSelect.js.map
+}();

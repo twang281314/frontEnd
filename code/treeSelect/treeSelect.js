@@ -7,7 +7,8 @@ class TreeSelect {
         var self = this;
 
         var defaultOptions = {
-            valueKey: 'id'
+            valueKey: 'id',
+            isShowInput: true
         }
         self.options = options = $.extend(defaultOptions, options);
         var uid = TreeSelect.getUniquId();
@@ -19,20 +20,30 @@ class TreeSelect {
         ele.html(tpl);
         var input = ele.find('.treeSelect-input');
         var panel = ele.find('.treeSelect-panel');
+        panel.click(function (event) {
+            if (event && event.stopPropagation) event.stopPropagation();
+            else window.event.cancelBubble = true;
+            return false;
+        })
         self.element = ele;
         self.input = input;
         self.panel = panel;
         ele.css({
             'position': 'relative'
         });
+        if (!self.options.isShowInput) {
+            input.css('display', 'none');
+            self.panel.css('position', 'relative');
+        }
         input.on('keydown', function () {
 
             //input.val(self.text);
             return false;
         });
-        input.click(function () {
+
+        input.click(function (event) {
             if (!self.isOpen()) {
-                self.open();
+                self.open(event);
             } else {
                 self.close();
             }
@@ -44,8 +55,11 @@ class TreeSelect {
                 url: options.url,
                 dataType: 'json',
                 data: options.param,
-                sucess: function (data) {
+                success: function (data) {
                     self.render(data);
+                },
+                error: function (data) {
+
                 }
             })
         } else if (options.data) {
@@ -75,12 +89,7 @@ class TreeSelect {
 
             callback: {
                 onClick: function (event, treeId, treeNode) {
-                    if (!treeNode.isParent) {
-                        self.input.val(treeNode.name);
-                        self.value = treeNode[self.options.valueKey];
-                        self.text = treeNode.name;
-                        self.close();
-                    }
+
                 },
                 onCheck: function onCheck(e, treeId, treeNode) {
                     var zTree = $.fn.zTree.getZTreeObj(treeId),
@@ -99,8 +108,13 @@ class TreeSelect {
             }
         };
         self.ztree = $.fn.zTree.init(panel, setting, data);
+        if (!self.options.isShowInput) {
+            self.open();
+        }
     }
-    open() {
+    open(event) {
+        if (event && event.stopPropagation) event.stopPropagation();
+        else window.event.cancelBubble = true;
         var self = this;
         var panel = self.panel;
         panel.css({
@@ -108,21 +122,38 @@ class TreeSelect {
             opacity: 1
         });
         panel.show();
-        self.mask = $('<div class="treeSelect-mask"></div>');
-        $('body').append(self.mask);
-        self.mask.click(function () {
-            self.close();
-        })
+        if (self.options.isShowInput) {
+            $(document).one("click", function (event) {
+                self.close();
+            });
+        }
+        // self.mask = $('<div class="treeSelect-mask"></div>');
+        // if (self.options.isShowInput) {
+        //     $('body').append(self.mask);
+        // }
+        // self.mask.click(function () {
+        //     if (self.options.isShowInput) {
+        //         self.close();
+        //     }
+        // })
     }
     close() {
 
         var self = this;
-        //panel.animate({
-        //    height:0,
-        //    opacity:0
-        //},500);
         self.panel.hide();
-        self.mask.remove();
+        // self.mask.remove();
     }
-
+    /**
+     * 设置选过的节点
+     * @param {*} ids 
+     */
+    showSelectedNodes(ids) {
+        var idArray = ids.split(',');
+        var self = this;
+        var tree = self.ztree;
+        tree.checkAllNodes(false);
+        idArray.forEach(function (id) {
+            tree.checkNode(tree.getNodeByParam("id", id, null), true, true);
+        });
+    }
 }
