@@ -12,7 +12,7 @@
     <!--<script src="http://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>-->
     <script src="lib/ztree/jquery.ztree.core-3.5.js"></script>
     <script src="http://www.treejs.cn/v3/js/jquery.ztree.excheck.js"></script>
-    <script src="treeSelect.js"></script>
+    <script src="dist/treeSelect.js"></script>
 </head>
 
 <body>
@@ -37,22 +37,20 @@
 
     <script>
         var sexNode = [{
-                name: '男',
-                id: '1',
+            name: '男',
+            id: '1',
+            children: [{
+                name: '好基友',
+                id: 3,
                 children: [{
-                    name: '好基友',
-                    children:[
-                        {
-                            name:'好基友1'
-                        }
-                    ]
+                    id: 4,
+                    name: '好基友1'
                 }]
-            },
-            {
-                name: '女',
-                id: '2'
-            }
-        ];
+            }]
+        }, {
+            name: '女',
+            id: '2'
+        }];
         // sexNode.forEach(function (itemFrist) {
         //     itemFrist.chkDisabled = true;
         //     if (itemFrist.children && itemFrist.length > 0) {
@@ -90,15 +88,19 @@
             element: '#sex',
             data: sexNode,
             valueKey: 'id',
-            onlyChooseThreeLevel:true
+            selectedIds: '4',
+            onlyChooseThreeLevel: true
         });
+
+        // sexInput.showSelectedNodes('4');
 
         var depart_input = new TreeSelect({
             url: 'area.json',
             type: 'get',
             element: '#depart',
             valueKey: 'id',
-            onlyChooseThreeLevel:true
+            isShowInput: true,
+            onlyChooseThreeLevel: false
         });
     </script>
 </body>

@@ -46,7 +46,7 @@ data:ztree格式的数据源
 
 ```
 
-babel treeSelect.js  --out-file dist/treeSelect.js --source-maps --watch
+babel treeSelect.js  --out-file dist/treeSelect.js  --presets es2015
 
 ```
 

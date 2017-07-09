@@ -21,7 +21,9 @@ var TreeSelect = function () {
 
         var defaultOptions = {
             valueKey: 'id',
-            isShowInput: true
+            isShowInput: true,
+            selectedIds: '',
+            onlyChooseThreeLevel: false
         };
         self.options = options = $.extend(defaultOptions, options);
         var uid = TreeSelect.getUniquId();
@@ -118,7 +120,22 @@ var TreeSelect = function () {
                     }
                 }
             };
+            //只能选择第三级节点
+            if (self.options.onlyChooseThreeLevel) {
+                data.forEach(function (itemFrist) {
+                    itemFrist.chkDisabled = true;
+                    if (itemFrist.children && itemFrist.children.length > 0) {
+                        itemFrist.children.forEach(function (itemSecond) {
+                            itemSecond.chkDisabled = true;
+                        });
+                    }
+                });
+            }
             self.ztree = $.fn.zTree.init(panel, setting, data);
+            //设置已经选择的节点
+            if (self.options.selectedIds) {
+                self.showSelectedNodes(self.options.selectedIds);
+            }
             if (!self.options.isShowInput) {
                 self.open();
             }
