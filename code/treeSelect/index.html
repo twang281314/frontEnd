@@ -38,26 +38,67 @@
     <script>
         var sexNode = [{
                 name: '男',
-                value: '1',
+                id: '1',
                 children: [{
-                    name: '好基友'
+                    name: '好基友',
+                    children:[
+                        {
+                            name:'好基友1'
+                        }
+                    ]
                 }]
             },
             {
                 name: '女',
-                value: '2'
+                id: '2'
             }
         ];
+        // sexNode.forEach(function (itemFrist) {
+        //     itemFrist.chkDisabled = true;
+        //     if (itemFrist.children && itemFrist.length > 0) {
+        //         itemFrist.children.forEach(function (itemSecond) {
+        //             itemSecond.chkDisabled = true;
+        //         });
+        //     }
+        // });
+        // $.ajax({
+        //     type: 'get',
+        //     url: "sex.json",
+        //     success: function (data) {
+        //         data.forEach(function (itemFrist) {
+        //             itemFrist.chkDisabled = true;
+        //             if (itemFrist.children && itemFrist.children.length > 0) {
+        //                 itemFrist.children.forEach(function (itemSecond) {
+        //                     itemSecond.chkDisabled = true;
+        //                 });
+        //             }
+        //         });
+
+        //         var sexInput = new TreeSelect({
+        //             // type: "get",
+        //             // url: "sex.json",
+        //             element: '#sex',
+        //             data: data,
+        //             valueKey: 'id'
+        //         });
+        //     }
+        // });
+
         var sexInput = new TreeSelect({
+            // type: "get",
+            // url: "sex.json",
             element: '#sex',
             data: sexNode,
-            valueKey: 'id'
+            valueKey: 'id',
+            onlyChooseThreeLevel:true
         });
+
         var depart_input = new TreeSelect({
-            url:'area.json',
-            type:'get',
+            url: 'area.json',
+            type: 'get',
             element: '#depart',
-            valueKey: 'id'
+            valueKey: 'id',
+            onlyChooseThreeLevel:true
         });
     </script>
 </body>
