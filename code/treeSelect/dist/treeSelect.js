@@ -23,7 +23,8 @@ var TreeSelect = function () {
             valueKey: 'id',
             isShowInput: true,
             selectedIds: '',
-            onlyChooseThreeLevel: false
+            onlyChooseThreeLevel: false,
+            checkEnable: true //是否复选
         };
         self.options = options = $.extend(defaultOptions, options);
         var uid = TreeSelect.getUniquId();
@@ -66,7 +67,7 @@ var TreeSelect = function () {
                 dataType: 'json',
                 data: options.param,
                 success: function success(data) {
-                    self.render(data);
+                    self.render(data.object || data);
                 },
                 error: function error(data) {}
             });
@@ -88,7 +89,7 @@ var TreeSelect = function () {
             var panel = self.panel;
             var setting = {
                 check: {
-                    enable: true
+                    enable: self.options.checkEnable
                 },
                 data: {
                     simpleData: {
@@ -100,7 +101,24 @@ var TreeSelect = function () {
                 },
 
                 callback: {
-                    onClick: function onClick(event, treeId, treeNode) {},
+                    onClick: function onClick(event, treeId, treeNode) {
+                        var zTree = $.fn.zTree.getZTreeObj(treeId),
+                            nodes = zTree.getSelectedNodes(),
+                            v = "",
+                            k = "";
+                        for (var i = 0, l = nodes.length; i < l; i++) {
+                            if (self.options.onlyChooseThreeLevel && nodes[i].level != 2) {
+                                continue;
+                            }
+                            v += nodes[i].name + ",";
+                            k += nodes[i][self.options.valueKey] + ",";
+                        }
+                        if (v.length > 0) v = v.substring(0, v.length - 1);
+                        if (k.length > 0) k = k.substring(0, k.length - 1);
+                        self.input.val(v);
+                        self.value = k;
+                        self.text = v;
+                    },
                     onCheck: function onCheck(e, treeId, treeNode) {
                         var zTree = $.fn.zTree.getZTreeObj(treeId),
                             nodes = zTree.getCheckedNodes(true),
@@ -182,13 +200,15 @@ var TreeSelect = function () {
     }, {
         key: 'showSelectedNodes',
         value: function showSelectedNodes(ids) {
-            var idArray = ids.split(',');
-            var self = this;
-            var tree = self.ztree;
-            tree.checkAllNodes(false);
-            idArray.forEach(function (id) {
-                tree.checkNode(tree.getNodeByParam("id", id, null), true, true);
-            });
+            if (ids) {
+                var idArray = ids.split(',');
+                var self = this;
+                var tree = self.ztree;
+                tree.checkAllNodes(false);
+                idArray.forEach(function (id) {
+                    tree.checkNode(tree.getNodeByParam("id", id, null), true, true, true);
+                });
+            }
         }
     }]);
 

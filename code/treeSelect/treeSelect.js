@@ -10,7 +10,8 @@ class TreeSelect {
             valueKey: 'id',
             isShowInput: true,
             selectedIds: '',
-            onlyChooseThreeLevel: false
+            onlyChooseThreeLevel: false,
+            checkEnable: true //是否复选
         }
         self.options = options = $.extend(defaultOptions, options);
         var uid = TreeSelect.getUniquId();
@@ -58,7 +59,7 @@ class TreeSelect {
                 dataType: 'json',
                 data: options.param,
                 success: function (data) {
-                    self.render(data);
+                    self.render(data.object || data);
                 },
                 error: function (data) {
 
@@ -78,7 +79,7 @@ class TreeSelect {
         var panel = self.panel;
         var setting = {
             check: {
-                enable: true
+                enable: self.options.checkEnable
             },
             data: {
                 simpleData: {
@@ -91,7 +92,22 @@ class TreeSelect {
 
             callback: {
                 onClick: function (event, treeId, treeNode) {
-
+                    var zTree = $.fn.zTree.getZTreeObj(treeId),
+                        nodes = zTree.getSelectedNodes(),
+                        v = "",
+                        k = "";
+                    for (var i = 0, l = nodes.length; i < l; i++) {
+                        if (self.options.onlyChooseThreeLevel && nodes[i].level != 2) {
+                            continue;
+                        }
+                        v += nodes[i].name + ",";
+                        k += nodes[i][self.options.valueKey] + ",";
+                    }
+                    if (v.length > 0) v = v.substring(0, v.length - 1);
+                    if (k.length > 0) k = k.substring(0, k.length - 1);
+                    self.input.val(v);
+                    self.value = k;
+                    self.text = v;
                 },
                 onCheck: function onCheck(e, treeId, treeNode) {
                     var zTree = $.fn.zTree.getZTreeObj(treeId),
@@ -125,8 +141,8 @@ class TreeSelect {
         }
         self.ztree = $.fn.zTree.init(panel, setting, data);
         //设置已经选择的节点
-        if(self.options.selectedIds){
-           self.showSelectedNodes(self.options.selectedIds);
+        if (self.options.selectedIds) {
+            self.showSelectedNodes(self.options.selectedIds);
         }
         if (!self.options.isShowInput) {
             self.open();
@@ -168,12 +184,14 @@ class TreeSelect {
      * @param {*} ids 
      */
     showSelectedNodes(ids) {
-        var idArray = ids.split(',');
-        var self = this;
-        var tree = self.ztree;
-        tree.checkAllNodes(false);
-        idArray.forEach(function (id) {
-            tree.checkNode(tree.getNodeByParam("id", id, null), true, true);
-        });
+        if (ids) {
+            var idArray = ids.split(',');
+            var self = this;
+            var tree = self.ztree;
+            tree.checkAllNodes(false);
+            idArray.forEach(function (id) {
+                tree.checkNode(tree.getNodeByParam("id", id, null), true, true, true);
+            });
+        }
     }
 }
