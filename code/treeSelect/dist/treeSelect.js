@@ -24,7 +24,8 @@ var TreeSelect = function () {
             isShowInput: true,
             selectedIds: '',
             onlyChooseThreeLevel: false,
-            checkEnable: true //是否复选
+            checkEnable: true, //是否复选
+            callback: null //页面回调函数
         };
         self.options = options = $.extend(defaultOptions, options);
         var uid = TreeSelect.getUniquId();
@@ -118,6 +119,9 @@ var TreeSelect = function () {
                         self.input.val(v);
                         self.value = k;
                         self.text = v;
+                        if (self.options.callback && self.value) {
+                            self.options.callback.call(this, self.value);
+                        }
                     },
                     onCheck: function onCheck(e, treeId, treeNode) {
                         var zTree = $.fn.zTree.getZTreeObj(treeId),
