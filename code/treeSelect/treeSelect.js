@@ -11,7 +11,9 @@ class TreeSelect {
             isShowInput: true,
             selectedIds: '',
             onlyChooseThreeLevel: false,
-            checkEnable: true //是否复选
+            checkEnable: true, //是否复选
+            callback: null, //页面回调函数
+            isExpandAll: false //是否展开所有节点
         }
         self.options = options = $.extend(defaultOptions, options);
         var uid = TreeSelect.getUniquId();
@@ -108,6 +110,9 @@ class TreeSelect {
                     self.input.val(v);
                     self.value = k;
                     self.text = v;
+                    if (self.options.callback && self.value) {
+                        self.options.callback.call(this, self.value);
+                    }
                 },
                 onCheck: function onCheck(e, treeId, treeNode) {
                     var zTree = $.fn.zTree.getZTreeObj(treeId),
@@ -146,6 +151,9 @@ class TreeSelect {
         }
         if (!self.options.isShowInput) {
             self.open();
+        }
+        if (self.options.isExpandAll) {
+            self.ztree.expandAll(true);
         }
     }
     open(event) {
