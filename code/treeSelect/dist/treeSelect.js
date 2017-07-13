@@ -25,7 +25,9 @@ var TreeSelect = function () {
             selectedIds: '',
             onlyChooseThreeLevel: false,
             checkEnable: true, //是否复选
-            callback: null //页面回调函数
+            callback: null, //页面回调函数
+            isExpandAll: false, //是否展开所有节点
+            editEnable: true //是否可编辑,包括点击和复选
         };
         self.options = options = $.extend(defaultOptions, options);
         var uid = TreeSelect.getUniquId();
@@ -89,6 +91,9 @@ var TreeSelect = function () {
             var self = this;
             var panel = self.panel;
             var setting = {
+                edit: {
+                    enable: false
+                },
                 check: {
                     enable: self.options.checkEnable
                 },
@@ -139,6 +144,12 @@ var TreeSelect = function () {
                         self.input.val(v);
                         self.value = k;
                         self.text = v;
+                    },
+                    beforeCheck: function beforeCheck() {
+                        return self.options.editEnable;
+                    },
+                    beforeClick: function beforeClick() {
+                        return self.options.editEnable;
                     }
                 }
             };
@@ -160,6 +171,9 @@ var TreeSelect = function () {
             }
             if (!self.options.isShowInput) {
                 self.open();
+            }
+            if (self.options.isExpandAll) {
+                self.ztree.expandAll(true);
             }
         }
     }, {
