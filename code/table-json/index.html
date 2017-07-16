@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>例子</title>
+    <link href="http://cdn.bootcss.com/bootswatch/3.3.5/paper/bootstrap.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+    <script src="tabletojson.js"></script>
+    <script src="jsontohtml.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <button onclick="go()">点击</button>
+            <table id='example-table'>
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jill</td>
+                        <td>Smith</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>Eve</td>
+                        <td>Jackson</td>
+                        <td>94</td>
+                    </tr>
+                    <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <td>Adam</td>
+                        <td>Johnson</td>
+                        <td>67</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row">
+            <div id="tableDiv"></div>
+        </div>
+        <script>
+            //Example data, Object 
+            var objectArray = [{
+                "Total": "34",
+                "Version": "1.0.4",
+                "Office": "New York"
+            }, {
+                "Total": "67",
+                "Version": "1.1.0",
+                "Office": "Paris"
+            }];
+
+            //Example data, Array
+            var stringArray = ["New York", "Berlin", "Paris", "Marrakech", "Moscow"];
+
+            //Example data, nested Object. This data will create nested table also.
+            var nestedTable = [{
+                key1: "val1",
+                key2: "val2",
+                key3: {
+                    tableId: "tblIdNested1",
+                    tableClassName: "clsNested",
+                    linkText: "Download",
+                    data: [{
+                        subkey1: "subval1",
+                        subkey2: "subval2",
+                        subkey3: "subval3"
+                    }]
+                }
+            }];
+
+            function go() {
+                var table = $('#example-table').tableToJSON(); // Convert the table into a javascript object
+                console.log(table);
+                alert(JSON.stringify(table));
+            }
+
+            $(function () {
+                var objectArray = [{
+                    "Total": "34",
+                    "Version": "1.0.4",
+                    "Office": "New York"
+                }, {
+                    "Total": "67",
+                    "Version": "1.1.0",
+                    "Office": "Paris"
+                }];
+              
+                var jsonHtmlTable = ConvertJsonToTable(objectArray, 'jsonTable', null, 'Download');
+
+                $('#tableDiv').html(jsonHtmlTable);
+            });
+        </script>
+</body>
+
+</html>
