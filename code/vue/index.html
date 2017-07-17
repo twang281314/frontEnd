@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- To run the current sample code in your own environment, copy this to an html page. -->
+
+<html>
+
+<head>
+    <script src="https://cn.vuejs.org/js/vue.js"></script>
+</head>
+
+<body>
+    <div>
+        <button onclick="changeData()">点击</button>
+    </div>
+    <table id="tableDemo">
+        <tbody id="result">
+
+            <tr v-for="(item, index) in items"> 
+                <td>
+                    <div>{{index}}</div>
+                    <input type="text" v-model="item.message">
+                    <input type="checkbox" v-model="item.choseStatus">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script id="theTmpl" type="text/x-jsrender">
+
+    </script>
+
+    <script>
+        var app2 = new Vue({
+            el: '#tableDemo',
+            data: {
+                items: [{
+                        message: 'Foo',
+                        choseStatus:false
+                    },
+                    {
+                        message: 'Bar',
+                        choseStatus:true
+                    }
+                ]
+            }
+        })
+
+        function changeData() {
+        //   app2.items[0].message='anytao';
+         console.log(JSON.stringify(app2.items));
+        }
+    </script>
+
+</body>
+
+</html>
