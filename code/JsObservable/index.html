@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- To run the current sample code in your own environment, copy this to an html page. -->
+
+<html>
+<head>
+  <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="http://www.jsviews.com/download/jsviews.min.js"></script>
+  <link href="http://www.jsviews.com/samples/samples.css" rel="stylesheet" />
+</head>
+<body>
+<div>
+    <button onclick="changeData()">点击</button>
+</div>
+<table><tbody id="result"></tbody></table>
+
+<script id="theTmpl" type="text/x-jsrender">
+  <tr><td>
+    <button id="addBtn">Add</button>
+  </td></tr>
+  {^{for people}}
+    <tr><td>
+      <button class="change">Change</button>
+      <button class="remove"></button>
+      {^{:name}} 
+    </td></tr>
+  {{/for}}
+</script>
+
+<script>
+var template = $.templates("#theTmpl");
+
+var people = [
+    {
+      name: "Adriana"
+    },
+    {
+      name: "Robert"
+    }
+  ];
+
+var counter = 1;
+
+template.link("#result", {people: people});
+
+$("#addBtn").on("click", function() {
+  $.observable(people).insert({name: "name" + counter++});
+})
+
+$("#result")
+  .on("click", ".change", function() {
+    var dataItem = $.view(this).data;
+    $.observable(dataItem).setProperty("name", dataItem.name + "*");
+  })
+  .on("click", ".remove", function() {
+    var index = $.view(this).index;
+    $.observable(people).remove(index);
+  });
+
+  function changeData(){
+       people[0].name='wangtao';
+       template.link("#result", {people: people});
+    //   people[0].name='wangtao';
+    //   $.observable(people).refresh();
+  }
+</script>
+
+</body>
+</html>
