@@ -14,7 +14,7 @@
     <table id="tableDemo">
         <tbody id="result">
 
-            <tr v-for="(item, index) in items"> 
+            <tr v-for="(item, index) in items">
                 <td>
                     <div>{{index}}</div>
                     <input type="text" v-model="item.message">
@@ -23,6 +23,14 @@
             </tr>
         </tbody>
     </table>
+    <div id="demo">
+        <select v-model="selected">  
+            <option v-for="option in options" v-bind:value="option">  
+                {{ option.text }}  
+            </option>  
+        </select>
+        <span>Selected: {{ selected }}</span>
+    </div>
 
     <script id="theTmpl" type="text/x-jsrender">
 
@@ -34,20 +42,40 @@
             data: {
                 items: [{
                         message: 'Foo',
-                        choseStatus:false
+                        choseStatus: false
                     },
                     {
                         message: 'Bar',
-                        choseStatus:true
+                        choseStatus: true
                     }
                 ]
             }
         })
 
         function changeData() {
-        //   app2.items[0].message='anytao';
-         console.log(JSON.stringify(app2.items));
+            //   app2.items[0].message='anytao';
+            console.log(JSON.stringify(app2.items));
         }
+
+        new Vue({
+            el: '#demo',
+            data: {
+                selected: { "text": "One", "value": "A" },
+                options: [{
+                        text: 'One',
+                        value: 'A'
+                    },
+                    {
+                        text: 'Two',
+                        value: 'B'
+                    },
+                    {
+                        text: 'Three',
+                        value: 'C'
+                    }
+                ]
+            }
+        })
     </script>
 
 </body>
