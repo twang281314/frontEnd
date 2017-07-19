@@ -13,7 +13,8 @@ class TreeSelect {
             onlyChooseThreeLevel: false,
             checkEnable: true, //是否复选
             callback: null, //页面回调函数
-            isExpandAll: false //是否展开所有节点
+            isExpandAll: false, //是否展开所有节点
+            editEnable: true //是否可编辑,包括点击和复选
         }
         self.options = options = $.extend(defaultOptions, options);
         var uid = TreeSelect.getUniquId();
@@ -41,9 +42,7 @@ class TreeSelect {
             self.panel.css('position', 'relative');
         }
         input.on('keydown', function () {
-
-            //input.val(self.text);
-            return false;
+          return !self.options.checkEnable;//复选时input不可编辑
         });
 
         input.click(function (event) {
@@ -80,6 +79,9 @@ class TreeSelect {
         var self = this;
         var panel = self.panel;
         var setting = {
+            edit: {
+                enable: false
+            },
             check: {
                 enable: self.options.checkEnable
             },
@@ -130,6 +132,15 @@ class TreeSelect {
                     self.input.val(v);
                     self.value = k;
                     self.text = v;
+                    if (self.options.callback && self.value) {
+                        self.options.callback.call(this, self.value);
+                    }
+                },
+                beforeCheck: function () {
+                    return self.options.editEnable;
+                },
+                beforeClick: function () {
+                    return self.options.editEnable;
                 }
             }
         };
