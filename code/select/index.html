@@ -4,13 +4,42 @@
 <head>
     <title></title>
     <meta charset="UTF-8">
+    <style>
+         #display-el {
+            display: none;
+            visibility: hidden;
+        } 
+    </style>
 </head>
 
 <body>
-          <select>
-          <option >网站的封面</option>
-          <option value="031113">上海夏天(一一友情提供)</option>
+    <select id="select-el">
+    <option id="display-el" value="-1">请选择</option>
+    <!-- <option value=''>请选择</option> -->
+    <option id="id1" value="1" purchaseorderid="p1">Option 1</option>
+    <option id="id2" value="2" purchaseorderid="p2">Option 2</option>
+    <option id="id3" value="3" purchaseorderid="p3">Option 3</option>
+    <option id="id4" value="4" purchaseorderid="p4">Option 4</option>
+    <option id="id5" value="5" purchaseorderid="p5">Option Longer</option>
 </select>
+
+    <script>
+
+        var selectEl = document.getElementById('select-el');
+        var displayEl = document.getElementById('display-el');
+
+        selectEl.onchange = function (e) {
+
+            var index = selectEl.selectedIndex;
+            var option = selectEl[index];
+
+            selectEl.selectedIndex = 0;
+            displayEl.text = option.text
+            displayEl.value = option.value;
+            displayEl.setAttribute('purchaseorderid',option.getAttribute('purchaseorderid'));
+            console.log(displayEl.value);
+        }
+    </script>
 </body>
 
 </html>
