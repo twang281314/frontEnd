@@ -1,0 +1,4 @@
+.columntoggle-container{font-size: 0.8em; padding: 1em; color:#555;}
+.columntoggle-container a{color:#000;}
+.columntoggle-container a:hover{color:#f2711c}
+.columntoggle-container a.inactive{font-weight: normal; color: #4183c4}

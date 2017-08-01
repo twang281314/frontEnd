@@ -29,7 +29,7 @@
 	<h3>Sample 1</h3>
 	Options: distance: 10 (default), minWidth: 30 (default), restoreState: true (default), fixed: false (default)
 	
-	<table id="sample1" class="sample1" cellpadding="0" cellspacing="0" border="0">
+	<table id="sample1" name="sample1" cellpadding="0" cellspacing="0" border="0">
         <thead>
             <tr>
                 <th>Name</th>
@@ -212,10 +212,10 @@
       </tbody>
     </table>
 	
-	<script src='table-drag-sort-resize.min.js'></script>
+	<script src='table-drag-sort-resize.js'></script>
 	<script>
-	  new TableDragSortResize(document.getElementById('sample1'));
-	  new TableDragSortResize(document.getElementById('sample2'), {distance: 10, minWidth: 60, fixed: true});
+	  // new TableDragSortResize(document.getElementById('sample1'));
+	  // new TableDragSortResize(document.getElementById('sample2'));
 	  new TableDragSortResize(document.getElementById('sample3'), {distance: 10, minWidth: 60, restoreState: false});
 	  new TableDragSortResize(document.getElementById('sample4'), {distance: 30, minWidth: 60, restoreState: false, fixed: true});
 	</script>

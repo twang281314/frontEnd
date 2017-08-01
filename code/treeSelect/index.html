@@ -12,11 +12,14 @@
     <!--<script src="http://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>-->
     <script src="lib/ztree/jquery.ztree.core-3.5.js"></script>
     <script src="http://www.treejs.cn/v3/js/jquery.ztree.excheck.js"></script>
-    <script src="dist/treeSelect.js"></script>
+    <script src="treeSelect.js"></script>
 </head>
 
 <body>
     <div class="container">
+        <div class="row">
+            <button onclick="showValue()">点击</button>
+        </div>
         <div class="row">
             <div class="col-md-6">
                 <form action="#">
@@ -39,17 +42,26 @@
         var sexNode = [{
             name: '男',
             id: '1',
+            chkDisabled: false,
             children: [{
                 name: '好基友',
                 id: 3,
+                chkDisabled: false,
                 children: [{
                     id: 4,
-                    name: '好基友1'
+                    name: '好基友1',
+                    chkDisabled: false,
+                    checked: true
+                }, {
+                    id: 5,
+                    name: '好基友2',
+                    chkDisabled: false,
+                    checked: true
                 }]
             }]
         }, {
             name: '女',
-            id: '2'
+            id: '3'
         }];
         // sexNode.forEach(function (itemFrist) {
         //     itemFrist.chkDisabled = true;
@@ -88,11 +100,16 @@
             element: '#sex',
             data: sexNode,
             valueKey: 'id',
-            selectedIds: '4',
-            onlyChooseThreeLevel: true
+            // selectedIds: '4,5',
+            onlyChooseThreeLevel: false,
+            checkEnable: false,
+            editEnable: true,
+            callback: function (data) {
+                console.log(depart_input.value);
+            }
         });
 
-        // sexInput.showSelectedNodes('4');
+        // sexInput.showSelectedNodes('1');
 
         var depart_input = new TreeSelect({
             url: 'area.json',
@@ -102,6 +119,10 @@
             isShowInput: true,
             onlyChooseThreeLevel: false
         });
+
+        function showValue() {
+            alert(sexInput.value);
+        }
     </script>
 </body>
 

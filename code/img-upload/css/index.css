@@ -32,8 +32,8 @@
 .up-section .close-upimg{
 	position: absolute;
 	top: 6px;
-	right: 8px;
-	display: none;
+	right: 15px;
+	display: block;
 	z-index: 10;
 }
 .up-section .up-span{
