@@ -51,9 +51,16 @@ var TreeSelect = function () {
             self.panel.css('position', 'relative');
         }
         input.on('keydown', function () {
+            return !self.options.checkEnable; //复选时input不可编辑
+        });
 
-            //input.val(self.text);
-            return false;
+        //手动删除输入框时触发
+        input.change(function (val, old) {
+            self.value = '';
+            self.text = '';
+            if (self.options.callback) {
+                self.options.callback.call(this, self.value);
+            }
         });
 
         input.click(function (event) {
@@ -144,6 +151,9 @@ var TreeSelect = function () {
                         self.input.val(v);
                         self.value = k;
                         self.text = v;
+                        if (self.options.callback && self.value) {
+                            self.options.callback.call(this, self.value);
+                        }
                     },
                     beforeCheck: function beforeCheck() {
                         return self.options.editEnable;

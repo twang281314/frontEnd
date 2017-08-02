@@ -42,7 +42,16 @@ class TreeSelect {
             self.panel.css('position', 'relative');
         }
         input.on('keydown', function () {
-          return !self.options.checkEnable;//复选时input不可编辑
+            return !self.options.checkEnable; //复选时input不可编辑
+        });
+
+        //手动删除输入框时触发
+        input.change(function (val, old) {
+            self.value = '';
+            self.text = '';
+            if (self.options.callback) {
+                self.options.callback.call(this, self.value);
+            }
         });
 
         input.click(function (event) {
@@ -51,7 +60,6 @@ class TreeSelect {
             } else {
                 self.close();
             }
-
         });
         if (options.url) {
             $.ajax({
