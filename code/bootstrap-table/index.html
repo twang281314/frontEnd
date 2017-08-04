@@ -3,18 +3,19 @@
 <html>
 <head>
     <title>Table from html</title>
-    <link rel="stylesheet" href="http://issues.wenzhixin.net.cn/bootstrap-table/assets/bootstrap/css/bootstrap.min.css">
+   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap-table.css">
     <link rel="stylesheet" href="https://rawgit.com/akottr/dragtable/master/dragtable.css">
 
-    <script src="http://issues.wenzhixin.net.cn/bootstrap-table/assets/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.js"></script>
     <script src="bootstrap-table.js"></script>
     <script src="extensions/resizable/bootstrap-table-resizable.js"></script>
-    <script src="https://rawgit.com/wenzhixin/colResizable/master/source/colResizable-1.5.source.js"></script>
+    <script src="colResizable-1.5.source.js"></script>
 
     <script src="extensions/reorder-columns/bootstrap-table-reorder-columns.js"></script>
-	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="https://rawgit.com/akottr/dragtable/master/jquery.dragtable.js"></script>
+<script src="https://cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="jquery.dragtable.js"></script>
+    <script src="extensions/cookie/bootstrap-table-cookie.js"></script>
 </head>
 <body>
      <div id="toolbar">
@@ -23,13 +24,16 @@
 <div class="container">
     <h1>Table from html</h1>
     <p>Transform table from an existing, unformatted html table.</p>
-    <table id="table"   data-resizable="true"  data-reorderable-columns="true"  data-show-columns="true"   >
+    <table id="table"   
+               data-reorderable-columns="true" 
+               data-resizable="false" 
+               data-show-columns="true"  >
         <thead>
         <tr>
-            <th data-field="Name" data-halign="center">Name</th>
-            <th data-field="Stars"  data-halign="center">Stars</th>
-            <th data-field="Forks" data-halign="center">Forks</th>
-            <th data-field="Description" data-halign="center">Description</th>
+            <th id="Name2" data-field="Name" data-align="center">Name</th>
+            <th id="Stars2" data-field="Stars"  data-align="center">Stars</th>
+            <th id="Forks2" data-field="Forks" data-align="center">Forks</th>
+            <th id="Description2" data-field="Description" data-halign="center">Description</th>
         </tr>
         </thead>
         <tbody>
@@ -78,6 +82,29 @@
         </tbody>
     </table>
 </div>
+ <div class="container">
+        <h1>Cookie</h1>
+        <table id="table"
+          data-resizable="true" 
+               data-toggle="table"
+               data-show-columns="true"
+               data-cookie="true"
+               data-cookie-id-table="saveId"
+               data-pagination="true"
+               data-search="true"
+              data-reorderable-columns="true" 
+               data-url="http://issues.wenzhixin.net.cn/examples/bootstrap_table/data"
+               data-side-pagination="server">
+            <thead>
+            <tr>
+                <th data-field="state" data-sortable="false" data-checkbox="true">
+                <th data-field="id" data-align="center" data-sortable="true">ID</th>
+                <th data-field="name" data-align="center"  data-sortable="true">Item Name</th>
+                <th data-field="price" data-align="center"  data-sortable="true">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+    </div>  
 <script>
     var $table = $('#table'),
         $button = $('#button');

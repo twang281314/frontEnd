@@ -14,7 +14,9 @@
         //Creates the plugin
         that.$el.colResizable({
             liveDrag: that.options.liveDrag,
-            fixed: that.options.fixed,
+            postbackSafe:true,
+            // fixed: that.options.fixed,
+            resizeMode:'overflow',
             headerOnly: that.options.headerOnly,
             minWidth: that.options.minWidth,
             hoverCursor: that.options.hoverCursor,
@@ -26,8 +28,8 @@
 
     $.extend($.fn.bootstrapTable.defaults, {
         resizable: false,
-        liveDrag: false,
-        fixed: true,
+        liveDrag: true,
+        fixed: false,
         headerOnly: false,
         minWidth: 15,
         hoverCursor: 'e-resize',
