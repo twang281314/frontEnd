@@ -61,7 +61,7 @@
             }]
         }, {
             name: '女',
-            id: '3'
+            id: '2'
         }];
         // sexNode.forEach(function (itemFrist) {
         //     itemFrist.chkDisabled = true;
@@ -100,16 +100,16 @@
             element: '#sex',
             data: sexNode,
             valueKey: 'id',
-            // selectedIds: '4,5',
+            // selectedIds: '1,4,5',
             onlyChooseThreeLevel: false,
             checkEnable: false,
             editEnable: true,
             callback: function (data) {
-                console.log(depart_input.value);
+               
             }
         });
 
-        // sexInput.showSelectedNodes('1');
+          sexInput.showSelectedNodes('4');
 
         var depart_input = new TreeSelect({
             url: 'area.json',

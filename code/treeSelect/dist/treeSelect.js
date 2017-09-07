@@ -175,10 +175,12 @@ var TreeSelect = function () {
                 });
             }
             self.ztree = $.fn.zTree.init(panel, setting, data);
+
             //设置已经选择的节点
             if (self.options.selectedIds) {
                 self.showSelectedNodes(self.options.selectedIds);
             }
+
             if (!self.options.isShowInput) {
                 self.open();
             }
@@ -232,10 +234,37 @@ var TreeSelect = function () {
                 var idArray = ids.split(',');
                 var self = this;
                 var tree = self.ztree;
-                tree.checkAllNodes(false);
-                idArray.forEach(function (id) {
-                    tree.checkNode(tree.getNodeByParam("id", id, null), true, true, true);
-                });
+
+                var nodes;
+                if (self.options.checkEnable) {
+                    tree.checkAllNodes(false);
+                    idArray.forEach(function (id) {
+                        tree.checkNode(tree.getNodeByParam("id", id, null), true, true, false);
+                    });
+                    nodes = tree.getCheckedNodes(true);
+                } else {
+                    idArray.forEach(function (id) {
+                        tree.selectNode(tree.getNodeByParam("id", id));
+                    });
+                    nodes = tree.getSelectedNodes();
+                }
+                var v = "",
+                    k = "";
+                for (var i = 0, l = nodes.length; i < l; i++) {
+                    if (self.options.checkEnable) {
+                        if (!nodes[i].isParent) {
+                            v += nodes[i].name + ",";
+                            k += nodes[i][self.options.valueKey] + ",";
+                        }
+                    } else {
+                        v += nodes[i].name + ",";
+                        k += nodes[i][self.options.valueKey] + ",";
+                    }
+                }
+                if (v.length > 0) v = v.substring(0, v.length - 1);
+                if (k.length > 0) k = k.substring(0, k.length - 1);
+                self.input.val(v);
+                self.value = k;
             }
         }
     }]);
