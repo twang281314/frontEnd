@@ -179,7 +179,7 @@ class TreeSelect {
     }
     open(event) {
         if (event && event.stopPropagation) event.stopPropagation();
-        else window.event.cancelBubble = true;
+        else if(window.event) window.event.cancelBubble = true;
         var self = this;
         var panel = self.panel;
         panel.css({

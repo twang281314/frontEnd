@@ -102,21 +102,22 @@
             valueKey: 'id',
             // selectedIds: '1,4,5',
             onlyChooseThreeLevel: false,
-            checkEnable: false,
+            checkEnable: true,
             editEnable: true,
+            isShowInput: false,
             callback: function (data) {
                
             }
         });
 
-          sexInput.showSelectedNodes('4');
+        //   sexInput.showSelectedNodes('4');
 
         var depart_input = new TreeSelect({
             url: 'area.json',
             type: 'get',
             element: '#depart',
             valueKey: 'id',
-            isShowInput: true,
+            isShowInput: false,
             onlyChooseThreeLevel: false
         });
 
