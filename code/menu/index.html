@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=gb2312" />
+    <title>横向菜单</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        @charset "utf-8";
+        /* reset marginesÃ³w oraz dopeÅ‚nieÅ„ */
+
+        html,
+        body,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            line-height: 1.2em;
+        }
+
+        br {
+            line-height: 8px;
+            margin: 0px;
+        }
+        /* reset wysokoÅ›ci linii i fontu */
+
+        h1,
+        h2,
+        ul,
+        li,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        /* ustawienia globalne */
+
+        html,
+        body {
+            font-family: georgia, verdana, tahoma, arial, sans-serif;
+            font-size: 0.625em/1.5em;
+            background: #dedede;
+        }
+
+        a {
+            color: #1c769a;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        /* TYTUÅ */
+
+        h2 {
+            font-size: 1.3em;
+            text-align: center;
+            color: #414141;
+            margin-bottom: 0px;
+            padding: 0px;
+        }
+
+        h3 {
+            font-size: 0.8em;
+            text-align: center;
+            color: #8f8f8f;
+            margin-top: 3px;
+            padding-top: 0px;
+            margin-bottom: 25px;
+        }
+
+        h3 a {
+            color: #747474;
+        }
+        /* CONTENT */
+
+        .content {
+            position: relative;
+            height: 53px;
+            width: 100%;
+            -moz-border-radius: 8px;
+            border: solid 1px #c7c7c7;
+            background: #ffffff;
+            font-size: 11px;
+            margin: 0 auto;
+        }
+
+        .content h1 {
+            position: absolute;
+            top: -25px;
+            left: 16px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            text-indent: 5px;
+            font-size: 16px;
+            color: #727272;
+        }
+
+        .content img {
+            padding: 5px;
+            background: #f7f7f7;
+            border: solid 1px #464646;
+            margin: 2px
+        }
+
+        @charset "utf-8";
+        .menu {
+            position: absolute;
+            top: 3px;
+            left: 25px;
+        }
+        /* Items */
+
+        .menu ul {
+            lislist-style: none;
+        }
+
+        .menu ul li {
+            position: relative;
+            width: 110px;
+            display: block;
+            margin-right: 8px;
+            list-style: none;
+            overflow: visible;
+            float: left;
+            background: url(./images/li.png) top right no-repeat;
+        }
+
+        .menu ul li a {
+            display: block;
+            height: 46px;
+            margin-top: 0px;
+            padding-top: 15px;
+            padding-right: 40px;
+            font-size: 14px;
+            font-size: 1.4em;
+            color: #82846f;
+            outline: none;
+        }
+
+        .menu ul li .active {
+            background: url(./images/on.png) top right no-repeat;
+        }
+
+        .menu ul li .inactive {
+            background: url(./images/off.png) top right no-repeat;
+        }
+        /* Subitems */
+
+        .menu ul li ul {
+            position: absolute;
+            display: none;
+            top: 62px;
+            left: -2px;
+            padding: 9px;
+            width: 178px;
+            background: #ffffff;
+            border: solid 1px #c6c6c6;
+            -moz-border-radius: 5px;
+        }
+
+        .menu ul li ul li .cornup {
+            position: absolute;
+            height: 14px;
+            width: 20px;
+            top: -21px;
+            left: 75px;
+            background: url(./images/corn-up.png) top left no-repeat;
+        }
+
+        .menu ul li ul li {
+            position: relative;
+            display: block;
+            width: 100%;
+            background: none;
+            font-size: 13px;
+            margin-bottom: 0px;
+            margin-top: 0px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 1px;
+            border-bottom: solid 1px #d1d1d1;
+        }
+
+        .menu ul li ul li ul {
+            position: absolute;
+            left: 203px;
+            top: -5px;
+        }
+
+        .menu ul li ul li .cornleft {
+            position: absolute;
+            height: 20px;
+            width: 13px;
+            top: 4px;
+            left: -20px;
+            background: url(./images/corn-left.png) top left no-repeat;
+        }
+
+        .menu ul li ul li .active {
+            background: url(./images/sub-on.png) top right no-repeat;
+        }
+
+        .menu ul li ul li .inactive {
+            background: url(./images/sub-off.png) top right no-repeat;
+        }
+
+        .menu ul li ul li a {
+            background: none;
+            font-size: 12px;
+            height: auto;
+            color: #858585;
+            padding-left: 0px;
+            padding-top: 8px;
+            padding-bottom: 8px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div class="content">
+            <div class="menu" id="menu1">
+                <ul>
+                    <li>
+                        <a href="#">基础资料</a>
+                        <ul>
+                            <li>
+                                <div class="cornup"></div>
+                                <a href="#sub1">Subitem 1</a>
+                            </li>
+                            <li>
+                                <a href="#sub2">Subitem 2 with subitems</a>
+                                <ul>
+                                    <li>
+                                        <div class="cornleft"></div>
+                                        <a href="#">Subitem 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Subitem 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Subitem 3 with subitems</a>
+                                        <ul>
+                                            <li>
+                                                <div class="cornleft"></div>
+                                                <a href="#">Subitem 1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Subitem 2</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Subitem 3</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Subitem 4</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">Subitem 4</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#sub3">Subitem 3</a>
+                            </li>
+                            <li>
+                                <a href="#sub4">Subitem 4 with subitems</a>
+                                <ul>
+                                    <li>
+                                        <div class="cornleft"></div>
+                                        <a href="#">Subitem 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Subitem 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#sub5">Subitem 5</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">商品管理</a>
+                        <ul>
+                            <li>
+                                <div class="cornup"></div>
+                                <a href="#subb1">Subitem 1</a>
+                            </li>
+                            <li>
+                                <a href="#subb2">Subitem 2</a>
+                            </li>
+                            <li>
+                                <a href="#subb3">Subitem 3</a>
+                            </li>
+                            <li>
+                                <a href="#subb4">Subitem 4</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">采购管理</a>
+                        <ul>
+                            <li>
+                                <div class="cornup"></div>
+                                <a href="#">Subitem 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Subitem 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Subitem 3</a>
+                            </li>
+                            <li>
+                                <a href="#">Subitem 4</a>
+                            </li>
+                            <li>
+                                <a href="#">Subitem 5</a>
+                            </li>
+                            <li>
+                                <a href="#">Subitem 6</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">订单管理</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--DEMO end-->
+
+    </div>
+
+    <script>
+        /*
+                                	Programmer: Lukasz Czerwinski
+                                	CodeCanyon: http://codecanyon.net/user/Lukasz_Czerwinski
+                                	
+                                	If this script you like, please put a comment on codecanyon.
+                                	
+                                */
+        (function ($) {
+            $.fn.horizontalMenu = function (c) {
+                var d, items;
+                c = jQuery.extend({
+                    Speed: 220,
+                    autohide: 1,
+                    effectShow: "slide",
+                    effectHide: "slide",
+                    method: "mouseover"
+                }, c);
+                d = $(this);
+                items = d.children("ul").parent("li").children("a");
+                $.fn.effectShow = function (a, b) {
+                    switch (c.effectShow) {
+                        case "slide":
+                            return $(this).slideDown(a, b);
+                            break;
+                        case "fade":
+                            return $(this).fadeIn(a, b);
+                            break
+                    }
+                };
+                $.fn.effectHide = function (a, b) {
+                    switch (c.effectHide) {
+                        case "slide":
+                            return $(this).slideUp(a, b);
+                            break;
+                        case "fade":
+                            return $(this).fadeOut(a, b);
+                            break
+                    }
+                };
+                items.addClass("inactive");
+
+                function _item() {
+                    var a = $(this);
+                    if (c.autohide) {
+                        a.parent().parent().find(".active").parent("li").children("ul").effectHide(c.Speed /
+                            1.2,
+                            function () {
+                                $(this).parent("li").children("a").removeClass().addClass("inactive")
+                            })
+                    }
+                    if (a.hasClass("inactive")) {
+                        a.removeClass().addClass("active");
+                        a.parent("li").children("ul").effectShow(c.Speed)
+                    } else {
+                        a.removeClass().addClass("inactive");
+                        a.parent("li").children("ul").effectHide(c.Speed)
+                    }
+                    return false
+                }
+                items.unbind(c.method).bind(c.method, _item)
+            }
+        })(jQuery);
+
+        $(document)['ready'](function () {
+            $('.menu ul li')['horizontalMenu']();
+        });
+    </script>
+
+</body>
+
+</html>

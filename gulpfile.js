@@ -3,6 +3,7 @@ var gulp = require('gulp');
 var tocmd = require('./index');
 var fs = require('fs')
 var minimist = require('minimist');
+var browserSync = require('browser-sync').create();
 
 var pwd = process.cwd()
 
@@ -89,6 +90,17 @@ gulp.task('watch', function() {
  * gulp 将监视文件变化 实时生成html
  * 
  */
+// 使用变量引用 `reload` 方法
+var reload = browserSync.reload;
+ // 静态服务器
+gulp.task('coding', function() {
+    browserSync.init({
+        server: {
+            baseDir: "code"
+        }
+    });
+    gulp.watch("code/menu/*.*").on("change", browserSync.reload);
+});
 
 gulp.task('default', ['watch']);
 
