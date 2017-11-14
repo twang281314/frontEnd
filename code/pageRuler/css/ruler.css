@@ -1,0 +1,25 @@
+/* by zhangxinxu 2010-07-30  http://www.zhangxinxu.com/ */
+.zxxScaleBox{position:fixed; left:0; top:0; _position:absolute; z-index:999; overflow:hidden; –webkit-user-select:none; -moz-user-select:none; user-select:none;}
+.zxxScaleRuler_h,.zxxScaleRuler_v,.zxxRefLine_v,.zxxRefLine_h,.zxxRefDot_h,.zxxRefDot_v{position:absolute; left:0; top:0; overflow:hidden; z-index:999;}
+.zxxScaleRuler_h{width:100%; height:18px; background:url(../image/ruler_h.png) repeat-x;}
+.zxxScaleRuler_v{width:18px; height:100%; background:url(../image/ruler_v.png) repeat-y;}
+.zxxScaleRuler_v .n,.zxxScaleRuler_h .n{position:absolute; font:10px/1 Arial, sans-serif; color:#333; cursor:default;}
+.zxxScaleRuler_v .n{width:8px; left:3px; word-wrap:break-word;}
+.zxxScaleRuler_h .n{top:1px;}
+.zxxRefLine_v,.zxxRefLine_h,.zxxRefDot_h,.zxxRefDot_v{z-index:998;}
+.zxxRefLine_h{width:100%; height:3px; background:url(../image/line_h.png) repeat-x left center; cursor:url(../image/cur_move_h.cur), move;}
+.zxxRefLine_v{width:3px; height:100%; _height:9999px; background:url(../image/line_v.png) repeat-y center top; cursor:url(../image/cur_move_v.cur), move;}
+.zxxRefDot_h{width:100%; height:3px; background:url(../image/line_dot.png) repeat-x left 1px; cursor:url(../image/cur_move_h.cur), move; top:-10px;}
+.zxxRefDot_v{width:3px; height:100%; _height:9999px; background:url(../image/line_dot.png) repeat-y 1px top; cursor:url(../image/cur_move_v.cur), move; left:-10px;}
+.zxxRefCrtBg{width:228px; height:146px; background:url(../image/line_create_bg.png) no-repeat; position:absolute; z-index:1000;}
+.zxxRefCrtTit{height:30px;}
+.zxxRefCrtClose{width:21px; height:21px; margin:5px 5px 0 0; background:url(../image/line_close.png) no-repeat; float:right;}
+.zxxRefCrtClose:hover{background-position:0 -21px;}
+.zxxRefCrtX{padding:18px 15px 0 20px; font-size:12px; overflow:hidden; _zoom:1;}
+.zxxRefCrtLeft{width:100px; padding-top:10px; float:left;}
+.zxxRefCrtRight{float:right;}
+.zxxRefCrtDir{height:18px; font-family:simsun; overflow:hidden;}
+.zxxRefCrtRadio{vertical-align:-2px;}
+.zxxRefCrtPlace{padding-top:16px; font-family:arial;}
+.zxxRefCrtInput{width:32px; height:14px; margin-right:4px; font-size:12px;  padding:1px; vertical-align:middle;}
+.zxxRefCrtBtn{display:block; width:80px; height:20px; margin-bottom:8px; font-size:12px;}
