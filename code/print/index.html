@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>打印测试 - 基于 Lodop</title>
+    <style type="text/css">
+        /* layer 弹窗自定义样式 */
+        body .layui-layer-zs {  }
+        body .layui-layer-zs .layui-layer-title { font-family: "Microsoft Yahei"; color:#fff; border: none; background: url('./assets/images/layui-layer-title-info.png') no-repeat 10px center #5EAFF6; padding-left: 40px; }
+        body .layui-layer-zs .layui-layer-content { font-family: "Microsoft Yahei";  }
+        body .layui-layer-zsh300 .layui-layer-content { max-height: 300px; }
+        body .layui-layer-zs-download a { color: #f6a41b; }
+        body .layui-layer-zs-download a:hover {  text-decoration: underline; }
+        body .layui-layer-zs .layui-layer-content .oktips { font-size: 14px; }
+        body .layui-layer-zs .layui-layer-content .oktips p:first-child { color: #ac7212; }
+        body .layui-layer-zs .layui-layer-content .oktips b { font-weight: normal; color: #ff4c4c; }
+        body .layui-layer-zs .layui-layer-setwin { background: url('./assets/images/layui-layer-title-close.png') no-repeat center; }
+        body .layui-layer-zs .layui-layer-setwin:hover { background: url('./assets/images/layui-layer-title-close-hover.png') no-repeat center; }
+        body .layui-layer-zs .layui-layer-ico { background: none; }
+        body .layui-layer-zs .layui-layer-btn .layui-layer-btn0 { background: url('./assets/images/layer-btn-ok.png') no-repeat; width: 74px; height: 32px; border: none; margin: 0; padding: 0; }
+        body .layui-layer-zs .layui-layer-btn .layui-layer-btn0:hover { background: url('./assets/images/layer-btn-ok-hover.png') no-repeat; }
+        body .layui-layer-zs .layui-layer-padding { padding: 20px; }
+    </style>
+</head>
+<body>
+
+<div style="width: 10%; margin: 0 auto; line-height: 100px">
+    <input type="button" name="" id="printShippingBill" value="打印预览">
+</div>
+
+<script src="assets/jquery.min.js"></script>
+<script src="assets/my.js"></script>
+<script src="assets/jquery.tmpl.js"></script>
+<script src="assets/layer/layer.js"></script>
+<script src="assets/lodop/LodopFuncs.js"></script>
+<!-- 打印模版：发运单 -->
+<script id="tmpl_print" type="text/x-jquery-tmpl">
+    <div id="print-header">
+        <table class="header" cellpadding="0" cellspacing="0" style="width: 99%;">
+            <tr>
+                <td align="center" colspan="3">
+                    <div style="width: 100%;height: 110px;position: relative;">
+                        <span style="display: block;position: absolute;top: 0;left: 0;">
+                            <!-- 供应商 Logo -->
+                            {{if data.logo}}
+                            <img src="{{= data.logo}}" width="110" height="110">
+                            {{/if}}
+                        </span>
+                        <h2 style="width: 60%;margin:0 auto;line-height: 80px;">{{= data.supplierInfo.companyName}} 送货单</h2>
+                        <span style="display: block;position: absolute;top: 0;right: 0;">
+                            <!-- 发运单二维码 -->
+                            {{if data.expressQRcode}}
+                            <img src="{{= data.expressQRcode}}" width="110" height="110">
+                            {{/if}}
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="40%"><b>地址：</b>{{= data.supplierInfo.address.substring(0,25)}}</td>
+                <td><b>电话：</b>{{= data.supplierInfo.mobilePhone}}</td>
+                <td><b>传真：</b>{{= data.supplierInfo.fax}}</td>
+            </tr>
+            <tr>
+                <td><b>客户名称：</b>{{= data.buyerInfo.companyName}}</td>
+                <td><b>订单编号：</b>{{= data.order.code}}</td>
+                <td><b>下单时间：</b>{{= toFormatDate(data.order.createAt, 'yyyy.MM.dd')}}</td>
+            </tr>
+            <tr>
+                <td><b>收货地址：</b>{{= data.order.address.substring(0,25)}}</td>
+                <td><b>发货单号：</b>{{= data.code}}</td>
+                <td><b>发货日期：</b>{{= toFormatDate(data.createAt, 'yyyy.MM.dd')}}</td>
+            </tr>
+        </table>
+    </div>
+    <div id="print-body">
+        <table class="body" cellpadding="0" cellspacing="0" style="width: 99%; ">
+            <thead>
+                <tr>
+                    <th width="8%">医院商品编码</th>
+                    <th width="18%">医院商品名称</th>
+                    <th width="15%">规格型号</th>
+                    <th width="17%">生产企业</th>
+                    <th width="5%">生产批号</th>
+                    <th width="5%">商品有效期</th>
+                    <th width="5%">单位</th>
+                    <th width="8%">单价（元）</th>
+                    <th width="5%">发运数量</th>
+                    <th width="8%">总价（元）</th>
+                    <th width="5%">收货数量</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{each(i,item) data.waybillDetails}}
+                <tr>
+                    <td>{{= showCode}}</td>
+                    <td>{{= showName}}</td>
+                    <td>{{= sepecification}}</td>
+                    <td>{{= manufacturer}}</td>
+                    <td align="center">{{= batch}}</td>
+                    <td align="center">{{= toFormatDate(expireTime, 'yyyy.MM.dd')}}</td>
+                    <td align="center">{{= unit}}</td>
+                    <td align="right">{{= toFormatMoney(price, 3)}}</td>
+                    <td align="center">{{= sendNum}}</td>
+                    <td align="right">{{= toFormatMoney(totalPrice, 3)}}</td>
+                    <td align="center">{{= getNum}}</td>
+                </tr>
+                {{/each}}
+            <tbody>
+            <tfoot>
+                <tr>
+                    <td>本页小计</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td align="center" tdata="subSum">###</td>
+                    <td align="right" tdata="subSum" format="#,##0.000">######</td>
+                    <td align="center" tdata="subSum">###</td>
+                </tr>
+                <tr>
+                    <td>合计</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td align="center">{{if data.allNum}}{{= data.allNum}}{{else}}0{{/if}}</td>
+                    <td align="right">{{= toFormatMoney(data.allMoney, 3)}}</td>
+                    <td align="center">{{if data.allgetNum}}{{= data.allgetNum}}{{else}}0{{/if}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div id="print-footer">
+        <table class="footer" cellpadding="0" cellspacing="0" style="width: 99%;">
+            <tr>
+                <td width="40%"><b>金额合计（大写）：</b>{{= toUpperMoney(data.allMoney)}}</td>
+                <td colspan="2"><b>备注：</b></td>
+            </tr>
+            <tr>
+                <td><b>制单人：</b>{{= data.printBy}}</td>
+                <td><b>运输方式：</b>{{= data.expressName}}</td>
+                <td><b>发货人：</b></td>
+            </tr>
+            <tr>
+                <td><b>配送人：</b>{{= data.deliveryPerson}}</td>
+                <td><b>发货时温湿度：</b></td>
+                <td><b>收货时温湿度：</b></td>
+            </tr>
+            <tr>
+                <td><b>配送人联系电话：</b>{{= data.deliveryContact}}</td>
+                <td><b>收货人：</b></td>
+                <td><b>收货时间：</b></td>
+            </tr>
+        </table>
+    </div>
+    <div id="print-pages">
+        <p style='text-align:center;font-size:12px;'>
+            页码：<span tdata='pageNO'>第 ## 页</span> / <span tdata='pageCount'>共 ## 页</span>
+        </p>
+    </div>
+</script>
+<!-- // end 打印模版：发运单 -->
+<script>
+$(function() {
+
+    // 打印发运单
+    $('#printShippingBill').on('click', function(event) {
+
+        // 获取待打印数据
+        var data = {};
+        var loading = layer.load(0, {shade: [0.1, '#000']});
+        $.ajax({
+            type: 'get',
+            url: 'data.json', // 这里是处理过的演示数据
+            // data: {id: '{:I("get.id")}'},
+            async: true,
+            dataType: 'json',
+            success: function(result) {
+                if (result.status == 200 && result.retData) { // 渲染模版、打印
+                    setTimeout(function() {
+                        layer.close(loading); // 渲染数据到弹出打印预览，有1秒延迟，此处 loading 也延迟 1ms 关闭
+                    }, 5000);
+
+                    // 数据、打印组件初始化
+                    $('#print-area').remove();
+                    $('<div></div>').prop('id', 'print-area').hide().appendTo('body');
+                    $("#tmpl_print").tmpl({data: result.retData}).appendTo('#print-area');
+                    var strBodyStyle='<style>body { margin: 0; padding: 0; border: 0;} table tr { font-size: 12px; line-height: 20px; }' +
+                        'table.body  { border-bottom: 1px solid #666; border-right: 1px solid #666; } table.body th,table.body ' +
+                        'td { border-left: 1px solid #666; border-top: 1px solid #666; font-weight: normal; padding: 1px; }' +
+                        'table.body td { padding: 0 5px; } table.header tr, table.footer tr { font-size: 14px; } </style>';
+                    LODOP = getLodop();
+                    if (!LODOP) {
+                        return false;
+                    }
+                    LODOP.PRINT_INIT("");
+                    LODOP.SET_PRINT_PAGESIZE(2,0,0,"A4"); // 0 操作者自行决定或打印机缺省设置 1 纵向打印，固定纸张；2 横向打印，固定纸张
+                    // LODOP.SET_PREVIEW_WINDOW(1,0,0,1000,600,""); // 初始预览窗口大小
+                    LODOP.SET_SHOW_MODE("LANDSCAPE_DEFROTATED",1); // 横向打印时正向显示
+                    LODOP.SET_SHOW_MODE("HIDE_PAPER_BOARD",1); // 去除背景滚动线
+                    LODOP.SET_PRINT_MODE("AUTO_CLOSE_PREWINDOW",1); // 打印后自动关闭预览
+                    LODOP.SET_PRINT_MODE("CUSTOM_TASK_NAME","发运单打印"); // 打印队列中的文档名
+
+                    // 追加打印头部
+                    LODOP.ADD_PRINT_TABLE(5,5,"100%",180,strBodyStyle + $('#print-header').html());
+                    LODOP.SET_PRINT_STYLEA(0,"ItemType",1); // 页眉页脚项
+
+                    // 追加打印主体：分页、循环表格
+                    LODOP.ADD_PRINT_TABLE(185,5,"100%",370, strBodyStyle + $('#print-body').html());
+                    // LODOP.SET_PRINT_STYLEA(0,"Vorient",3);
+
+                    // 追加打印底部
+                    LODOP.ADD_PRINT_TABLE(570,5,"100%",150,strBodyStyle + $('#print-footer').html());
+                    LODOP.SET_PRINT_STYLEA(0,"ItemType",1); // 页眉页脚项
+                    LODOP.SET_PRINT_STYLEA(0,"LinkedItem",2);
+
+                    LODOP.NewPageA();
+
+                    // 追加页码
+                    LODOP.ADD_PRINT_HTM(745,5,"100%",15,$('#print-pages').html());
+                    LODOP.SET_PRINT_STYLEA(0,"ItemType",1);
+                    // LODOP.SET_PRINT_STYLEA(0,"LinkedItem",3);
+                    LODOP.SET_PRINT_STYLEA(0,"Horient",1);
+
+                    LODOP.PREVIEW();
+                }
+            }
+        });
+    });
+
+
+});
+</script>
+</body>
+</html>
