@@ -40,6 +40,14 @@ http://openapi.eleme.io/v2/platform.html#id101
 
 http://open.koudaitong.com/doc
 
+# 常见参考文档
+http://jquery.cuishifeng.cn/  
+http://anytao.net:8888/html/css-handbook/  
+http://css.cuishifeng.cn/  
+https://cn.vuejs.org/v2/guide/
+
+https://searchcode.com  
+
 # 使用说明
 
 ``` bash
