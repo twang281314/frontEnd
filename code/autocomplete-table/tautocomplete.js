@@ -1,3 +1,201 @@
+/*
+ * 将html表格数据转化为json数组
+ * */
+(function ($) {
+    'use strict';
+    $.fn.tableToJSON = function (opts) {
+
+        // Set options
+        var defaults = {
+            ignoreColumns: [],
+            onlyColumns: null,
+            ignoreHiddenRows: true,
+            ignoreEmptyRows: false,
+            headings: null,
+            allowHTML: false,
+            includeRowId: false,
+            textDataOverride: 'data-override',
+            extractor: null,
+            textExtractor: function (cellIndex, $cell) {
+                return $cell.find('input').prop("checked") || $cell.find('input, select').val() || $cell.text();
+            }
+        };
+        opts = $.extend(defaults, opts);
+
+        var notNull = function (value) {
+            return value !== undefined && value !== null;
+        };
+
+        var notEmpty = function (value) {
+            return value !== undefined && value.length > 0;
+        };
+
+        var ignoredColumn = function (index) {
+            if (notNull(opts.onlyColumns)) {
+                return $.inArray(index, opts.onlyColumns) === -1;
+            }
+            return $.inArray(index, opts.ignoreColumns) !== -1;
+        };
+
+        var arraysToHash = function (keys, values) {
+            var result = {},
+                index = 0;
+            $.each(values, function (i, value) {
+                // when ignoring columns, the header option still starts
+                // with the first defined column
+                if (index < keys.length && notNull(value)) {
+                    if (notEmpty(keys[index])) {
+                        result[keys[index]] = value;
+                    }
+                    index++;
+                }
+            });
+            return result;
+        };
+
+        var cellValues = function (cellIndex, cell, isHeader) {
+            var $cell = $(cell),
+                // extractor
+                extractor = opts.extractor || opts.textExtractor,
+                override = $cell.attr(opts.textDataOverride),
+                value;
+            // don't use extractor for header cells
+            if (extractor === null || isHeader) {
+                return $.trim(override || (opts.allowHTML ? $cell.html() : cell.textContent || $cell.text()) || '');
+            } else {
+                // overall extractor function
+                if ($.isFunction(extractor)) {
+                    value = override || extractor(cellIndex, $cell);
+                    return typeof value === 'string' ? $.trim(value) : value;
+                } else if (typeof extractor === 'object' && $.isFunction(extractor[cellIndex])) {
+                    value = override || extractor[cellIndex](cellIndex, $cell);
+                    return typeof value === 'string' ? $.trim(value) : value;
+                }
+            }
+            // fallback
+            return $.trim(override || (opts.allowHTML ? $cell.html() : cell.textContent || $cell.text()) || '');
+        };
+
+        var rowValues = function (row, isHeader) {
+            var result = [];
+            var includeRowId = opts.includeRowId;
+            var useRowId = (typeof includeRowId === 'boolean') ? includeRowId : (typeof includeRowId === 'string') ? true : false;
+            var rowIdName = (typeof includeRowId === 'string') === true ? includeRowId : 'rowId';
+            if (useRowId) {
+                if (typeof $(row).attr('id') === 'undefined') {
+                    result.push(rowIdName);
+                }
+            }
+            $(row).children('td,th').each(function (cellIndex, cell) {
+                result.push(cellValues(cellIndex, cell, isHeader));
+            });
+            return result;
+        };
+
+        var getHeadings = function (table) {
+            var firstRow = table.find('tr:first').first();
+            return notNull(opts.headings) ? opts.headings : rowValues(firstRow, true);
+        };
+
+        var construct = function (table, headings) {
+            var i, j, len, len2, txt, $row, $cell,
+                tmpArray = [],
+                cellIndex = 0,
+                result = [];
+            table.children('tbody,*').children('tr').each(function (rowIndex, row) {
+                if (rowIndex > 0 || notNull(opts.headings)) {
+                    var includeRowId = opts.includeRowId;
+                    var useRowId = (typeof includeRowId === 'boolean') ? includeRowId : (typeof includeRowId === 'string') ? true : false;
+
+                    $row = $(row);
+
+                    var isEmpty = ($row.find('td').length === $row.find('td:empty').length) ? true : false;
+
+                    if (($row.is(':visible') || !opts.ignoreHiddenRows) && (!isEmpty || !opts.ignoreEmptyRows) && (!$row.data('ignore') || $row.data('ignore') === 'false')) {
+                        cellIndex = 0;
+                        if (!tmpArray[rowIndex]) {
+                            tmpArray[rowIndex] = [];
+                        }
+                        if (useRowId) {
+                            cellIndex = cellIndex + 1;
+                            if (typeof $row.attr('id') !== 'undefined') {
+                                tmpArray[rowIndex].push($row.attr('id'));
+                            } else {
+                                tmpArray[rowIndex].push('');
+                            }
+                        }
+
+                        $row.children().each(function () {
+                            $cell = $(this);
+                            // skip column if already defined
+                            while (tmpArray[rowIndex][cellIndex]) {
+                                cellIndex++;
+                            }
+
+                            // process rowspans
+                            if ($cell.filter('[rowspan]').length) {
+                                len = parseInt($cell.attr('rowspan'), 10) - 1;
+                                txt = cellValues(cellIndex, $cell);
+                                for (i = 1; i <= len; i++) {
+                                    if (!tmpArray[rowIndex + i]) {
+                                        tmpArray[rowIndex + i] = [];
+                                    }
+                                    tmpArray[rowIndex + i][cellIndex] = txt;
+                                }
+                            }
+                            // process colspans
+                            if ($cell.filter('[colspan]').length) {
+                                len = parseInt($cell.attr('colspan'), 10) - 1;
+                                txt = cellValues(cellIndex, $cell);
+                                for (i = 1; i <= len; i++) {
+                                    // cell has both col and row spans
+                                    if ($cell.filter('[rowspan]').length) {
+                                        len2 = parseInt($cell.attr('rowspan'), 10);
+                                        for (j = 0; j < len2; j++) {
+                                            tmpArray[rowIndex + j][cellIndex + i] = txt;
+                                        }
+                                    } else {
+                                        tmpArray[rowIndex][cellIndex + i] = txt;
+                                    }
+                                }
+                            }
+
+                            txt = tmpArray[rowIndex][cellIndex] || cellValues(cellIndex, $cell);
+                            if (notNull(txt)) {
+                                tmpArray[rowIndex][cellIndex] = txt;
+                            }
+                            cellIndex++;
+                        });
+                    }
+                }
+            });
+            $.each(tmpArray, function (i, row) {
+                if (notNull(row)) {
+                    // remove ignoredColumns / add onlyColumns
+                    var newRow = notNull(opts.onlyColumns) || opts.ignoreColumns.length ?
+                        $.grep(row, function (v, index) {
+                            return !ignoredColumn(index);
+                        }) : row,
+
+                        // remove ignoredColumns / add onlyColumns if headings is not defined
+                        newHeadings = notNull(opts.headings) ? headings :
+                        $.grep(headings, function (v, index) {
+                            return !ignoredColumn(index);
+                        });
+
+                    txt = arraysToHash(newHeadings, newRow);
+                    result[result.length] = txt;
+                }
+            });
+            return result;
+        };
+
+        // Run
+        var headings = getHeadings(this);
+        return construct(this, headings);
+    };
+})(jQuery);
+
 (function ($) {
     "use strict";
 
@@ -17,7 +215,11 @@
         }, options);
 
 
-        var cssClass = [["default", "adropdown"], ["classic", "aclassic"], ["white", "awhite"]];
+        var cssClass = [
+            ["default", "adropdown"],
+            ["classic", "aclassic"],
+            ["white", "awhite"]
+        ];
 
         // set theme
         cssClass.filter(function (v, i) {
@@ -26,11 +228,15 @@
                 return;
             }
         });
-        
+
         // initialize DOM elements
         var el = {
-            ddDiv: $("<div>", { class: settings.theme }),
-            ddTable: $("<table></table>", { style: "width:" + settings.width }),
+            ddDiv: $("<div>", {
+                class: settings.theme
+            }),
+            ddTable: $("<table></table>", {
+                style: "width:" + settings.width
+            }),
             ddTableCaption: $("<caption>" + settings.norecord + "</caption>"),
             ddTextbox: $("<input type='text'>")
         };
@@ -46,7 +252,7 @@
             columnNA: "Error: Columns Not Defined",
             dataNA: "Error: Data Not Available"
         };
-        
+
         // plugin properties
         var tautocomplete = {
             id: function () {
@@ -93,15 +299,14 @@
         // create a textbox for input
         this.after(el.ddTextbox);
         el.ddTextbox.attr("autocomplete", "off");
-        el.ddTextbox.css("width", this.width + "px"); 
+        el.ddTextbox.css("width", this.width + "px");
         el.ddTextbox.css("font-size", this.css("font-size"));
         el.ddTextbox.attr("placeholder", settings.placeholder);
 
         // check for mandatory parameters
         if (settings.columns == "" || settings.columns == null) {
             el.ddTextbox.attr("placeholder", errors.columnNA);
-        }
-        else if (settings.data == "" || settings.data == null) {
+        } else if (settings.data == "" || settings.data == null) {
             el.ddTextbox.attr("placeholder", errors.dataNA);
         }
 
@@ -121,21 +326,25 @@
         // append table after the new textbox
         el.ddDiv.append(el.ddTable);
         el.ddTable.attr("cellspacing", "0");
+        el.ddTable.attr("id", "tautocompleteTable");
 
         // append table caption
         el.ddTable.append(el.ddTableCaption);
 
         // create table columns
         var header = "<thead><tr>";
+        header = header+"<th style='display:none;'>id</th>";
         for (var i = 0; i <= cols - 1; i++) {
             header = header + "<th>" + settings.columns[i] + "</th>"
         }
+        header = header+"<th style='display:none;'>choseStatus</th>";
         header = header + "</thead></tr>"
         el.ddTable.append(header);
 
         // assign data fields to the textbox, helpful in case of .net postbacks
         {
-            var id = "", text = "";
+            var id = "",
+                text = "";
 
             if (this.val() != "") {
                 var val = this.val().split("#$#");
@@ -175,10 +384,10 @@
                 el.ddTextbox.addClass("loading");
 
                 if ($.isFunction(settings.data)) {
-                    var data = settings.data.call(this);
-                    jsonParser(data);
-                }
-                else {
+                    var data = settings.data.call(this,function(data){
+                        jsonParser(data);
+                    });
+                } else {
                     // default function
                 }
             }, 1000);
@@ -206,28 +415,28 @@
                 select();
             }
             if (e.keyCode == keys.UP) {
-                el.ddTable.find(".selected").removeClass("selected");
+                el.ddTable.find(".selected").removeClass("selected").find("td.choseStatus").text('false');
                 if (selected.prev().length == 0) {
-                    tbody.find("tr:last").addClass("selected");
+                    tbody.find("tr:last").addClass("selected").find("td.choseStatus").text('true');
                 } else {
-                    selected.prev().addClass("selected");
+                    selected.prev().addClass("selected").find("td.choseStatus").text('true');
                 }
             }
             if (e.keyCode == keys.DOWN) {
-                tbody.find(".selected").removeClass("selected");
+                tbody.find(".selected").removeClass("selected").find("td.choseStatus").text('false');
                 if (selected.next().length == 0) {
-                    tbody.find("tr:first").addClass("selected");
+                    tbody.find("tr:first").addClass("selected").find("td.choseStatus").text('true');
                 } else {
-                    el.ddTable.find(".selected").removeClass("selected");
-                    selected.next().addClass("selected");
+                    el.ddTable.find(".selected").removeClass("selected").find("td.choseStatus").text('false');
+                    selected.next().addClass("selected").find("td.choseStatus").text('true');
                 }
             }
         });
 
         // row click event
         el.ddTable.delegate("tr", "mousedown", function () {
-            el.ddTable.find(".selected").removeClass("selected");
-            $(this).addClass("selected");
+            el.ddTable.find(".selected").removeClass("selected").find("td.choseStatus").text('false');
+            $(this).addClass("selected").find("td.choseStatus").text('true');
             select();
         });
 
@@ -255,23 +464,25 @@
 
         function select() {
 
-            var selected = el.ddTable.find("tbody").find(".selected");
-            el.ddTextbox.data("id", selected.find('td').eq(0).text());
-            el.ddTextbox.data("text", selected.find('td').eq(1).text());
-            el.ddTextbox.val(selected.find('td').eq(1).text());
-            orginalTextBox.val(selected.find('td').eq(0).text() + '#$#' + selected.find('td').eq(1).text());
+            // var selected = el.ddTable.find("tbody").find(".selected");
+            // el.ddTextbox.data("id", selected.find('td').eq(0).text());
+            // el.ddTextbox.data("text", selected.find('td').eq(1).text());
+            // el.ddTextbox.val(selected.find('td').eq(1).text());
+            // orginalTextBox.val(selected.find('td').eq(0).text() + '#$#' + selected.find('td').eq(1).text());
+            var  selected = $('#tautocompleteTable').tableToJSON({ignoreHiddenRows:false}).filter(function(item){return item.choseStatus==='true'});
             hideDropDown();
             onChange();
+            if (callback) {
+                callback(selected[0]);
+            }
             el.ddTextbox.focus();
         }
 
-        function onChange()
-        {
+        function onChange() {
             // onchange callback function
             if ($.isFunction(settings.onchange)) {
                 settings.onchange.call(this);
-            }
-            else {
+            } else {
                 // default function for onchange
             }
         }
@@ -314,15 +525,18 @@
                 el.ddDiv.css("left", "-" + (el.ddTable.width() - el.ddTextbox.width() - 20) + "px");
             }
         }
+
         function jsonParser(jsonData) {
-            try{
+            try {
                 el.ddTextbox.removeClass("loading");
 
                 // remove all rows from the table
                 el.ddTable.find("tbody").find("tr").remove();
 
-                var i = 0, j = 0;
-                var row = null, cell = null;
+                var i = 0,
+                    j = 0;
+                var row = null,
+                    cell = null;
                 if (jsonData != null) {
                     for (i = 0; i < jsonData.length; i++) {
 
@@ -340,12 +554,12 @@
                             if (j <= cols) {
                                 cell = obj[key];
                                 row = row + "<td>" + cell + "</td>";
-                            }
-                            else {
+                            } else {
                                 continue;
                             }
                             j++;
                         }
+                        row = row + "<td class='choseStatus' style='display:none;'>false</td>";
                         // append row to the table
                         el.ddTable.append("<tr>" + row + "</tr>");
                     }
@@ -357,12 +571,9 @@
 
                 // hide first column (ID row)
                 el.ddTable.find('td:nth-child(1)').hide();
-
-                el.ddTable.find("tbody").find("tr:first").addClass('selected');
+                el.ddTable.find("tbody").find("tr:first").addClass('selected').find("td.choseStatus").text('true');
                 showDropDown();
-            }
-            catch (e)
-            {
+            } catch (e) {
                 alert("Error: " + e);
             }
         }
@@ -377,9 +588,10 @@ function isDivHeightVisible(elem) {
     var elemTop = $(elem).offset().top;
     var elemBottom = elemTop + $(elem).height();
 
-    return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom)
-      && (elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+    return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) &&
+        (elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 }
+
 function isDivWidthVisible(elem) {
     var docViewLeft = $(window).scrollLeft();
     var docViewRight = docViewLeft + $(window).width();
@@ -387,6 +599,6 @@ function isDivWidthVisible(elem) {
     var elemLeft = $(elem).offset().left;
     var elemRight = elemLeft + $(elem).width();
 
-    return ((elemRight >= docViewLeft) && (elemLeft <= docViewRight)
-      && (elemRight <= docViewRight) && (elemLeft >= docViewLeft));
+    return ((elemRight >= docViewLeft) && (elemLeft <= docViewRight) &&
+        (elemRight <= docViewRight) && (elemLeft >= docViewLeft));
 }
