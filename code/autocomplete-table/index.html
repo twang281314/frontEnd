@@ -14,7 +14,20 @@
         $(document).ready(function () {
             var text2 = $("#Text2").tautocomplete({
                 width: "500px",
-                columns: ['Country', 'Code', 'Capital'],
+                // columns: ['Country', 'Code', 'Capital'],
+                columns: [{
+                    code: 'code',
+                    name: '编码',
+                    isShow: false
+                },{
+                    code: 'country',
+                    name: '城市',
+                    isShow: true
+                }, {
+                    code: 'capital',
+                    name: '首都',
+                    isShow: true
+                }],
                 data: function (callback) {
                     var filterData = [];
                     var searchData = eval("/" + text2.searchdata() + "/gi");

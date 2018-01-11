@@ -333,11 +333,15 @@
 
         // create table columns
         var header = "<thead><tr>";
-        header = header+"<th style='display:none;'>id</th>";
+        // header = header + "<th style='display:none;'>id</th>";
         for (var i = 0; i <= cols - 1; i++) {
-            header = header + "<th>" + settings.columns[i] + "</th>"
+            if (settings.columns[i].isShow) {
+                header = header + "<th data-override='" + settings.columns[i].code + "'>" + settings.columns[i].name + "</th>"
+            } else {
+                header = header + "<th style='display:none;' data-override='" + settings.columns[i].code + "'>" + settings.columns[i].name + "</th>"
+            }
         }
-        header = header+"<th style='display:none;'>choseStatus</th>";
+        header = header + "<th style='display:none;'>choseStatus</th>";
         header = header + "</thead></tr>"
         el.ddTable.append(header);
 
@@ -384,7 +388,7 @@
                 el.ddTextbox.addClass("loading");
 
                 if ($.isFunction(settings.data)) {
-                    var data = settings.data.call(this,function(data){
+                    var data = settings.data.call(this, function (data) {
                         jsonParser(data);
                     });
                 } else {
@@ -469,7 +473,11 @@
             // el.ddTextbox.data("text", selected.find('td').eq(1).text());
             // el.ddTextbox.val(selected.find('td').eq(1).text());
             // orginalTextBox.val(selected.find('td').eq(0).text() + '#$#' + selected.find('td').eq(1).text());
-            var  selected = $('#tautocompleteTable').tableToJSON({ignoreHiddenRows:false}).filter(function(item){return item.choseStatus==='true'});
+            var selected = $('#tautocompleteTable').tableToJSON({
+                ignoreHiddenRows: false
+            }).filter(function (item) {
+                return item.choseStatus === 'true'
+            });
             hideDropDown();
             onChange();
             if (callback) {
@@ -526,6 +534,27 @@
             }
         }
 
+
+        function isShowColumn(key) {
+            var result = true;
+            settings.columns.forEach(function (item) {
+                if (item.code === key) {
+                    result = item.isShow;
+                }
+            });
+            return result;
+        }
+
+        function isExistColumn(key) {
+            var result = false;
+            settings.columns.forEach(function (item) {
+                if (item.code === key) {
+                    result = true;
+                }
+            });
+            return result;
+        }
+
         function jsonParser(jsonData) {
             try {
                 el.ddTextbox.removeClass("loading");
@@ -548,17 +577,26 @@
                         row = "";
                         j = 0;
 
-                        for (var key in obj) {
-
-                            // return on column count
-                            if (j <= cols) {
-                                cell = obj[key];
+                        settings.columns.forEach(function (column) {
+                            cell = obj[column.code];
+                            if (column.isShow) {
                                 row = row + "<td>" + cell + "</td>";
                             } else {
-                                continue;
+                                row = row + "<td style='display:none;'>" + cell + "</td>";
                             }
-                            j++;
-                        }
+                        })
+                        // for (var key in obj) {
+                        //     // return on column count
+                        //         cell = obj[key];
+                        //         if (key!=='choseStatus'&&!isExistColumn(key)) {
+                        //             continue;
+                        //         }
+                        //         if (isShowColumn(key)) {
+                        //             row = row + "<td>" + cell + "</td>";
+                        //         } else {
+                        //             row = row + "<td style='display:none;'>" + cell + "</td>";
+                        //         }
+                        // }
                         row = row + "<td class='choseStatus' style='display:none;'>false</td>";
                         // append row to the table
                         el.ddTable.append("<tr>" + row + "</tr>");
@@ -570,7 +608,7 @@
                     el.ddTableCaption.show();
 
                 // hide first column (ID row)
-                el.ddTable.find('td:nth-child(1)').hide();
+                // el.ddTable.find('td:nth-child(1)').hide();
                 el.ddTable.find("tbody").find("tr:first").addClass('selected').find("td.choseStatus").text('true');
                 showDropDown();
             } catch (e) {
