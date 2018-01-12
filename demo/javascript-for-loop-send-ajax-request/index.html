@@ -16,27 +16,59 @@
     </div>
 
     <script>
-        var topicIds = ['5a54a8a4afa0a121784a8ab0', 
-                        '5a2403226190c8912ebaceeb',
-                        '5a37c17dd92f2f5b185acfc4',
-                        '5a571ba39d371d4a059eea07', 
-                        '5a4db120ebc575dc49b27108'
+        var topicIds = ['5a54a8a4afa0a121784a8ab0',
+            '5a2403226190c8912ebaceeb',
+            '5a37c17dd92f2f5b185acfc4',
+            '5a571ba39d371d4a059eea07',
+            '5a4db120ebc575dc49b27108'
         ];
-
-        // topicIds.forEach(function (id,index,topicIds) {
-        //     console.log(id);
-        //     $.get('https://cnodejs.org/api/v1/topic/' + id, function (result) {
-        //         console.log(id+'--'+index);
-        //         console.log(result);
-        //     })
-        // })
         
-        for(var id of topicIds){
+        /*
+        * 使用forEach
+        */
+        topicIds.forEach(function (id,index,topicIds) {
+            console.log(id);
+            $.get('https://cnodejs.org/api/v1/topic/' + id, function (result) {
+                console.log(id+'--'+index);
+                console.log(result);
+            })
+        })
+
+        for (var id of topicIds) {
             $.get('https://cnodejs.org/api/v1/topic/' + id, function (result) {
                 console.log(id);
                 console.log(result);
             })
         }
+        
+        /*
+        * 立即执行函数
+        */
+        for (var id of topicIds) {
+            (function (id) {
+                $.get('https://cnodejs.org/api/v1/topic/' + id, function (result) {
+                    console.log(id);
+                    console.log(result);
+                })
+            }(id));
+        }
+
+        /*
+        * 递归
+        */
+        function getTopicById(index, ids) {
+            if (index < ids.length) {
+                var id = ids[index];
+                $.get('https://cnodejs.org/api/v1/topic/' + id, function (result) {
+                    console.log(id);
+                    console.log(result);
+                    if (index < ids.length) {
+                        getTopicById(index + 1, ids);
+                    }
+                })
+            }
+        }
+        getTopicById(0,topicIds);
     </script>
 </body>
 
