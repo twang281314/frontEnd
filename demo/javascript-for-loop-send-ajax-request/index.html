@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript-for-loop-send-ajax-request</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div id="result">
+
+    </div>
+
+    <script>
+        var topicIds = ['5a54a8a4afa0a121784a8ab0', 
+                        '5a2403226190c8912ebaceeb',
+                        '5a37c17dd92f2f5b185acfc4',
+                        '5a571ba39d371d4a059eea07', 
+                        '5a4db120ebc575dc49b27108'
+        ];
+
+        // topicIds.forEach(function (id,index,topicIds) {
+        //     console.log(id);
+        //     $.get('https://cnodejs.org/api/v1/topic/' + id, function (result) {
+        //         console.log(id+'--'+index);
+        //         console.log(result);
+        //     })
+        // })
+        
+        for(var id of topicIds){
+            $.get('https://cnodejs.org/api/v1/topic/' + id, function (result) {
+                console.log(id);
+                console.log(result);
+            })
+        }
+    </script>
+</body>
+
+</html>
