@@ -22,14 +22,14 @@
             '5a571ba39d371d4a059eea07',
             '5a4db120ebc575dc49b27108'
         ];
-        
+
         /*
-        * 使用forEach
-        */
-        topicIds.forEach(function (id,index,topicIds) {
+         * 使用forEach
+         */
+        topicIds.forEach(function (id, index, topicIds) {
             console.log(id);
             $.get('https://cnodejs.org/api/v1/topic/' + id, function (result) {
-                console.log(id+'--'+index);
+                console.log(id + '--' + index);
                 console.log(result);
             })
         })
@@ -40,10 +40,10 @@
                 console.log(result);
             })
         }
-        
+
         /*
-        * 立即执行函数
-        */
+         * 立即执行函数
+         */
         for (var id of topicIds) {
             (function (id) {
                 $.get('https://cnodejs.org/api/v1/topic/' + id, function (result) {
@@ -54,8 +54,8 @@
         }
 
         /*
-        * 递归
-        */
+         * 递归
+         */
         function getTopicById(index, ids) {
             if (index < ids.length) {
                 var id = ids[index];
@@ -68,7 +68,67 @@
                 })
             }
         }
-        getTopicById(0,topicIds);
+        getTopicById(0, topicIds);
+
+
+        /*
+         * deferred
+         */
+        function getTopicByIdDefered(id) {
+            var dtd = $.Deferred(); // 新建一个deferred对象
+            $.get('https://cnodejs.org/api/v1/topic/' + id, function (result) {
+                dtd.resolve({
+                    id: id,
+                    result: result
+                });
+            });
+            return dtd.promise();
+        }
+        var getTopicByIdDeferedRequest = [];
+
+        for (var id of topicIds) {
+            getTopicByIdDeferedRequest.push(getTopicByIdDefered(id));
+        }
+
+
+        $.when(...getTopicByIdDeferedRequest).then(function (...result) {
+            console.log(result);
+        });
+
+        Promise.all(getTopicByIdDeferedRequest).then(function (result) {
+            console.log(result);
+        });
+
+        $.when.apply($, getTopicByIdDeferedRequest).then(function () {
+            var objects = arguments; // The array of resolved objects as a pseudo-array
+            console.log(arguments);
+        });
+
+
+        /*
+         * promise
+         */
+        function getTopicByIdPromise(id) {
+            return new Promise(function (resolve, reject) {
+                $.get('https://cnodejs.org/api/v1/topic/' + id, function (result) {
+
+                    resolve({
+                        id: id,
+                        result: result
+                    });
+                })
+            })
+        }
+
+        var getTopicByIdPromiseArray=[];
+
+        for (var id of topicIds) {
+            getTopicByIdPromiseArray.push(getTopicByIdPromise(id));
+        }
+
+        Promise.all(getTopicByIdPromiseArray).then(function(result){
+              console.log(result);
+        });
     </script>
 </body>
 
