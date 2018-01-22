@@ -1,28 +1,11 @@
 JavaScript 资源汇总
 ========
-	
-	begin at 2014.06 持续更新
     
-
-## 学习资料  
+## 精彩文章
 
 **A re-introduction to JavaScript***  
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript  
 Why a re-introduction? Because JavaScript is notorious for being the world's most misunderstood programming language. While often derided as a toy, beneath its deceptive simplicity lie some powerful language features, one that is now used by an incredible number of high-profile applications, showing that deeper knowledge of this technology is an important skill for any web or mobile developer.
-
-**Maze Generation: Algorithm Recap**  
-http://weblog.jamisbuck.org/2011/2/7/maze-generation-algorithm-recap  
-When React 0.13 came out, everybody freaked out.
-The introductory post made it clear that mixins are on their way out.
-
-
-### React 
-
-**Mixins Are Dead. Long Live Composition**  
-https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750  
-
-
-## 精彩文章
 
 **The [real] problem with JavaScript**  
 https://medium.com/unhandled-exception/the-real-problem-with-javascript-6b78cad97b6e  
@@ -47,18 +30,10 @@ Simple beats clever every day of the week.
 http://robotlolita.me/2015/11/15/how-do-promises-work.html  
 In this blog post we’ll look at what promises are, how they work, and why you should or shouldn’t use them.  
 
-**Concurrently JavaScript**  
-http://blog.getify.com/concurrently-javascript-1/  
-What is concurrency? How is it different from parallelism? JavaScript is single-threaded on the event loop, so how does its asynchrony fit into the mix?
-
-**Top JavaScript Frameworks, Libraries and Tools and When to Use Them**  
-http://www.sitepoint.com/top-javascript-frameworks-libraries-tools-use/  
-This article is part of a web development series from Microsoft. It seems like almost every other week there is a new JavaScript library taking the web community by storm! The web community is increasingly vibrant, diverse and is moving rapidly on multiple fronts. It would be an impossible feat to survey every major JavaScript framework and library. Instead,I will share some of the most famous and influential ones for front-end development. 
-
 ## JS 语言进化
 
 - [JSX](http://jsx.github.io/) JSX is a statically-typed, object-oriented programming language designed to run on modern web browsers.
-- [TypeScript](http://www.typescriptlang.org/) 编译比较慢，并未深度改造  
+- [TypeScript](http://www.typescriptlang.org/) 
 - [CoffeeScript](http://coffeescript.org) 增强了JavaScript的简洁性与可读性，但对 js 改造太大，并不适合在大团队使用  
 - [ELM](http://elm-lang.org/) the best of functional programming in your browser  
 
@@ -70,9 +45,13 @@ This article is part of a web development series from Microsoft. It seems like a
 - [cycle.js](http://cycle.js.org/) A functional and reactive JavaScript framework for cleaner code
 - [vuejs](http://vuejs.org/) Vue.js is a library for building interactive web interfaces.  
 It provides data-driven components with a simple and flexible API.
-- [wayjs](https://github.com/gwendall/way.js) Simple, lightweight, persistent two-way databinding  
+- [wayjs](https://github.com/gwendall/way.js)  Simple, lightweight, persistent, framework-agnostic two-way databinding Javascript library (with no to little JS code to write).    
 - <http://t3js.org/>  
+- https://github.com/hyperapp/hyperapp  
 
+**Strudel.js**  
+http://strudeljs.org/  
+Strudel (/ˈstruːd(ə)l/) is a lightweight component framework. Declarative API is introduced thanks to Angular-style decorators. Main target for Strudel are interactive websites, not especially web applications, as there are plenty frameworks that solves apps problems nicely (React, Angular, Vue). On the other hand Strudel biggest goal is to provide great way of writing interactive bits on pages like tabs, accordions and carousels in server-side rendered websites. It’s time to get rid of jQuery and start writing modern and lightweight code.
 
 ## jquery edit in place plugin
 
@@ -124,10 +103,8 @@ pc :
 
 ## lib 
 
-- [](http://vanilla-js.com/)  Vanilla JS is a fast, lightweight, cross-platform framework
+- [Vanilla JS](http://vanilla-js.com/)  Vanilla JS is a fast, lightweight, cross-platform framework
 for building incredible, powerful JavaScript applications.
-- [way.js](https://github.com/gwendall/way.js) : Simple, lightweight, persistent, framework-agnostic two-way databinding Javascript library (with no to little JS code to write).  
-- [vuejs](http://vuejs.org/)  
 - [Parsing URLs in JavaScript](http://www.abeautifulsite.net/parsing-urls-in-javascript/)  
 - [URI.js](https://github.com/medialize/URI.js)  
 - [MetricsGraphics.js](http://metricsgraphicsjs.org/)  
@@ -172,6 +149,14 @@ http://webix.com/
 Webix provides a great number of JavaScript UI widgets with a pefect look and feel great on various devices. All of them can be effortlessly customized in accordance with your preferences thanks to the rich and clear API.
 
 ## Editor
+
+**ProseMirror 1.0**  
+http://marijnhaverbeke.nl/blog/prosemirror-1.html  
+ProseMirror is a Web interface component, and though some of the challenges it tackles are specific to the strengths and (especially) weaknesses of the Web platform, don't think of it as another TinyMCE alternative. Rather, it is a more general take on rich text editing that happens to be implemented in JavaScript for the browser.
+
+**Slate.js**  
+https://github.com/ianstormtaylor/slate  
+Slate lets you build rich, intuitive editors like those in Medium, Dropbox Paper or Canvas—which are becoming table stakes for applications on the web—without your codebase getting mired in complexity. It can do this because all of its logic is implemented with a series of plugins, so you aren't ever constrained by what is or isn't in "core". You can think of it like a pluggable implementation of contenteditable built on top of React and Immutable. It was inspired by libraries like Draft.js, Prosemirror and Quill.
 
 **bootstrap-wysihtml5**  
 http://jhollingworth.github.io/bootstrap-wysihtml5/  

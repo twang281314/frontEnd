@@ -10,6 +10,7 @@ Software Architecture Design，是一个很大的话题，也是每位工程师�
 - [The Architecture of Open Source Applications](http://www.aosabook.org/en/index.html)  
 - [MSDN-Software Architecture and Design](https://msdn.microsoft.com/en-us/library/ee658093.aspx)  
 - [Design pattern samples in Java](http://java-design-patterns.com/)  
+- [林仕鼎-系统架构领域的一些学习材料](http://www.52cs.org/?p=114)
 
 个人感觉还是从：数据+算法、Input -> Processor -> Output 的维度去思考系统更简洁。内容会持续补充...
 
@@ -150,7 +151,7 @@ CQRS 由  Greg Young 提出，见文档 [CQRS Documents by Greg Young](https://c
 - [CQRS is too complicated](http://codeofrob.com/entries/cqrs-is-too-complicated.html)  
 - [浅谈命令查询职责分离(CQRS)模式](http://www.cnblogs.com/yangecnu/p/Introduction-CQRS.html)  
 - [Clarified CQRS](http://udidahan.com/2009/12/09/clarified-cqrs/) [译文](http://liuzhaodong89.iteye.com/blog/1930310)  
-
+- [Event Sourcing](http://www.martinfowler.com/eaaDev/EventSourcing.html) Capture all changes to an application state as a sequence of events.
 
 ### DCI  
 
@@ -248,7 +249,18 @@ We can query an application's state to find out the current state of the world, 
 
 **The Elm Architecture**  
 https://github.com/evancz/elm-architecture-tutorial  
-  
+
+### 其它架构
+
+**Kappa Architecture - Where Every Thing Is A Stream**  
+http://milinda.pathirage.org/kappa-architecture.com/  
+Kappa Architecture is a software architecture pattern. Rather than using a relational DB like SQL or a key-value store like Cassandra, the canonical data store in a Kappa Architecture system is an append-only immutable log. From the log, data is streamed through a computational system and fed into auxiliary stores for serving.
+
+**TLA**  
+http://lamport.azurewebsites.net/tla/tla.html  
+https://learntla.com/introduction/  
+https://www.hillelwayne.com/post/uncle-bob/  
+TLA stands for the Temporal Logic of Actions, but it has become a shorthand for referring to the TLA+ specification language and the PlusCal algorithm language, together with their associated tools. TLA+ is based on the idea that the best way to describe things formally is with simple mathematics, and that a specification language should contain as little as possible beyond what is needed to write simple mathematics precisely. TLA+ is especially well suited for writing high-level specifications of concurrent and distributed systems.
 
 ### Ext 
 

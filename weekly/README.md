@@ -8,6 +8,7 @@ weekly
 
 ## Weekly 汇总
 
+- 2017年 weekly 汇总： <https://github.com/zenany/weekly/tree/master/software/2017>  
 - 2016年 weekly 汇总： <https://github.com/zenany/weekly/tree/master/software/2016>  
 - 2015年 weekly 汇总： <https://github.com/zenany/weekly/tree/master/software/2015>  
 - 2014年 weekly 汇总： <https://github.com/zenany/weekly/tree/master/software/2014>  
@@ -25,6 +26,11 @@ weekly
 [HTML5 Weekly](http://html5weekly.com/)  HTML5 and Web Platform technology roundup.CSS 3, Canvas, WebSockets, WebGL, Native Client...  
 [Node Weekly](http://nodeweekly.com/)  Node.js news and articles  
 [DB Weekly](http://dbweekly.com/)  news and articles covering new developments, SQL, NoSQL, document databases, graph databases, and more.  
+
+## My Articles  
+
+- [关于时间和知识管理](https://github.com/zenany/zenany.github.io/blob/master/_posts/about_time_and_knowledge_management.md)  
+- [[WIP]Web 前端研发旅行指南](https://github.com/zenany/zenany.github.io/blob/master/_posts/about_frontend.md)  
 
 ## 个人推荐
 

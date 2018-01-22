@@ -1,6 +1,62 @@
 优秀文章汇总  
 ========  
 
+**Introducing FlyWeb**  
+https://flyweb.github.io/posts/2016/11/01/introducing-flyweb.html  
+For the past several months, a small team at Mozilla has been working on an experimental new Web API and an accompanying browser feature called FlyWeb. What does it do? In short, FlyWeb provides an API for web pages to host local web servers for exposing content and services to nearby browsers. It also adds the ability to discover and connect to nearby local web servers to the web browser itself. This feature allows users to find and connect to nearby devices with embedded web servers such as printers, thermostats and televisions as well as local web servers hosted in web pages via the FlyWeb API.
+
+**What is Blockchain Technology? A Step-by-Step Guide For Beginners**  
+http://blockgeeks.com/guides/what-is-blockchain-technology-a-step-by-step-guide-than-anyone-can-understand/  
+
+**Coding is not the new literacy**  
+http://www.chris-granger.com/2015/01/26/coding-is-not-the-new-literacy/  
+Despite the good intentions behind the movement to get people to code, both the basic premise and approach are flawed. The movement sits on the idea that "coding is the new literacy," but that takes a narrow view of what literacy really is.
+
+**Stateful and stateless components, the missing manual**  
+https://toddmotto.com/stateful-stateless-components  
+The goals of this article are to define what stateful and stateless components are, otherwise known as smart and dumb - or container and presentational components. For the purposes of the article, we’ll be using Angular 2 Components to explain the stateful/stateless concepts. Bear in mind these concepts are not at all limited to Angular, and live in other libs/frameworks such as React.
+
+**React.js Introduction For People Who Know Just Enough jQuery To Get By**  
+http://reactfordesigners.com/labs/reactjs-introduction-for-people-who-know-just-enough-jquery-to-get-by/  
+I also heard React.js was good and recently spent some time playing with it. Now that I’m pretty comfortable with React, I decided to write a tutorial on this subject.
+
+**shadow DOM v1: self-contained web components**  
+https://developers.google.com/web/fundamentals/primers/shadowdom/  
+Shadow DOM fixes CSS and DOM. It introduces scoped styles to the web platform. Without tools or naming conventions, you can bundle CSS with markup, hide implementation details, and author self-contained components in vanilla JavaScript.
+
+**The Standard Library of the Internet**  
+https://stdlib.com/  
+Our vision is simple — we believe every developer should be able to interface with the cloud as if it were an extension of their personal computer. Write backend code, push to stdlib as a microservice and have your logic available everywhere. No servers, no hassle. 
+
+**Microsoft REST API Guidelines**
+https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md
+The Microsoft REST API Guidelines, as a design principle, encourages application developers to have resources accessible to them via a RESTful HTTP interface. To provide the smoothest possible experience for developers on platforms following the Microsoft REST API Guidelines, REST APIs SHOULD follow consistent design guidelines to make using them easy and intuitive.
+
+**Create Apps with No Configuration**  
+https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html  
+https://github.com/facebookincubator/create-react-app  
+Create React App is a new officially supported way to create single-page React applications. It offers a modern build setup with no configuration. 来自 React 官方的开发者配套开发工具，挺值得研究的。
+
+**Monaco Editor**  
+https://microsoft.github.io/monaco-editor/index.html  
+VS Code 中所使用的文本编辑器，功能很强大
+
+**Why Google Stores Billions of Lines of Code in a Single Repository**  
+http://m.cacm.acm.org/magazines/2016/7/204032-why-google-stores-billions-of-lines-of-code-in-a-single-repository/fulltext  
+https://www.youtube.com/watch?v=W71BTkUbdqE  
+This article outlines the scale of that codebase and details Google's custom-built monolithic source repository and the reasons the model was chosen. Google uses a homegrown version-control system to host one large codebase visible to, and used by, most of the software developers in the company. This centralized system is the foundation of many of Google's developer workflows. Here, we provide background on the systems and workflows that make feasible managing and working productively with such a large repository. We explain Google's "trunk-based development" strategy and the support systems that structure workflow and keep Google's codebase healthy, including software for static analysis, code cleanup, and streamlined code review. 
+
+**High Performance Browser Networking**  
+https://hpbn.co/  
+Performance is a feature. This book provides a hands-on overview of what every web developer needs to know about the various types of networks (WiFi, 3G/4G), transport protocols (UDP, TCP, and TLS), application protocols (HTTP/1.1, HTTP/2), and APIs available in the browser (XHR, WebSocket, WebRTC, and more) to deliver the best—fast, reliable, and resilient—user experience.  
+
+**写给想成为前端工程师的同学们 - by 月影**  
+https://www.h5jun.com/post/to-be-a-good-frontend-engineer.html   如果我们不去了解技术的本质而止步于应用，那么我们就只是技术宗教的信徒。热爱前端，用心学习，别让自己成为“前端教”的教众。在选择前端作为职业之前，要明确判断自己对前端开发的确感兴趣，选择做前端，应该是确认自己喜欢和适合做前端，而不是为了一份看起来体面而且薪水不菲的工作。如果你对构建丰富多彩的界面、处理各种交互逻辑不感兴趣，甚至厌烦，那么最明智的选择是放弃成为前端工程师的想法 —— 因为选择一个自己不喜欢的职业，为之忍受数十年直到退休，实在是一件很悲催的事情。
+
+**资深程序员都了解的代码复用法则**  
+http://mp.weixin.qq.com/s?__biz=MzAwMDU1MTE1OQ==&mid=2653547118&idx=1&sn=733737f71a751feea5c2d2ca5ea3adbe  
+编写代码最重要一条，是怎样复用其他程序员的代码和思路来解决问题。通过修改他人的代码来解决复杂问题是种错误的做法，不仅成功的机率很低，就算成功也不会提供什么经验。按照这种方式进行编程，无法成长为一名真正的程序员，在软件开发领域，前景也是非常有限。
+
 **架构的本质是管理复杂性**  
 http://www.open-open.com/lib/view/open1460209702222.html  
 文中提到的 BFF - Backend for frontends 非常值得关注，相关资料：  
