@@ -1,0 +1,154 @@
+.countdownHolder{
+	font: 23px/0.8 'Open Sans', sans-serif;
+	padding-top:0em;
+	height: 89px;
+}
+.position{
+	display: inline-block;
+	height: 1em;
+	overflow: hidden;
+	position: relative;
+	width: 32px;
+	font-weight: 500;
+	font-size: 0.85em;
+	margin-top: 25px;
+}
+.digit{
+	color: #fff;
+	letter-spacing: -6px;
+	left: 3px;
+	bottom: 0;
+	position:absolute;
+	  font-weight: bold;
+}
+.countDays{ /* display:none !important;*/ }
+.countDiv0{ /* display:none !important;*/ }
+.countHours{}
+.countDiv1{}
+.countMinutes{}
+.countDiv2{}
+.countSeconds{}
+.countDiv{
+	display:inline-block;
+	width:16px;
+	height:1.6em;
+	position:relative;
+}
+.countDiv:after{
+	top:0.9em;
+}
+/*--responsive design--*/
+@media (max-width: 1366px){
+}
+
+@media (max-width:1280px){
+	.position {
+	width:30px;
+	font-size:50px;
+}
+}
+
+@media (max-width:1024px){
+	.position {
+	margin-top:22px;
+}
+	.boxName {
+}
+	.countdownHolder {
+	padding-top:0.5em;
+}
+}
+
+@media (max-width:800px){
+	.position {
+	margin-top: 19px;
+}
+}
+
+@media (max-width: 768px){
+	.position {
+	width: 25px;
+	font-size: 40px;
+}
+	.boxName {
+	font-size: 12px;
+	padding: 6px 0;
+}
+	.countdownHolder {
+	padding-top: 0;
+}
+}
+
+@media (max-width:640px){
+	.position {
+	width: 27px;
+}
+}
+
+@media (max-width:480px){
+.countDays{ /* display:none !important;*/ }
+.countDiv0{ /* display:none !important;*/ }
+.countHours{}
+.countDiv1{}
+.countMinutes{}
+.countDiv2{}
+.countSeconds{}
+.countDiv{
+	width:5px !important;
+}
+	.countdownHolder {
+	padding-top:0.2em;
+}
+	.position {
+	width: 22px;
+	font-size: 35px;
+}
+	.timer_wrap {
+	width: 100%;
+}
+	.countDays, .countHours, .countMinutes, .countSeconds {
+	width: 90px;
+	height: 90px;
+	margin-left: 0px;
+}
+}
+
+@media (max-width: 414px){
+	.countDays, .countHours, .countMinutes, .countSeconds {
+	width:74px;
+}
+}
+
+@media (max-width: 384px){
+	.countDays, .countHours, .countMinutes, .countSeconds {
+    width: 65px;
+}
+}
+
+@media (max-width: 320px){
+	.countDays, .countHours, .countMinutes, .countSeconds {
+	width: 56px;
+	height: 67px;
+}
+	.countDiv {
+	height: 0;
+}
+	#counter {
+	padding-top: 0;
+	height: 85px;
+}
+    .digit {
+	left: 0;
+ }
+	.position {
+	width: 15px;
+	font-size: 25px;
+	margin-top: 0;
+	height: 35px;
+}
+	.boxName {
+	font-size: 11px;
+	padding: 0px 0;
+	}
+}
+/*--/responsive design--*/

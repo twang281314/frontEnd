@@ -1,0 +1,392 @@
+/*--- reset code ---*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+	margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	font:inherit;
+	vertical-align:baseline;
+}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ol,ul {
+	list-style:none;
+	margin:0px;
+	padding:0px;
+}
+blockquote,q {
+	quotes:none;
+}
+blockquote:before,blockquote:after,q:before,q:after {
+	content:'';
+	content:none;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+
+/* start editing from here */
+a {
+	text-decoration:none;
+}
+.txt-rt {
+	text-align:right;
+}/* text align right */
+.txt-lt {
+	text-align:left;
+}/* text align left */
+.txt-center {
+	text-align:center;
+}/* text align center */
+.float-rt {
+	float:right;
+}/* float right */
+.float-lt {
+	float:left;
+}/* float left */
+.clear {
+	clear:both;
+}/* clear float */
+.pos-relative {
+	position:relative;
+}/* Position Relative */
+.pos-absolute {
+	position:absolute;
+}/* Position Absolute */
+.vertical-base {	
+	vertical-align:baseline;
+}/* vertical align baseline */
+.vertical-top {	
+	vertical-align:top;
+}/* vertical align top */
+nav.vertical ul li {	
+	display:block;
+}/* vertical menu */
+nav.horizontal ul li {	
+	display: inline-block;
+}/* horizontal menu */
+img {
+	max-width:100%;
+}
+
+/*--- end reset code ---*/
+
+body {
+	margin:0;
+	padding:0;
+	background:url(../images/blurred.jpg) no-repeat;
+	font-family: 'Tahoma', sans-serif;
+	background-size:100% 100%;
+	background-attachment: fixed;
+    background-position: center;
+}
+.header {
+	text-align:center;
+	margin:2% auto;
+}
+.header h1 {
+	font-family: 'Montserrat', sans-serif;
+	color:#fff;
+	font-size:40px;
+	font-weight:900;
+	text-transform:uppercase;
+}
+.content {
+	background-color:transparent;
+	height:610px;
+	padding:30px;
+	margin:-3% auto;
+	width:45%;
+	font-family: 'Montserrat', sans-serif;
+}
+.content1 {
+	padding:15px;
+	margin:2% auto;
+}
+.content1 img{
+	display:block;
+	margin:auto;
+}
+.content2 {
+	margin:0 auto;
+	text-align:center;
+	color:#fff;
+}
+
+/* ---------- TIMER ---------- */
+.timer_wrap{
+	width:100%;
+	margin: 0 auto;
+}
+.copyrights{
+	text-indent:-9999px;
+	height:0;
+	line-height:0;
+	font-size:0;
+	overflow:hidden;
+}
+#counter {
+	height:160px;
+	font-size:60px;
+	color: #FFF;
+	overflow: hidden;
+}
+.timer{
+	border-top:2px ridge #5F5F5F;
+	border-bottom:2px ridge #5F5F5F;
+}
+.timer h4{
+	font-size: 14px;
+	color: #E5E5E5;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: lighter;
+	letter-spacing: 1px;
+	margin-top: 20px;
+}
+.countDays, .countHours, .countMinutes, .countSeconds {
+	display: inline-block;
+	width: 106px;
+	height: 106px;
+	background: #27b1ed;
+	margin-left: 10px;
+	border-radius:5px;
+}
+.points {
+	float: left;
+	width:40px;
+	margin: 0;
+	font-size: 44px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 138px;
+	text-shadow: none;
+	color:#FFF;
+    display: none;
+}
+.boxName {
+	float: left;
+	width: 100%;
+	font-size: 15px;
+	color: #000;
+	font-style: italic;
+	font-weight: 600;
+	padding: 2px;
+}
+/* ---------- /TIMER ---------- */
+.content3 {
+	text-align:center;
+	margin:2% auto;
+}
+.content3 p {
+	color:#048698;
+	font-size:20px;
+	font-weight:600;
+}
+input.email {
+	width: 65%;
+	padding: 15px;
+	color: #999;
+	font-size: 17px;
+	outline: none;
+	background: #fff; 
+	border: none;
+	margin:3% auto;
+	border-radius:4px;
+}
+input[type="submit"] {
+	border: none;
+	outline: none;
+	padding: 16px 20px;
+	cursor: pointer;
+	color:#fff;
+	background: #27b1ed; 
+	font-size:16px;
+	margin-left:1%;
+    border-radius: 4px;
+}
+input[type="submit"]:hover {
+	background:#09204E;  
+	transition:all 0.5s ease-in-out;
+} 
+.footer a, a:active {
+	color:#336A6D;
+	text-decoration:none;
+	font-family: 'Tahoma', sans-serif;
+}
+.footer a:hover {
+	color:#00c4ff;
+	text-decoration:none;
+	transition:all 0.5s ease-in-out;
+}
+.footer {
+	margin-top:4%;
+	text-align:center;
+}
+.footer p {
+	color:#336A6D;
+	font-size:16px;
+	font-family: 'Tahoma', sans-serif;
+	line-height:25px;
+}
+
+/*---- responsive-design -----*/
+@media(max-width:1080px){
+	.content{
+	width:55%;
+}
+}
+
+@media (max-width: 1024px){
+	.content {
+    width: 60%;
+}
+	.footer {
+	margin-top:7%;
+}
+}
+
+@media (max-width: 991px){
+	.content1 {
+    margin: 0 auto;
+}
+}
+
+@media (max-width: 800px){
+	.header h1 {
+	font-size:35px;
+}
+	.content {
+    width: 65%;
+}
+}
+
+@media (max-width: 768px){
+	.header h1 {
+    font-size: 33px;
+}
+	.content {
+    width: 70%;
+}
+	.content3 {
+    margin: 5% auto;
+}
+}
+
+@media (max-width: 736px){
+	.header {
+    margin: 3% auto;
+}
+	.content {
+    width: 75%;
+}
+}
+
+@media (max-width: 667px){
+	.header h1 {
+    font-size: 29px;
+}
+	.content {
+    width: 80%;
+}
+}
+
+@media (max-width: 600px){
+	.header h1 {
+    font-size: 26px;
+}
+	.countDays, .countHours, .countMinutes, .countSeconds {
+	width:90px;
+}
+	input.email {
+	margin: 3% auto 0 -3%;
+}
+	input[type="submit"]{
+	margin: 0 -3% 0 1%;
+}
+	.footer {
+    margin-top: 3%;
+}
+	.footer p {
+    font-size: 14px;
+}
+}
+
+@media (max-width: 568px){
+	.header h1 {
+    font-size: 25px;
+}
+	.countDays, .countHours, .countMinutes, .countSeconds {
+	width:85px;
+}
+	input.email {
+	margin: 3% auto 0 -4%;
+}
+	input[type="submit"] {
+	margin: 0 -3% 0 0;
+}
+}
+
+@media (max-width: 480px){
+	input.email {
+    margin: 3% auto 0 -6%;
+}
+	input[type="submit"] {
+    margin: 0 -7% 0 0;
+}
+}
+
+@media (max-width: 414px){
+	input.email {
+    margin: 3% 0 0 -16%;
+}
+	input[type="submit"] {
+    margin: 0 -16% 0 0;
+}
+}
+
+@media (max-width: 384px){
+	.content2 {
+    margin: -9% auto;
+}
+	.content3 {
+    margin: 14% auto;
+}
+	.content3 p {
+	font-size: 18px;
+}
+	.footer {
+    margin-top: -19%;
+}
+	.footer p {
+    font-size: 15px;
+}
+}
+
+@media (max-width:320px){
+	.header h1 {
+    font-size: 22px;
+}
+	.content {
+	margin:-11% auto;
+}
+	.content2 {
+    margin: 3% auto;
+}
+	.content3 p {
+    font-size: 16px;
+    width: 103%;
+}
+	input.email {
+	width: 90%;
+    margin: 3% 0 0 -2%;
+}
+	input[type="submit"] {
+    margin: 4% auto;
+}
+	.footer {
+    margin-top: -33%;
+}
+}
