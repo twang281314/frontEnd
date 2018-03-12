@@ -30,8 +30,8 @@ http://192.168.6.146:8090/pages/viewpage.action?pageId=5833403
 
 ## 打印模板主表
 
-|字段|描述|数据类型|备注
-|----|----|----|
+|字段|描述|数据类型|备注|
+|----|----|----|----|
 |templateId|模板主键|double|模板主键|
 |templateName|模板名称|string|模板名称|
 |stockId|仓库ID|int|关联仓库|
