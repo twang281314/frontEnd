@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>example</title>
+  <script src="./unique.js" charset="utf-8"></script>
+</head>
+<body>
+
+</body>
+<script>
+var arr1 = [ 1, 2, 1, 2, '1', '11'].unique();
+var arr2 = [3, 3, 1, 2, 3, '3', 'abc'].unique()
+console.log(arr1);
+// [1, 2, "1", "11"]
+console.log(arr2);
+// [3, 1, 2, "3", "abc"]
+</script>
+</html>
