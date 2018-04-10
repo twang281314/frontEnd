@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>中间自适应两边定宽</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin:0;
+      padding: 0;
+    }
+
+    .main {
+      background-color: beige;
+      width: 100%;
+      height: 100%;
+    }
+
+    .left{
+      background-color: red;
+      width:200px;
+      height: 100%;
+      float:left;
+    }
+
+    .center{
+      background-color: coral;
+      height: 100%;
+      margin:0 200px;
+    }
+
+    .right{
+      background-color: chartreuse;
+      width:200px;
+      height: 100%;
+      float:right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="main">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="center"></div>
+  </div>
+</body>
+<script>
+   //使用自身浮动法
+   //自身浮动法的原理就是使用对左右使用分别使用float:left和float:right，
+   //float使左右两个元素脱离文档流，中间元素正常在正常文档流中，使用margin指定左右外边距对其进行一个定位
+
+   //该布局法的好处是受外界影响小，但是不足是 三个元素的顺序，center一定要放在最后，
+   //这是和绝对定位不一样的地方，center占据文档流位置，所以一定要放在最后，左右两个元素位置没有关系。当浏览器窗口很小的时候，右边元素会被击倒下一行。
+</script>
+</html>

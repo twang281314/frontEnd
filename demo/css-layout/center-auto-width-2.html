@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>中间自适应两边定宽</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin:0;
+      padding: 0;
+    }
+
+    .main {
+      background-color: beige;
+      width: 100%;
+      height: 100%;
+    }
+
+    .left{
+      background-color: red;
+      width:200px;
+      height: 100%;
+      position: absolute;
+      left:0;
+    }
+
+    .center{
+      background-color: coral;
+      height: 100%;
+      margin:0 200px;
+    }
+
+    .right{
+      background-color: chartreuse;
+      width:200px;
+      height: 100%;
+      position: absolute;
+      right:0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="main">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="center"></div>
+  </div>
+</body>
+<script>
+   //使用绝对定位法
+   //绝对定位法原理是将左右两边使用absolute定位，因为绝对定位使其脱离文档流，
+   //后面的center会自然流动到他们上面，然后使用margin属性，留出左右元素的宽度，既可以使中间元素自适应屏幕宽度
+
+   //该法布局的好处，三个div顺序可以任意改变。不足是 因为绝对定位，所以如果页面上还有其他内容，
+   //top的值需要小心处理，最好能够对css样式进行一个初始化，就像在上面例子中加了一个标题，
+   //如果不对样式进行初始化，则两边和中间的值会对不齐。 另外，随着浏览器窗口缩小，小于200px的时候，会发生压缩。
+</script>
+</html>
