@@ -7,7 +7,7 @@ var t = new Tokens;
 var login = new Login;
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render("wap/index")
+    res.render("index")
 });
 router.post('/upLoadImg',function(req,res,next){
     let imgData = req.body.imgData;
