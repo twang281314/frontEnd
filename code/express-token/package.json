@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "captchapng": "^0.0.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "jsonwebtoken": "^8.2.1",
+    "morgan": "^1.9.0",
+    "serve-favicon": "^2.5.0"
+  }
+}
