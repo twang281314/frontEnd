@@ -16,7 +16,9 @@
 <body>
 
   <div id="app">
-      <menu-component  :model='model' v-for='model in data'></menu-component>
+      <ul v-for='model in data'>
+        <menu-component  :model='model' ></menu-component>
+      </ul>
   </div>
 
   <template id="menuComponent">
@@ -101,8 +103,8 @@
             components: {},
             data() {
                 return {
-                    open: false,
-                    isFolder: true
+                    open: false
+                    //isFolder: true
                 }
             },
             computed: {
