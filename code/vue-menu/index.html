@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue递归菜单</title>
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <style>
+    #app li{
+      list-style: none;
+    }
+  </style>
+  <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+</head>
+<body>
+
+  <div id="app">
+      <menu-component  :model='model' v-for='model in data'></menu-component>
+  </div>
+
+  <template id="menuComponent">
+      <li>
+          <div @click='toggle'>
+              <i v-if='isFolder' class="fa " :class="[open?'fa-folder-open':'fa-folder']"></i>
+              <!--isFolder判断是否存在子级改变图标-->
+              <i v-if='!isFolder' class="fa fa-file-text"></i> {{model.data.menuName}}
+          </div>
+          <ul v-show="open" v-if='isFolder'>
+              <menu-component  v-for='cel in model.childTreeNode' :model='cel'></menu-component >
+          </ul>
+      </li>
+  </template>
+  <script>
+     var menuData = [{
+                "id": "1",
+                "data": {
+                    "menuName": "项目管理",
+                    "menuCode": "",
+                },
+                "childTreeNode": [{
+                    "data": {
+                        "menuName": "项目",
+                        "menuCode": "BusProject",
+                    },
+                    "childTreeNode": [
+                    ]
+                }, {
+                    "data": {
+                        "menuName": "我的任务",
+                        "menuCode": "BusProject",
+                    },
+                    "childTreeNode": [
+                      {
+                        "data":{
+                           "menuName":"我的任务1",
+                           "menuCode": "BusProject",
+                        }
+                      },
+                      {
+                        "data":{
+                           "menuName":"我的任务2",
+                           "menuCode": "BusProject",
+                        }
+                      }
+                    ]
+                }, {
+                    "data": {
+                        "menuName": "人员周报",
+                        "menuCode": "BusProject",
+                    },
+                    "childTreeNode": []
+                }]
+            }, {
+                "id": "2",
+                "data": {
+                    "menuName": "数据统计",
+                    "menuCode": "BusClock",
+                },
+                "childTreeNode": []
+            }, {
+                "id": "3",
+                "data": {
+                    "menuName": "人事管理",
+                    "menuCode": "",
+                },
+                "childTreeNode": []
+            }, {
+                "id": "4",
+                "data": {
+                    "menuName": "基础管理",
+                    "menuCode": "",
+                },
+                "childTreeNode": []
+        }];
+
+        Vue.component('menu-component',{
+            template: '#menuComponent',
+            name: 'menuComponent',
+            props: ['model'],
+            components: {},
+            data() {
+                return {
+                    open: false,
+                    isFolder: true
+                }
+            },
+            computed: {
+                isFolder: function() {
+                    return this.model.childTreeNode && this.model.childTreeNode.length
+                }
+            },
+            methods: {
+                toggle: function() {
+                    if(this.isFolder) {
+                        this.open = !this.open
+                    }
+                },
+            }
+        })
+
+        new Vue({
+            el: '#app',
+            data:{
+              data : menuData
+            }
+        })
+
+  </script>
+</body>
+</html>
