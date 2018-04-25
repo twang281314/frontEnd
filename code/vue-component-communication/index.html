@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="//unpkg.com/vue/dist/vue.js"></script>
+  <script src="//unpkg.com/iview/dist/iview.min.js"></script>
+  <style>
+  @import url("//unpkg.com/iview/dist/styles/iview.css");
+  #app{padding: 32px;}
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div>
+        <Row>
+        <i-input v-model="parentMsg" placeholder="default size"></i-input>
+        </Row>
+        <Row>
+            <i-button type="primary" @click="callChildMethod">调用子组件方法</i-button>
+        </Row>
+        <child ref="child" v-on:change-message="changeMessage" v-bind:my-message="parentMsg"></child>
+        <div>
+            <i-table border ref="selection" :columns="columns4" :data="data1"></i-table>
+            <i-button @click="handleSelectAll(true)">Set all selected</i-button>
+            <i-button @click="handleSelectAll(false)">Cancel all selected</i-button>
+        </div>
+    </div>
+  </div>
+  <script>
+    //vue组件之间的通信以及如何在父组件中调用子组件的方法和属性:https://www.cnblogs.com/heshan1992/p/6905452.html
+   var Main = {
+        data () {
+            return {
+                columns4: [
+                    {
+                        type: 'selection',
+                        width: 60,
+                        align: 'center'
+                    },
+                    {
+                        title: 'Name',
+                        key: 'name'
+                    },
+                    {
+                        title: 'Age',
+                        key: 'age'
+                    },
+                    {
+                        title: 'Address',
+                        key: 'address'
+                    }
+                ],
+                data1: [
+                    {
+                        name: 'John Brown',
+                        age: 18,
+                        address: 'New York No. 1 Lake Park',
+                        date: '2016-10-03'
+                    },
+                    {
+                        name: 'Jim Green',
+                        age: 24,
+                        address: 'London No. 1 Lake Park',
+                        date: '2016-10-01'
+                    },
+                    {
+                        name: 'Joe Black',
+                        age: 30,
+                        address: 'Sydney No. 1 Lake Park',
+                        date: '2016-10-02'
+                    },
+                    {
+                        name: 'Jon Snow',
+                        age: 26,
+                        address: 'Ottawa No. 2 Lake Park',
+                        date: '2016-10-04'
+                    }
+                ],
+                parentMsg:'wangtao'
+            }
+        },
+      
+        methods: {
+            handleSelectAll (status) {
+                this.$refs.selection.selectAll(status);
+            },
+            changeMessage(value){
+             console.log(value);
+            },
+            callChildMethod(){
+              this.$refs.child.show();//调用子组件中方法
+            }
+        }
+    }
+   Vue.component('child', {
+      name:'child',
+      props:['myMessage'],
+      template: '<span>{{ myMessage }}</span>',
+      updated(){
+          this.testChange();
+      },
+      methods:{
+        testChange(){
+          this.$emit('change-message',this.myMessage)
+        },
+        show(){
+          this.$Message.success('从父组件调用子组件方法成功');
+        }
+      }
+   })
+   var Component = Vue.extend(Main)
+ 
+   new Component().$mount('#app')
+  
+  </script>
+</body>
+
+</html>
