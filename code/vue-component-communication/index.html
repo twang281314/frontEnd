@@ -30,9 +30,15 @@
             <i-button @click="handleSelectAll(false)">Cancel all selected</i-button>
         </div>
     </div>
+    <div id="app2">
+        <display></display>
+        <increment></increment>
+    </div>
   </div>
   <script>
+    //Vue组件: https://cn.vuejs.org/v2/guide/components.html
     //vue组件之间的通信以及如何在父组件中调用子组件的方法和属性:https://www.cnblogs.com/heshan1992/p/6905452.html
+    //vue2.0组件通信各种情况总结与实例分析:https://www.cnblogs.com/frank26/p/6156378.html
    var Main = {
         data () {
             return {
@@ -116,6 +122,35 @@
    var Component = Vue.extend(Main)
  
    new Component().$mount('#app')
+
+    //使用一个空的 Vue 实例作为中央事件总线
+    var bus = new Vue();
+    Vue.component('increment', {
+        template: `<i-button type="primary" @click="add">+</i-button>`,
+        data: function () {
+            return {count: 0}
+        },
+        methods: {
+            add: function () {
+                bus.$emit('inc', this.count+=1)
+            }
+        }
+    });
+    Vue.component('display', {
+        template: `<span>Clicked: <mark>{{c}}</mark> times</span>`,
+        data: function () {
+            return {c: 0}
+        },
+        created: function () {
+            var self=this;
+            bus.$on('inc',  (num) =>
+                this.c = num
+            );
+        }
+    });
+    vm = new Vue({
+        el: "#app2",
+    })
   
   </script>
 </body>
