@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "ejsexcel": "^3.5.2",
+    "exceljs": "^1.4.13"
+  }
+}
