@@ -1,0 +1,67 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>WebSocketTest</title>
+    <script src="./reconnecting-websocket.js"></script>
+    <script type="text/javascript">
+
+        var ws = new ReconnectingWebSocket('ws://localhost:9191/Echo');
+
+
+        var url = "ws://localhost:9191/Echo";
+        var output;
+        var websocket;
+
+        function onLogin() {
+
+            var name = document.getElementById("txtName").value;
+
+            if (name.trim().length == 0) {
+                alert("请先输入用户名");
+                return;
+            }
+
+            websocket = new WebSocket(url);
+
+            websocket.onopen = function () {
+
+                var data = { "Name": name, "Msg": "Login" };
+                var jsData = JSON.stringify(data);
+
+                websocket.send(jsData);
+                alert("Connect Request send.....")
+            }
+
+            websocket.onmessage = function (e) {
+                onMessage(e);
+            };
+        }//初始化WebSocket连接
+
+        function onMessage(event) {
+
+            alert(event.data);
+        }//接收服務器端發送的信息
+
+        function sendMessage() {
+            //var
+            var name = document.getElementById("txtName").value;
+            var msg = document.getElementById("txtArea").value;
+            var data = { "Name": name, "Msg": msg };
+            var jsData = JSON.stringify(data);
+            websocket.send(jsData);
+
+            websocket.onmessage = function (e) {
+                onMessage(e);
+            };
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <span>Name</span><input type="text" value="" id="txtName" />
+        <input type="button" value="Login" id="btn_login" onclick="onLogin()" /><br /><br />
+        <textarea id="txtArea" style="width: 240px;"></textarea><br /><button id="SendData" onclick="sendMessage()">Send</button>
+    </div>
+</body>
+</html>

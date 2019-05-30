@@ -1,3 +1,6 @@
 node_modules
 $preview
 /typings/
+packages
+[Oo]bj/
+[Bb]in/
