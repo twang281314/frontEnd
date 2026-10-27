@@ -46,7 +46,7 @@ html[xmlns] .clearfix{display:block;}
 ```
 [http://www.daqianduan.com/3606.html](http://www.daqianduan.com/3606.html)
 
-- seperate-table
+- separate-table
 ```css
 .tab{border-collapse:separate;border:1px solid #e0e0e0;}
 .tab th,.tab td{padding:3px;font-size:12px;background:#f5f9fb;border:1px solid;border-color:#fff #deedf6 #deedf6 #fff;}
